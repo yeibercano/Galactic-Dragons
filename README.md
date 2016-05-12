@@ -1,4 +1,4 @@
-# Galactic-Dragons
+# Sovereign
 
 > Pithy project description
 
