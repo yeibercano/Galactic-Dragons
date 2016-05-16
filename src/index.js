@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import FirstComponent from './components/first_component'
 
 class App extends Component {
 
@@ -7,6 +8,7 @@ class App extends Component {
     return (
       <div>
         This is only the beginning!
+        <FirstComponent />
       </div>
     );
   }
