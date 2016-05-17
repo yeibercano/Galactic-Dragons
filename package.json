@@ -5,12 +5,13 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
-
-  },"dependencies": {
+  },
+  "dependencies": {
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.1",
     "redux": "^3.3.1",
+    "streaming-s3": "^0.4.1",
     "webpack": "^1.9.11"
   },
   "devDependencies": {
