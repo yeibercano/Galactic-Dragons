@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
+import Test from './public/Components/test'
 
 class HelloWorld extends Component {
   render() {
     return (
-      <div>Hello World!</div>
+      <div>Hello World!
+        <Test/>
+      </div>
+
     )
   }
 }
