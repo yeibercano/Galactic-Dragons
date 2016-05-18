@@ -19,12 +19,23 @@ var proxy = httpProxy.createProxyServer({
 });
 var app = express();
 
-
+app.use(bodyParser.json());
 app.use(express.static(publicPath));
+
+app.get('/test', function(req, res) {
+  console.log('hi');
+  console.log(req.body);
+  res.json({});
+})
+
+app.post('/test', function(req, res) {
+  console.log('this is the post test!');
+  console.log('this is req.body:', req.body);
+  res.send('ok');
+})
 
 //Below code is for uploading file to S3 bucket in AWS using streaming-s3
 //'/video.mp4' should be replaced with variable that siginifies the mp4 being uploaded
-
 
 var S3FS = require('s3fs');
 var s3fsImplementation = new S3FS('galactic.video',{
@@ -55,12 +66,10 @@ app.post('/api/testupload', function(req, res){
 });
 
 
-
-
 // If you only want this for development, you would of course
 // put it in the "if" block below
 
-if (isProduction) {
+if (!isProduction) {
   var bundle = require('./server/compiler.js')
   bundle()
   app.all('/build/*', function (req, res) {
