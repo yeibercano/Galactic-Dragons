@@ -5,8 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
-
-  },"dependencies": {
+  },
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.1",
