@@ -5,7 +5,7 @@ class Test extends Component {
     return (
       <div>
       <form action="#">
-        <input type="file"></input>
+        <input type="file" ></input>
         <input type="submit" onClick={console.log('yes')}></input>
        </form> 
       </div>
