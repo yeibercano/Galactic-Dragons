@@ -20,10 +20,11 @@ class Test extends Component {
 
   fetch('/test', {
     method: 'POST',
-    body: {data: file}
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({file})
   }, console.log('this is inside fetch post:', file))
-  .then(response =>{ console.log('this is response.json:', response.json()), response.json()})
-    .then(json => console.log('this is the undefined we were looking at earlier:', json))
+  // .then(response =>{ console.log('this is response.json:', response.json()), response.json()})
+  //   .then(json => console.log('this is the undefined we were looking at earlier:', json))
 
   // fetch('/test')
   //   .then(response =>{console.log('this is response:', response), console.log('this is response.json:', response.json()), response.json()})

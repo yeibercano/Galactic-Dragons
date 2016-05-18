@@ -19,7 +19,7 @@ var proxy = httpProxy.createProxyServer({
 });
 var app = express();
 
-
+app.use(bodyParser.json());
 app.use(express.static(publicPath));
 
 app.get('/test', function(req, res) {
@@ -31,6 +31,7 @@ app.get('/test', function(req, res) {
 app.post('/test', function(req, res) {
   console.log('this is the post test!');
   console.log('this is req.body:', req.body);
+  res.send('ok');
 })
 
 //Below code is for uploading file to S3 bucket in AWS using streaming-s3
@@ -68,7 +69,7 @@ app.post('/api/testupload', function(req, res){
 // If you only want this for development, you would of course
 // put it in the "if" block below
 
-if (isProduction) {
+if (!isProduction) {
   var bundle = require('./server/compiler.js')
   bundle()
   app.all('/build/*', function (req, res) {
