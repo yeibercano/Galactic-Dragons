@@ -9,6 +9,10 @@ var multiparty = require('connect-multiparty'),
 
 var secret = require('./private.js');
 
+var nodeNeo4j = require('node-neo4j');
+var neo4j = require("neo4j");
+var db = new neo4j.GraphDatabase(secret.grapheneDB_URI);
+
 // We need to add a configuration to our proxy server,
 // as we are now proxying outside localhost
 var isProduction = process.env.NODE_ENV === 'production';
@@ -21,6 +25,8 @@ var app = express();
 
 app.use(bodyParser.json());
 app.use(express.static(publicPath));
+
+
 
 app.get('/test', function(req, res) {
   console.log('hi');
