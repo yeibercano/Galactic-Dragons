@@ -2,50 +2,74 @@ import React, { Component } from 'react'
 import 'isomorphic-fetch'
 
 
-class Test extends Component {
+  class Test extends Component {
 
-  constructor (props) {
-  super(props);
-  this.state = { file: 'puppies' };
-  this._handleSubmit = this._handleSubmit.bind(this)
+    constructor (props) {
+    super(props);
+    // this.state = [];
+    this.state = { file: 'puppies' };
+    this._handleSubmit = this._handleSubmit.bind(this)
+    this.addFile = this.addFile.bind(this)
+    }
+
+///////////////////////////////////////////////////////////////////////
+  addFile(e){
+    console.log("This is e inside add file:", e)
+    this.setState({file: e.target.value})
+  }
+    _handleSubmit(e) {
+    e.preventDefault();
+
+    var ajaxFileUpload = function(data) {
+    console.log('ajaxFileUpload Called!');
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://localhost:3000/api/testupload', true);
+    // xhr.setRequestHeader('Content-type', 'multipart/form-data;boundary=thisisarandomboundary');
+    xhr.onload = function () {
+    // do something to response
+    console.log(this.responseText);
+    };
+  xhr.send(data);
   }
 
+    console.log('handleSubmit event handler triggered');
+    console.log('this is this.state.file', this.state.file);
+    let newFile = this.state.file;
+    console.log('this is newFile:', newFile);
+    var form = document.querySelector("form");
+    var fdata = new FormData(newFile);
+    console.log('this is fdata:', fdata);
+    // Optional. Append custom data.
+    // fdata.append('user_city', 'Los Angeles');
 
-  _handleSubmit(e) {
-  e.preventDefault();
-  let file = this.state.file;
-  // TODO: do something with -> this.state.file
-  // console.log('this is props inside handlesubmit:', this.props);
-  console.log('inside handlesubmit with the new state:', file);
+    ajaxFileUpload(fdata);
 
-  fetch('/test', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({file})
-  }, console.log('this is inside fetch post:', file))
-  // .then(response =>{ console.log('this is response.json:', response.json()), response.json()})
-  //   .then(json => console.log('this is the undefined we were looking at earlier:', json))
+    // Prevents the standard submit event
+    // return false;
 
-  // fetch('/test')
-  //   .then(response =>{console.log('this is response:', response), console.log('this is response.json:', response.json()), response.json()})
-  //   .then(json => console.log('this is the undefined we were looking at earlier:', json))
-  }
 
-  render() {
-    return (
+    console.log('this is form:', form);
+//////////////////////////////////////////////////////////////////////////
 
-       <div>
-          <form > 
-            <input
-            type="file"
-            value= {this.state.file}
-            onChange={event => this.setState({ file: event.target.value })} />
-            <input type="submit" onClick={this._handleSubmit} value="POST"/>
-          </form>
-      </div>
- 
-    )
-  }
+
 }
+
+////////////////////////////////////////////////////////////////////////
+
+    render() {
+      return (
+
+         <div>
+            <form> 
+              <input
+              type="file" name="file"
+              onChange={event=>this.addFile(event)}/>
+              <input type="submit" value="Upload Video" name="submit" onClick={this._handleSubmit}/>
+            </form>
+        </div>
+   
+      )
+    }
+  }
 
 export default Test

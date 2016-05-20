@@ -20,19 +20,20 @@ var proxy = httpProxy.createProxyServer({
 var app = express();
 
 app.use(bodyParser.json());
+app.use(bodyParser({limit: '50mb'}));
 app.use(express.static(publicPath));
 
-app.get('/test', function(req, res) {
-  console.log('hi');
-  console.log(req.body);
-  res.json({});
-})
+// app.get('/test', function(req, res) {
+//   console.log('hi');
+//   console.log(req.body);
+//   res.json({});
+// })
 
-app.post('/test', function(req, res) {
-  console.log('this is the post test!');
-  console.log('this is req.body:', req.body);
-  res.send('ok');
-})
+// app.post('/test', function(req, res) {
+//   console.log('this is the post test!');
+//   console.log('this is req.body:', req.body);
+//   res.send('ok');
+// })
 
 //Below code is for uploading file to S3 bucket in AWS using streaming-s3
 //'/video.mp4' should be replaced with variable that siginifies the mp4 being uploaded
@@ -49,18 +50,27 @@ var s3fsImplementation = new S3FS('galactic.video',{
 // app.use(bodyParser.urlencoded({extended: true}));
 app.use(mulitpartyMiddleware);
 app.post('/api/testupload', function(req, res){
-  console.log("+++++++++~~~~~~~This is what is in req.body:", req.body)
+  console.log('this is req:', req);
+  console.log('this is req.files:', req.files)
+  console.log('this is req.files.file:', req.files.file);
+  console.log('-----------*****This is what is in req.body:', req.body);
+  // var file = JSON.parse(req.body.file);
+  // console.log('this is file:', file);
   var file = req.files.file;
+  console.log('this is file which is file:', file);
+  // var filePath = JSON.stringify(file.path);
+  // console.log('this is filePath:', filePath);
+  console.log('this is file:', file);
   var stream = fs.createReadStream(file.path);
-  console.log(file.path);
   return s3fsImplementation.writeFile(file.originalFilename, stream)
   .then(function(){
     fs.unlink(file.path, function(err){
       if(err){
         console.error("This is the error", err);
       }
+      console.log('file upload success');
     })
-    res.send("done");
+    res.send(req.file);
   });
 
 });
