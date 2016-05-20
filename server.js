@@ -9,7 +9,8 @@ var multiparty = require('connect-multiparty'),
 
 var secret = require('./private.js');
 
-var nodeNeo4j = require('node-neo4j');
+var routes = require('./server/routes/users.js');
+// var nodeNeo4j = require('node-neo4j');
 var neo4j = require("neo4j");
 var db = new neo4j.GraphDatabase(secret.grapheneDB_URI);
 
@@ -26,7 +27,46 @@ var app = express();
 app.use(bodyParser.json());
 app.use(express.static(publicPath));
 
+//routes
+// app.post('/register', routes.create)
 
+app.post('/register', function(req, res, next){
+  console.log('register called')
+  var username = req.body.username;
+  var name = req.body.name;
+  var lastName = req.body.lastName;
+  var born = req.body.born;
+  var age = req.body.age;
+
+  // insert the data
+  var query = [
+    'CREATE (user:User {newUser})',
+    'RETURN user'
+  ].join('\n');
+  var params = {
+    newUser: {
+      username: req.body.username,
+      name: req.body.name,
+      lastName:req.body.lastName,
+      born: req.body.born,
+      age: req.body.age,
+      active:true
+    }
+  };
+  
+  db.cypher({
+    query: query,
+    params: params
+  }, 
+    function(err, user){
+      if (err) throw err;
+    
+      console.log(user);
+      // res.redirect('/users/login');
+  });
+  res.send('sending after 200')
+  // res.status(200);
+});
 
 app.get('/test', function(req, res) {
   console.log('hi');
