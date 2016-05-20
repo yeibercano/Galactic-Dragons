@@ -18,10 +18,11 @@ class Test extends Component {
   // console.log('this is props inside handlesubmit:', this.props);
   console.log('inside handlesubmit with the new state:', file);
 
-  fetch('/test', {
+  fetch('/api/testupload', {
     method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({file})
+    headers: {"content-disposition": "form-data; name=\"file\"; filename=\"shawty.mp4\"",
+              "content-type": "video/mp4"},
+    files: file
   }, console.log('this is inside fetch post:', file))
   // .then(response =>{ console.log('this is response.json:', response.json()), response.json()})
   //   .then(json => console.log('this is the undefined we were looking at earlier:', json))

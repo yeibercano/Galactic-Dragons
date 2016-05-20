@@ -49,10 +49,12 @@ var s3fsImplementation = new S3FS('galactic.video',{
 // app.use(bodyParser.urlencoded({extended: true}));
 app.use(mulitpartyMiddleware);
 app.post('/api/testupload', function(req, res){
-  console.log("+++++++++~~~~~~~This is what is in req.body:", req.body)
+  console.log("This is to see if req contains files", req);
+  console.log("+++++++++~~~~~~~This is what is in req.files:", req.files)
   var file = req.files.file;
+  console.log("This is file from req.files.file", file);
   var stream = fs.createReadStream(file.path);
-  console.log(file.path);
+  console.log("This is file.motherfuckingpath", file.path);
   return s3fsImplementation.writeFile(file.originalFilename, stream)
   .then(function(){
     fs.unlink(file.path, function(err){
