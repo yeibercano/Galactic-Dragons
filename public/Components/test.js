@@ -1,51 +1,76 @@
 import React, { Component } from 'react'
-import 'isomorphic-fetch'
+var axios = require('axios');
 
+  class Test extends Component {
 
-class Test extends Component {
+    //to handle our submit form
+    _handleSubmit(e) {
+    e.preventDefault();
 
-  constructor (props) {
-  super(props);
-  this.state = { file: 'puppies' };
-  this._handleSubmit = this._handleSubmit.bind(this)
-  }
+    //the variable form below is used to grab the entire form element
+    var form = document.querySelector("form");
+    console.log('this is form:', form);
+    //the variable fdata will be the actual form that will have the new file uploaded
+    var fdata = new FormData(form);
+    console.log('this is fdata:', fdata);
+    //send fdata to our server to upload file to s3
+    axios.post('/api/testupload', fdata)
+    .then(function(response){
+    console.log('File uploaded successfully')
+  });  
 
+/*
+==========================================================================================
+BELOW METHOD USES THE XML VANILLA JS METHOD TO POST TO SERVER SIDE
+==========================================================================================
+*/
+    // //below function to send our form to our server
+    // //the parameter 'data' below will be passed the 'fdata'
+    // var ajaxFileUpload = function(data) {
+    // console.log('this is data inside ajaxFileUpload:', data);
+    // console.log('ajaxFileUpload Called!');
+    // var xhr = new XMLHttpRequest();
+    // //Will send the POST request to the route provided 
+    // xhr.open('POST', '/api/testupload', true);
+    // //upon file upload success on server side, the xhr.onload function below will be called
+    // xhr.onload = function () {
+    // console.log('the xhr.onload has been called');
+    // console.log(this.responseText);
+    // }
+    // //below is the line of code that will actually send the fdata to the server
+    // xhr.send(data);
+    // }
 
-  _handleSubmit(e) {
-  e.preventDefault();
-  let file = this.state.file;
-  // TODO: do something with -> this.state.file
-  // console.log('this is props inside handlesubmit:', this.props);
-  console.log('inside handlesubmit with the new state:', file);
+    // //below code to send our updated form to our ajaxFileUpload function
+    // //the variable form below is used to grab the entire form element
+    // var form = document.querySelector("form");
+    // console.log('this is form:', form);
+    // //the variable fdata will be the actual form that will have the new file uploaded
+    // var fdata = new FormData(form);
+    // console.log('this is fdata:', fdata);
+    // //we will now call the ajaxFileUpload function with fdata passed in as argument -- this function will be called above
+    // ajaxFileUpload(fdata);
 
-  fetch('/test', {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({file})
-  }, console.log('this is inside fetch post:', file))
-  // .then(response =>{ console.log('this is response.json:', response.json()), response.json()})
-  //   .then(json => console.log('this is the undefined we were looking at earlier:', json))
+/*
+==========================================================================================
+==========================================================================================
+*/
 
-  // fetch('/test')
-  //   .then(response =>{console.log('this is response:', response), console.log('this is response.json:', response.json()), response.json()})
-  //   .then(json => console.log('this is the undefined we were looking at earlier:', json))
-  }
-
-  render() {
-    return (
-
-       <div>
-          <form > 
-            <input
-            type="file"
-            value= {this.state.file}
-            onChange={event => this.setState({ file: event.target.value })} />
-            <input type="submit" onClick={this._handleSubmit} value="POST"/>
-          </form>
-      </div>
- 
-    )
-  }
 }
+
+    render() {
+      return (
+
+          <div>
+            <form onSubmit={this._handleSubmit}> 
+              <input
+              type="file" name="file" />
+              <input type="submit" value="Upload Video" name="submit"/>
+            </form>
+          </div>
+   
+      )
+    }
+  }
 
 export default Test

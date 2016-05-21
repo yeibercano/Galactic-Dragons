@@ -6,12 +6,17 @@ var fs = require('fs');
 var bodyParser = require('body-parser');
 var multiparty = require('connect-multiparty'),
   mulitpartyMiddleware = multiparty();
-
 var secret = require('./private.js');
-
 var routes = require('./server/routes/users.js');
 // var nodeNeo4j = require('node-neo4j');
 var neo4j = require("neo4j");
+var axios = require('axios');
+
+/*
+====================================================================================
+NEO 4J SETUP BELOW
+====================================================================================
+*/
 var db = new neo4j.GraphDatabase(secret.grapheneDB_URI);
 
 // We need to add a configuration to our proxy server,
@@ -25,6 +30,7 @@ var proxy = httpProxy.createProxyServer({
 var app = express();
 
 app.use(bodyParser.json());
+app.use(bodyParser({limit: '50mb'}));
 app.use(express.static(publicPath));
 
 //routes
@@ -67,17 +73,16 @@ app.post('/register', function(req, res, next){
   res.send('sending after 200')
   // res.status(200);
 });
-
-app.get('/test', function(req, res) {
-  console.log('hi');
-  console.log(req.body);
-  res.json({});
-})
-
+/*
+================================================================================================
+POST TO S3 BELOW
+================================================================================================
+*/
 app.post('/test', function(req, res) {
-  console.log('this is the post test!');
+  console.log('hi');
+  console.log('this is req:', req);
   console.log('this is req.body:', req.body);
-  res.send('ok');
+  // console.log(req.body);
 })
 
 //Below code is for uploading file to S3 bucket in AWS using streaming-s3
@@ -91,27 +96,33 @@ var s3fsImplementation = new S3FS('galactic.video',{
 });
 
 // s3fsImplementation.create();
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(mulitpartyMiddleware);
+
 app.post('/api/testupload', function(req, res){
-  console.log("+++++++++~~~~~~~This is what is in req.body:", req.body)
   var file = req.files.file;
+  console.log('this is file which is file:', file);
   var stream = fs.createReadStream(file.path);
-  console.log(file.path);
   return s3fsImplementation.writeFile(file.originalFilename, stream)
-  .then(function(){
+  .then(function(err){
     fs.unlink(file.path, function(err){
       if(err){
         console.error("This is the error", err);
       }
+      console.log('file upload success');
+    // console.log('this is res:', res);
     })
-    res.send("done");
+    res.send('File Upload Complete');
   });
 
 });
 
-
+/*
+================================================================================================
+EXPRESS SERVER WITH WEBPACK BELOW
+================================================================================================
+*/
 // If you only want this for development, you would of course
 // put it in the "if" block below
 

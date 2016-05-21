@@ -7,12 +7,12 @@
     "start": "nodemon server.js"
   },
   "dependencies": {
+    "axios": "^0.11.1",
     "body-parser": "^1.15.1",
     "connect-multiparty": "^2.0.0",
-    "isomorphic-fetch": "^2.2.1",
     "neo4j": "^2.0.0-RC2",
     "node-neo4j": "^2.0.3",
-    "react": "^0.14.7",
+    "react": "^0.14.3",
     "react-dom": "^0.14.7",
     "react-redux": "^4.4.1",
     "redux": "^3.3.1",
