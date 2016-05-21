@@ -62,7 +62,7 @@ app.post('/api/testupload', function(req, res){
         console.error("This is the error", err);
       }
     })
-    res.send("done");
+    res.send();
   });
 
 });
