@@ -1,5 +1,6 @@
 var React = require('react');
 var axios = require('axios');
+var secret = require("../../private.js")
 
 
 
@@ -28,6 +29,8 @@ var CreateAccountScreen = React.createClass({
     //to handle our submit form
     e.preventDefault();
     console.log("form has been submitted, this is e", e.target.value)
+    let filename  = this.video.value.replace("C:\\fakepath\\", "");
+    console.log('This is filename:', filename);
     let uInfo = {
     firstName : this.firstName.value,
     lastName : this.lastName.value,
@@ -38,9 +41,24 @@ var CreateAccountScreen = React.createClass({
     website : this.website.value,
     companyName : this.companyName.value,
     phoneNumber : this.phoneNumber.value,
-    video : this.video.value,
-    image : this.image.value
+    video : secret.endpointLocation + '/' + secret.bucketName + '/' + filename,
+    // image : this.image.value
     }
+// ==================================================================
+
+     //to handle our submit form
+
+    //the variable form below is used to grab the entire form element
+    var form = document.querySelector("form");
+    console.log('this is form:', form);
+    //the variable fdata will be the actual form that will have the new file uploaded
+    var fdata = new FormData(form);
+    console.log('this is fdata:', fdata);
+    //send fdata to our server to upload file to s3
+    axios.post('/api/testupload', fdata)
+    .then(function(response){
+    console.log('File uploaded successfully')
+    });  
 
     axios.post('/users/register', uInfo)
     .then(function(response){
@@ -113,17 +131,13 @@ var CreateAccountScreen = React.createClass({
               ref={input=> this.phoneNumber = input} 
               />
             <input
-              type="file" 
-              name="video" 
-              value = {this.state.value}
-              ref={input=> this.video = input}/>
-            <input
-              type="file" 
-              name="image" 
-              ref={input=> this.image = input}/>
+              type="file" name="file"
+              ref={input=> this.video = input} />
             <input 
               type="submit" 
-              className="register-button" name='submit'/>
+              name="submit"
+              value="Upload Video"
+              className="register-button" />
         
           </form>
         </div>
