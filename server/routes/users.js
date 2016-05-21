@@ -13,7 +13,7 @@ router.post('/register', function(req, res, next){
   var params = {
     newUser: {
       name: req.body.name,
-      username: req.body.username,
+      username: req.body.userName,
       lastName:req.body.lastName,
       born: req.body.born,
       age: req.body.age,
@@ -58,7 +58,7 @@ router.get('/all', function(req, res, next) {
     console.log('labels',user[user.length-1].users.labels)
     // res.render('users/index', {title: 'All Users', users: users});  
     // res.send({title: 'All Users', users: users, one:users.properties.name});  
-    res.send({title: 'All Users', user: user[user.length-1].users.labels});  
+    res.send({title: 'All Users', user: user});  
 
   });
   
