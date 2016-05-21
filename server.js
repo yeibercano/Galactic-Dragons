@@ -102,17 +102,18 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(mulitpartyMiddleware);
 app.post('/api/testupload', function(req, res){
   var file = req.files.file;
-  console.log('this is file which is file:', file);
+  // console.log('this is file which is file:', file);
   var stream = fs.createReadStream(file.path);
   return s3fsImplementation.writeFile(file.originalFilename, stream)
-  .then(function(){
+  .then(function(err){
     fs.unlink(file.path, function(err){
       if(err){
         console.error("This is the error", err);
       }
       console.log('file upload success');
+    // console.log('this is res:', res);
     })
-    res.send(req.files);
+    res.send('File Upload Complete');
   });
 
 });
