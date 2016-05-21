@@ -7,15 +7,17 @@
     "start": "nodemon server.js"
   },
   "dependencies": {
-    "isomorphic-fetch": "^2.2.1",
     "body-parser": "^1.15.1",
     "connect-multiparty": "^2.0.0",
-    "react": "^0.14.7",
-    "react-dom": "^0.14.7",
+    "isomorphic-fetch": "^2.2.1",
+    "phantomjs": "^2.1.7",
+    "react": "latest",
+    "react-dom": "latest",
     "react-redux": "^4.4.1",
     "redux": "^3.3.1",
     "s3fs": "^2.4.7",
     "streaming-s3": "^0.4.1",
+    "underscore": "^1.8.3",
     "webpack": "^1.9.11"
   },
   "devDependencies": {
