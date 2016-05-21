@@ -6,7 +6,7 @@ class HelloWorld extends Component {
   render() {
     return (
       <div>Hello World!
-        <Test/>
+        <Test />
       </div>
 
     )

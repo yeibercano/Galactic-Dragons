@@ -4,11 +4,8 @@ var neo4j = require('neo4j');
 var secret = require('../../private.js');
 var db = new neo4j.GraphDatabase(secret.grapheneDB_URI);
 
-
+// CREATES NEW USERS
 router.post('/register', function(req, res, next){
-  console.log('register called');
-
-  // insert the data
   var query = [
     'CREATE (user:User {newUser})',
     'RETURN user'
@@ -32,14 +29,14 @@ router.post('/register', function(req, res, next){
       if (err) throw err;
     
       console.log('user',user);
-      console.log('req.params',res);
+      // console.log('req.params',res);
       // res.redirect('https://slack.com/');
   })
   res.send('created user')
   // res.status(200);
 });
 
-
+// QUERY ALL USERS //
 router.get('/all', function(req, res, next) {
   // var loggedInUserID = req.cookies.userID;
   // console.log('get from routes.user')
