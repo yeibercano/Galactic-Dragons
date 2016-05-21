@@ -103,8 +103,6 @@ app.use(mulitpartyMiddleware);
 app.post('/api/testupload', function(req, res){
   var file = req.files.file;
   console.log('this is file which is file:', file);
-  // var filePath = JSON.stringify(file.path);
-  // console.log('this is filePath:', filePath);
   var stream = fs.createReadStream(file.path);
   return s3fsImplementation.writeFile(file.originalFilename, stream)
   .then(function(){
@@ -114,7 +112,7 @@ app.post('/api/testupload', function(req, res){
       }
       console.log('file upload success');
     })
-    res.send(req.file);
+    res.send(req.files);
   });
 
 });

@@ -11,8 +11,9 @@ import React, { Component } from 'react'
     console.log('this is data inside ajaxFileUpload:', data);
     console.log('ajaxFileUpload Called!');
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:3000/api/testupload', true);
+    xhr.open('POST', '/api/testupload', true);
     xhr.onload = function () {
+    console.log('the xhr.onload has been called');
     console.log(this.responseText);
     }
     xhr.send(data);
@@ -34,7 +35,7 @@ import React, { Component } from 'react'
             <form onSubmit={this._handleSubmit}> 
               <input
               type="file" name="file" />
-              <input type="submit" value="Upload Video" name="submit" />
+              <input type="submit" value="Upload Video" name="submit"/>
             </form>
           </div>
    
