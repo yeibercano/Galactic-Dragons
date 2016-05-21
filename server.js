@@ -98,11 +98,11 @@ var s3fsImplementation = new S3FS('galactic.video',{
 // s3fsImplementation.create();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
 app.use(mulitpartyMiddleware);
+
 app.post('/api/testupload', function(req, res){
   var file = req.files.file;
-  // console.log('this is file which is file:', file);
+  console.log('this is file which is file:', file);
   var stream = fs.createReadStream(file.path);
   return s3fsImplementation.writeFile(file.originalFilename, stream)
   .then(function(err){
