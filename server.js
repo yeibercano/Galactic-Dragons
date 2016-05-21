@@ -7,20 +7,6 @@ var bodyParser = require('body-parser');
 var multiparty = require('connect-multiparty'),
   mulitpartyMiddleware = multiparty();
 var secret = require('./private.js');
-<<<<<<< HEAD
-=======
-var routes = require('./server/routes/users.js');
-// var nodeNeo4j = require('node-neo4j');
-var neo4j = require("neo4j");
-var axios = require('axios');
-
-/*
-====================================================================================
-NEO 4J SETUP BELOW
-====================================================================================
-*/
-var db = new neo4j.GraphDatabase(secret.grapheneDB_URI);
->>>>>>> 1afacc123141894e88b4741486c355f0d8890a5b
 
 // We need to add a configuration to our proxy server,
 // as we are now proxying outside localhost
@@ -37,58 +23,16 @@ app.use(bodyParser({limit: '50mb'}));
 app.use(express.static(publicPath));
 
 
-//routes
-// app.post('/register', routes.create)
+/* ROUTES */
+var users = require('./server/routes/users');
+app.use('/users', users); /* POST user to db. */
+app.use('/users', users); /* GET users listing. */
 
-app.post('/register', function(req, res, next){
-  console.log('register called')
-  var username = req.body.username;
-  var name = req.body.name;
-  var lastName = req.body.lastName;
-  var born = req.body.born;
-  var age = req.body.age;
-
-  // insert the data
-  var query = [
-    'CREATE (user:User {newUser})',
-    'RETURN user'
-  ].join('\n');
-  var params = {
-    newUser: {
-      username: req.body.username,
-      name: req.body.name,
-      lastName:req.body.lastName,
-      born: req.body.born,
-      age: req.body.age,
-      active:true
-    }
-  };
-  
-  db.cypher({
-    query: query,
-    params: params
-  }, 
-    function(err, user){
-      if (err) throw err;
-    
-      console.log(user);
-      // res.redirect('/users/login');
-  });
-  res.send('sending after 200')
-  // res.status(200);
-});
 /*
 ================================================================================================
 POST TO S3 BELOW
 ================================================================================================
 */
->>>>>>> 1afacc123141894e88b4741486c355f0d8890a5b
-app.post('/test', function(req, res) {
-  console.log('hi');
-  console.log('this is req:', req);
-  console.log('this is req.body:', req.body);
-  // console.log(req.body);
-})
 
 //Below code is for uploading file to S3 bucket in AWS using streaming-s3
 //'/video.mp4' should be replaced with variable that siginifies the mp4 being uploaded
