@@ -18,6 +18,7 @@
     "redux": "^3.3.1",
     "s3fs": "^2.4.7",
     "streaming-s3": "^0.4.1",
+    "underscore": "^1.8.3",
     "webpack": "^1.9.11"
   },
   "devDependencies": {
