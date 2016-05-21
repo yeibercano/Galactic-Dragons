@@ -1,0 +1,4 @@
+<input
+              type="file" 
+              name="image" 
+              ref={input=> this.image = input}/>
