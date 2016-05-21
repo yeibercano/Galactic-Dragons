@@ -3,8 +3,8 @@ var axios = require('axios');
 
   class Test extends Component {
 
-    //to handle our submit form
     _handleSubmit(e) {
+    //to handle our submit form
     e.preventDefault();
 
     //the variable form below is used to grab the entire form element
@@ -18,6 +18,7 @@ var axios = require('axios');
     .then(function(response){
     console.log('File uploaded successfully')
   });  
+}
 
 /*
 ==========================================================================================
@@ -40,7 +41,6 @@ BELOW METHOD USES THE XML VANILLA JS METHOD TO POST TO SERVER SIDE
     // //below is the line of code that will actually send the fdata to the server
     // xhr.send(data);
     // }
-
     // //below code to send our updated form to our ajaxFileUpload function
     // //the variable form below is used to grab the entire form element
     // var form = document.querySelector("form");
@@ -56,7 +56,7 @@ BELOW METHOD USES THE XML VANILLA JS METHOD TO POST TO SERVER SIDE
 ==========================================================================================
 */
 
-}
+
 
     render() {
       return (
