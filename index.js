@@ -6,8 +6,7 @@ import CreateAccountScreen from './public/Components/register'
 class HelloWorld extends Component {
   render() {
     return (
-      <div>Hello World!
-        <Test/>
+      <div>Galactic Dragons FTW!!
         <CreateAccountScreen />
       </div>
 

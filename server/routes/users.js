@@ -6,7 +6,7 @@ var db = new neo4j.GraphDatabase(secret.grapheneDB_URI);
 
 // CREATES NEW USERS
 router.post('/register', function(req, res, next){
-  console.log("What is req inside users.js: ", req);
+  // console.log("What is req inside users.js: ", req);
   console.log("What is req.body inside users.js: ", req.body);
   var query = [
     'CREATE (user:User {newUser})',
