@@ -23,4 +23,4 @@
   Because of this site I was able to establish a relationship with Sundance film festival.
 
 ## Closing and Call to Action ##
-  Submit your content and join an independent community of filmmakers.  Expose your work and be recognized by fellow filmmakers.  Writing this sentence to see if Travis CI will build - delete this sentence after testing.
+  Submit your content and join an independent community of filmmakers.  Expose your work and be recognized by fellow filmmakers.
