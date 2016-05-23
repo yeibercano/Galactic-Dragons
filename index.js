@@ -3,6 +3,7 @@ import { render } from 'react-dom'
 import Test from './public/Components/test'
 import Login from './public/Components/login'
 import CreateAccountScreen from './public/Components/register'
+import Profile from './public/Components/profile'
 import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router'
 
 const Home = React.createClass({
@@ -32,6 +33,15 @@ const LoginPage = React.createClass({
       );
   }})
 
+const ProfileUser = React.createClass({
+  render() {
+    return (
+      <div>
+        <Profile/>
+      </div>
+      );
+  }})
+
 const App = React.createClass({
   render() {
     return (
@@ -41,6 +51,7 @@ const App = React.createClass({
           <li><Link to="/home">Home</Link></li>
           <li><Link to="/register">Register</Link></li>
           <li><Link to="/login">Login</Link></li>
+          <li><Link to="/profile">Profile</Link></li>
         </ul>
         {this.props.children}
       </div>
@@ -55,7 +66,8 @@ render((
       <IndexRoute component={Home} />
       <Route path="home" component={Home} />
       <Route path="register" component={Register} />
-      <Route path="login" component={LoginPage} />
+      <Route path="login" component={Login} />
+      <Route path="profile" component={Profile} />
     </Route>
   </Router>
 ), document.getElementById('app'))
