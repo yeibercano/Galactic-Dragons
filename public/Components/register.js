@@ -95,13 +95,13 @@ var CreateAccountScreen = React.createClass({
               ref={input=> this.userName = input}
               />
             <input
-              type="text" 
+              type="password" 
               name="password" 
               placeholder ="Enter Password"
               ref={input=> this.password = input}
               />
             <input
-              type="text" 
+              type="password" 
               name="confirmPassword"
               placeholder ="Re-enter Password"
               ref={input=> this.confirmPassword = input} 
