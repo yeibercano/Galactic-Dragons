@@ -9,7 +9,9 @@ import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router'
 const Home = React.createClass({
   render() {
     return (
-      <div>This component will have the landing page components nested in here!</div>
+      <div>
+        This component will have the landing page components nested in here!
+      </div>
       );
   }})
 
@@ -46,7 +48,7 @@ const App = React.createClass({
   render() {
     return (
       <div>
-        <h1>Galactic Dragons FTW!!!</h1>
+        <h1>GALACTIC DRAGONS FTW!!</h1>
         <ul>
           <li><Link to="/home">Home</Link></li>
           <li><Link to="/register">Register</Link></li>
