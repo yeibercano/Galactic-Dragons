@@ -67,8 +67,10 @@ var CreateAccountScreen = React.createClass({
       // this.props.
     // console.log('this is response',response.data[0].user.properties)
     let userInfo = response.data[0].user.properties;
-    localStorage.setItem('user',userInfo);
-    }).then(function(){
+    localStorage.setItem('user',JSON.stringify(userInfo))
+   
+    })
+    .then(function(){
       hashHistory.push('profile')
     })  
 },

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 var axios = require('axios');
 
 //import child components of profile
@@ -9,7 +9,16 @@ import UploadVideos from './uploadVideo'
 // this is the parent component 
 // shows userInfo - ProfilePlayer - ProfileVideos - ProfileUpload
 
-const Profile = React.createClass({
+class Profile extends Component {
+
+  constructor (props) {
+    super (props) 
+    let userLS = localStorage.getItem('user');
+    let parseUser = JSON.parse(userLS);
+    // console.log('userLS PROFILE COMPONENT', parseUser);
+    // this.props.user = localStorage.getItem(JSON.parse(user))
+  }
+
   render() {
     return (
       <div> 
@@ -20,6 +29,6 @@ const Profile = React.createClass({
       </div>
     )
   }
-});
+}
 
 export default Profile

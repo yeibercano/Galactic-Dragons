@@ -8,7 +8,6 @@ const ProfileInfo = React.createClass({
       <div>
         <p>PROFILE INFO COMPONENT SHOWING</p>
         <p></p>
-       
       </div>
     )
   }
