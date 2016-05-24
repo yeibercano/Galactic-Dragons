@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 var axios = require('axios');
 
 //import child components of profile
-import ProfileVideos from './profileVideos'
+import ProfileVideoPlayer from './profileVideoPlayer'
 import ProfileInfo from './profileInfo'
+import UploadVideos from './uploadVideo'
 
 // this is the parent component 
 // shows userInfo - ProfilePlayer - ProfileVideos - ProfileUpload
@@ -22,8 +23,9 @@ class Profile extends Component {
     return (
       <div> 
         <div> PROFILE PARENT COMPONENT SHOWING</div>
-        <ProfileVideos/>
-        <ProfileInfo/>
+        <ProfileVideoPlayer />
+        <ProfileInfo />
+        <UploadVideos />
       </div>
     )
   }
