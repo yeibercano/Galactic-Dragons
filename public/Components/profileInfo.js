@@ -7,6 +7,7 @@ const ProfileInfo = React.createClass({
     return (
       <div>
         <p>PROFILE INFO COMPONENT SHOWING</p>
+        <p>{user}</p>
        
       </div>
     )
