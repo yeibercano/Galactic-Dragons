@@ -5,14 +5,14 @@ var axios = require('axios');
 //retrieve the videos from the user and display them 
 // when clicked, they play in the ProfilePlayer
 
-const ProfileVideos = React.createClass({
+const ProfileVideoList = React.createClass({
+
+
   render() {
     return (
-        <video controls>
-            <source src="https://s3-us-west-2.amazonaws.com/galactic.video/shawty.mp4" type="video/mp4" />
-        </video>
+        <h1>This is Where the List of Users Videos Will Be</h1>
     );
 }
 })
 
-export default ProfileVideos
+export default ProfileVideoList

@@ -40,6 +40,8 @@ const ProfileUser = React.createClass({
     return (
       <div>
         <Profile/>
+        <ProfileVideos />
+        <UploadVideos />
       </div>
       );
   }})
