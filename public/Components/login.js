@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 var axios = require('axios');
 
-  class Login extends Component {
+var Login = React.createClass({
 
 
     _userLogin(e){
@@ -9,18 +9,18 @@ var axios = require('axios');
       console.log("You made it into _userLogin");
 
       let userLogin = {
-        userN: this.userName.value,
-        pass: this.password.value
+        userName: this.userName.value,
+        password: this.password.value
       }
 
+    console.log('userLogin',userLogin)
+    axios.post('/users/login',userLogin )
+      .then(function(response){
+        console.log('response from server',response);
+      });  
+    },
 
-    axios.get('/users/login' )
-    .then(function(response){
-    console.log(response);
-    });  
-    }
-
-    render () {
+    render: function () {
       return(
           <div>
             <form onSubmit={this._userLogin} >
@@ -29,14 +29,12 @@ var axios = require('axios');
                 type="text"
                 name="userName"
                 ref={input=> this.userName = input} 
-                placeholder ="Enter Username"
-              />
+                placeholder ="Enter Username"/>
               <input
                 type="text" 
                 name="password"
                 placeholder ="Enter Password"
-                ref={input=> this.password = input}
-              />
+                ref={input=> this.password = input}/>
               <input 
               type="submit" 
               name="submit"
@@ -47,6 +45,6 @@ var axios = require('axios');
           </div>
         )
     }
-}; 
+}); 
 
 export default Login

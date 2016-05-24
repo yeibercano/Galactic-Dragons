@@ -4,7 +4,7 @@ import Test from './public/Components/test'
 import Login from './public/Components/login'
 import CreateAccountScreen from './public/Components/register'
 import Profile from './public/Components/profile'
-import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router'
+import { Router, Route, IndexRoute, Link, hashHistory, browserHistory } from 'react-router'
 
 const Home = React.createClass({
   render() {
