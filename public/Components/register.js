@@ -32,6 +32,7 @@ var CreateAccountScreen = React.createClass({
     console.log("form has been submitted, this is e", e.target.value)
     let filename  = this.video.value.replace("C:\\fakepath\\", "");
     console.log('This is filename:', filename);
+    let trueVideo  = secret.endpointLocation + '/' + secret.bucketName + '/' + filename 
     let uInfo = {
       firstName : this.firstName.value,
       lastName : this.lastName.value,
@@ -42,37 +43,37 @@ var CreateAccountScreen = React.createClass({
       website : this.website.value,
       companyName : this.companyName.value,
       phoneNumber : this.phoneNumber.value,
-      video : secret.endpointLocation + '/' + secret.bucketName + '/' + filename,
+      video : []
     // image : this.image.value
     }
-    console.log('uInfo', uInfo)
+    uInfo.video.push(trueVideo);
+    console.log('this is video test for uInfo', uInfo);
 // ==================================================================
-
-     //to handle our submit form
-
-    // //the variable form below is used to grab the entire form element
-    // var form = document.querySelector("form");
-    // console.log('this is form:', form);
-    // //the variable fdata will be the actual form that will have the new file uploaded
-    // var fdata = new FormData(form);
-    // console.log('this is fdata:', fdata);
-    // //send fdata to our server to upload file to s3
-    // // axios.post('/api/testupload', fdata)
-    // // .then(function(response){
-    // // console.log('File uploaded successfully')
-    // // });  
-
     axios.post('/users/register', uInfo)
     .then(function(response){
-      // this.props.
-    // console.log('this is response',response.data[0].user.properties)
-    let userInfo = response.data[0].user.properties;
-    localStorage.setItem('user',JSON.stringify(userInfo))
-   
+      //userInfo is the response back with the very last user entered
+      let userInfo = response.data[0].user.properties;
+      //sets "user" in localstorage to what is contained in userInfo
+      localStorage.setItem('user',JSON.stringify(userInfo))
     })
+/*======================================================================*/
+     // to handle our submit form
+    //the variable form below is used to grab the entire form element
+    var form = document.querySelector("form");
+    console.log('this is form:', form);
+    //the variable fdata will be the actual form that will have the new file uploaded
+    var fdata = new FormData(form);
+    console.log('this is fdata:', fdata);
+    // send fdata to our server to upload file to s3
+    axios.post('/users/video', fdata)
+    .then(function(response){
+    console.log('File uploaded successfully')
+    })  
     .then(function(){
+      //redirects to the profile page
       hashHistory.push('profile')
     })  
+
 },
 
  

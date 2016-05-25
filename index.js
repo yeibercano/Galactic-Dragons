@@ -40,8 +40,6 @@ const ProfileUser = React.createClass({
     return (
       <div>
         <Profile/>
-        <ProfileVideos />
-        <UploadVideos />
       </div>
       );
   }})
@@ -70,8 +68,8 @@ render((
       <IndexRoute component={Home} />
       <Route path="home" component={Home} />
       <Route path="register" component={Register} />
-      <Route path="login" component={Login} />
-      <Route path="profile" component={Profile} />
+      <Route path="login" component={LoginPage} />
+      <Route path="profile" component={ProfileUser} />
     </Route>
   </Router>
 ), document.getElementById('app'))
