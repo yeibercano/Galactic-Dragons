@@ -24,9 +24,9 @@ app.use(express.static(publicPath));
 
 
 /* ROUTES */
-// app.get('/*', function(){
-//   redirect('/');
-// })
+app.get('/*', function(req, res){
+  res.redirect('/');
+})
 
 var users = require('./server/routes/users');
 app.use('/users', users); /* POST user to db. */

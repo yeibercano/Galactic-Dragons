@@ -137,11 +137,8 @@ router.get('/all', function(req, res, next) {
 /* GET /users/login */
 router.get('/login', function(req, res, next){
   
-  // res.redirect('/users/login');
-  // res.status(200).send({redirect: '/'})
-  // // next();
-
-  // newRouter.transitionTo('/')
+  res.redirect('/users/login');
+  
 });
 
 /* POST /users/login */
@@ -151,18 +148,19 @@ router.post('/login', function(req, res, next){
   var userName = req.body['userName'];
   var password = req.body['password'];
   
-  // // check if data is empty
-  // if (!email || !password){
-  //   // add a message
-  //   return res.redirect('/users/login');
-  // }
+  // check if data is empty
+  if (!userName || !password){
+    // add a message
+    return res.redirect('/users/login');
+  }
   
   var query = [
-    'MATCH (user:User { userName: {userName} })',
+    'MATCH (user:User { userName: {userName}, password:{password} })',
     'RETURN user'
   ].join('\n');
   var params = {
-    userName: userName
+    userName: userName,
+    password: password
   }
 
   db.cypher({
@@ -171,27 +169,9 @@ router.post('/login', function(req, res, next){
   }, 
     function(err, user){
       if (err) throw err;
-    
-      // console.log(user[0]['user']['properties']);
-      // if the user exists check if is active
       console.log('user',user);
-      
-      // login the user
-      // var userID = user[0]['user']['_id'];
-      // var currentUser = user[0]['user']['properties'];
-      // res.cookie('userID', userID, {
-      //   domain: 'begin-imitate.codio.io',
-      //   maxAge: new Date(Date.now() + 9000)
-
-      // });
-      // res.cookie('user', currentUser, {
-      //   domain: 'begin-imitate.codio.io',
-      //   maxAge: new Date(Date.now() + 9000)
-      // });
       res.json(user=user)
-     // res.send({redirect:'/'})
-     // res.redirect('/')
-     // newRouter.transitionTo('/')
+
   });
  
 });
