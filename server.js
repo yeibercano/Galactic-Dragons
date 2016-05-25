@@ -24,6 +24,10 @@ app.use(express.static(publicPath));
 
 
 /* ROUTES */
+// app.get('/*', function(){
+//   redirect('/');
+// })
+
 var users = require('./server/routes/users');
 app.use('/users', users); /* POST user to db. */
 // app.use('/users', users); /* GET users listing. */

@@ -118,11 +118,11 @@ router.get('/all', function(req, res, next) {
     query: query,
   }, function(err, user){
     if (err) throw err;
-    // res.send({title: 'All Users', users: user});  
+    res.send({title: 'All Users', users: user[0].users.properties.userName});  
     // res.redirect('/')
   // newRouter.browserHistory.push('/');
-  newRouter.transitionTo('/')
-  
+  // newRouter.transitionTo('/')
+
 
   });
   
