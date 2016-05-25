@@ -26,7 +26,7 @@ app.use(express.static(publicPath));
 /* ROUTES */
 var users = require('./server/routes/users');
 app.use('/users', users); /* POST user to db. */
-app.use('/users', users); /* GET users listing. */
+// app.use('/users', users); /* GET users listing. */
 
 /*
 ================================================================================================
@@ -49,7 +49,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(mulitpartyMiddleware);
 
-app.post('/api/testupload', function(req, res){
+app.post('/users/video', function(req, res){
   var file = req.files.file;
   console.log('this is file which is file:', file);
   var stream = fs.createReadStream(file.path);

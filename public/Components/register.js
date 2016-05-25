@@ -1,25 +1,26 @@
 var React = require('react');
 var axios = require('axios');
 var secret = require("../../private.js")
+import { Router, Redirect, Route, IndexRoute, Link, hashHistory, browserHistory} from 'react-router'
 
 
 
 var CreateAccountScreen = React.createClass({
-  getInitialState: function () {
-    return {
-      firstName: null,
-      lastName: null,
-      userName: null,
-      password: null,
-      confirmPassword: null,
-      email: null,
-      website: null,
-      companyName: null,
-      phoneNumber: null,
-      video: null,
-      image: null
-    }
-  },
+  // getInitialState: function () {
+  //   return {
+  //     firstName: null,
+  //     lastName: null,
+  //     userName: null,
+  //     password: null,
+  //     confirmPassword: null,
+  //     email: null,
+  //     website: null,
+  //     companyName: null,
+  //     phoneNumber: null,
+  //     video: null,
+  //     image: null
+  //   }
+  // },
 
   _handleChange: function(e) {
     // this.setState({value: e.target.value});
@@ -31,39 +32,48 @@ var CreateAccountScreen = React.createClass({
     console.log("form has been submitted, this is e", e.target.value)
     let filename  = this.video.value.replace("C:\\fakepath\\", "");
     console.log('This is filename:', filename);
+    let trueVideo  = secret.endpointLocation + '/' + secret.bucketName + '/' + filename 
     let uInfo = {
-    firstName : this.firstName.value,
-    lastName : this.lastName.value,
-    userName :  this.userName.value,
-    password : this.password.value,
-    confirmPassword :  this.confirmPassword.value,
-    email : this.email.value,
-    website : this.website.value,
-    companyName : this.companyName.value,
-    phoneNumber : this.phoneNumber.value,
-    video : secret.endpointLocation + '/' + secret.bucketName + '/' + filename,
+      firstName : this.firstName.value,
+      lastName : this.lastName.value,
+      userName :  this.userName.value,
+      password : this.password.value,
+      confirmPassword :  this.confirmPassword.value,
+      email : this.email.value,
+      website : this.website.value,
+      companyName : this.companyName.value,
+      phoneNumber : this.phoneNumber.value,
+      video : []
     // image : this.image.value
     }
+    uInfo.video.push(trueVideo);
+    console.log('this is video test for uInfo', uInfo);
 // ==================================================================
-
-     //to handle our submit form
-
+    axios.post('/users/register', uInfo)
+    .then(function(response){
+      //userInfo is the response back with the very last user entered
+      let userInfo = response.data[0].user.properties;
+      //sets "user" in localstorage to what is contained in userInfo
+      localStorage.setItem('user',JSON.stringify(userInfo))
+    })
+/*======================================================================*/
+     // to handle our submit form
     //the variable form below is used to grab the entire form element
     var form = document.querySelector("form");
     console.log('this is form:', form);
     //the variable fdata will be the actual form that will have the new file uploaded
     var fdata = new FormData(form);
     console.log('this is fdata:', fdata);
-    //send fdata to our server to upload file to s3
-    axios.post('/api/testupload', fdata)
+    // send fdata to our server to upload file to s3
+    axios.post('/users/video', fdata)
     .then(function(response){
     console.log('File uploaded successfully')
-    });  
-
-    axios.post('/users/register', uInfo)
-    .then(function(response){
-    console.log()
     })  
+    .then(function(){
+      //redirects to the profile page
+      hashHistory.push('profile')
+    })  
+
 },
 
  
@@ -79,6 +89,7 @@ var CreateAccountScreen = React.createClass({
             <input
               type="text"
               ref={input=> this.firstName = input} 
+              require={true}
               name="firstName"
               placeholder ="Enter First Name"
              />
@@ -95,13 +106,13 @@ var CreateAccountScreen = React.createClass({
               ref={input=> this.userName = input}
               />
             <input
-              type="text" 
+              type="password" 
               name="password" 
               placeholder ="Enter Password"
               ref={input=> this.password = input}
               />
             <input
-              type="text" 
+              type="password" 
               name="confirmPassword"
               placeholder ="Re-enter Password"
               ref={input=> this.confirmPassword = input} 
