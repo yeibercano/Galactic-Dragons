@@ -53,7 +53,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(mulitpartyMiddleware);
 
-app.post('/api/testupload', function(req, res){
+app.post('/users/video', function(req, res){
   var file = req.files.file;
   console.log('this is file which is file:', file);
   var stream = fs.createReadStream(file.path);
