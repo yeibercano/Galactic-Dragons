@@ -19,12 +19,15 @@ class ProfileVideoPlayer extends Component{
     return (
       <div>
         <h1>This is The Users Most Recent Upload</h1>
-        <video controls>
-            <source src={this.props.userInfo.video[this.props.userInfo.video.length - 1]} type="video/mp4" />
-        </video>
+
       </div>
     );
   }
 }
 
 export default ProfileVideoPlayer
+
+
+        // <video controls>
+        //     <source src={this.props.userInfo.video[this.props.userInfo.video.length - 1]} type="video/mp4" />
+        // </video>
