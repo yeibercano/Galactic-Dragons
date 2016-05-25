@@ -19,8 +19,8 @@ var s3fsImplementation = new S3FS('galactic.video',{
 // s3fsImplementation.create();
 router.use(mulitpartyMiddleware);
 
-//creates a new movie node
-router.post('/movie', function(req, res){
+//creates a new movie into s3
+router.post('/movieS3', function(req, res){
     // res.send('yes')
   var file = req.files.file;
   console.log('this is file which is file:', file);
@@ -39,11 +39,42 @@ router.post('/movie', function(req, res){
 
 });
 
+/* CREATES NEW MOVIE NODE IN NEO4J */
+router.post('/movie', function(req, res, next){
+  // console.log("What is req inside users.js: ", req);
+  var userName = req.body.userName
+  var query = [
+    'MATCH(user:User {userName:{userName}})',
+    'CREATE (m:Movie {newMovie})<-[:OWNER]-(user)',
+    'RETURN m'
+  ].join('\n');
+  var params = {
+    newMovie: req.body,
+    userName: userName
+  };
+  
+  db.cypher({
+    query: query,
+    params: params
+  }, 
+    function(err, movie){
+      if (err) throw err;
+    
+      console.log('user',movie);
+      // console.log('new');
+      res.status(200).json(movie = movie);
+  })
+
+});
+
+
 /* LOADS ALL MOVIES */
 router.get('/', function(req, res, next) {
   res.redirect('/register')
   
 });
+
+
 
 // makes the file available to the app
 module.exports = router;
