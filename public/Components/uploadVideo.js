@@ -7,12 +7,27 @@ import { Router, Redirect, Route, IndexRoute, Link, hashHistory, browserHistory}
 const UploadVideo = React.createClass({
   _saveUpload(e) {
     e.preventDefault();
-    console.log("form has been submitted, this is e", e.target.value);
-    let filename  = this.video.value.replace("C:\\fakepath\\", "");
 
-    let videoInfo = {
-      video : secret.endpointLocation + '/' + secret.bucketName + '/' + filename,
-    }
+    let userLS = localStorage.getItem('user');
+    //parses the info brought down (object)
+    let parseUser = JSON.parse(userLS);
+    // console.log("This is parseUser inside UploadVideo: ", parseUser);
+
+    let userName = parseUser.userName;
+    // console.log("This is userName inside UploadVideo: ", userName);
+
+    axios.get('/users/all', {params: {userName: userName}}) 
+    .then(function(res) {
+      console.log("THis is the motherfoyer res", res);
+    })
+
+    
+
+
+    
+    // let filename  = this.video.value.replace("C:\\fakepath\\", "");
+
+    
   },
 
 
