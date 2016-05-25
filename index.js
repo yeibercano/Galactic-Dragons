@@ -4,6 +4,7 @@ import Test from './public/Components/test'
 import Login from './public/Components/login'
 import CreateAccountScreen from './public/Components/register'
 import Profile from './public/Components/profile'
+import UploadNewVideo from './public/Components/uploadNewVideo'
 import { Router, Route, IndexRoute, Link, hashHistory, browserHistory } from 'react-router'
 
 const Home = React.createClass({
@@ -70,6 +71,7 @@ render((
       <Route path="register" component={Register} />
       <Route path="login" component={LoginPage} />
       <Route path="profile" component={ProfileUser} />
+      <Route path="NewVideo" component={UploadNewVideo} />
     </Route>
   </Router>
 ), document.getElementById('app'))

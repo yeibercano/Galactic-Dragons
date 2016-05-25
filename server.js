@@ -24,13 +24,14 @@ app.use(express.static(publicPath));
 
 
 /* ROUTES */
-app.get('/*', function(req, res){
-  res.redirect('/');
-})
 
 var users = require('./server/routes/users');
+var movies = require('./server/routes/movies')
 app.use('/users', users); /* POST user to db. */
 // app.use('/users', users); /* GET users listing. */
+// app.use('/*', function(req, res){
+//   res.redirect('/#/home');
+// })
 
 /*
 ================================================================================================
