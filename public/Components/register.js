@@ -74,7 +74,6 @@ var CreateAccountScreen = React.createClass({
       hashHistory.push('profile')
     })  
 
->>>>>>> fd2fd5e41619e72540438ee8590914aa935af2a2
 },
 
  
