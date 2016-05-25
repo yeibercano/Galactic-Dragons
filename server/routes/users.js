@@ -127,18 +127,9 @@ router.get('/all', function(req, res, next) {
     params: params
   }, function(err, user){
     if (err) throw err;
-<<<<<<< HEAD
-    res.send({title: 'All Users', users: user[0].users.properties.userName});  
-    // res.redirect('/')
-  // newRouter.browserHistory.push('/');
-  // newRouter.transitionTo('/')
-
-
-=======
     console.log("What is user in db.cypher: ", user);
     console.log("WORK!!!!!!!!", user[0].users.properties.userName)
     res.send({users: user[0].users.properties.userName});  
->>>>>>> fd2fd5e41619e72540438ee8590914aa935af2a2
   });
 });
 
