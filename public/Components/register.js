@@ -29,10 +29,9 @@ var CreateAccountScreen = React.createClass({
     _saveAndContinue(e) {
     //to handle our submit form
     e.preventDefault();
-    console.log("form has been submitted, this is e", e.target.value)
-    let filename  = this.video.value.replace("C:\\fakepath\\", "");
-    console.log('This is filename:', filename);
-    let trueVideo  = secret.endpointLocation + '/' + secret.bucketName + '/' + filename 
+    // let filename  = this.video.value.replace("C:\\fakepath\\", "");
+    // console.log('This is filename:', filename);
+    // let trueVideo  = secret.endpointLocation + '/' + secret.bucketName + '/' + filename 
     let uInfo = {
       firstName : this.firstName.value,
       lastName : this.lastName.value,
@@ -42,37 +41,42 @@ var CreateAccountScreen = React.createClass({
       email : this.email.value,
       website : this.website.value,
       companyName : this.companyName.value,
-      phoneNumber : this.phoneNumber.value,
-      video : []
+      phoneNumber : this.phoneNumber.value
     // image : this.image.value
     }
-    uInfo.video.push(trueVideo);
+    // uInfo.video.push(trueVideo);
     console.log('this is video test for uInfo', uInfo);
 // ==================================================================
     axios.post('/users/register', uInfo)
     .then(function(response){
+      console.log('this is response after registering:', response);
       //userInfo is the response back with the very last user entered
-      let userInfo = response.data[0].user.properties;
+      let userInfo = response.config.data;
       //sets "user" in localstorage to what is contained in userInfo
-      localStorage.setItem('user',JSON.stringify(userInfo))
+      console.log('this is userInfo:', userInfo);
+      localStorage.setItem('user', userInfo)
     })
-/*======================================================================*/
-     // to handle our submit form
-    //the variable form below is used to grab the entire form element
-    var form = document.querySelector("form");
-    console.log('this is form:', form);
-    //the variable fdata will be the actual form that will have the new file uploaded
-    var fdata = new FormData(form);
-    console.log('this is fdata:', fdata);
-    // send fdata to our server to upload file to s3
-    axios.post('/users/video', fdata)
-    .then(function(response){
-    console.log('File uploaded successfully')
-    })  
     .then(function(){
       //redirects to the profile page
       hashHistory.push('profile')
     })  
+/*======================================================================*/
+    //  // to handle our submit form
+    // //the variable form below is used to grab the entire form element
+    // var form = document.querySelector("form");
+    // console.log('this is form:', form);
+    // //the variable fdata will be the actual form that will have the new file uploaded
+    // var fdata = new FormData(form);
+    // console.log('this is fdata:', fdata);
+    // // send fdata to our server to upload file to s3
+    // axios.post('/users/video', fdata)
+    // .then(function(){
+    // console.log('File uploaded successfully')
+    // })  
+    // .then(function(){
+    //   //redirects to the profile page
+    //   hashHistory.push('profile')
+    // })  
 
 },
 
@@ -141,13 +145,10 @@ var CreateAccountScreen = React.createClass({
               placeholder ="Enter Your Phone Number"
               ref={input=> this.phoneNumber = input} 
               />
-            <input
-              type="file" name="file"
-              ref={input=> this.video = input} />
             <input 
               type="submit" 
               name="submit"
-              value="Upload Video"
+              value="Register"
               className="register-button" />
         
           </form>
