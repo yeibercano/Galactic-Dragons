@@ -14,6 +14,11 @@ var UploadNewVideo = React.createClass({
     _saveAndContinue(e) {
     //to handle our submit form
     e.preventDefault();
+    let userLS = localStorage.getItem('user');
+    //parses the info brought down (object)
+    let parseUser = JSON.parse(userLS);
+    // console.log('userLS PROFILE COMPO
+      // console.log('parseUser', parseUser)
     let filename  = this.video.value.replace("C:\\fakepath\\", "");
     console.log('This is filename:', filename);
     let movieInfo = {
@@ -23,36 +28,36 @@ var UploadNewVideo = React.createClass({
       category : this.category.value,
       synopsis:  this.synopsis.value,
       year : this.year.value,
-      userName : this.userName.value,
+      userName : parseUser.userName,
       video: secret.endpointLocation + '/' + secret.bucketName + '/' + filename
     // image : this.image.value
     }
     console.log('this is movie information:', movieInfo);
 // ==================================================================
 // Neo4J DB needs to update for the below post
-    // axios.post('/users/movies', movieInfo)
-    // .then(function(response){
-    //   console.log('this is response after registering:', response);
-    //   //userInfo is the response back with the very last user entered
-    //   let movieInfo = response.config.data;
-    //   //sets "user" in localstorage to what is contained in userInfo
-    //   console.log('this is userInfo:', userInfo);
-    //   localStorage.setItem('user', userInfo)
-    // })
-    // .then(function(){
-    //   //redirects to the profile page
-    //   hashHistory.push('profile')
-    // })  
+    axios.post('/movies/movie', movieInfo)
+    .then(function(response){
+      console.log('this is response after registering:', response);
+      //userInfo is the response back with the very last user entered
+      let movieInfo = response.config.data;
+      //sets "user" in localstorage to what is contained in userInfo
+      console.log('this is movieInfo:', movieInfo);
+      // localStorage.setItem('user', movieInfo)
+    })
+    .then(function(){
+      //redirects to the profile page
+      hashHistory.push('profile')
+    })  
 /*======================================================================*/
      // to handle our submit form
     //the variable form below is used to grab the entire form element
     var form = document.querySelector("form");
-    console.log('this is form:', form);
+    // console.log('this is form:', form);
     //the variable fdata will be the actual form that will have the new file uploaded
     var fdata = new FormData(form);
-    console.log('this is fdata:', fdata);
+    // console.log('this is fdata:', fdata);
     // send fdata to our server to upload file to s3
-    axios.post('/users/video', fdata)
+    axios.post('/movies/movieS3', fdata)
     .then(function(){
     console.log('File uploaded successfully')
     })  
@@ -103,12 +108,6 @@ var UploadNewVideo = React.createClass({
               name="synopsis"
               placeholder ="Enter Brief Synopsis"
               ref={textarea=> this.synopsis = textarea} 
-              />
-            <input
-              type="text"
-              name="userName" 
-              placeholder ="Enter username"
-              ref={input=> this.userName = input}
               />
             <input
               type="month" 
