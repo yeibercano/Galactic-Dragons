@@ -40,6 +40,7 @@ class Profile extends Component {
       <div> 
         <div> PROFILE PARENT COMPONENT SHOWING</div>
         <ProfileInfo userInfo = {this.state.userInfo}/>
+        <ProfileVideoPlayer userInfo = {this.state.userInfo} />
         <UploadVideos />
       </div>
     )
@@ -47,4 +48,3 @@ class Profile extends Component {
 }
 
 export default Profile
-        // <ProfileVideoPlayer userInfo = {this.state.userInfo} />
