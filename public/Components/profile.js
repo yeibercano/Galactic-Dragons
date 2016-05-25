@@ -38,7 +38,7 @@ class Profile extends Component {
       <div> 
         <div> PROFILE PARENT COMPONENT SHOWING</div>
         <ProfileVideoPlayer userInfo = {this.state.userInfo} />
-        <ProfileInfo />
+        <ProfileInfo userInfo = {this.state.userInfo}/>
         <UploadVideos />
       </div>
     )
