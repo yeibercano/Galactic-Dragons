@@ -13,14 +13,14 @@ class LandingPageVideoPlayer extends React.Component {
     super (props)  
     
    }
-    // componentWillMount() {
-    //   // console.log('this.props.info', this.props.userInfo)
-    //   axios.get("/movies", {params: {userName: this.props.userInfo.userName}}).then(data => {
-    //     console.log('data', data)
-    //     this.setState( { url: data.data[data.data.length-1].m.properties.video } );
-    //     this.setState( { allMovies: data.data } );
-    //   });
-    // }
+    componentWillMount() {
+      // console.log('this.props.info', this.props.userInfo)
+      // axios.get("/movies").then(data => {
+      //   console.log('data', data)
+        // this.setState( { url: data.data[data.data.length-1].m.properties.video } );
+        // this.setState( { allMovies: data.data } );
+      // });
+    }
 
 
 
