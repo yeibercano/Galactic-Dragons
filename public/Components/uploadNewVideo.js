@@ -121,7 +121,6 @@ var UploadNewVideo = React.createClass({
               name="submit"
               value="Upload Video"
               className="register-button" />
-        
           </form>
         </div>
 
