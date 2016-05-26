@@ -1,17 +1,20 @@
 import React, { Component } from 'react'
+import Navbar from 'react-bootstrap'
 import { render } from 'react-dom'
-import Test from './public/Components/test'
+import LandingPage from './public/Components/LandingPageComponents/landingPage'
 import Login from './public/Components/login'
 import CreateAccountScreen from './public/Components/register'
 import Profile from './public/Components/profile'
 import UploadNewVideo from './public/Components/uploadNewVideo'
+import Footer from './public/Components/footer'
 import { Router, Route, IndexRoute, Link, hashHistory, browserHistory } from 'react-router'
 
 const Home = React.createClass({
   render() {
     return (
       <div>
-        This component will have the landing page components nested in here!
+        <div>This component will have the landing page components nested in here!</div>
+        <LandingPage />
       </div>
       );
   }})
@@ -50,13 +53,14 @@ const App = React.createClass({
     return (
       <div>
         <h1>GALACTIC DRAGONS FTW!!</h1>
-        <ul>
-          <li><Link to="/home">Home</Link></li>
-          <li><Link to="/register">Register</Link></li>
-          <li><Link to="/login">Login</Link></li>
-          <li><Link to="/profile">Profile</Link></li>
-        </ul>
+          <ul>
+            <li><Link to="/home">Home</Link></li>
+            <li><Link to="/register">Register</Link></li>
+            <li><Link to="/login">Login</Link></li>
+            <li><Link to="/profile">Profile</Link></li>
+          </ul>
         {this.props.children}
+        <Footer />
       </div>
     )
   }

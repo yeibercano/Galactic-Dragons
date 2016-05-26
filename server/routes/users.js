@@ -9,7 +9,7 @@ var newRouter = require('react-router')
 // CREATES NEW USERS
 router.post('/register', function(req, res, next){
   // console.log("What is req inside users.js: ", req);
-  console.log("What is req.body inside users.js: ", req.body);
+  // console.log("What is req.body inside users.js: ", req.body);
   var query = [
     'CREATE (user:User {newUser})',
     'RETURN user'
@@ -25,8 +25,8 @@ router.post('/register', function(req, res, next){
     function(err, user){
       if (err) throw err;
     
-      console.log('user',user);
-      console.log('register calling home');
+      // console.log('user',user);
+      // console.log('register calling home');
       res.status(200).json(user=user);
       // res.redirect('/users/profile');
   })
@@ -44,7 +44,7 @@ router.get('/all', function(req, res, next) {
     query: query
   }, function(err, users){
     if (err) throw err;
-    console.log(users)
+    // console.log(users)
     res.send({users: users});  
   });
 });
@@ -64,13 +64,11 @@ router.get('/all', function(req, res, next) {
 //   console.log('req.body', req.body.userName)
 //   var userName = req.body['userName'];
 //   var password = req.body['password'];
-  
 //   // check if data is empty
 //   if (!userName || !password){
 //     // add a message
 //     return res.redirect('/users/login');
 //   }
-  
 //   var query = [
 //     'MATCH (user:User { userName: {userName}, password:{password} })',
 //     'RETURN user'
@@ -79,7 +77,6 @@ router.get('/all', function(req, res, next) {
 //     userName: userName,
 //     password: password
 //   }
-
 //   db.cypher({
 //     query: query,
 //     params: params
@@ -89,7 +86,6 @@ router.get('/all', function(req, res, next) {
 //       console.log('user',user);
 //       res.json(user=user)
 //   });
- 
 // });
 
 /* QUERY SINGLE USER */

@@ -25,7 +25,7 @@ class Profile extends Component {
     console.log('this is the new parsed movie info:', parseMovie)
     this.state = {
       userInfo: parseUser,
-      video: parseMovie.video
+      // video: parseMovie.video
     }
     console.log("This is this.state.userInfo inside constructor: ", this.state.userInfo)
 
