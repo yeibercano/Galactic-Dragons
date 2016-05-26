@@ -24,14 +24,14 @@ app.use(express.static(publicPath));
 
 
 /* ROUTES */
-
 var users = require('./server/routes/users');
 var movies = require('./server/routes/movies')
-app.use('/movies', movies)
-app.use('/users', users); /* POST user to db. */
-// app.use('/users', users); /* GET users listing. */
-// app.use('/*', function(req, res){
-//   res.redirect('/#/home');
+app.use('/movies', movies) /* All MOVIES ROUTES. */
+app.use('/users', users); /* All USERS ROUTES. */
+
+// app.get('/*', function(req, res){
+//   console.log('wild card')
+//   res.send('index.html');
 // })
 
 /*
