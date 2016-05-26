@@ -81,8 +81,28 @@ router.post('/movie', function(req, res, next){
 
 });
 
-
 /* LOADS ALL MOVIES */
+router.get('/', function(req, res, next) {
+  // console.log('req in all movies', req)
+  var query = [
+   'MATCH (m:Movie) RETURN m'
+  ].join('\n');
+
+  db.cypher({
+    query: query
+  }, 
+    function(err, movies){
+      if (err) throw err;
+      console.log('movie',movies);
+      //console.log('movies properties access:', movies[0].m.properties.video)
+      //console.log('movies _id access of 1st element in array:', movies[0].m._id)
+      // res.status(200).json(movies = movies); //another way to send 
+      res.status(200).send(movies); 
+
+  });
+});
+
+/* RETRIEVES ALL MOVIES FROM A USER */
 router.get('/', function(req, res, next) {
   // console.log('req in all movies', req)
 
@@ -106,9 +126,31 @@ router.get('/', function(req, res, next) {
       // console.log('new');
       res.status(200).send(movies);
   })
-
-  
 });
+
+/* RETRIEVES A SINGLE MOVIE */
+router.get('/', function(req, res, next) {
+  // console.log('req in all movies', req)
+  var userName = req.query.userName
+  var query = [
+   'MATCH (u:User {userName:{userName}})-[r:OWNER]->(m:Movie) RETURN m'
+  ].join('\n');
+  var params = {
+    userName: userName
+  };
+
+  db.cypher({
+    query: query,
+    params: params
+  }, 
+    function(err, movies){
+      if (err) throw err;
+      console.log('movie',movies);
+      // console.log('new');
+      res.status(200).send(movies);
+  })
+});
+
 
 
 
