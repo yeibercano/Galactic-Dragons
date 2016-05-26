@@ -32,7 +32,8 @@ var UploadNewVideo = React.createClass({
       video: secret.endpointLocation + '/' + secret.bucketName + '/' + filename
     // image : this.image.value
     }
-    console.log('this is movie information:', movieInfo);
+    // console.log('this is movie information:', movieInfo);
+    localStorage.setItem('movieInfo', JSON.stringify(movieInfo))
 // ==================================================================
 // Neo4J DB needs to update for the below post
     axios.post('/movies/movie', movieInfo)
@@ -44,10 +45,7 @@ var UploadNewVideo = React.createClass({
       console.log('this is movieInfo:', movieInfo);
       // localStorage.setItem('user', movieInfo)
     })
-    .then(function(){
-      //redirects to the profile page
-      hashHistory.push('profile')
-    })  
+  
 /*======================================================================*/
      // to handle our submit form
     //the variable form below is used to grab the entire form element
