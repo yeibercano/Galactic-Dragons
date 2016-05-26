@@ -45,91 +45,45 @@ router.post('/register', function(req, res, next){
   // res.status(200);
 });
 
-/* LOADS PROFILE */
-router.get('/profile/:id', function(req, res, next) {
-  console.log('req', req)
-  console.log('res',res)
-  // var loggedInUserID = req.cookies.userID;
-  console.log('req.cookies', req)
-  var query = [
-    'MATCH (users:User)',
-    // 'WHERE NOT (ID(users) = {loggedInUserID})',
-    'RETURN users'
-  ].join('\n');
-  // var params = {
-  //   loggedInUserID: loggedInUserID
-  // };
-  
-  db.cypher({
-    query: query,
-    // params: params
-  }, function(err, user){
-    if (err) throw err;
-    console.log('profile called')
-    // console.log('labels',user[user.length-1].users.labels)
-    // res.render('users/index', {title: 'All Users', users: users});  
-    // res.send({title: 'All Users', users: users, one:users.properties.name});  
-    // res.send({title: 'All Users', user: user[user.length-1]});  
-    // console.log('user', user)
-    res.json({user: user[user.length-1]});
-    // res.redirect('/') 
+/* QUERY SINGLE USER */
+// router.get('/all', function(req, res, next) {
 
-  });
-  
-});
+//   // console.log('this is req.query.userName:', req.query.userName);
 
-
-// QUERY ALL USERS //
-// router.get('/login', function(req, res, next) {
-//   // var loggedInUserID = req.cookies.userID;
-//   // console.log('get from routes.user')
+//   var userName = req.query['userName'];
+//   console.log('This is userName', userName);
 //   var query = [
-//     'MATCH (user:User)',
-//     'WHERE user.password = {password} and user.userName = {userName})',
-//     'RETURN user'
+//     'MATCH (users:User { userName: {userName} })',
+//     'RETURN users'
 //   ].join('\n');
 //   var params = {
-//     password: req.body.password,
-//     userName: req.body.userName 
+//     userName: userName
+//   }
 
-//   };
-  
 //   db.cypher({
 //     query: query,
-//     // params: params
+//     params: params
 //   }, function(err, user){
 //     if (err) throw err;
-//     res.render('/', {title: 'Home', users: user});  
-//     // res.send({title: 'All Users', users: users, one:users.properties.name});  
-//     // res.send({title: 'All Users', user: user[user.length-1]});  
-//     console.log('user')
+//     console.log("What is user in db.cypher: ", user);
+//     console.log("WORK!!!!!!!!", user[0].users.properties.userName)
+//     res.send({users: user[0].users.properties.userName});  
 //   });
-  
 // });
 
 /* QUERY ALL USERS */
 router.get('/all', function(req, res, next) {
-
-  // console.log('this is req.query.userName:', req.query.userName);
-  
-  var userName = req.query['userName'];
-  console.log('This is userName', userName);
   var query = [
-    'MATCH (users:User { userName: {userName} })',
-    'RETURN users'
+    'MATCH (n )',
+    'RETURN n'
   ].join('\n');
-  var params = {
-    userName: userName
-  }
 
   db.cypher({
-    query: query,
-    params: params
-  }, function(err, user){
+    query: query
+  }, function(err, users){
     if (err) throw err;
-    console.log("What is user in db.cypher: ", user);
-    console.log("WORK!!!!!!!!", user[0].users.properties.userName)
-    res.send({users: user[0].users.properties.userName});  
+    console.log(users)
+    res.send({users: users});  
   });
 });
 
@@ -137,11 +91,8 @@ router.get('/all', function(req, res, next) {
 /* GET /users/login */
 router.get('/login', function(req, res, next){
   
-  // res.redirect('/users/login');
-  // res.status(200).send({redirect: '/'})
-  // // next();
-
-  // newRouter.transitionTo('/')
+  res.redirect('/users/login');
+  
 });
 
 /* POST /users/login */
@@ -151,18 +102,19 @@ router.post('/login', function(req, res, next){
   var userName = req.body['userName'];
   var password = req.body['password'];
   
-  // // check if data is empty
-  // if (!email || !password){
-  //   // add a message
-  //   return res.redirect('/users/login');
-  // }
+  // check if data is empty
+  if (!userName || !password){
+    // add a message
+    return res.redirect('/users/login');
+  }
   
   var query = [
-    'MATCH (user:User { userName: {userName} })',
+    'MATCH (user:User { userName: {userName}, password:{password} })',
     'RETURN user'
   ].join('\n');
   var params = {
-    userName: userName
+    userName: userName,
+    password: password
   }
 
   db.cypher({
@@ -171,27 +123,8 @@ router.post('/login', function(req, res, next){
   }, 
     function(err, user){
       if (err) throw err;
-    
-      // console.log(user[0]['user']['properties']);
-      // if the user exists check if is active
       console.log('user',user);
-      
-      // login the user
-      // var userID = user[0]['user']['_id'];
-      // var currentUser = user[0]['user']['properties'];
-      // res.cookie('userID', userID, {
-      //   domain: 'begin-imitate.codio.io',
-      //   maxAge: new Date(Date.now() + 9000)
-
-      // });
-      // res.cookie('user', currentUser, {
-      //   domain: 'begin-imitate.codio.io',
-      //   maxAge: new Date(Date.now() + 9000)
-      // });
       res.json(user=user)
-     // res.send({redirect:'/'})
-     // res.redirect('/')
-     // newRouter.transitionTo('/')
   });
  
 });
