@@ -41,18 +41,18 @@ router.post('/movieS3', function(req, res){
 
 /* CREATES NEW MOVIE NODE IN NEO4J */
 router.post('/movie', function(req, res, next){
-  // console.log("What is req inside users.js: ", req);
+  console.log("What is req inside users.js: ", req.body.userName);
   var userName = req.body.userName
   var query = [
     'MATCH(user:User {userName:{userName}})',
-    'CREATE (m:Movie {newMovie})<-[:OWNER]-(user)',
+    'CREATE (m:Movie {newMovie})<-[r:OWNER]-(user)',
     'RETURN m'
   ].join('\n');
   var params = {
     newMovie: req.body,
     userName: userName
   };
-  
+
   db.cypher({
     query: query,
     params: params
@@ -60,7 +60,7 @@ router.post('/movie', function(req, res, next){
     function(err, movie){
       if (err) throw err;
     
-      console.log('user',movie);
+      console.log('movie',movie);
       // console.log('new');
       res.status(200).json(movie = movie);
   })
@@ -70,7 +70,29 @@ router.post('/movie', function(req, res, next){
 
 /* LOADS ALL MOVIES */
 router.get('/', function(req, res, next) {
-  res.redirect('/register')
+  // console.log('req in all movies', req)
+
+  var userName = req.query.userName
+
+  var query = [
+   'MATCH (u:User {userName:{userName}})-[r:OWNER]->(m:Movie) RETURN m'
+  ].join('\n');
+  var params = {
+    userName: userName
+  };
+
+  db.cypher({
+    query: query,
+    params: params
+  }, 
+    function(err, movies){
+      if (err) throw err;
+    
+      console.log('movie',movies);
+      // console.log('new');
+      res.status(200).send(movies);
+  })
+
   
 });
 
