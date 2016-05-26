@@ -8,7 +8,7 @@ var newRouter = require('react-router')
 // CREATES NEW USERS
 router.post('/register', function(req, res, next){
   // console.log("What is req inside users.js: ", req);
-  console.log("What is req.body inside users.js: ", req.body);
+  // console.log("What is req.body inside users.js: ", req.body);
   var query = [
     'CREATE (user:User {newUser})',
     'RETURN user'
@@ -37,8 +37,8 @@ router.post('/register', function(req, res, next){
     function(err, user){
       if (err) throw err;
     
-      console.log('user',user);
-      console.log('register calling home');
+      // console.log('user',user);
+      // console.log('register calling home');
       res.status(200).json(user=user);
       // res.redirect('/users/profile');
   })
@@ -82,7 +82,7 @@ router.get('/all', function(req, res, next) {
     query: query
   }, function(err, users){
     if (err) throw err;
-    console.log(users)
+    // console.log(users)
     res.send({users: users});  
   });
 });
@@ -98,7 +98,7 @@ router.get('/login', function(req, res, next){
 /* POST /users/login */
 router.post('/login', function(req, res, next){
   // console.log('Login post')
-  console.log('req.body', req.body.userName)
+  // console.log('req.body', req.body.userName)
   var userName = req.body['userName'];
   var password = req.body['password'];
   
@@ -123,7 +123,7 @@ router.post('/login', function(req, res, next){
   }, 
     function(err, user){
       if (err) throw err;
-      console.log('user',user);
+      // console.log('user',user);
       res.json(user=user)
   });
  

@@ -21,27 +21,41 @@ router.use(mulitpartyMiddleware);
 
 //creates a new movie into s3
 router.post('/movieS3', function(req, res){
-    // res.send('yes')
   var file = req.files.file;
-  console.log('this is file which is file:', file);
+  var image = req.files.image
+
+  console.log("||||||||||||||||This is req.files from s3 post||||||||||||||||: ", req.files.image);
+  console.log('++++++++++++++++this is file which is file.path:', file.path);
   var stream = fs.createReadStream(file.path);
+  var imageStream = fs.createReadStream(image.path);
   return s3fsImplementation.writeFile(file.originalFilename, stream)
   .then(function(err){
-    fs.unlink(file.path, function(err){
+   return fs.unlink(file.path, function(err){
       if(err){
         console.error("This is the error", err);
       }
       console.log('file upload success');
-    // console.log('this is res:', res);
     })
+  })
+  .then(function(){
+    console.log("~~~~~!!!!!!!!!Made it into promise to writeFile image!!!!!!!~~~~~~")
+    return s3fsImplementation.writeFile(image.originalFilename, imageStream)
+  })
+  .then(function(err){
+    fs.unlink(image.path, function(err){
+      if(err){
+        console.error("This is the error", err);
+      }
+      console.log('image upload success');
+    })
+  })
     res.send('File Upload Complete');
-  });
 
 });
 
 /* CREATES NEW MOVIE NODE IN NEO4J */
 router.post('/movie', function(req, res, next){
-  console.log("What is req inside users.js: ", req.body.userName);
+  // console.log("What is req inside users.js: ", req.body.userName);
   var userName = req.body.userName
   var query = [
     'MATCH(user:User {userName:{userName}})',
@@ -88,7 +102,7 @@ router.get('/', function(req, res, next) {
     function(err, movies){
       if (err) throw err;
     
-      console.log('movie',movies);
+      // console.log('movie',movies);
       // console.log('new');
       res.status(200).send(movies);
   })
