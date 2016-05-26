@@ -23,6 +23,8 @@ class Profile extends Component {
       userInfo: parseUser
     }
     console.log("This is this.state.userInfo inside constructor: ", this.state.userInfo)
+
+    //get request to database to retrieve video 
     // this.setUser(parseUser);
   }
 
@@ -37,8 +39,8 @@ class Profile extends Component {
     return (
       <div> 
         <div> PROFILE PARENT COMPONENT SHOWING</div>
-        <ProfileVideoPlayer userInfo = {this.state.userInfo} />
         <ProfileInfo userInfo = {this.state.userInfo}/>
+        <ProfileVideoPlayer userInfo = {this.state.userInfo} />
         <UploadVideos />
       </div>
     )
