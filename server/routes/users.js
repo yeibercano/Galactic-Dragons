@@ -74,7 +74,7 @@ router.post('/register', function(req, res, next){
 /* QUERY ALL USERS */
 router.get('/all', function(req, res, next) {
   var query = [
-    'MATCH (n )',
+    'MATCH (n:User )',
     'RETURN n'
   ].join('\n');
 
