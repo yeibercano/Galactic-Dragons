@@ -91,7 +91,7 @@ router.get('/all', function(req, res, next) {
 /* GET /users/login */
 router.get('/login', function(req, res, next){
   
-  res.redirect('/users/login');
+  next();
   
 });
 
