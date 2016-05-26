@@ -103,9 +103,7 @@ router.get('/', function(req, res, next) {
 });
 
 /* RETRIEVES ALL MOVIES FROM A USER */
-router.get('/', function(req, res, next) {
-  // console.log('req in all movies', req)
-
+router.get('/user', function(req, res, next) {
   var userName = req.query.userName
 
   var query = [
@@ -129,25 +127,25 @@ router.get('/', function(req, res, next) {
 });
 
 /* RETRIEVES A SINGLE MOVIE */
-router.get('/', function(req, res, next) {
-  // console.log('req in all movies', req)
-  var userName = req.query.userName
+router.get('/single', function(req, res, next) {
+  var title = req.headers.title || req.query.title || req.body.title
+  console.log('title:', title )
   var query = [
-   'MATCH (u:User {userName:{userName}})-[r:OWNER]->(m:Movie) RETURN m'
+   'MATCH (m:Movie {title:{title}}) RETURN m'
   ].join('\n');
   var params = {
-    userName: userName
+    title: title
   };
 
   db.cypher({
     query: query,
     params: params
   }, 
-    function(err, movies){
+    function(err, movie){
       if (err) throw err;
-      console.log('movie',movies);
+      console.log('movie',movie);
       // console.log('new');
-      res.status(200).send(movies);
+      res.status(200).send(movie);
   })
 });
 
