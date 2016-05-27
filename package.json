@@ -9,6 +9,7 @@
   "dependencies": {
     "axios": "^0.11.1",
     "babel-runtime": "^6.9.0",
+    "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.1",
     "connect-multiparty": "^2.0.0",
     "neo4j": "^2.0.0-RC2",
