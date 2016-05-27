@@ -149,6 +149,31 @@ router.get('/single', function(req, res, next) {
   })
 });
 
+/* TODO: search through all nodes */
+
+/* FOR SEACH BAR - SEARCH MOVIES IN DATABASE */
+router.get('/search', function(req, res, next) {
+  var searchTarget = req.headers.target || req.query.target || req.body.target
+  // console.log('searchTarget:', searchTarget )
+  var query = [
+   'MATCH (m:Movie {category: {searchTarget}}) RETURN m'
+  ].join('\n');
+  var params = {
+    searchTarget: searchTarget
+  };
+  
+  db.cypher({
+    query: query,
+    params: params
+  }, 
+    function(err, movie){
+      if (err) throw err;
+      console.log('movie',movie);
+      // console.log('new');
+      res.status(200).send(movie);
+  })
+});
+
 
 
 
