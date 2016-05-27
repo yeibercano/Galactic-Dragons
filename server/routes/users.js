@@ -44,9 +44,16 @@ router.post('/register', function(req, res, next){
     function(err, user){
       if (err) throw err;
     
-      // console.log('user',user);
+      console.log('user.data',user[0].user);
       // console.log('register calling home');
-      res.status(200).json(user=user);
+      res.status(200).send({ 
+        firstName : user[0].user.properties.firstName,
+        lastName: user[0].user.properties.lastName,
+        email: user[0].user.properties.email,
+        video: user[0].user.properties.video,
+        image: user[0].user.properties.image,
+        password: user[0].user.properties.password 
+      });
       // res.redirect('/users/profile');
   })
   // res.status(200);
@@ -68,13 +75,13 @@ router.get('/all', function(req, res, next) {
   });
 });
 
-// var faker = require('faker');
-// router.get('/faker', function(req, res){
-//   var user = faker.helpers.userCard();
-//   user.avatar = faker.image.avatar;
-//   console.log('user', user)
-//   res.send(user)
-// })
+var faker = require('faker');
+router.get('/faker', function(req, res){
+  var user = faker.helpers.userCard();
+  user.avatar = faker.image.avatar;
+  console.log('user', user)
+  res.send(user)
+})
 // ROUTES WE STILL NEED TO WORK ON BELOW
 
 /* GET /users/login */
@@ -85,37 +92,46 @@ router.get('/all', function(req, res, next) {
 // });
 
 
-// var authenticate = require('../utils');
-// /* POST /users/login */
-// router.post('/login', function(req, res, next){
-//   console.log('in login')
-//   // console.log('Login post')
-//   // console.log('req.body', req.headers)
-//   var username = req.headers.username || req.query.username || req.body.username
-//   var password = req.headers.password || req.query.password || req.body.password
+var authenticate = require('../utils');
+/* POST /users/login */
+router.post('/login', function(req, res, next){
+  console.log('in login');
+  // var username = req.headers.username || req.query.username || req.body.username
   
-//   var query = [
-//     'MATCH (user:User {  password:{password} })',
-//     'RETURN user'
-//   ].join('\n');
-//   var params = {
-//     // username: username,
-//     password: password
-//   }
-//   db.cypher({
-//     query: query,
-//     params: params
-//   }, 
-//     function(err, user){
-//       if (err) throw err;
-//       console.log('user',user);
+  //checking passwords
+  var submittedPassword = req.headers.password || req.query.password || req.body.password;
+  var hashedPassword = bcrypt.hashSync(submittedPassword, 10);
+  var validPassword = bcrypt.compareSync(submittedPassword, hashedPassword);
+    console.log('valid password is:', validPassword);
+    console.log('hashed', hashedPassword);
+  // if(!validPassword) { 
+  //   return "wrong password"
+  // } else {
+  //   validPassword = hashedPassword;
+  // }
+  
+  var query = [
+    'MATCH (user:User {  password:{password} })',
+    'RETURN user'
+  ].join('\n');
+  var params = {
+    // username: username,
+    password: "'" + hashedPassword + "'" 
+  }
+  db.cypher({
+    query: query,
+    params: params
+  }, 
+    function(err, user){
+      if (err) throw err;
+      console.log('user',user);
 
-//       var jwt = sign({
+      // var jwt = sign({
 
-//       },jwtSecret)
-//       res.json(user=user)
-//   });
-// });
+      // },jwtSecret)
+      res.json(user=user)
+  });
+});
 
 /* QUERY SINGLE USER */
 router.get('/single', function(req, res, next) {
