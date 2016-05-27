@@ -30,16 +30,16 @@ class ProfileVideoPlayer extends React.Component {
     componentWillMount() {
       // console.log('this.props.info', this.props.userInfo)
       axios.get("/movies", {params: {userName: this.props.userInfo.userName}}).then(data => {
-        // console.log('data', data)
-        this.setState( { url: data.data[data.data.length-1].m.properties.video } );
-        this.setState( { allMovies: data.data } );
+        console.log('data', data)
+        this.setState( { url: data.data[data.data.length-1].m.properties.video, allMovies: data.data } );
+  
       });
     }
 
 
 
   render() {
-    // console.log('url inside render ', this.state.url)
+    console.log('url inside render ', this.state.url)
 
     console.log('allMovies inside render ', this.state.allMovies)
     return (
