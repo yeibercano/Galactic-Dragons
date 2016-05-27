@@ -49,44 +49,54 @@ router.get('/all', function(req, res, next) {
   });
 });
 
+var faker = require('faker');
+router.get('/faker', function(req, res){
+  var user = faker.helpers.userCard();
+  user.avatar = faker.image.avatar;
+  console.log('user', user)
+  res.send(user)
+})
 // ROUTES WE STILL NEED TO WORK ON BELOW
 
 /* GET /users/login */
 // router.get('/login', function(req, res, next){
-  
+//   return res.redirect('/users/login')
 //   next();
   
 // });
 
+
+var authenticate = require('../utils');
 /* POST /users/login */
-// router.post('/login', function(req, res, next){
-//   // console.log('Login post')
-//   console.log('req.body', req.body.userName)
-//   var userName = req.body['userName'];
-//   var password = req.body['password'];
-//   // check if data is empty
-//   if (!userName || !password){
-//     // add a message
-//     return res.redirect('/users/login');
-//   }
-//   var query = [
-//     'MATCH (user:User { userName: {userName}, password:{password} })',
-//     'RETURN user'
-//   ].join('\n');
-//   var params = {
-//     userName: userName,
-//     password: password
-//   }
-//   db.cypher({
-//     query: query,
-//     params: params
-//   }, 
-//     function(err, user){
-//       if (err) throw err;
-//       console.log('user',user);
-//       res.json(user=user)
-//   });
-// });
+router.post('/login', function(req, res, next){
+  console.log('in login')
+  // console.log('Login post')
+  // console.log('req.body', req.headers)
+  var username = req.headers.username || req.query.username || req.body.username
+  var password = req.headers.password || req.query.password || req.body.password
+  
+  var query = [
+    'MATCH (user:User {  password:{password} })',
+    'RETURN user'
+  ].join('\n');
+  var params = {
+    // username: username,
+    password: password
+  }
+  db.cypher({
+    query: query,
+    params: params
+  }, 
+    function(err, user){
+      if (err) throw err;
+      console.log('user',user);
+
+      var jwt = sign({
+
+      },jwtSecret)
+      res.json(user=user)
+  });
+});
 
 /* QUERY SINGLE USER */
 // router.get('/single', function(req, res, next) {
@@ -113,5 +123,7 @@ router.get('/all', function(req, res, next) {
 //     res.send({users: user[0].users.properties.userName});  
 //   });
 // });
+
+
 
 module.exports = router;
