@@ -154,7 +154,7 @@ router.post('/login', function(req, res, next){
         })
       } else {
         console.log('pass does not work')
-        res.send('wrong password')
+        res.status(401).send('wrong password')
       }
       // bcrypt.compare(submittedPassword, databasePass, function(err, res) {
       //   if(err) throw err
