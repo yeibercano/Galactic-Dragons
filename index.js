@@ -2,14 +2,17 @@ import React, { Component } from 'react'
 import Navbar from 'react-bootstrap'
 import { render } from 'react-dom'
 import LandingPage from './public/Components/LandingPageComponents/landingPage'
+import Viewer from './public/Components/ViewingComponent/viewing'
 import Login from './public/Components/login'
 import CreateAccountScreen from './public/Components/register'
 import Profile from './public/Components/profile'
 import UploadNewVideo from './public/Components/uploadNewVideo'
 import Footer from './public/Components/footer'
 import { Router, Route, IndexRoute, Link, hashHistory, browserHistory } from 'react-router'
+var axios = require('axios');
 
 const Home = React.createClass({
+  
   render() {
     return (
       <div>
@@ -48,7 +51,17 @@ const ProfileUser = React.createClass({
       );
   }})
 
+const Stuff = React.createClass({
+  render() {
+    return (
+      <div>
+        <Viewer/>
+      </div>
+      );
+  }})
+
 const App = React.createClass({
+  
   render() {
     return (
       <div>
@@ -72,6 +85,7 @@ render((
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
       <Route path="home" component={Home} />
+      <Route path="viewer" component={Stuff} />
       <Route path="register" component={Register} />
       <Route path="login" component={LoginPage} />
       <Route path="profile" component={ProfileUser} />

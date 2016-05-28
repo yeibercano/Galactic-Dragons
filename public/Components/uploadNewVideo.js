@@ -17,13 +17,9 @@ var UploadNewVideo = React.createClass({
     let userLS = localStorage.getItem('user');
     //parses the info brought down (object)
     let parseUser = JSON.parse(userLS);
-    // console.log('userLS PROFILE COMPO
-      // console.log('parseUser', parseUser)
-      console.log("What is in this.video? :", this.video)
     let videoFile  = this.video.value.replace("C:\\fakepath\\", "");
     let imageFile  = this.image.value.replace("C:\\fakepath\\", "");
-    console.log('This is videoFile:', videoFile);
-    console.log('This is imageFile:', imageFile);
+    
     let movieInfo = {
       title : this.title.value,
       director : this.director.value,
@@ -35,17 +31,17 @@ var UploadNewVideo = React.createClass({
       video: secret.endpointLocation + '/' + secret.bucketName + '/' + videoFile,
       image : secret.endpointLocation + '/' + secret.bucketName + '/' + imageFile
     }
-    // console.log('this is movie information:', movieInfo);
+    
     localStorage.setItem('movieInfo', JSON.stringify(movieInfo))
 // ==================================================================
 // Neo4J DB needs to update for the below post
     axios.post('/movies/movie', movieInfo)
     .then(function(response){
-      // console.log('this is response after registering:', response);
+      
       //userInfo is the response back with the very last user entered
       let movieInfo = response.config.data;
       //sets "user" in localstorage to what is contained in userInfo
-      // console.log('this is movieInfo:', movieInfo);
+      
       // localStorage.setItem('user', movieInfo)
     })
   
@@ -62,16 +58,11 @@ var UploadNewVideo = React.createClass({
     .then(function(res){
       console.log('res', res.status)
       if(res.status === 200) {
-       hashHistory.push('home')
+       hashHistory.push('profile')
 
       }
     console.log('File uploaded successfully')
     })  
-    // .then(function(){
-    //   //redirects to the profile page
-    //   hashHistory.push('profile')
-    // })  
-
 },
 
  

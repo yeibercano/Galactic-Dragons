@@ -45,15 +45,12 @@ var CreateAccountScreen = React.createClass({
     // image : this.image.value
     }
     // uInfo.video.push(trueVideo);
-    console.log('this is video test for uInfo', uInfo);
+    // console.log('this is video test for uInfo', uInfo);
 // ==================================================================
     axios.post('/users/register', uInfo)
     .then(function(response){
-      console.log('this is response after registering:', response);
-      //userInfo is the response back with the very last user entered
+      
       let userInfo = response.config.data;
-      //sets "user" in localstorage to what is contained in userInfo
-      console.log('this is userInfo:', userInfo);
       localStorage.setItem('user', userInfo)
     })
     .then(function(){

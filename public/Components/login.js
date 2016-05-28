@@ -38,16 +38,17 @@ class Login extends React.Component {
 
     _userLogin(e){
       e.preventDefault();
-      console.log("You made it into _userLogin");
+      // console.log("You made it into _userLogin");
 
       let userLogin = {
         userName: this.userName.value,
         password: this.password.value
       }
 
-    console.log('userLogin',userLogin)
+    // console.log('userLogin',userLogin)
     axios.post('/users/login',userLogin )
       .then(function(response){
+
         console.log('response from server',response);
         console.log('response after login:', response.data.status)
         if(response.data.status === 401) {
@@ -62,6 +63,7 @@ class Login extends React.Component {
         if (err ) throw err
       })
     }
+
 
     render () {
       return(

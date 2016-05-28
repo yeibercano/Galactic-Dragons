@@ -17,17 +17,17 @@ class Profile extends Component {
     let userLS = localStorage.getItem('user');
     //parses the info brought down (object)
     let parseUser = JSON.parse(userLS);
-    console.log('userLS PROFILE COMPONENT', parseUser);
+    // console.log('userLS PROFILE COMPONENT', parseUser);
     // this.props.user = localStorage.getItem(JSON.parse(user))
     let movieLS = localStorage.getItem('movieInfo');
     //parses the info brought down (object)
     let parseMovie = JSON.parse(movieLS);
-    console.log('this is the new parsed movie info:', parseMovie)
+    // console.log('this is the new parsed movie info:', parseMovie)
     this.state = {
       userInfo: parseUser,
       // video: parseMovie.video
     }
-    console.log("This is this.state.userInfo inside constructor: ", this.state.userInfo)
+    // console.log("This is this.state.userInfo inside constructor: ", this.state.userInfo)
 
     //get request to database to retrieve video 
     // this.setUser(parseUser);

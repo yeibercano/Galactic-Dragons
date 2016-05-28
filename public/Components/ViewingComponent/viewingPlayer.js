@@ -11,10 +11,7 @@ class ViewingPlayer extends React.Component {
 
     super (props)  
     // console.log(this.props)
-    this.state = {
-      url: "",
-      allMovies: ""
-    }
+
    }
 
 

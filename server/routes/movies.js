@@ -20,11 +20,11 @@ var s3fsImplementation = new S3FS('galactic.video',{
 router.use(mulitpartyMiddleware);
 
 //creates a new movie into s3
+
 router.post('/movieS3', function(req, res){
   var file = req.files.file;
   var image = req.files.image
-
-  console.log("||||||||||||||||This is req.files from s3 post||||||||||||||||: ", req.files.image);
+  // console.log("||||||||||||||||This is req.files from s3 post||||||||||||||||: ", req.files.image);
   console.log('++++++++++++++++this is file which is file.path:', file.path);
   var stream = fs.createReadStream(file.path);
   var imageStream = fs.createReadStream(image.path);
@@ -50,8 +50,47 @@ router.post('/movieS3', function(req, res){
     })
     res.status(200).send({name: 'File Upload Complete'});
   })
+  .catch(function(err) {
+    if (err) throw err;
+  })
 
 });
+
+
+//===============================================================================
+// router.post('/movieS3', function(req, res){
+//   var file = req.files.file;
+//   var image = req.files.image
+
+//   console.log("||||||||||||||||This is req.files from s3 post||||||||||||||||: ", req.files.image);
+//   console.log('++++++++++++++++this is file which is file.path:', file.path);
+//   var stream = fs.createReadStream(file.path);
+//   var imageStream = fs.createReadStream(image.path);
+//   return s3fsImplementation.writeFile(file.originalFilename, stream)
+//   .then(function(err){
+//    return fs.unlink(file.path, function(err){
+//       if(err){
+//         console.error("This is the error", err);
+//       }
+//       console.log('file upload success');
+//     })
+//   })
+//   .then(function(){
+//     console.log("~~~~~!!!!!!!!!Made it into promise to writeFile image!!!!!!!~~~~~~")
+//     return s3fsImplementation.writeFile(image.originalFilename, imageStream)
+//   })
+//   .then(function(err){
+//     console.log("made it into after image upload")
+//     fs.unlink(image.path, function(err){
+//       if(err){
+//         console.error("This is the error", err);
+//       }
+//       console.log('image upload success');
+//     })
+//   })
+//     res.send('File Upload Complete');
+
+// });
 
 /* CREATES NEW MOVIE NODE IN NEO4J */
 router.post('/movie', function(req, res, next){
