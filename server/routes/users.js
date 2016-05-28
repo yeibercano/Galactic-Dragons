@@ -143,7 +143,15 @@ router.post('/login', function(req, res, next){
       // var validPass = bcrypt.compareSync(submittedPassword, databasePass)
       if(bcrypt.compareSync(submittedPassword, databasePass)){
         console.log('pass works')
-        res.send(user)
+        res.send({
+          firstName : user[0].user.properties.firstName,
+          lastName: user[0].user.properties.lastName,
+          email: user[0].user.properties.email,
+          video: user[0].user.properties.video,
+          image: user[0].user.properties.image,
+          password: user[0].user.properties.password,
+          userName: user[0].user.properties.userName
+        })
       } else {
         console.log('pass does not work')
         res.send('wrong password')
