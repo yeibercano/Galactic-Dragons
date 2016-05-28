@@ -19,15 +19,14 @@ class LandingPage extends Component {
   }
 
   componentWillMount() {
-      console.log('this.state.allMovies', this.state.allMovies)
       axios.get("/movies").then(data => {
         this.setState( { allMovies: data.data } );
+
       })
     }
  
 
   render() {
-    console.log(this.state.allMovies);
     return (
       <section> 
         <h1> Landing Page for All Users</h1>
