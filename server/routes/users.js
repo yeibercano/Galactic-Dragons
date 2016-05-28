@@ -6,10 +6,9 @@ var db = new neo4j.GraphDatabase(secret.grapheneDB_URI);
 var newRouter = require('react-router')
 var bcrypt = require('bcryptjs')
 var jwt    = require('jsonwebtoken')
-
 var crypto = require('crypto');
 
-
+// FREE ACCESS ROUTES
 // CREATES NEW USERS
 router.post('/register', function(req, res, next){
   // console.log("What is req inside users.js: ", req);
@@ -82,40 +81,6 @@ router.post('/register', function(req, res, next){
   // res.status(200);
 });
 
-/* QUERY ALL USERS */
-router.get('/all', function(req, res, next) {
-  var query = [
-    'MATCH (n:User )',
-    'RETURN n'
-  ].join('\n');
-
-  db.cypher({
-    query: query
-  }, function(err, users){
-    if (err) throw err;
-    // console.log(users)
-    res.send({users: users});  
-  });
-});
-
-var faker = require('faker');
-router.get('/faker', function(req, res){
-  var user = faker.helpers.userCard();
-  user.avatar = faker.image.avatar;
-  console.log('user', user)
-  res.send(user)
-})
-// ROUTES WE STILL NEED TO WORK ON BELOW
-
-/* GET /users/login */
-// router.get('/login', function(req, res, next){
-//   return res.redirect('/users/login')
-//   next();
-  
-// });
-
-
-// var authenticate = require('../utils');
 /* POST /users/login */
 router.post('/login', function(req, res, next){
   // console.log('req.body;',req.body)
@@ -199,6 +164,58 @@ router.post('/login', function(req, res, next){
       
   });
 });
+
+/* ANY ROUTE BELOW THIS FUNCTION WILL BE AUTHENTICATED */
+router.use(function(req, res, next) {
+  // check header or url parameters or post parameters for token
+  var token = req.body.token || req.query.token || req.headers['x-access-token'];
+  // decode token
+  if (token) {
+    // verifies secret and checks exp
+    jwt.verify(token, secret.jwtSecret, function(err, decoded) {      
+      if (err) {
+        return res.json({ success: false, message: 'Failed to authenticate token.' });    
+      } else {
+        // if everything is good, save to request for use in other routes
+        req.decoded = decoded;    
+        next();
+      }
+    });
+  } else {
+    // if there is no token
+    // return an error
+    return res.status(403).send({ 
+        success: false, 
+        message: 'No token provided.' 
+    });
+  }
+});
+
+/* QUERY ALL USERS */
+router.get('/all', function(req, res, next) {
+  var query = [
+    'MATCH (n:User )',
+    'RETURN n'
+  ].join('\n');
+
+  db.cypher({
+    query: query
+  }, function(err, users){
+    if (err) throw err;
+    // console.log(users)
+    res.send({users: users});  
+  });
+});
+
+// var faker = require('faker');
+// router.get('/faker', function(req, res){
+//   var user = faker.helpers.userCard();
+//   user.avatar = faker.image.avatar;
+//   console.log('user', user)
+//   res.send(user)
+// })
+
+
 
 /* QUERY SINGLE USER */
 router.get('/single', function(req, res, next) {
