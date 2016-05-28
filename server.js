@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var multiparty = require('connect-multiparty'),
   mulitpartyMiddleware = multiparty();
 var secret = require('./private.js');
+var morgan = require('morgan')
 
 // We need to add a configuration to our proxy server,
 // as we are now proxying outside localhost
@@ -21,6 +22,9 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser({limit: '50mb'}));
 app.use(express.static(publicPath));
+
+// use morgan to log requests to the console
+app.use(morgan('dev'));
 
 
 /* ROUTES */
