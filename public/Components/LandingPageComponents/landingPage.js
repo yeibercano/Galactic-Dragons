@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import LandingPageVideoList from './landingPageVideoList'
 import LandingPageVideoPlayer from './landingPageVideoPlayer'
-var axios = require('axios');
+
+const axios = require('axios');
 
 
 
@@ -10,18 +11,29 @@ class LandingPage extends Component {
 
   constructor (props) {
     super (props) 
+
+    this.state = {
+      allMovies: null
+    }
     
   }
 
+  componentWillMount() {
+      console.log('this.state.allMovies', this.state.allMovies)
+      axios.get("/movies").then(data => {
+        this.setState( { allMovies: data.data } );
+      })
+    }
  
 
   render() {
+    console.log(this.state.allMovies);
     return (
-      <div> 
+      <section> 
         <h1> Landing Page for All Users</h1>
         <LandingPageVideoList />
-        <LandingPageVideoPlayer />
-      </div>
+        <LandingPageVideoPlayer allMovies = {this.state.allMovies} />
+      </section>
     )
   }
 }

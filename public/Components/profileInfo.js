@@ -5,7 +5,7 @@ var axios = require('axios');
 class ProfileInfo extends Component {
   constructor(props){
     super(props)
-    console.log("What is userName", this.props.userInfo);
+    
   }
 
 
