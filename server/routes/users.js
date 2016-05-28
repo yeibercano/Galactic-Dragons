@@ -6,15 +6,23 @@ var db = new neo4j.GraphDatabase(secret.grapheneDB_URI);
 var newRouter = require('react-router')
 var bcrypt = require('bcryptjs')
 
+var crypto = require('crypto');
+
 
 // CREATES NEW USERS
 router.post('/register', function(req, res, next){
   // console.log("What is req inside users.js: ", req);
   // console.log("What is req.body inside users.js: ", req.body);
   var submittedPassword = req.body.password;
+  
   //hashes and salts the password
   var hashedPassword = bcrypt.hashSync(submittedPassword, 10);
   console.log('hashed password', hashedPassword)
+
+  // encrypt the password
+  // var encryptedPassword = crypto.createHmac('sha256', secret.hashed)
+  //                 .update(submittedPassword)
+  //                 .digest('hex');
 
   var query = [
     'CREATE (user:User {newUser})',
@@ -52,7 +60,8 @@ router.post('/register', function(req, res, next){
         email: user[0].user.properties.email,
         video: user[0].user.properties.video,
         image: user[0].user.properties.image,
-        password: user[0].user.properties.password 
+        password: user[0].user.properties.password,
+        userName: user[0].user.properties.userName
       });
       // res.redirect('/users/profile');
   })
@@ -92,31 +101,30 @@ router.get('/faker', function(req, res){
 // });
 
 
-var authenticate = require('../utils');
+// var authenticate = require('../utils');
 /* POST /users/login */
 router.post('/login', function(req, res, next){
+  // console.log('req.body;',req.body)
   console.log('in login');
-  // var username = req.headers.username || req.query.username || req.body.username
-  
+  var username = req.headers.userName || req.query.userName || req.body.userName
+  console.log('username:', username)
   //checking passwords
   var submittedPassword = req.headers.password || req.query.password || req.body.password;
   var hashedPassword = bcrypt.hashSync(submittedPassword, 10);
-  var validPassword = bcrypt.compareSync(submittedPassword, hashedPassword);
-    console.log('valid password is:', validPassword);
-    console.log('hashed', hashedPassword);
-  // if(!validPassword) { 
-  //   return "wrong password"
-  // } else {
-  //   validPassword = hashedPassword;
-  // }
-  
+  // // var validPassword = bcrypt.compareSync(submittedPassword, hashedPassword);
+  // //   console.log('valid password is:', validPassword);
+  //   console.log('hashed', hashedPassword);
+  //   console.log('submittedPassword', submittedPassword)
+
+  // var encryptedPassword = crypto.createHmac('sha256', secret.hashed)
+  //                 .update(submittedPassword)
+  //                 .digest('hex');
   var query = [
-    'MATCH (user:User {  password:{password} })',
+    'MATCH (user:User {  userName:{username} })',
     'RETURN user'
   ].join('\n');
   var params = {
-    // username: username,
-    password: "'" + hashedPassword + "'" 
+    username: username
   }
   db.cypher({
     query: query,
@@ -124,12 +132,33 @@ router.post('/login', function(req, res, next){
   }, 
     function(err, user){
       if (err) throw err;
-      console.log('user',user);
 
-      // var jwt = sign({
+      // if(user[0].user.properties.password === encryptedPassword){
+      //   console.log('pass matches')
+      // }
+      console.log('user', user[0].user.properties);
+      console.log('user login:', user)
+      var databasePass = user[0].user.properties.password;
 
-      // },jwtSecret)
-      res.json(user=user)
+      // var validPass = bcrypt.compareSync(submittedPassword, databasePass)
+      if(bcrypt.compareSync(submittedPassword, databasePass)){
+        console.log('pass works')
+        res.send(user)
+      } else {
+        console.log('pass does not work')
+        res.send('wrong password')
+      }
+      // bcrypt.compare(submittedPassword, databasePass, function(err, res) {
+      //   if(err) throw err
+      //     if (databasePass !== submittedPassword) {
+      //       console.log('wrong pass')
+      //       throw err
+      //     } else if (databasePass !== submittedPassword) {
+      //       console.log('here')
+      //     }
+      // });
+      // res.json(user[0].user.properties.password)
+      
   });
 });
 
