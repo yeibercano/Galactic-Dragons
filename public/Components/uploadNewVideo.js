@@ -59,13 +59,18 @@ var UploadNewVideo = React.createClass({
     // console.log('this is fdata:', fdata);
     // send fdata to our server to upload file to s3
     axios.post('/movies/movieS3', fdata)
-    .then(function(){
+    .then(function(res){
+      console.log('res', res.status)
+      if(res.status === 200) {
+       hashHistory.push('home')
+
+      }
     console.log('File uploaded successfully')
     })  
-    .then(function(){
-      //redirects to the profile page
-      hashHistory.push('profile')
-    })  
+    // .then(function(){
+    //   //redirects to the profile page
+    //   hashHistory.push('profile')
+    // })  
 
 },
 
