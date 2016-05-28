@@ -48,8 +48,8 @@ router.post('/movieS3', function(req, res){
       }
       console.log('image upload success');
     })
+    res.status(200).send({name: 'File Upload Complete'});
   })
-    res.send('File Upload Complete');
 
 });
 
