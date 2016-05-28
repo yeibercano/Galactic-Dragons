@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { default as Video, Controls, Play, Mute, Seek, Fullscreen, Time, Overlay } from 'react-html5video';
 import {Carousel, CarouselItem, CarouselCaption} from 'react-bootstrap'
 import { hashHistory } from 'react-router'
+import ViewingPage from '../ViewingComponent/viewing'
 
 var secret = require("../../../private.js")
 var axios = require('axios');
@@ -16,32 +17,62 @@ class LandingPageVideoPlayer extends React.Component {
     
     super (props)  
     console.log("This is props inside LandingPageVideoPlayer", props)
-    
+    this.state = {
+        movieSent: ''
+    }
+
+    this.onClickHandler = this.onClickHandler.bind(this);
    }
 
 
    __routeToViewing(e){
     e.preventDefault();
     console.log("!!!!!!!!!!!!You made it into __routeToViewing!!!!!!!!!!!!");
-    hashHistory.push("/viewer")
    }
    
+   onClickHandler (e, movieProps) {
+    e.preventDefault();
+    console.log('movieProps inside onClickHandler inside LandingPageVideoPlayer:', movieProps)
+    this.setState({ movieSent: movieProps})
+    var target = e.target.src;
+    console.log('this is target:', target);
+   
+   }
+
+   renderImage(movieProps) {
+    return (
+        <CarouselItem>
+          <video onClick={e => this.onClickHandler(e, movieProps)} src={movieProps.video}/>
+        </CarouselItem>
+    )
+   }
 
   render() {
-    console.log("This is props", this.props)
+
+    console.log('this is after setting state for movieSent:', this.state.movieSent);
+    if (this.props.allMovies === null) {
+        return (
+            <div>Loading...</div>
+        );
+    }
+
     return (
+
+     <div>
+      <ViewingPage movieSent={this.state.movieSent} />
       <Carousel>
-        <CarouselItem>
-          <video src={this.props.allMovies[0].m.properties}/>
-        </CarouselItem>
+        {this.props.allMovies.map(movie => this.renderImage(movie.m.properties))}
       </Carousel>
+     </div>
     )
   }
 }
 
 export default LandingPageVideoPlayer
 
-        // {this.props.movies.map(movie => this.renderVideo(movie.m.properties.video))}
+        // <CarouselItem>
+        //   <image src={this.props.allMovies[0].m.properties.image}/>
+        // </CarouselItem>
 
 
 
