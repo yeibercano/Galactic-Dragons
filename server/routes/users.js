@@ -5,6 +5,7 @@ var secret = require('../../private.js');
 var db = new neo4j.GraphDatabase(secret.grapheneDB_URI);
 var newRouter = require('react-router')
 var bcrypt = require('bcryptjs')
+var jwt    = require('jsonwebtoken')
 
 var crypto = require('crypto');
 
@@ -18,11 +19,6 @@ router.post('/register', function(req, res, next){
   //hashes and salts the password
   var hashedPassword = bcrypt.hashSync(submittedPassword, 10);
   console.log('hashed password', hashedPassword)
-
-  // encrypt the password
-  // var encryptedPassword = crypto.createHmac('sha256', secret.hashed)
-  //                 .update(submittedPassword)
-  //                 .digest('hex');
 
   var query = [
     'CREATE (user:User {newUser})',
@@ -52,9 +48,20 @@ router.post('/register', function(req, res, next){
     function(err, user){
       if (err) throw err;
     
-      console.log('user.data',user[0].user);
-      // console.log('register calling home');
-      res.status(200).send({ 
+      // console.log('user.data',user[0].user);
+      // // console.log('register calling home');
+      // res.status(200).send({ 
+      //   firstName : user[0].user.properties.firstName,
+      //   lastName: user[0].user.properties.lastName,
+      //   email: user[0].user.properties.email,
+      //   video: user[0].user.properties.video,
+      //   image: user[0].user.properties.image,
+      //   password: user[0].user.properties.password,
+      //   userName: user[0].user.properties.userName
+      // });
+      // res.redirect('/users/profile');
+
+      var token = jwt.sign({
         firstName : user[0].user.properties.firstName,
         lastName: user[0].user.properties.lastName,
         email: user[0].user.properties.email,
@@ -62,8 +69,15 @@ router.post('/register', function(req, res, next){
         image: user[0].user.properties.image,
         password: user[0].user.properties.password,
         userName: user[0].user.properties.userName
+      }, secret.jwtSecret, {
+        expiresIn: 1
       });
-      // res.redirect('/users/profile');
+      res.status(200).json({
+        success: true,
+        message: 'Enjoy your token!',
+        token: token
+      });
+  
   })
   // res.status(200);
 });
@@ -110,15 +124,15 @@ router.post('/login', function(req, res, next){
   console.log('username:', username)
   //checking passwords
   var submittedPassword = req.headers.password || req.query.password || req.body.password;
-  var hashedPassword = bcrypt.hashSync(submittedPassword, 10);
-  // // var validPassword = bcrypt.compareSync(submittedPassword, hashedPassword);
-  // //   console.log('valid password is:', validPassword);
-  //   console.log('hashed', hashedPassword);
-  //   console.log('submittedPassword', submittedPassword)
+  // var hashedPassword = bcrypt.hashSync(submittedPassword, 10);
+  // // // var validPassword = bcrypt.compareSync(submittedPassword, hashedPassword);
+  // // //   console.log('valid password is:', validPassword);
+  // //   console.log('hashed', hashedPassword);
+  // //   console.log('submittedPassword', submittedPassword)
 
-  // var encryptedPassword = crypto.createHmac('sha256', secret.hashed)
-  //                 .update(submittedPassword)
-  //                 .digest('hex');
+  // // var encryptedPassword = crypto.createHmac('sha256', secret.hashed)
+  // //                 .update(submittedPassword)
+  // //                 .digest('hex');
   var query = [
     'MATCH (user:User {  userName:{username} })',
     'RETURN user'
@@ -140,7 +154,7 @@ router.post('/login', function(req, res, next){
       console.log('user login:', user)
       var databasePass = user[0].user.properties.password;
 
-      // var validPass = bcrypt.compareSync(submittedPassword, databasePass)
+      var validPass = bcrypt.compareSync(submittedPassword, databasePass)
       if(bcrypt.compareSync(submittedPassword, databasePass)){
         console.log('pass works')
         res.send({
@@ -156,16 +170,32 @@ router.post('/login', function(req, res, next){
         console.log('pass does not work')
         res.status(401).send('wrong password')
       }
-      // bcrypt.compare(submittedPassword, databasePass, function(err, res) {
-      //   if(err) throw err
-      //     if (databasePass !== submittedPassword) {
-      //       console.log('wrong pass')
-      //       throw err
-      //     } else if (databasePass !== submittedPassword) {
-      //       console.log('here')
-      //     }
-      // });
-      // res.json(user[0].user.properties.password)
+
+      // if(bcrypt.compareSync(submittedPassword, databasePass)){
+      //   console.log('pass works')
+      //    var token = jwt.sign({
+      //       firstName : user[0].user.properties.firstName,
+      //       lastName: user[0].user.properties.lastName,
+      //       email: user[0].user.properties.email,
+      //       video: user[0].user.properties.video,
+      //       image: user[0].user.properties.image,
+      //       password: user[0].user.properties.password,
+      //       userName: user[0].user.properties.userName
+      //     }, secret.jwtSecret, {
+      //       expiresIn: 1
+      //     });
+      //   res.status(200).json({
+      //     success: true,
+      //     message: 'Enjoy your token!',
+      //     token: token
+      //   });
+      // } else {
+      //   console.log('pass does not work')
+      //   res.status(401).send('wrong password')
+      // }
+      
+
+        // return the information including token as JSON
       
   });
 });
