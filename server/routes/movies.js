@@ -50,6 +50,9 @@ router.post('/movieS3', function(req, res){
     })
     res.status(200).send({name: 'File Upload Complete'});
   })
+  .catch(function(err) {
+    if (err) throw err;
+  })
 
 });
 
