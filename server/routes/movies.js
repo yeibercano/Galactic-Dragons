@@ -23,11 +23,11 @@ router.use(mulitpartyMiddleware);
 
 router.post('/movieS3', function(req, res){
   var file = req.files.file;
-  // var image = req.files.image
+  var image = req.files.image
   // console.log("||||||||||||||||This is req.files from s3 post||||||||||||||||: ", req.files.image);
   console.log('++++++++++++++++this is file which is file.path:', file.path);
   var stream = fs.createReadStream(file.path);
-  // var imageStream = fs.createReadStream(image.path);
+  var imageStream = fs.createReadStream(image.path);
   return s3fsImplementation.writeFile(file.originalFilename, stream)
   .then(function(err){
    return fs.unlink(file.path, function(err){
@@ -36,20 +36,21 @@ router.post('/movieS3', function(req, res){
       }
       console.log('file upload success');
     })
-    res.send('File Upload Complete');
-  });
-  // .then(function(){
-  //   console.log("~~~~~!!!!!!!!!Made it into promise to writeFile image!!!!!!!~~~~~~")
-  //   return s3fsImplementation.writeFile(image.originalFilename, imageStream)
-  // })
-  // .then(function(err){
-  //   return fs.unlink(image.path, function(err){
-  //     if(err){
-  //       console.error("This is the error", err);
-  //     }
-  //     console.log('image upload success');
-  //   })
-  // })
+  })
+  .then(function(){
+    console.log("~~~~~!!!!!!!!!Made it into promise to writeFile image!!!!!!!~~~~~~")
+    return s3fsImplementation.writeFile(image.originalFilename, imageStream)
+  })
+  .then(function(err){
+    fs.unlink(image.path, function(err){
+      if(err){
+        console.error("This is the error", err);
+      }
+      console.log('image upload success');
+    })
+    res.status(200).send({name: 'File Upload Complete'});
+  })
+
 });
 
 
@@ -109,7 +110,7 @@ router.post('/movie', function(req, res, next){
     function(err, movie){
       if (err) throw err;
     
-      console.log('movie',movie);
+      // console.log('movie creates new movie',movie);
       // console.log('new');
       res.status(200).json(movie = movie);
   })
@@ -128,7 +129,7 @@ router.get('/', function(req, res, next) {
   }, 
     function(err, movies){
       if (err) throw err;
-      console.log('movie',movies);
+      // console.log('movie from all movies',movies);
       //console.log('movies properties access:', movies[0].m.properties.video)
       //console.log('movies _id access of 1st element in array:', movies[0].m._id)
       // res.status(200).json(movies = movies); //another way to send 
@@ -138,9 +139,7 @@ router.get('/', function(req, res, next) {
 });
 
 /* RETRIEVES ALL MOVIES FROM A USER */
-router.get('/', function(req, res, next) {
-  // console.log('req in all movies', req)
-
+router.get('/user', function(req, res, next) {
   var userName = req.query.userName
 
   var query = [
@@ -164,25 +163,50 @@ router.get('/', function(req, res, next) {
 });
 
 /* RETRIEVES A SINGLE MOVIE */
-router.get('/', function(req, res, next) {
-  // console.log('req in all movies', req)
-  var userName = req.query.userName
+router.get('/single', function(req, res, next) {
+  var title = req.headers.title || req.query.title || req.body.title
+  console.log('title:', title )
   var query = [
-   'MATCH (u:User {userName:{userName}})-[r:OWNER]->(m:Movie) RETURN m'
+   'MATCH (m:Movie {title:{title}}) RETURN m'
   ].join('\n');
   var params = {
-    userName: userName
+    title: title
   };
 
   db.cypher({
     query: query,
     params: params
   }, 
-    function(err, movies){
+    function(err, movie){
       if (err) throw err;
-      console.log('movie',movies);
+      console.log('movie',movie);
       // console.log('new');
-      res.status(200).send(movies);
+      res.status(200).send(movie);
+  })
+});
+
+/* TODO: search through all nodes */
+
+/* FOR SEACH BAR - SEARCH MOVIES IN DATABASE */
+router.get('/search', function(req, res, next) {
+  var searchTarget = req.headers.target || req.query.target || req.body.target
+  // console.log('searchTarget:', searchTarget )
+  var query = [
+   'MATCH (m:Movie {category: {searchTarget}}) RETURN m'
+  ].join('\n');
+  var params = {
+    searchTarget: searchTarget
+  };
+
+  db.cypher({
+    query: query,
+    params: params
+  }, 
+    function(err, movie){
+      if (err) throw err;
+      console.log('movie',movie);
+      // console.log('new');
+      res.status(200).send(movie);
   })
 });
 

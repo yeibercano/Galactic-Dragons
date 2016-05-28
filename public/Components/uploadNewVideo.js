@@ -18,7 +18,7 @@ var UploadNewVideo = React.createClass({
     //parses the info brought down (object)
     let parseUser = JSON.parse(userLS);
     let videoFile  = this.video.value.replace("C:\\fakepath\\", "");
-    // let imageFile  = this.image.value.replace("C:\\fakepath\\", "");
+    let imageFile  = this.image.value.replace("C:\\fakepath\\", "");
     
     let movieInfo = {
       title : this.title.value,
@@ -28,8 +28,8 @@ var UploadNewVideo = React.createClass({
       synopsis:  this.synopsis.value,
       year : this.year.value,
       userName : parseUser.userName,
-      video: secret.endpointLocation + '/' + secret.bucketName + '/' + videoFile
-      // image : secret.endpointLocation + '/' + secret.bucketName + '/' + imageFile
+      video: secret.endpointLocation + '/' + secret.bucketName + '/' + videoFile,
+      image : secret.endpointLocation + '/' + secret.bucketName + '/' + imageFile
     }
     
     localStorage.setItem('movieInfo', JSON.stringify(movieInfo))
@@ -55,15 +55,14 @@ var UploadNewVideo = React.createClass({
     // console.log('this is fdata:', fdata);
     // send fdata to our server to upload file to s3
     axios.post('/movies/movieS3', fdata)
-    .then(function(response){
-      console.log('!!!!!!!!File uploaded successfully!!!!!!!!!!!', response)
-      hashHistory.push('/profile')
-    })  
-    // .then(function(){
-    //   //redirects to the profile page
-    //   console.log("Are you being called")
-    // })  
+    .then(function(res){
+      console.log('res', res.status)
+      if(res.status === 200) {
+       hashHistory.push('profile')
 
+      }
+    console.log('File uploaded successfully')
+    })  
 },
 
  
@@ -118,6 +117,10 @@ var UploadNewVideo = React.createClass({
               name="file"
               ref={input=> this.video = input} />
             <input 
+              type="file" 
+              name="image"
+              ref={input=> this.image = input} />  
+            <input 
               type="submit" 
               name="submit"
               value="Upload Video"
@@ -132,7 +135,3 @@ var UploadNewVideo = React.createClass({
 });
     
 module.exports = UploadNewVideo;
-            // <input 
-            //   type="file" 
-            //   name="image"
-            //   ref={input=> this.image = input} />  
