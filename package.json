@@ -12,7 +12,7 @@
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.1",
     "connect-multiparty": "^2.0.0",
-    "crypto": "0.0.3",
+    "history": "^2.1.2",
     "neo4j": "^2.0.0-RC2",
     "node-neo4j": "^2.0.3",
     "react": "^0.14.3",

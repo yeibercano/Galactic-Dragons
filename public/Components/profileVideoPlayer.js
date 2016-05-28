@@ -41,7 +41,7 @@ class ProfileVideoPlayer extends React.Component {
   render() {
     console.log('url inside render ', this.state.url)
 
-    console.log('allMovies inside render ', this.state.allMovies)
+    // console.log('allMovies inside render ', this.state.allMovies)
     return (
       <div>
         <h1>This is The Users Most Recent Upload</h1>
