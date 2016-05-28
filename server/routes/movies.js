@@ -74,7 +74,7 @@ router.post('/movie', function(req, res, next){
     function(err, movie){
       if (err) throw err;
     
-      console.log('movie creates new movie',movie);
+      // console.log('movie creates new movie',movie);
       // console.log('new');
       res.status(200).json(movie = movie);
   })
@@ -93,7 +93,7 @@ router.get('/', function(req, res, next) {
   }, 
     function(err, movies){
       if (err) throw err;
-      console.log('movie from all movies',movies);
+      // console.log('movie from all movies',movies);
       //console.log('movies properties access:', movies[0].m.properties.video)
       //console.log('movies _id access of 1st element in array:', movies[0].m._id)
       // res.status(200).json(movies = movies); //another way to send 
