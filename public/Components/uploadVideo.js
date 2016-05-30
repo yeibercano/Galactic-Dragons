@@ -26,7 +26,7 @@ const UploadVideo = React.createClass({
   render() {
     return (
       <div>
-        <h1>This is Where a User May Upload More Videos</h1>
+        <h1>Click Here To Upload New Video</h1>
         <form onSubmit={this._saveUpload}>
               <input 
                 type="submit" 

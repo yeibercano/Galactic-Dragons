@@ -15,7 +15,6 @@ class ProfileVideoList extends Component {
     render() {
     return (
       <div>
-        <h1>This is Where the List of Users Videos Will Be</h1>
           {this.props.moviesList ? this.props.moviesList.map(function(movie) {
             return (
             <div>

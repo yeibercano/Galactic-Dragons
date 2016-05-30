@@ -29,9 +29,8 @@ class LandingPage extends Component {
   render() {
     return (
       <section> 
-        <h1> Landing Page for All Users</h1>
-        <LandingPageVideoList />
         <LandingPageVideoPlayer allMovies = {this.state.allMovies} />
+        <LandingPageVideoList />
       </section>
     )
   }

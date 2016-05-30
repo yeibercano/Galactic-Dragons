@@ -44,7 +44,6 @@ class ProfileVideoPlayer extends React.Component {
     // console.log('allMovies inside render ', this.state.allMovies)
     return (
       <div>
-        <h1>This is The Users Most Recent Upload</h1>
         <video controls src={this.state.url} type="video/mp4" />
          <ProfileVideoList moviesList = {this.state.allMovies}/>
          

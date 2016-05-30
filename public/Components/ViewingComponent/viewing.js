@@ -39,18 +39,24 @@ class ViewingPage extends Component {
     }
 
     return (
-      <div>
-      <h1>This is a test</h1>
-        <video controls src={this.state.videoUrl} type="video/mp4" />
-        <div>
-            <img style={{height: 150, width:150}} src={this.state.videoImage} />
-            <h3>{this.state.videoTitle}</h3>
-            <h5>{this.state.videoSynopsis}</h5>
-            <h5>{this.state.videoActors}</h5>
-            <h5>{this.state.videoDirector}</h5>
-            <h5>{this.state.videoYear}</h5>
-        </div>
-      </div>
+      <section>
+      <h1>{this.state.videoTitle}</h1>
+        <section >
+          <video className="viewing_video" controls src={this.state.videoUrl} type="video/mp4" />
+        </section>  
+        <aside className="viewing_info">
+            <section id="poster_info">
+              <img style={{height: 250, width:250}} src={this.state.videoImage} />
+            </section>
+            <section id="movie_info">
+            <h2>{this.state.videoTitle}</h2>
+            <h4>{this.state.videoSynopsis}</h4>
+            <h4>{this.state.videoActors}</h4>
+            <h4>{this.state.videoDirector}</h4>
+            <h4>{this.state.videoYear}</h4>
+            </section>
+        </aside>
+      </section>
     );
   }
 }
