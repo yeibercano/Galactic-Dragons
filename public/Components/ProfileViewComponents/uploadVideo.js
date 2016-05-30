@@ -13,7 +13,7 @@ const UploadVideo = React.createClass({
   
   render() {
     return (
-      <div>
+      <section className="upload_video_button">
         <h1>Click Here To Upload New Video</h1>
         <form onSubmit={this._saveUpload}>
               <input 
@@ -22,7 +22,7 @@ const UploadVideo = React.createClass({
                 value="Upload Video"
                 className="register-button" />
         </form>
-      </div>
+      </section>
     );
 }
 })
