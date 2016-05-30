@@ -5,6 +5,7 @@ var axios = require('axios');
 import ProfileVideoPlayer from './profileVideoPlayer'
 import ProfileInfo from './profileInfo'
 import UploadVideos from './uploadVideo'
+import UploadNewVideo from './uploadNewVideo'
 
 // this is the parent component 
 // shows userInfo - ProfilePlayer - ProfileVideos - ProfileUpload
@@ -35,7 +36,8 @@ class Profile extends Component {
     this.state = {
       userInfo: '',
       token: token,
-      config: config
+      config: config, 
+      allMovies: ""
       // video: parseMovie.video
     }
   }
@@ -44,11 +46,20 @@ class Profile extends Component {
     console.log('token in component this.state.token :', this.state.token)
    axios.get('/users/single', {params: {token: this.state.token}})
     .then(function(res){
+      console.log('res', res.data)
       console.log('response passing token', res.data[0].user.properties)
       this.setState( { userInfo: res.data[0].user.properties } );
     }.bind(this))
-    
+    .then(function(){
+      axios.get("/movies/user", {params: {token: this.state.token, userName: this.state.userInfo.userName}})
+      .then(data => {
+        console.log('data after user request', data)
+        this.setState({ allMovies: data.data });
+      });
+    }.bind(this))
+
   }
+
 
   render() {
     
