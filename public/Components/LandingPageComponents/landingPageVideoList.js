@@ -8,14 +8,29 @@ var axios = require('axios');
 class LandingPageVideoList extends Component {
   constructor(props){
     super(props)
-    // let movies = this.props
-    // console.log("This is movies inside ProfileVideoList: ", movies);
+    let movies = props
+    console.log("This is movies inside LandingPageVideoList: ", movies);
   }
 
-    render() {
+  movieInfo(movieInfo) {
+    return (
+        <div>
+          {movieInfo.title}
+        </div>
+    )
+   }
+
+  render() {
+
+    if (this.props.allMovies === null) {
+      return <div>Loading...</div>
+    }
+
+    console.log('this is movieProps:', this.props.allMovies)
     return (
       <div>
         <h1>This is Where the List of Users Videos Will Be</h1>
+        {this.props.allMovies.map(movie => this.movieInfo(movie.m.properties))}
       </div>
     );
   }
