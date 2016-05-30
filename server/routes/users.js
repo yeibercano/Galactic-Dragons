@@ -61,12 +61,13 @@ router.post('/register', function(req, res, next){
       // res.redirect('/users/profile');
 
       var token = jwt.sign({
-        firstName : user[0].user.properties.firstName,
-        lastName: user[0].user.properties.lastName,
-        email: user[0].user.properties.email,
-        video: user[0].user.properties.video,
-        image: user[0].user.properties.image,
-        password: user[0].user.properties.password,
+        // firstName : user[0].user.properties.firstName,
+        // lastName: user[0].user.properties.lastName,
+        // email: user[0].user.properties.email,
+        // video: user[0].user.properties.video,
+        // image: user[0].user.properties.image,
+        // password: user[0].user.properties.password,
+        id: user[0].user._id,
         userName: user[0].user.properties.userName
       }, secret.jwtSecret, {
         expiresIn: 1
@@ -139,12 +140,13 @@ router.post('/login', function(req, res, next){
       if(bcrypt.compareSync(submittedPassword, databasePass)){
         console.log('pass works')
          var token = jwt.sign({
-            firstName : user[0].user.properties.firstName,
-            lastName: user[0].user.properties.lastName,
-            email: user[0].user.properties.email,
-            video: user[0].user.properties.video,
-            image: user[0].user.properties.image,
-            password: user[0].user.properties.password,
+            // firstName : user[0].user.properties.firstName,
+            // lastName: user[0].user.properties.lastName,
+            // email: user[0].user.properties.email,
+            // 
+            id: user[0].user._id,
+            // image: user[0].user.properties.image,
+            // password: user[0].user.properties.password,
             userName: user[0].user.properties.userName
           }, secret.jwtSecret, {
             expiresIn: 1
