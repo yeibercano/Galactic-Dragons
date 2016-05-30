@@ -45,7 +45,11 @@ class LandingPageVideoPlayer extends React.Component {
 
     return (
         <CarouselItem>
-          <img onClick={e => this.onClickHandler(e, movieProps)} src={movieProps.image}/>
+          <img id="carousel-img" onClick={e => this.onClickHandler(e, movieProps)} src={movieProps.image}/>
+            <Carousel.Caption id="carousel-caption">
+                <h2 id='title-caption'>{movieProps.title}</h2>
+                <h4 id='synopsis-caption'>{movieProps.synopsis}</h4>
+            </Carousel.Caption>
         </CarouselItem>
     )
    }
@@ -60,14 +64,14 @@ class LandingPageVideoPlayer extends React.Component {
     }
 
     return (
-    <div>
-      <Carousel>
+    <section className="carousel-div">
+      <Carousel >
         {this.props.allMovies.map(movie => this.renderImage(movie.m.properties))}
       </Carousel>
-      <div style={{display: "none"}}>
+      <section style={{display: "none"}}>
       <ViewingPage movieSent={this.state.movieSent} />
-      </div>
-    </div>
+      </section>
+    </section>
     )
   }
 }

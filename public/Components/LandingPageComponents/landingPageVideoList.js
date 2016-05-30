@@ -15,7 +15,6 @@ class LandingPageVideoList extends Component {
     render() {
     return (
       <div>
-        <h1>This is Where the List of Users Videos Will Be</h1>
       </div>
     );
   }

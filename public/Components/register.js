@@ -85,7 +85,6 @@ var CreateAccountScreen = React.createClass({
 
         <div className="create_account_form">
           <h1>Create account</h1>
-          <p>Example of form validation built with React.</p>
           <form onSubmit={this._saveAndContinue}>
             <input
               type="text"

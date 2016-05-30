@@ -11,15 +11,15 @@ class ProfileInfo extends Component {
 
   render() {
     return (
-      <div>
-        <p>Account Information</p>
+      <aside className="account-information">
+        <h3>Account Information</h3>
         <p>Username: {this.props.userInfo.userName}</p>
         <p>First Name: {this.props.userInfo.firstName}</p>
         <p>Last Name: {this.props.userInfo.email}</p>
         <p>Phonenumber: {this.props.userInfo.phoneNumber}</p>
         <p>Company Name:{this.props.userInfo.companyName}</p>
         <p>Website: {this.props.userInfo.website}</p>
-      </div>
+      </aside>
     )
   }
 }
