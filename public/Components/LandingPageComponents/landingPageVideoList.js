@@ -2,9 +2,6 @@ import React, {Component} from 'react'
 var secret = require("../../../private.js")
 var axios = require('axios');
 
-//retrieve the videos from the user and display them 
-// when clicked, they play in the ProfilePlayer
-
 class LandingPageVideoList extends Component {
   constructor(props){
     super(props)

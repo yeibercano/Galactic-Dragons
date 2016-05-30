@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-var secret = require("../../private.js")
+var secret = require("../../../private.js")
 var axios = require('axios');
 
 class ProfileVideoList extends Component {

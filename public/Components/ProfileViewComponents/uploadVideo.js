@@ -1,5 +1,5 @@
 import React from 'react'
-var secret = require("../../private.js")
+var secret = require("../../../private.js")
 var axios = require('axios');
 import { Router, Redirect, Route, IndexRoute, Link, hashHistory, browserHistory} from 'react-router'
 
