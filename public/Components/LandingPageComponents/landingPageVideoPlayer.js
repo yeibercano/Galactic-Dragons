@@ -18,7 +18,7 @@ class LandingPageVideoPlayer extends React.Component {
     super (props)  
     console.log("This is props inside LandingPageVideoPlayer", props)
     this.state = {
-        movieSent: ''
+        movieSent: null
     }
 
     this.onClickHandler = this.onClickHandler.bind(this);
@@ -32,24 +32,26 @@ class LandingPageVideoPlayer extends React.Component {
    
    onClickHandler (e, movieProps) {
     e.preventDefault();
-    console.log('movieProps inside onClickHandler:', movieProps)
-    this.setState({ movieSent: movieProps})
-    .then(function(){console.log('did this work')})
-    .bind(this);
-   
+    // console.log('movieProps inside onClickHandler inside LandingPageVideoPlayer:', movieProps)
+    this.setState({ movieSent: movieProps}, function() {
+        hashHistory.push('/viewer')
+        
+    })
    }
-
+  
+   
    renderImage(movieProps) {
 
     return (
         <CarouselItem>
-          <video onClick={e => this.onClickHandler(e, movieProps)} src={movieProps.video}/>
+          <img onClick={e => this.onClickHandler(e, movieProps)} src={movieProps.image}/>
         </CarouselItem>
     )
    }
 
   render() {
-    console.log('inside render of landingPageVideoPlayer:', this.state.movieSent);
+
+    // console.log('!!!!!!!!this is after setting state for movieSent:', this.state.movieSent);
     if (this.props.allMovies === null) {
         return (
             <div>Loading...</div>
@@ -57,20 +59,20 @@ class LandingPageVideoPlayer extends React.Component {
     }
 
     return (
-
-     <div>
+    <div>
       <Carousel>
         {this.props.allMovies.map(movie => this.renderImage(movie.m.properties))}
       </Carousel>
-      <div style={{display:"none"}}>
-        <ViewingPage movieSent={this.state.movieSent} />
+      <div style={{display: "none"}}>
+      <ViewingPage movieSent={this.state.movieSent} />
       </div>
-     </div>
+    </div>
     )
   }
 }
 
 export default LandingPageVideoPlayer
+
 
         // <CarouselItem>
         //   <image src={this.props.allMovies[0].m.properties.image}/>
