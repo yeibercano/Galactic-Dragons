@@ -4,9 +4,9 @@ import { Router, Redirect, Route, IndexRoute, Link, hashHistory, browserHistory}
 
 
 
-var  local = JSON.parse(localStorage.getItem('u'))
-let token = local.token;
-axios.defaults.headers.common['Authorization'] =  token;
+// var  local = JSON.parse(localStorage.getItem('u'))
+// let token = local.token;
+// axios.defaults.headers.common['Authorization'] =  token;
 // console.log('token:', token)
 class Login extends React.Component {
 
