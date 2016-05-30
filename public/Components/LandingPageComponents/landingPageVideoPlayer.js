@@ -32,9 +32,10 @@ class LandingPageVideoPlayer extends React.Component {
    
    onClickHandler (e, movieProps) {
     e.preventDefault();
+    localStorage.setItem('viewerMovie', JSON.stringify(movieProps));
     // console.log('movieProps inside onClickHandler inside LandingPageVideoPlayer:', movieProps)
     this.setState({ movieSent: movieProps}, function() {
-        hashHistory.push('/viewer')
+        hashHistory.push('viewer')
         
     })
    }
