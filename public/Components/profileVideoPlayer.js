@@ -3,25 +3,10 @@ import ProfileVideoList from './profileVideoList'
 var secret = require("../../private.js")
 var axios = require('axios');
 
-//retrieve the videos from the user and display them 
-// when clicked, they play in the ProfilePlayer
-
 class ProfileVideoPlayer extends React.Component {
 
   constructor (props) {
-    //Signifies what is coming from the super class?
-    // console.log("For kicks: ", this.props.userInfo);
-    // get request to db to retrieve the movie nodes and subsequent video url contained within
-    // let urlServer = '';
-    // axios.get("/movies", {params: {userName: this.props.userInfo.userName}})
-    // .then(function(movieResponse){
-    //   urlServer = movieResponse.data[movieResponse.data.length-1].m.properties.video
-      
-    //   // TODO: Get video url from movieResponse at very last index if it comes back in an array
-    //   // remember to put the component back into profile once finished with TODO. Place array of movies into allMovies property
-    // })
     super (props)  
-    // console.log(this.props)
     this.state = {
       url: "",
       allMovies: ""
@@ -37,7 +22,8 @@ class ProfileVideoPlayer extends React.Component {
     }
 
   selectedMovie (movie) {
-    console.log('A new movie was selected!', movie);
+    console.log('A new movie was selected!', movie.video);
+    this.setState({url: movie.video})
   }
 
   render() {
