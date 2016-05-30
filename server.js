@@ -8,6 +8,7 @@ var multiparty = require('connect-multiparty'),
   mulitpartyMiddleware = multiparty();
 var secret = require('./private.js');
 var morgan = require('morgan')
+// var favicon = require('serve-favicon');
 
 // We need to add a configuration to our proxy server,
 // as we are now proxying outside localhost
@@ -19,6 +20,7 @@ var proxy = httpProxy.createProxyServer({
 });
 var app = express();
 
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(bodyParser.json());
 app.use(bodyParser({limit: '50mb'}));
 app.use(express.static(publicPath));
@@ -27,25 +29,20 @@ app.use(express.static(publicPath));
 app.use(morgan('dev'));
 
 
+app.use(function(req, res, next){
+console.log('req.headers:', req.headers)
+console.log('res.body:', req.body)
+console.log('res.query:', req.query)
+  next();
+});
+
+
+
 /* ROUTES */
 var users = require('./server/routes/users');
 var movies = require('./server/routes/movies')
 app.use('/movies', movies) /* All MOVIES ROUTES. */
 app.use('/users', users); /* All USERS ROUTES. */
-
-// app.get('/*', function(req, res){
-//   console.log('wild card')
-//   res.send('index.html');
-// })
-
-/*
-================================================================================================
-POST TO S3 BELOW
-================================================================================================
-*/
-
-//Below code is for uploading file to S3 bucket in AWS using streaming-s3
-//'/video.mp4' should be replaced with variable that siginifies the mp4 being uploaded
 
 /*
 ================================================================================================
