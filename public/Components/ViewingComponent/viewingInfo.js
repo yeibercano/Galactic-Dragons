@@ -7,18 +7,8 @@ var axios = require('axios');
 
 class ViewingInfo extends React.Component {
 
-  constructor (props) {
 
-    super (props)  
-    // console.log(this.props)
-    this.state = {
-      url: "",
-      allMovies: ""
-    }
-   }
-
-
-  render() {     
+  render() {   
     return (
       <div> 
         <h1>This is Where The Movie Information resides</h1>       

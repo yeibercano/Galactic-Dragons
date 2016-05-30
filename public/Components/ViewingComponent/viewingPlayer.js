@@ -6,16 +6,10 @@ var axios = require('axios');
 // when clicked, they play in the ProfilePlayer
 
 class ViewingPlayer extends React.Component {
+   
 
-  constructor (props) {
-
-    super (props)  
-    // console.log(this.props)
-
-   }
-
-
-  render() {
+  render() {    
+    console.log("%%%%%%%%%%%%%%%",this.props)  
     return (
       <div>
         <h1>This is Where You Watch Movies</h1>
@@ -26,3 +20,4 @@ class ViewingPlayer extends React.Component {
 
 export default ViewingPlayer
 
+          // <video controls src={"https://s3-us-west-2.amazonaws.com/galactic.video/smallToy.mp4"} type="video/mp4"/>
