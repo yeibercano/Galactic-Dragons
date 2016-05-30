@@ -30,7 +30,7 @@ class LandingPage extends Component {
     return (
       <section> 
         <LandingPageVideoPlayer allMovies = {this.state.allMovies} />
-        <LandingPageVideoList />
+        <LandingPageVideoList allMovies = {this.state.allMovies} />
       </section>
     )
   }
