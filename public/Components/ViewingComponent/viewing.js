@@ -18,7 +18,15 @@ class ViewingPage extends Component {
     } else {
       movieSelected = JSON.parse(movieSelected);
       this.state = {
-        videoUrl: movieSelected.video
+        videoUrl: movieSelected.video,
+        videoImage: movieSelected.image,
+        videoTitle: movieSelected.title,
+        videoSynopsis: movieSelected.synopsos,
+        videoActors: movieSelected.actors,
+        videoDirector: movieSelected.director,
+        videoYear: movieSelected.year
+
+
       }
       console.log('this is now the new state:', this.state.videoUrl);
     }
@@ -34,6 +42,14 @@ class ViewingPage extends Component {
       <div>
       <h1>This is a test</h1>
         <video controls src={this.state.videoUrl} type="video/mp4" />
+        <div>
+            <img style={{height: 150, width:150}} src={this.state.videoImage} />
+            <h3>{this.state.videoTitle}</h3>
+            <h5>{this.state.videoSynopsis}</h5>
+            <h5>{this.state.videoActors}</h5>
+            <h5>{this.state.videoDirector}</h5>
+            <h5>{this.state.videoYear}</h5>
+        </div>
       </div>
     );
   }
