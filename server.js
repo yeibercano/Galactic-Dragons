@@ -29,12 +29,12 @@ app.use(express.static(publicPath));
 app.use(morgan('dev'));
 
 
-app.use(function(req, res, next){
-console.log('req.headers:', req.headers)
-console.log('res.body:', req.body)
-console.log('res.query:', req.query)
-  next();
-});
+// app.use(function(req, res, next){
+// console.log('req.headers:', req.headers)
+// console.log('req.body:', req.body)
+// console.log('req.query:', req.query)
+//   next();
+// });
 
 
 

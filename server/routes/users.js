@@ -12,7 +12,7 @@ var crypto = require('crypto');
 // CREATES NEW USERS
 router.post('/register', function(req, res, next){
   // console.log("What is req inside users.js: ", req);
-  // console.log("What is req.body inside users.js: ", req.body);
+  console.log("What is req.body inside users.js: ", req.body);
   var submittedPassword = req.body.password;
   
   //hashes and salts the password
@@ -70,7 +70,7 @@ router.post('/register', function(req, res, next){
         id: user[0].user._id,
         userName: user[0].user.properties.userName
       }, secret.jwtSecret, {
-        expiresIn: 1
+        expiresIn: 15000
       });
       res.status(200).json({
         success: true,
@@ -80,6 +80,22 @@ router.post('/register', function(req, res, next){
   
   })
   // res.status(200);
+});
+
+/* QUERY ALL USERS */
+router.get('/all', function(req, res, next) {
+  var query = [
+    'MATCH (n:User )',
+    'RETURN n'
+  ].join('\n');
+
+  db.cypher({
+    query: query
+  }, function(err, users){
+    if (err) throw err;
+    // console.log(users)
+    res.send({users: users});  
+  });
 });
 
 /* POST /users/login */
@@ -149,7 +165,7 @@ router.post('/login', function(req, res, next){
             // password: user[0].user.properties.password,
             userName: user[0].user.properties.userName
           }, secret.jwtSecret, {
-            expiresIn: 1
+            expiresIn: 15000
           });
          console.log('token', token)
         res.status(200).json({
@@ -170,6 +186,9 @@ router.post('/login', function(req, res, next){
 
 /* ANY ROUTE BELOW THIS FUNCTION WILL BE AUTHENTICATED */
 router.use(function(req, res, next) {
+  console.log('req. query in middleware:', req.body)
+  console.log('req. query in middleware:', req.headers)
+  console.log('req. query in middleware:', req.query)
   // check header or url parameters or post parameters for token
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
   // decode token
@@ -222,10 +241,13 @@ router.get('/all', function(req, res, next) {
 
 /* QUERY SINGLE USER */
 router.get('/single', function(req, res, next) {
+  console.log('req.body in single user request:', req.body)
+  console.log('this is req.query.userName:', req.query.userName);
+  console.log('this is req.decoded:', req.decoded);
+  console.log('this is req.headers.authorization', req.headers.authorization);
 
-  // console.log('this is req.query.userName:', req.query.userName);
 
-  var userName = req.query['userName'] || req.headers['userName'] || req.body['userName'];
+  var userName = req.query['userName'] || req.headers['userName'] || req.body['userName'] || req.decoded['userName'];
   console.log('This is userName', userName);
   var query = [
     'MATCH (user:User { userName: {userName} })',

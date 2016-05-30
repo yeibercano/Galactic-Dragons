@@ -49,12 +49,141 @@ table {
 
 
 
-/*============================================================================================================================*/
+/*=========================================================================================*/
 /*STYLING*/
-/*============================================================================================================================*/
+/*=========================================================================================*/
+
+body{
+  background-color: black;
+}
 
 
+/*=========================================================================================*/
+/*CAROUSEL*/
+/*=========================================================================================*/
+section.carousel-div{
+  margin-top: -18px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #222222;
+}
+#carousel-img{
+  height: 500px;
+  margin:0px auto; 
+}
+#carousel-caption{
+  background-color: black;
+  border-radius: 10px;
+  opacity: 0.7;
+}
 
+/*=========================================================================================*/
+/*FORM*/
+/*=========================================================================================*/
+input{
+  display: block;
+  border-radius: 5px;
+  width: 60%;
+  height: 60px;
+  /*margin: 20px 50px;*/
+  margin: 15px auto;
+  font-size: 25px;
+  border: 3px solid #222222;
+  background-color: black;
+  padding-left: 10px;
+}
+textarea{
+  display: block;
+  border-radius: 5px;
+  width: 60%;
+  height: 150px;
+  /*margin: 20px 50px;*/
+  margin: 15px auto;
+  font-size: 25px;
+  border: 3px solid #222222;
+  background-color: black;
+  padding-left: 10px;
+}
+.create_account_screen {
+}
+.create_account_form h1{
+  text-align: center;
+}
+
+
+/*=========================================================================================*/
+/*BUTTONS*/
+/*=========================================================================================*/
+.register-button{
+  height: 50px;
+  width: 200px;
+  font-size: 20px;
+  background-color: #222222;
+  color: white;
+  border-radius: none;
+}
+
+.login-button{
+  height: 50px;
+  width: 200px;
+  font-size: 20px;
+  background-color: #222222;
+  color: white;
+  border-radius: none;
+}
+
+/*=========================================================================================*/
+/*FOOTER*/
+/*=========================================================================================*/
+footer{
+  position: relative;
+  background-color: #222222;
+  bottom: -63px;
+  width:100%;
+  height:25px;
+}
+footer h3{
+  color: white;
+  text-align: center;
+}
+
+/*=========================================================================================*/
+/*VIDEO*/
+/*=========================================================================================*/
+
+video {
+  height: 500px;
+  width: 900px;
+  
+}
+
+/*=========================================================================================*/
+/*VIEWING*/
+/*=========================================================================================*/
+video.viewing_video{
+  margin: 20px auto;  
+}
+aside.viewing_info{
+  height:350px;
+  width:100%;
+  background-color: #222222;
+  padding: 50px 20px;
+  box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
+
+}
+section#poster_info{
+  display:inline-block;
+  margin-right: 20px;
+  float:left;
+}
+section#movie_info{ 
+  display: inline;
+  height:350px;
+  width:100%;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  color: black;
+  
+}
 
 
 

@@ -23,7 +23,7 @@ class Login extends React.Component {
     //   // remember to put the component back into profile once finished with TODO. Place array of movies into allMovies property
     // })
     super (props)  
-      let userLS = localStorage.getItem('u');
+      let userLS = localStorage.getItem('user');
       //parses the info brought down (object)
       let parseUser = JSON.parse(userLS);
       console.log('userLS PROFILE COMPONENT', parseUser);
@@ -43,22 +43,23 @@ class Login extends React.Component {
 
     _userLogin(e){
       e.preventDefault();
-      console.log("You made it into _userLogin");
+      // console.log("You made it into _userLogin");
 
       let userLogin = {
         userName: this.userName.value,
         password: this.password.value
       }
 
-    console.log('userLogin',userLogin)
+    // console.log('userLogin',userLogin)
     axios.post('/users/login',userLogin )
       .then(function(response){
+
         console.log('response from server',response);
         console.log('response after login:', response.data.status)
         if(response.data.status === 401) {
           alert('wrong password')
         }
-        localStorage.setItem('u', JSON.stringify(response.data))
+        localStorage.setItem('user', JSON.stringify(response.data))
       }).then(function() {
           alert('working password')
         
@@ -68,6 +69,7 @@ class Login extends React.Component {
         if (err ) throw err
       })
     }
+
 
     render () {
       return(

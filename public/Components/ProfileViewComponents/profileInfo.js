@@ -3,23 +3,23 @@ var axios = require('axios');
  
 // shows ProfileInfo
 class ProfileInfo extends Component {
+  
   constructor(props){
     super(props)
-    console.log("What is userName", this.props.userInfo);
+    
   }
-
 
   render() {
     return (
-      <div>
-        <p>Account Information</p>
+      <aside className="account-information">
+        <h3>Account Information</h3>
         <p>Username: {this.props.userInfo.userName}</p>
         <p>First Name: {this.props.userInfo.firstName}</p>
         <p>Last Name: {this.props.userInfo.email}</p>
         <p>Phonenumber: {this.props.userInfo.phoneNumber}</p>
         <p>Company Name:{this.props.userInfo.companyName}</p>
         <p>Website: {this.props.userInfo.website}</p>
-      </div>
+      </aside>
     )
   }
 }

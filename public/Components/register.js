@@ -6,21 +6,6 @@ import { Router, Redirect, Route, IndexRoute, Link, hashHistory, browserHistory}
 
 
 var CreateAccountScreen = React.createClass({
-  // getInitialState: function () {
-  //   return {
-  //     firstName: null,
-  //     lastName: null,
-  //     userName: null,
-  //     password: null,
-  //     confirmPassword: null,
-  //     email: null,
-  //     website: null,
-  //     companyName: null,
-  //     phoneNumber: null,
-  //     video: null,
-  //     image: null
-  //   }
-  // },
 
   _handleChange: function(e) {
     // this.setState({value: e.target.value});
@@ -58,9 +43,6 @@ var CreateAccountScreen = React.createClass({
       localStorage.setItem('user', JSON.stringify(userInfo))
       // localStorage.setItem('newUser', userInfo)
       // console.log('this newUser:', userInfo);
-
-
-
     })
     .then(function(){
       //redirects to the profile page
@@ -94,7 +76,6 @@ var CreateAccountScreen = React.createClass({
 
         <div className="create_account_form">
           <h1>Create account</h1>
-          <p>Example of form validation built with React.</p>
           <form onSubmit={this._saveAndContinue}>
             <input
               type="text"
