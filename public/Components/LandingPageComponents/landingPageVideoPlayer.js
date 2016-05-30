@@ -32,14 +32,15 @@ class LandingPageVideoPlayer extends React.Component {
    
    onClickHandler (e, movieProps) {
     e.preventDefault();
-    console.log('movieProps inside onClickHandler inside LandingPageVideoPlayer:', movieProps)
+    console.log('movieProps inside onClickHandler:', movieProps)
     this.setState({ movieSent: movieProps})
-    var target = e.target.src;
-    console.log('this is target:', target);
+    .then(function(){console.log('did this work')})
+    .bind(this);
    
    }
 
    renderImage(movieProps) {
+
     return (
         <CarouselItem>
           <video onClick={e => this.onClickHandler(e, movieProps)} src={movieProps.video}/>
@@ -48,8 +49,7 @@ class LandingPageVideoPlayer extends React.Component {
    }
 
   render() {
-
-    console.log('this is after setting state for movieSent:', this.state.movieSent);
+    console.log('inside render of landingPageVideoPlayer:', this.state.movieSent);
     if (this.props.allMovies === null) {
         return (
             <div>Loading...</div>
@@ -59,10 +59,12 @@ class LandingPageVideoPlayer extends React.Component {
     return (
 
      <div>
-      <ViewingPage movieSent={this.state.movieSent} />
       <Carousel>
         {this.props.allMovies.map(movie => this.renderImage(movie.m.properties))}
       </Carousel>
+      <div style={{display:"none"}}>
+        <ViewingPage movieSent={this.state.movieSent} />
+      </div>
      </div>
     )
   }
