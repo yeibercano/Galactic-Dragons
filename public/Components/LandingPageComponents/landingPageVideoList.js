@@ -23,10 +23,9 @@ class LandingPageVideoList extends Component {
     }
 
     return (
-      <div>
-        <h1>This is Where the List of Users Videos Will Be</h1>
+      <section>
         {this.props.allMovies.map(movie => this.movieInfo(movie.m.properties))}
-      </div>
+      </section>
     );
   }
 

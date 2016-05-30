@@ -33,7 +33,6 @@ class Profile extends Component {
     
     return (
       <div> 
-        <div> PROFILE PARENT COMPONENT SHOWING</div>
         <ProfileInfo userInfo = {this.state.userInfo}/>
         <ProfileVideoPlayer userInfo = {this.state.userInfo} />
         <UploadVideos />
