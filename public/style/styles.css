@@ -87,6 +87,21 @@ input{
   /*margin: 20px 50px;*/
   margin: 15px auto;
   font-size: 25px;
+  border: 3px solid #222222;
+  background-color: black;
+  padding-left: 10px;
+}
+textarea{
+  display: block;
+  border-radius: 5px;
+  width: 60%;
+  height: 150px;
+  /*margin: 20px 50px;*/
+  margin: 15px auto;
+  font-size: 25px;
+  border: 3px solid #222222;
+  background-color: black;
+  padding-left: 10px;
 }
 .create_account_screen {
 }
