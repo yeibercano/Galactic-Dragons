@@ -32,16 +32,17 @@ class LandingPageVideoPlayer extends React.Component {
    
    onClickHandler (e, movieProps) {
     e.preventDefault();
+    localStorage.setItem('viewerMovie', JSON.stringify(movieProps));
     // console.log('movieProps inside onClickHandler inside LandingPageVideoPlayer:', movieProps)
     this.setState({ movieSent: movieProps}, function() {
-        hashHistory.push('/viewer')
+        hashHistory.push('viewer')
         
     })
-    // hashHistory.push("/viewer")
    }
   
    
    renderImage(movieProps) {
+
     return (
         <CarouselItem>
           <img onClick={e => this.onClickHandler(e, movieProps)} src={movieProps.image}/>
@@ -59,7 +60,6 @@ class LandingPageVideoPlayer extends React.Component {
     }
 
     return (
-
     <div>
       <Carousel>
         {this.props.allMovies.map(movie => this.renderImage(movie.m.properties))}
@@ -68,7 +68,6 @@ class LandingPageVideoPlayer extends React.Component {
       <ViewingPage movieSent={this.state.movieSent} />
       </div>
     </div>
-   
     )
   }
 }
