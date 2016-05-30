@@ -27,14 +27,14 @@ class ProfileVideoPlayer extends React.Component {
   render() {
 
     return (
-      <div>
+      <section className="profile_video_player">
         <h1>This is The Users Most Recent Upload</h1>
         <video controls src={this.state.url} type="video/mp4" />
          <ProfileVideoList 
           selectedMovie = {(selectedMovie) => this.selectedMovie(selectedMovie)}
           moviesList = {this.state.allMovies}
          />
-      </div>
+      </section>
     );
   }
 }
