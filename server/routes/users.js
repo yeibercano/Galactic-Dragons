@@ -74,6 +74,7 @@ router.post('/register', function(req, res, next){
       });
       res.status(200).json({
         success: true,
+        userName : user[0].user.properties.userName,
         message: 'Enjoy your token!',
         token: token
       });
@@ -170,6 +171,7 @@ router.post('/login', function(req, res, next){
          console.log('token', token)
         res.status(200).json({
           success: true,
+          userName : user[0].user.properties.userName,
           message: 'Enjoy your token!',
           token: token
         });
