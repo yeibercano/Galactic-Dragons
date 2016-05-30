@@ -36,12 +36,3 @@ class LandingPageVideoList extends Component {
 }
 
 export default LandingPageVideoList
-
- 
-          // {this.props.moviesList ? this.props.moviesList.map(function(movie) {
-          //   return (
-          //   <div>
-          //     {movie.m.properties.title}
-          //   </div>
-          //   )  
-          // }) :null}
