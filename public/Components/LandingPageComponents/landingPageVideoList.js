@@ -9,7 +9,6 @@ class LandingPageVideoList extends Component {
   constructor(props){
     super(props)
     let movies = props
-    console.log("This is movies inside LandingPageVideoList: ", movies);
   }
 
   movieInfo(movieInfo) {
@@ -26,7 +25,6 @@ class LandingPageVideoList extends Component {
       return <div>Loading...</div>
     }
 
-    console.log('this is movieProps:', this.props.allMovies)
     return (
       <div>
         <h1>This is Where the List of Users Videos Will Be</h1>
