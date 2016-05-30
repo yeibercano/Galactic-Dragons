@@ -6,6 +6,7 @@ var db = new neo4j.GraphDatabase(secret.grapheneDB_URI);
 var fs = require('fs');
 var multiparty = require('connect-multiparty'),
   mulitpartyMiddleware = multiparty();
+var jwt    = require('jsonwebtoken')
 
 /* FREE ACCESS ROUTES */
 
@@ -29,6 +30,33 @@ router.get('/', function(req, res, next) {
   });
 });
 
+/* CREATES NEW MOVIE NODE IN NEO4J */
+router.post('/movie', function(req, res, next){
+  // console.log("What is req inside users.js: ", req.body.userName);
+  var userName = req.body.userName
+  var query = [
+    'MATCH(user:User {userName:{userName}})',
+    'CREATE (m:Movie {newMovie})<-[r:OWNER]-(user)',
+    'RETURN m'
+  ].join('\n');
+  var params = {
+    newMovie: req.body,
+    userName: userName
+  };
+
+  db.cypher({
+    query: query,
+    params: params
+  }, 
+  function(err, movie){
+    if (err) throw err;
+    // console.log('movie creates new movie',movie);
+    // console.log('new');
+    res.status(200).json(movie = movie);
+  })
+});
+
+
 /* TODO: search through all nodes - right now it only search through categories */
 /* FOR SEACH BAR - SEARCH MOVIES IN DATABASE */
 router.get('/search', function(req, res, next) {
@@ -50,32 +78,6 @@ router.get('/search', function(req, res, next) {
       // console.log('new');
       res.status(200).send(movie);
   });
-});
-
-/* ANY ROUTE BELOW THIS FUNCTION WILL BE AUTHENTICATED */
-router.use(function(req, res, next) {
-  // check header or url parameters or post parameters for token
-  var token = req.body.token || req.query.token || req.headers['x-access-token'];
-  // decode token
-  if (token) {
-    // verifies secret and checks exp
-    jwt.verify(token, secret.jwtSecret, function(err, decoded) {      
-      if (err) {
-        return res.json({ success: false, message: 'Failed to authenticate token.' });    
-      } else {
-        // if everything is good, save to request for use in other routes
-        req.decoded = decoded;
-        next();
-      }
-    });
-  } else {
-    // if there is no token
-    // return an error
-    return res.status(403).send({
-        success: false,
-        message: 'No token provided.'
-    });
-  }
 });
 
 // s3 connection
@@ -124,6 +126,61 @@ router.post('/movieS3', function(req, res){
   })
 
 });
+
+/* RETRIEVES ALL MOVIES FROM A USER */
+router.get('/user', function(req, res, next) {
+  console.log('req.body.userName :', req.body.userName)
+  console.log('movies user:', req.decoded)
+  var userName = req.query['userName'] || req.headers['userName'] || req.body['userName'] || req.decoded['userName'];
+
+  var query = [
+   'MATCH (u:User {userName:{userName}})-[r:OWNER]->(m:Movie) RETURN m'
+  ].join('\n');
+  var params = {
+    userName: userName
+  };
+
+  db.cypher({
+    query: query,
+    params: params
+  }, 
+    function(err, movies){
+      if (err) throw err;
+      // console.log('movie',movies);
+      // console.log('new');
+      res.status(200).send(movies);
+  })
+});
+
+
+/* ANY ROUTE BELOW THIS FUNCTION WILL BE AUTHENTICATED */
+router.use(function(req, res, next) {
+  console.log('req.query in mdidleware movies: ', req.body)
+  // check header or url parameters or post parameters for token
+  var token = req.body.token || req.query.token || req.headers['x-access-token'];
+  // decode token
+  if (token) {
+    // verifies secret and checks exp
+    jwt.verify(token, secret.jwtSecret, function(err, decoded) {      
+      if (err) {
+        return res.json({ success: false, message: 'Failed to authenticate token.' });    
+      } else {
+        // if everything is good, save to request for use in other routes
+        req.decoded = decoded;
+        next();
+      }
+    });
+  } else {
+    // if there is no token
+    // return an error
+    return res.status(403).send({
+        success: false,
+        message: 'No token provided.'
+    });
+  }
+});
+
+
 
 
 //===============================================================================
@@ -187,28 +244,7 @@ router.post('/movie', function(req, res, next){
   })
 });
 
-/* RETRIEVES ALL MOVIES FROM A USER */
-router.get('/user', function(req, res, next) {
-  var userName = req.query.userName;
 
-  var query = [
-   'MATCH (u:User {userName:{userName}})-[r:OWNER]->(m:Movie) RETURN m'
-  ].join('\n');
-  var params = {
-    userName: userName
-  };
-
-  db.cypher({
-    query: query,
-    params: params
-  }, 
-    function(err, movies){
-      if (err) throw err;
-      // console.log('movie',movies);
-      // console.log('new');
-      res.status(200).send(movies);
-  })
-});
 
 /* RETRIEVES A SINGLE MOVIE */
 router.get('/single', function(req, res, next) {
