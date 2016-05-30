@@ -54,7 +54,7 @@ table {
 /*=========================================================================================*/
 
 body{
-  background-color: black;
+  background: -webkit-radial-gradient(center, ellipse cover, #2c2e3d 0%,#000000 100%);
 }
 
 
@@ -64,7 +64,7 @@ body{
 section.carousel-div{
   margin-top: -18px;
   padding-bottom: 40px;
-  border-bottom: 1px solid #222222;
+  border-bottom: 1px solid #FFFFFF;
 }
 #carousel-img{
   height: 500px;
@@ -160,7 +160,7 @@ video {
 /*VIEWING*/
 /*=========================================================================================*/
 video.viewing_video{
-  margin: 20px auto;  
+  width: 100%;  
 }
 aside.viewing_info{
   height:350px;
@@ -185,10 +185,89 @@ section#movie_info{
   
 }
 
+/*=========================================================================================*/
+/*LANDING*/
+/*=========================================================================================*/
+section.landing_page h2{
+  text-align: center;
+  color: #FFFFFF;
+}
+section.landing_page_movieInfo{
+  display: inline-block;
+  margin: 50px 25px;
+}
 
+#landing_page_movieInfo_image{
+  height: 250px;
+  width: 225px;
+}
 
-
-
-
-
+/*=========================================================================================*/
+/*PROFILE*/
+/*=========================================================================================*/
+section.profile_container{
+  position: relative;
+  height: 1000px;
+  width:1200px;
+}
+aside.account_information{
+  position: absolute;
+  background-color: #222222;
+  height: 100%;
+  width: 300px;
+  padding: 25px;
+  border-top:  2px solid white;
+  border-bottom: 2px solid white;
+  box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
+  color: white;
+}
+section.profile_video_player{
+  display: inline-block;
+  position: absolute;
+  left: 30%;
+}
+section.profile_video_player video{
+  width: 900px;
+  height: 500px;
+  margin-left: -30px;
+  margin-bottom: 5px;
+}
+section.profile_video_player h1{
+  text-align: center;
+  color: white;
+}
+section.upload_video_button{
+  position: absolute;
+  bottom: 25px;
+  margin: 0 auto;
+}
+section.profile_video_list {
+  background-color: #22222;
+  height: 340px;
+  width: 850px;
+  border: 1px solid #FFFFFF;
+  padding: 10px;
+  overflow: scroll;
+}
+section.profile_video_list h1{
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+}
+section.profile_video_list h3{
+  display: inline;
+  margin-left: 10px;
+  cursor: pointer;
+  color: white;
+}
+section.profile_video_list img{
+  display:inline-block;
+  height:150px;
+  width:125px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+section.list-item-container{
+  border-bottom: 1px solid #FFFFFF;
+}
 
