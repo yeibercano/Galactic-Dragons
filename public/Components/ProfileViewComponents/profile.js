@@ -6,9 +6,9 @@ import ProfileVideoPlayer from './profileVideoPlayer'
 import ProfileInfo from './profileInfo'
 import UploadVideos from './uploadVideo'
 
+
 // this is the parent component 
 // shows userInfo - ProfilePlayer - ProfileVideos - ProfileUpload
-
 class Profile extends Component {
 
   constructor (props) {
@@ -25,20 +25,23 @@ class Profile extends Component {
     // console.log('this is the new parsed movie info:', parseMovie)
     this.state = {
       userInfo: parseUser,
-      // video: parseMovie.video
     }
   }
+
+  
 
   render() {
     
     return (
-      <div> 
-        <ProfileInfo userInfo = {this.state.userInfo}/>
+
+      <section className="profile_container" >
+        <ProfileInfo  userInfo = {this.state.userInfo}/>
         <ProfileVideoPlayer userInfo = {this.state.userInfo} />
-        <UploadVideos />
-      </div>
+          <UploadVideos />
+      </section>
     )
   }
 }
 
 export default Profile
+         
