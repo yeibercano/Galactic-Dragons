@@ -46,7 +46,7 @@ const ProfileUser = React.createClass({
   render() {
     return (
       <div>
-        <Profile/>
+        <Profile />
       </div>
       );
   }})
@@ -63,6 +63,7 @@ const Stuff = React.createClass({
 const App = React.createClass({
   
   render() {
+
     return (
       <div>
         <h1>GALACTIC DRAGONS FTW!!</h1>
@@ -84,7 +85,7 @@ render((
   <Router history={hashHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
-      <Route path="home" component={Home} />
+      <Route path="home" component={Home}/>
       <Route path="viewer" component={Stuff} />
       <Route path="register" component={Register} />
       <Route path="login" component={LoginPage} />
