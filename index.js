@@ -7,7 +7,7 @@ import CreateAccountScreen from './public/Components/register'
 import Profile from './public/Components/ProfileViewComponents/profile'
 import UploadNewVideo from './public/Components/uploadNewVideo'
 import Footer from './public/Components/footer'
-import {Navbar, NavbarBrand, NavbarCollapse, NavbarHeader, NavDropdown, MenuItem, NavbarToggle, Nav, NavItem} from 'react-bootstrap'
+import {Navbar, NavbarBrand, NavbarCollapse, NavbarHeader, NavDropdown, MenuItem, NavbarToggle, Nav, NavItem ,Button, Form, FormGroup, FormControl} from 'react-bootstrap'
 import { Router, Route, IndexRoute, Link, hashHistory, browserHistory } from 'react-router'
 
 var axios = require('axios');
@@ -82,6 +82,16 @@ const App = React.createClass({
               <MenuItem eventKey={3.4}>Horror</MenuItem>
             </NavDropdown>
           </Nav>
+             <Navbar.Form>
+                <FormGroup>
+                  <FormControl type="text" placeholder="Search" />
+                </FormGroup>
+                {' '}
+                <Button 
+                  type="submit"
+                  placeholder="Search here"
+                >Submit</Button>
+            </Navbar.Form>
           <Nav pullRight>
             <NavItem eventKey={1} href="/#/register">Register</NavItem>
             <NavItem eventKey={2} href="/#/login">Login</NavItem>
