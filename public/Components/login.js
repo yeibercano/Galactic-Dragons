@@ -3,6 +3,11 @@ var axios = require('axios');
 import { Router, Redirect, Route, IndexRoute, Link, hashHistory, browserHistory} from 'react-router'
 
 
+
+var  local = JSON.parse(localStorage.getItem('u'))
+let token = local.token;
+axios.defaults.headers.common['Authorization'] =  token;
+// console.log('token:', token)
 class Login extends React.Component {
 
   constructor (props) {
@@ -18,7 +23,7 @@ class Login extends React.Component {
     //   // remember to put the component back into profile once finished with TODO. Place array of movies into allMovies property
     // })
     super (props)  
-      let userLS = localStorage.getItem('user');
+      let userLS = localStorage.getItem('u');
       //parses the info brought down (object)
       let parseUser = JSON.parse(userLS);
       console.log('userLS PROFILE COMPONENT', parseUser);
@@ -53,6 +58,7 @@ class Login extends React.Component {
         if(response.data.status === 401) {
           alert('wrong password')
         }
+        localStorage.setItem('u', JSON.stringify(response.data))
       }).then(function() {
           alert('working password')
         
