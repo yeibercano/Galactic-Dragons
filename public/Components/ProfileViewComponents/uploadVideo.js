@@ -10,18 +10,6 @@ const UploadVideo = React.createClass({
     hashHistory.push('NewVideo')
     // let filename  = this.video.value.replace("C:\\fakepath\\", "");    
   },
-
-
-  //    axios.post('/users/videos', videoInfo)
-  //   .then(function(response){
-  //     // this.props.
-  //   // console.log('this is response',response.data[0].user.properties)
-  //   let userInfo = response.data[0].user.properties;
-  //   localStorage.setItem('user',userInfo);
-  //   }).then(function(){
-  //     hashHistory.push('profile')
-  //   })  
-  // },
   
   render() {
     return (

@@ -27,20 +27,10 @@ class Profile extends Component {
       userInfo: parseUser,
       // video: parseMovie.video
     }
-    // console.log("This is this.state.userInfo inside constructor: ", this.state.userInfo)
-
-    //get request to database to retrieve video 
-    // this.setUser(parseUser);
   }
 
-  // setUser (user) {
-  //   this.setState({
-  //     userInfo: user
-  //   })
-  //   console.log("This is the new user: ", this.state.userInfo);
-  // }
-
   render() {
+    
     return (
       <div> 
         <div> PROFILE PARENT COMPONENT SHOWING</div>

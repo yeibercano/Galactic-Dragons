@@ -3,11 +3,11 @@ var axios = require('axios');
  
 // shows ProfileInfo
 class ProfileInfo extends Component {
+  
   constructor(props){
     super(props)
     
   }
-
 
   render() {
     return (
