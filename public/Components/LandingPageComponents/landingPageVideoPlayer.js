@@ -17,10 +17,10 @@ class LandingPageVideoPlayer extends React.Component {
     
     super (props)  
     console.log("This is props inside LandingPageVideoPlayer", props)
+    localStorage.setItem('viewerMovie', JSON.stringify({}));
     this.state = {
         movieSent: null
     }
-
     this.onClickHandler = this.onClickHandler.bind(this);
    }
 
