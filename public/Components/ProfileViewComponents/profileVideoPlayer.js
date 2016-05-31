@@ -14,7 +14,7 @@ class ProfileVideoPlayer extends React.Component {
    }
 
   componentWillMount() {
-    axios.get("/movies", {params: {userName: this.props.userInfo.userName}}).then(data => {
+    axios.get("/movies/user", {params: {userName: this.props.userInfo.userName}}).then(data => {
       this.setState({ url: data.data[data.data.length-1].m.properties.video, allMovies: data.data });
     });
   }
