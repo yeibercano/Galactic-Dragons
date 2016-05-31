@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import VoteVideoPlayer from './votingPlayer'
+import VoteVideoList from './votingVideoList'
+import Rating from './rating'
 var axios = require('axios');
 
 
@@ -41,6 +43,9 @@ class VoteContainer extends Component {
     return (
       <section>
         <VoteVideoPlayer movie= {this.state.videoUrl} />
+        <VoteVideoList movie={ this.state} /> 
+        <Rating />
+
       </section>
     );
   }
