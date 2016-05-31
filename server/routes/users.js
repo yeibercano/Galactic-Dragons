@@ -156,25 +156,19 @@ router.post('/login', function(req, res, next){
 
       if(bcrypt.compareSync(submittedPassword, databasePass)){
         console.log('pass works')
-         var token = jwt.sign({
-            // firstName : user[0].user.properties.firstName,
-            // lastName: user[0].user.properties.lastName,
-            // email: user[0].user.properties.email,
-            // 
-            id: user[0].user._id,
-            // image: user[0].user.properties.image,
-            // password: user[0].user.properties.password,
-            userName: user[0].user.properties.userName
-          }, secret.jwtSecret, {
-            expiresIn: 15000
-          });
-         console.log('token', token)
-        res.status(200).json({
-          success: true,
-          userName : user[0].user.properties.userName,
-          message: 'Enjoy your token!',
-          token: token
-        });
+
+        res.send({
+          firstName : user[0].user.properties.firstName,
+          lastName: user[0].user.properties.lastName,
+          email: user[0].user.properties.email,
+          company: user[0].user.properties.companyName,
+          website: user[0].user.properties.website,
+          video: user[0].user.properties.video,
+          image: user[0].user.properties.image,
+          password: user[0].user.properties.password,
+          userName: user[0].user.properties.userName
+        })
+
       } else {
         console.log('pass does not work')
         res.status(401).send('wrong password')
