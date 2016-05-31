@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { render } from 'react-dom'
 import LandingPage from './public/Components/LandingPageComponents/landingPage'
 import Viewer from './public/Components/ViewingComponent/viewing'
+import Voting from './public/Components/VotingComponent/voteContainer'
 import Login from './public/Components/login'
 import CreateAccountScreen from './public/Components/register'
 import Profile from './public/Components/ProfileViewComponents/profile'
@@ -49,11 +50,20 @@ const ProfileUser = React.createClass({
       );
   }})
 
-const Stuff = React.createClass({
+const ViewerPlayer = React.createClass({
   render() {
     return (
       <div>
         <Viewer/>
+      </div>
+      );
+  }})
+
+const VotingPlayer = React.createClass({
+  render() {
+    return (
+      <div>
+        <Voting />
       </div>
       );
   }})
@@ -127,7 +137,8 @@ render((
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
       <Route path="home" component={Home}/>
-      <Route path="viewer" component={Stuff} />
+      <Route path="viewer" component={ViewerPlayer} />
+      <Route path="vote" component={VotingPlayer} />
       <Route path="register" component={Register} />
       <Route path="login" component={LoginPage} />
       <Route path="profile" component={ProfileUser} />
