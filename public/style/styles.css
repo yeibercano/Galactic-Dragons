@@ -256,8 +256,7 @@ aside.account_information{
   height: 100%;
   width: 340px;
   padding: 25px;
-  border-top:  2px solid white;
-  border-bottom: 2px solid white;
+  top: -20px;
   box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
   color: white;
 }
@@ -316,4 +315,42 @@ section.profile_video_list img{
 section.list-item-container{
   border-bottom: 1px solid #FFFFFF;
 }
+
+/*=========================================================================================*/
+/*VOTING*/
+/*=========================================================================================*/
+
+section.voting_container{
+  position: absolute;
+  height: 1000px;
+  width: 390px;
+  top: 55px;
+  right: 10px;
+  background-color: #222222;
+  box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
+  overflow: scroll; 
+  z-index: 1;
+}
+
+section.voting_container h4{
+  color: #FFFFFF;
+  border-bottom: 1px solid #FFFFFF;
+  text-align: center;
+  padding: 20px; 
+}
+
+section.voting_container h3{
+  color: #FFFFFF;
+  text-align: center;
+  padding: 20px; 
+}
+
+
+#voting_image {
+  height:250px;
+  width: 225px;
+  margin-left: 80px;
+}
+
+
 
