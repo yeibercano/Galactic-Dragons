@@ -26,8 +26,9 @@ class ProfileVideoPlayer extends React.Component {
         <video controls src={this.state.url} type="video/mp4" />
          <ProfileVideoList 
           selectedMovie = {(selectedMovie) => this.selectedMovie(selectedMovie)}
-          moviesList = {this.state.allMovies}
-         />
+          moviesList = {this.state.allMovies} 
+        />
+
       </section>
     );
   }
