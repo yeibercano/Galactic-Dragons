@@ -5,6 +5,7 @@ var axios = require('axios');
 import ProfileVideoPlayer from './profileVideoPlayer'
 import ProfileInfo from './profileInfo'
 import UploadVideos from './uploadVideo'
+import Voting from '../VotingComponent/voting.js'
 
 
 // this is the parent component 
@@ -33,11 +34,13 @@ class Profile extends Component {
   render() {
     
     return (
-
-      <section className="profile_container" >
-        <ProfileInfo  userInfo = {this.state.userInfo}/>
-        <ProfileVideoPlayer userInfo = {this.state.userInfo} />
-          <UploadVideos />
+      <section>
+        <section className="profile_container" >
+          <ProfileInfo  userInfo = {this.state.userInfo}/>
+          <ProfileVideoPlayer userInfo = {this.state.userInfo} />
+            <UploadVideos />
+        </section>
+        <Voting />
       </section>
     )
   }
