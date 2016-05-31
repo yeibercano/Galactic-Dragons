@@ -1,11 +1,12 @@
 var React = require('react');
 var axios = require('axios');
-var secret = require("../../private.js")
+var secret = require("../../../private.js")
 import { Router, Redirect, Route, IndexRoute, Link, hashHistory, browserHistory} from 'react-router'
 
 
 
 var UploadNewVideo = React.createClass({
+
   _handleChange: function(e) {
     // this.setState({value: e.target.value});
   },
@@ -69,7 +70,6 @@ var UploadNewVideo = React.createClass({
  
 
   render: function() {
-console.log('this.props upload new video', this.props)
     return (
       <div className="create_account_screen">
 

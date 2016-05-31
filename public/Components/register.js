@@ -34,9 +34,15 @@ var CreateAccountScreen = React.createClass({
 // ==================================================================
     axios.post('/users/register', uInfo)
     .then(function(response){
-      
-      let userInfo = response.config.data;
-      localStorage.setItem('user', userInfo)
+      console.log('this is response after registering:', response);
+      //userInfo is the response back with the very last user entered
+      let userInfo = response.data;
+      //sets "user" in localstorage to what is contained in userInfo
+      // console.log('this is userInfo before server:', uInfo);
+      // console.log('this is userInfo after server:', userInfo);
+      localStorage.setItem('user', JSON.stringify(userInfo))
+      // localStorage.setItem('newUser', userInfo)
+      // console.log('this newUser:', userInfo);
     })
     .then(function(){
       //redirects to the profile page
