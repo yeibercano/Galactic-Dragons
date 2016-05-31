@@ -66,7 +66,10 @@ class Profile extends Component {
     return (
       <div> 
         <ProfileInfo userInfo = {this.state.userInfo}/>
-        <ProfileVideoPlayer userInfo = {this.state.userInfo} />
+        <ProfileVideoPlayer 
+        userInfo = {this.state.userInfo}
+        allMovies = {this.state.allMovies}
+         />
         <UploadVideos />
       </div>
     )
