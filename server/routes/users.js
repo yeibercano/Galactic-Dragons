@@ -225,15 +225,6 @@ router.get('/all', function(req, res, next) {
   });
 });
 
-// var faker = require('faker');
-// router.get('/faker', function(req, res){
-//   var user = faker.helpers.userCard();
-//   user.avatar = faker.image.avatar;
-//   console.log('user', user)
-//   res.send(user)
-// })
-
-
 
 /* QUERY SINGLE USER */
 router.get('/single', function(req, res, next) {
