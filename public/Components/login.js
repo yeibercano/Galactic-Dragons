@@ -3,6 +3,11 @@ var axios = require('axios');
 import { Router, Redirect, Route, IndexRoute, Link, hashHistory, browserHistory} from 'react-router'
 
 
+
+// var  local = JSON.parse(localStorage.getItem('u'))
+// let token = local.token;
+// axios.defaults.headers.common['Authorization'] =  token;
+// console.log('token:', token)
 class Login extends React.Component {
 
   constructor (props) {

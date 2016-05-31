@@ -5,7 +5,7 @@ import Viewer from './public/Components/ViewingComponent/viewing'
 import Login from './public/Components/login'
 import CreateAccountScreen from './public/Components/register'
 import Profile from './public/Components/ProfileViewComponents/profile'
-import UploadNewVideo from './public/Components/uploadNewVideo'
+import UploadNewVideo from './public/Components/ProfileViewComponents/uploadNewVideo'
 import Footer from './public/Components/footer'
 import {Navbar, NavbarBrand, NavbarCollapse, NavbarHeader, NavDropdown, MenuItem, NavbarToggle, Nav, NavItem ,Button, Form, FormGroup, FormControl} from 'react-bootstrap'
 import { Router, Route, IndexRoute, Link, hashHistory, browserHistory } from 'react-router'
@@ -59,6 +59,7 @@ const Stuff = React.createClass({
   }})
 
 const App = React.createClass({
+
   logout: function(e){
     e.preventDefault();
     localStorage.removeItem("user");
@@ -75,6 +76,17 @@ const App = React.createClass({
         hide.display = "none"
       }
 
+    let user = JSON.parse(localStorage.getItem('user')) || undefined;
+    let style = {};
+    let hide = {}
+
+    if(user === undefined){
+      style.display = "none"
+    } else {
+      hide.display = "none"
+    }
+
+   console.log('user:', user)
     return (
       <div>
         <Navbar inverse>
