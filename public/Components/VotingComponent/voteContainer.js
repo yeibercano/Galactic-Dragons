@@ -44,7 +44,7 @@ class VoteContainer extends Component {
       <section>
         <VoteVideoPlayer movie= {this.state.videoUrl} />
         <VoteVideoList movie={ this.state} />
-        <section id="star-rating" style={{display: "none"}}>
+        <section id="star-rating" style={{visibility: "hidden"}}>
           <Rating  />
         </section>
       </section>
