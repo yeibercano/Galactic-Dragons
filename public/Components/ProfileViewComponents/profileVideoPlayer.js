@@ -9,15 +9,15 @@ class ProfileVideoPlayer extends React.Component {
     super (props)  
     this.state = {
       url: "",
-      allMovies: ""
+      allMovies: this.props.allMovies
     }
    }
 
-  componentWillMount() {
-    axios.get("/movies", {params: {userName: this.props.userInfo.userName}}).then(data => {
-      this.setState({ url: data.data[data.data.length-1].m.properties.video, allMovies: data.data });
-    });
-  }
+  // componentWillMount() {
+  //   axios.get("/movies", {params: {userName: this.props.userInfo.userName}}).then(data => {
+  //     this.setState({ url: data.data[data.data.length-1].m.properties.video, allMovies: data.data });
+  //   });
+  // }
 
   selectedMovie (movie) {
     console.log('A new movie was selected!', movie.video);
@@ -25,14 +25,17 @@ class ProfileVideoPlayer extends React.Component {
   }
 
   render() {
-
+   if(this.props.allMovies === ""){
+    return <div>loading... </div>
+   }
+    console.log('this.props profilve video Player', this.props)
     return (
       <section className="profile_video_player">
         <h1>This is The Users Most Recent Upload</h1>
-        <video controls src={this.state.url} type="video/mp4" />
+        <video controls src={this.props.allMovies[this.props.allMovies.length-1].m.properties.video} type="video/mp4" />
          <ProfileVideoList 
           selectedMovie = {(selectedMovie) => this.selectedMovie(selectedMovie)}
-          moviesList = {this.state.allMovies}
+          moviesList = {this.props.allMovies}
          />
       </section>
     );

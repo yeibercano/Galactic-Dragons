@@ -5,7 +5,7 @@ import Viewer from './public/Components/ViewingComponent/viewing'
 import Login from './public/Components/login'
 import CreateAccountScreen from './public/Components/register'
 import Profile from './public/Components/ProfileViewComponents/profile'
-import UploadNewVideo from './public/Components/uploadNewVideo'
+import UploadNewVideo from './public/Components/ProfileViewComponents/uploadNewVideo'
 import Footer from './public/Components/footer'
 import {Navbar, NavbarBrand, NavbarCollapse, NavbarHeader, NavDropdown, MenuItem, NavbarToggle, Nav, NavItem ,Button, Form, FormGroup, FormControl} from 'react-bootstrap'
 import { Router, Route, IndexRoute, Link, hashHistory, browserHistory } from 'react-router'
@@ -59,9 +59,30 @@ const Stuff = React.createClass({
   }})
 
 const App = React.createClass({
+ getDefaultProps () {
+
+  let user = undefined;
+  let style = {};
+
+  if(user === undefined) {
+    style.display = "none"
+  }
+ }, 
+  
   
   render() {
 
+    let user = JSON.parse(localStorage.getItem('user')) || undefined;
+    let style = {};
+    let hide = {}
+
+    if(user === undefined){
+      style.display = "none"
+    } else {
+      hide.display = "none"
+    }
+
+   console.log('user:', user)
     return (
       <div>
         <Navbar inverse>
@@ -74,7 +95,7 @@ const App = React.createClass({
           <Navbar.Collapse>
           <Nav>
             <NavItem eventKey={1} href="/#/home">Home</NavItem>
-            <NavItem eventKey={2} href="/#/profile">Profile</NavItem>
+            <NavItem style= {style} eventKey={2} href="/#/profile">Profile</NavItem>
             <NavDropdown eventKey={3} title="Categories" id="basic-nav-dropdown">
               <MenuItem eventKey={3.1}>Action</MenuItem>
               <MenuItem eventKey={3.2}>Comedy</MenuItem>
@@ -93,8 +114,9 @@ const App = React.createClass({
                   className="search_button"
                 >Search</Button>
             </Navbar.Form>
-            <NavItem id="navbar_register_link" eventKey={1} href="/#/register">Register</NavItem>
-            <NavItem id="navbar_login_link" eventKey={2} href="/#/login">Login</NavItem>
+            <NavItem   style = {hide} eventKey={1} href="/#/register">Register</NavItem>
+            <NavItem style = {hide} eventKey={2} href="/#/login">Login</NavItem>
+            <NavItem  style= {style} eventKey={3} href="/#/home">Logout</NavItem>
           </Nav>
           </Navbar.Collapse>
         </Navbar>
