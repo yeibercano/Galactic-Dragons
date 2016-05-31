@@ -14,9 +14,10 @@ class VoteVideoPlayer extends React.Component {
     e.preventDefault();
     alert("You may now vote on this movie");
     let what = document.getElementById("star-rating")
+    what.style.visibility= "visible"
 
     console.log("This is what", what);
-    return what.style={{display:"inline"}}
+    return 
 //show rating, alert user they may vote push username to viewed array
 
     // axios.post()
