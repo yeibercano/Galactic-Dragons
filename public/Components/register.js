@@ -6,21 +6,6 @@ import { Router, Redirect, Route, IndexRoute, Link, hashHistory, browserHistory}
 
 
 var CreateAccountScreen = React.createClass({
-  // getInitialState: function () {
-  //   return {
-  //     firstName: null,
-  //     lastName: null,
-  //     userName: null,
-  //     password: null,
-  //     confirmPassword: null,
-  //     email: null,
-  //     website: null,
-  //     companyName: null,
-  //     phoneNumber: null,
-  //     video: null,
-  //     image: null
-  //   }
-  // },
 
   _handleChange: function(e) {
     // this.setState({value: e.target.value});
