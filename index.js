@@ -82,19 +82,19 @@ const App = React.createClass({
               <MenuItem eventKey={3.4}>Horror</MenuItem>
             </NavDropdown>
           </Nav>
-             <Navbar.Form>
+          <Nav pullRight>
+             <Navbar.Form className="search_container" >
                 <FormGroup>
-                  <FormControl type="text" placeholder="Search" />
+                  <FormControl type="text" placeholder="Search " className="search_bar" />
                 </FormGroup>
                 {' '}
-                <Button 
+                <Button
                   type="submit"
-                  placeholder="Search here"
-                >Submit</Button>
+                  className="search_button"
+                >Search</Button>
             </Navbar.Form>
-          <Nav pullRight>
-            <NavItem eventKey={1} href="/#/register">Register</NavItem>
-            <NavItem eventKey={2} href="/#/login">Login</NavItem>
+            <NavItem id="navbar_register_link" eventKey={1} href="/#/register">Register</NavItem>
+            <NavItem id="navbar_login_link" eventKey={2} href="/#/login">Login</NavItem>
           </Nav>
           </Navbar.Collapse>
         </Navbar>
