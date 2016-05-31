@@ -48,12 +48,12 @@ class Login extends React.Component {
     // console.log('userLogin',userLogin)
     axios.post('/users/login',userLogin )
       .then(function(response){
-
         console.log('response from server',response);
         console.log('response after login:', response.data.status)
         if(response.data.status === 401) {
           alert('wrong password')
         }
+        localStorage.setItem('user', JSON.stringify(response.data))
       }).then(function() {
           alert('working password')
         
