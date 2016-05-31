@@ -5,7 +5,7 @@ var axios = require('axios');
 import ProfileVideoPlayer from './profileVideoPlayer'
 import ProfileInfo from './profileInfo'
 import UploadVideos from './uploadVideo'
-import Voting from '../VotingComponent/voting.js'
+import VoteMovies from './profileVoting.js'
 import UploadNewVideo from './uploadNewVideo'
 
 
@@ -43,7 +43,7 @@ class Profile extends Component {
         allMovies = {this.state.allMovies} />
             <UploadVideos />
         </section>
-        <Voting />
+        <VoteMovies />
       </section>
     )
   }
