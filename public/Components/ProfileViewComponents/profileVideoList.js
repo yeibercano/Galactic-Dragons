@@ -1,9 +1,7 @@
 import React, {Component} from 'react'
 var secret = require("../../../private.js")
 var axios = require('axios');
-
 class ProfileVideoList extends Component {
-
   videoInfo(videoInfo) {
     return (
         <section className="list-item-container" onClick={()=> this.props.selectedMovie(videoInfo)}>
@@ -12,13 +10,10 @@ class ProfileVideoList extends Component {
         </section>
     )
   }
-
   render() {
-
     if (this.props.moviesList === '') {
-      return <div>Loading...</div>
+      return <div>You have not Uploaded Any Movies</div>
     }
-
     return (
       <section>
         <h1>Your Uploaded Content</h1>
@@ -28,7 +23,5 @@ class ProfileVideoList extends Component {
       </section>
     );
   }
-
 }
-
 export default ProfileVideoList
