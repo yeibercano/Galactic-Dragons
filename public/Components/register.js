@@ -41,7 +41,8 @@ var CreateAccountScreen = React.createClass({
       email : this.email.value,
       website : this.website.value,
       companyName : this.companyName.value,
-      phoneNumber : this.phoneNumber.value
+      phoneNumber : this.phoneNumber.value,
+      loggedIn: true
     // image : this.image.value
     }
     // uInfo.video.push(trueVideo);

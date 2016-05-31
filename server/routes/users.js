@@ -147,6 +147,8 @@ router.post('/login', function(req, res, next){
           firstName : user[0].user.properties.firstName,
           lastName: user[0].user.properties.lastName,
           email: user[0].user.properties.email,
+          company: user[0].user.properties.companyName,
+          website: user[0].user.properties.website,
           video: user[0].user.properties.video,
           image: user[0].user.properties.image,
           password: user[0].user.properties.password,
