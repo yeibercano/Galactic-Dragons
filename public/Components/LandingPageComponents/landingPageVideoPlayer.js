@@ -41,8 +41,8 @@ class LandingPageVideoPlayer extends React.Component {
    }
   
    
-   renderImage(movieProps) {
-
+   renderImage(movieProps, i) {
+      console.log("This is i")
     return (
         <CarouselItem>
           <img id="carousel-img" onClick={e => this.onClickHandler(e, movieProps)} src={movieProps.image}/>
@@ -66,7 +66,7 @@ class LandingPageVideoPlayer extends React.Component {
     return (
     <section className="carousel-div">
       <Carousel >
-        {this.props.allMovies.map(movie => this.renderImage(movie.m.properties))}
+        {this.props.allMovies.map( movie => this.renderImage(movie.m.properties))}
       </Carousel>
       <section style={{display: "none"}}>
       <ViewingPage movieSent={this.state.movieSent} />
@@ -78,44 +78,3 @@ class LandingPageVideoPlayer extends React.Component {
 
 export default LandingPageVideoPlayer
 
-
-        // <CarouselItem>
-        //   <image src={this.props.allMovies[0].m.properties.image}/>
-        // </CarouselItem>
-
-
-
-        // <Video controls>
-        //     <source src="https://s3-us-west-2.amazonaws.com/galactic.video/Earth.mp4" type="video/mp4" />
-        //     <Overlay />
-        //     <Controls>
-        //         <Play />
-        //         <Seek />
-        //         <Time />
-        //         <Mute />
-        //         <Fullscreen />
-        //     </Controls>
-        // </Video>
-        //   <CarouselItem>
-        //   <img src="https://s3-us-west-2.amazonaws.com/galactic.video/samplePoster1.jpg" type="image/jpeg"/>
-        //   <Carousel.Caption>
-        //     <h1>Title</h1>
-        //     <h3>This is the description of the movie currently showing in the carousel</h3>
-        //   </Carousel.Caption>
-        // </CarouselItem>
-
-        // <CarouselItem>
-        //   <video src="https://s3-us-west-2.amazonaws.com/galactic.video/smallToy.mp4" type="video/mp4"/>
-        //   <Carousel.Caption>
-        //     <h1>Title</h1>
-        //     <h3>This is the description of the movie currently showing in the carousel</h3>
-        //   </Carousel.Caption>
-        // </CarouselItem>
-
-        // <CarouselItem>
-        //   <video src="https://s3-us-west-2.amazonaws.com/galactic.video/shortE.mp4" type="video/mp4"/>
-        //   <Carousel.Caption>
-        //     <h1>Title</h1>
-        //     <h3>This is the description of the movie currently showing in the carousel</h3>
-        //   </Carousel.Caption>
-        // </CarouselItem>
