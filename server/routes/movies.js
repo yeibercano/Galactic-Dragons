@@ -10,11 +10,31 @@ var jwt    = require('jsonwebtoken')
 
 /* FREE ACCESS ROUTES */
 
-/* LOADS ALL MOVIES */
+/* LOADS 5 movies */
 router.get('/', function(req, res, next) {
   // console.log('req in all movies', req)
   var query = [
-   'MATCH (m:Movie) RETURN m'
+   'MATCH (m:Movie) RETURN m LIMIT 5'
+  ].join('\n');
+
+  db.cypher({
+    query: query
+  },
+    function(err, movies){
+      if (err) throw err;
+      // console.log('movie from all movies',movies);
+      //console.log('movies properties access:', movies[0].m.properties.video)
+      //console.log('movies _id access of 1st element in array:', movies[0].m._id)
+      // res.status(200).json(movies = movies); //another way to send 
+      res.status(200).send(movies);
+  });
+});
+
+/* LOADS ALL MOVIES */
+router.get('/profile', function(req, res, next) {
+  // console.log('req in all movies', req)
+  var query = [
+   'MATCH (m:Movie) RETURN m LIMIT 5'
   ].join('\n');
 
   db.cypher({
