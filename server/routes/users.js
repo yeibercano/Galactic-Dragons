@@ -47,37 +47,39 @@ router.post('/register', function(req, res, next){
     function(err, user){
       if (err) throw err;
     
-      // console.log('user.data',user[0].user);
-      // // console.log('register calling home');
-      // res.status(200).send({ 
-      //   firstName : user[0].user.properties.firstName,
-      //   lastName: user[0].user.properties.lastName,
-      //   email: user[0].user.properties.email,
-      //   video: user[0].user.properties.video,
-      //   image: user[0].user.properties.image,
-      //   password: user[0].user.properties.password,
-      //   userName: user[0].user.properties.userName
-      // });
-      // res.redirect('/users/profile');
+      console.log('user.data',user[0].user);
+      // console.log('register calling home');
+      res.status(200).send({ 
+        firstName : user[0].user.properties.firstName,
+          lastName: user[0].user.properties.lastName,
+          email: user[0].user.properties.email,
+          company: user[0].user.properties.companyName,
+          website: user[0].user.properties.website,
+          video: user[0].user.properties.video,
+          image: user[0].user.properties.image,
+          password: user[0].user.properties.password,
+          userName: user[0].user.properties.userName
+      });
+      
 
-      var token = jwt.sign({
-        // firstName : user[0].user.properties.firstName,
-        // lastName: user[0].user.properties.lastName,
-        // email: user[0].user.properties.email,
-        // video: user[0].user.properties.video,
-        // image: user[0].user.properties.image,
-        // password: user[0].user.properties.password,
-        id: user[0].user._id,
-        userName: user[0].user.properties.userName
-      }, secret.jwtSecret, {
-        expiresIn: 15000
-      });
-      res.status(200).json({
-        success: true,
-        userName : user[0].user.properties.userName,
-        message: 'Enjoy your token!',
-        token: token
-      });
+      // var token = jwt.sign({
+      //   // firstName : user[0].user.properties.firstName,
+      //   // lastName: user[0].user.properties.lastName,
+      //   // email: user[0].user.properties.email,
+      //   // video: user[0].user.properties.video,
+      //   // image: user[0].user.properties.image,
+      //   // password: user[0].user.properties.password,
+      //   id: user[0].user._id,
+      //   userName: user[0].user.properties.userName
+      // }, secret.jwtSecret, {
+      //   expiresIn: 15000
+      // });
+      // res.status(200).json({
+      //   success: true,
+      //   userName : user[0].user.properties.userName,
+      //   message: 'Enjoy your token!',
+      //   token: token
+      // });
   
   })
   // res.status(200);
