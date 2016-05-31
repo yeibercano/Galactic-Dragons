@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { hashHistory } from 'react-router'
 var axios = require('axios');
 
 class VotingComponent extends React.Component {
@@ -16,12 +17,18 @@ class VotingComponent extends React.Component {
       this.setState({ allMovies: data.data });
     });
   }
+  onClickHandler (e, movie){
+    e.preventDefault();
+    localStorage.setItem('viewerMovie', JSON.stringify(movie));
+    console.log("This is movie inside of saveSelectedMovie", movie)
+    hashHistory.push("vote");
+  }
 
   renderImage(movie){
     console.log("This is movie inside of renderImage",movie);
     return (
         <section className="voting_image_container">
-          <img id="voting_image" src={movie.image} />
+          <img id="voting_image" src={movie.image} onClick={e => this.onClickHandler(e, movie)}/>
           <h4>{movie.synopsis}</h4>
         </section>
       )
