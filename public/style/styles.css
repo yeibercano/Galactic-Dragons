@@ -109,13 +109,30 @@ textarea{
   text-align: center;
 }
 
+/*=========================================================================================*/
+/*SEARCH*/
+/*=========================================================================================*/
+FormGroup{
+  border-radius: none;
+}
+.search_bar{
+  background-color: #222222;
+  color: #FFFFFF;
+  position: absolute;
+  right: 780px;
+  top: 0px;
+  display: inline-block;
+  height: 25px;
+  width: 400px;
+
+}
 
 /*=========================================================================================*/
 /*BUTTONS*/
 /*=========================================================================================*/
 .register-button{
   height: 50px;
-  width: 200px;
+  width: 325px;
   font-size: 20px;
   background-color: #222222;
   color: white;
@@ -130,6 +147,29 @@ textarea{
   color: white;
   border-radius: none;
 }
+.search_button{
+  position: absolute;
+  right: 700px;
+  top: 15px;
+  height: 25px;
+  width: 75px;
+  font-size: 10px;
+  background-color: #222222;
+  color: white;
+  border-radius: none;
+}
+#navbar_register_link{
+  position: absolute;
+  top:-30px;
+  right: 125px;
+}
+
+#navbar_login_link{
+  position: absolute;
+  top:-30px;
+  right: 50px;
+}
+
 
 /*=========================================================================================*/
 /*FOOTER*/
@@ -214,21 +254,26 @@ aside.account_information{
   position: absolute;
   background-color: #222222;
   height: 100%;
-  width: 300px;
+  width: 340px;
   padding: 25px;
   border-top:  2px solid white;
   border-bottom: 2px solid white;
   box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
   color: white;
 }
+aside.account_information h4{
+  margin-bottom: 20px;
+  border-bottom: #FFFFFF;
+}
+
 section.profile_video_player{
   display: inline-block;
   position: absolute;
-  left: 30%;
+  left: 35%;
 }
 section.profile_video_player video{
   width: 900px;
-  height: 500px;
+  height: 400px;
   margin-left: -30px;
   margin-bottom: 5px;
 }
@@ -238,8 +283,9 @@ section.profile_video_player h1{
 }
 section.upload_video_button{
   position: absolute;
-  bottom: 25px;
-  margin: 0 auto;
+  right: 70px;
+  bottom: -75px;
+
 }
 section.profile_video_list {
   background-color: #22222;
