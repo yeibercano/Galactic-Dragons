@@ -6,9 +6,10 @@ class ProfileVideoList extends Component {
 
   videoInfo(videoInfo) {
     return (
-        <div onClick={()=> this.props.selectedMovie(videoInfo)}>
-          {videoInfo.title}
-        </div>
+        <section className="list-item-container" onClick={()=> this.props.selectedMovie(videoInfo)}>
+          <img src={videoInfo.image} />
+          <h3>{videoInfo.title}</h3>
+        </section>
     )
   }
 
@@ -19,10 +20,12 @@ class ProfileVideoList extends Component {
     }
 
     return (
-      <div>
-        <h1>This is Where the List of Users Videos Will Be</h1>
-          {this.props.moviesList.map(movie => this.videoInfo(movie.m.properties))}
-      </div>
+      <section>
+        <h1>Your Uploaded Content</h1>
+        <section className="profile_video_list">
+            {this.props.moviesList.map(movie => this.videoInfo(movie.m.properties))}
+        </section>
+      </section>
     );
   }
 

@@ -30,14 +30,14 @@ class ProfileVideoPlayer extends React.Component {
    }
     console.log('this.props profilve video Player', this.props)
     return (
-      <div>
+      <section className="profile_video_player">
         <h1>This is The Users Most Recent Upload</h1>
         <video controls src={this.props.allMovies[this.props.allMovies.length-1].m.properties.video} type="video/mp4" />
          <ProfileVideoList 
           selectedMovie = {(selectedMovie) => this.selectedMovie(selectedMovie)}
           moviesList = {this.props.allMovies}
          />
-      </div>
+      </section>
     );
   }
 }

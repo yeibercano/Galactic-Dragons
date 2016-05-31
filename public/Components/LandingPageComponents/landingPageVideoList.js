@@ -9,10 +9,11 @@ class LandingPageVideoList extends Component {
   }
 
   movieInfo(movieInfo) {
+    console.log("This is movieInfo in landingPage", movieInfo)
     return (
-        <div>
-          {movieInfo.title}
-        </div>
+        <section className="landing_page_movieInfo">
+          <img id="landing_page_movieInfo_image"src={movieInfo.image} />
+        </section>
     )
    }
 
@@ -23,7 +24,8 @@ class LandingPageVideoList extends Component {
     }
 
     return (
-      <section>
+      <section className="landing_page">
+        <h2>Featured Movies</h2>
         {this.props.allMovies.map(movie => this.movieInfo(movie.m.properties))}
       </section>
     );
@@ -32,3 +34,7 @@ class LandingPageVideoList extends Component {
 }
 
 export default LandingPageVideoList
+
+
+          // {movieInfo.title}
+          // {movieInfo.synopsis}

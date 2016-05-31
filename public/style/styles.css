@@ -54,7 +54,7 @@ table {
 /*=========================================================================================*/
 
 body{
-  background-color: black;
+  background: -webkit-radial-gradient(center, ellipse cover, #2c2e3d 0%,#000000 100%);
 }
 
 
@@ -64,7 +64,7 @@ body{
 section.carousel-div{
   margin-top: -18px;
   padding-bottom: 40px;
-  border-bottom: 1px solid #222222;
+  border-bottom: 1px solid #FFFFFF;
 }
 #carousel-img{
   height: 500px;
@@ -109,13 +109,30 @@ textarea{
   text-align: center;
 }
 
+/*=========================================================================================*/
+/*SEARCH*/
+/*=========================================================================================*/
+FormGroup{
+  border-radius: none;
+}
+.search_bar{
+  background-color: #222222;
+  color: #FFFFFF;
+  position: absolute;
+  right: 780px;
+  top: 0px;
+  display: inline-block;
+  height: 25px;
+  width: 400px;
+
+}
 
 /*=========================================================================================*/
 /*BUTTONS*/
 /*=========================================================================================*/
 .register-button{
   height: 50px;
-  width: 200px;
+  width: 325px;
   font-size: 20px;
   background-color: #222222;
   color: white;
@@ -130,6 +147,29 @@ textarea{
   color: white;
   border-radius: none;
 }
+.search_button{
+  position: absolute;
+  right: 700px;
+  top: 15px;
+  height: 25px;
+  width: 75px;
+  font-size: 10px;
+  background-color: #222222;
+  color: white;
+  border-radius: none;
+}
+#navbar_register_link{
+  position: absolute;
+  top:-30px;
+  right: 125px;
+}
+
+#navbar_login_link{
+  position: absolute;
+  top:-30px;
+  right: 50px;
+}
+
 
 /*=========================================================================================*/
 /*FOOTER*/
@@ -160,7 +200,7 @@ video {
 /*VIEWING*/
 /*=========================================================================================*/
 video.viewing_video{
-  margin: 20px auto;  
+  width: 100%;  
 }
 aside.viewing_info{
   height:350px;
@@ -185,10 +225,132 @@ section#movie_info{
   
 }
 
+/*=========================================================================================*/
+/*LANDING*/
+/*=========================================================================================*/
+section.landing_page h2{
+  text-align: center;
+  color: #FFFFFF;
+}
+section.landing_page_movieInfo{
+  display: inline-block;
+  margin: 50px 25px;
+}
+
+#landing_page_movieInfo_image{
+  height: 250px;
+  width: 225px;
+}
+
+/*=========================================================================================*/
+/*PROFILE*/
+/*=========================================================================================*/
+section.profile_container{
+  position: relative;
+  height: 1000px;
+  width:1200px;
+}
+aside.account_information{
+  position: absolute;
+  background-color: #222222;
+  height: 100%;
+  width: 340px;
+  padding: 25px;
+  top: -20px;
+  box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
+  color: white;
+}
+aside.account_information h4{
+  margin-bottom: 20px;
+  border-bottom: #FFFFFF;
+}
+
+section.profile_video_player{
+  display: inline-block;
+  position: absolute;
+  left: 35%;
+}
+section.profile_video_player video{
+  width: 900px;
+  height: 400px;
+  margin-left: -30px;
+  margin-bottom: 5px;
+}
+section.profile_video_player h1{
+  text-align: center;
+  color: white;
+}
+section.upload_video_button{
+  position: absolute;
+  right: 70px;
+  bottom: -75px;
+
+}
+section.profile_video_list {
+  background-color: #22222;
+  height: 340px;
+  width: 850px;
+  border: 1px solid #FFFFFF;
+  padding: 10px;
+  overflow: scroll;
+}
+section.profile_video_list h1{
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+}
+section.profile_video_list h3{
+  display: inline;
+  margin-left: 10px;
+  cursor: pointer;
+  color: white;
+}
+section.profile_video_list img{
+  display:inline-block;
+  height:150px;
+  width:125px;
+  margin: 10px 0;
+  cursor: pointer;
+}
+section.list-item-container{
+  border-bottom: 1px solid #FFFFFF;
+}
+
+/*=========================================================================================*/
+/*VOTING*/
+/*=========================================================================================*/
+
+section.voting_container{
+  position: absolute;
+  height: 1000px;
+  width: 390px;
+  top: 55px;
+  right: 10px;
+  background-color: #222222;
+  box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
+  overflow: scroll; 
+  z-index: 1;
+}
+
+section.voting_container h4{
+  color: #FFFFFF;
+  border-bottom: 1px solid #FFFFFF;
+  text-align: center;
+  padding: 20px; 
+}
+
+section.voting_container h3{
+  color: #FFFFFF;
+  text-align: center;
+  padding: 20px; 
+}
 
 
-
-
+#voting_image {
+  height:250px;
+  width: 225px;
+  margin-left: 80px;
+}
 
 
 

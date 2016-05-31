@@ -5,11 +5,15 @@ var axios = require('axios');
 import ProfileVideoPlayer from './profileVideoPlayer'
 import ProfileInfo from './profileInfo'
 import UploadVideos from './uploadVideo'
+<<<<<<< HEAD
+import Voting from '../VotingComponent/voting.js'
+
+=======
 import UploadNewVideo from './uploadNewVideo'
+>>>>>>> 111b3c829a3429c0fdb1c8c73ee1a9bffe47df1c
 
 // this is the parent component 
 // shows userInfo - ProfilePlayer - ProfileVideos - ProfileUpload
-
 class Profile extends Component {
 
   constructor (props) {
@@ -34,6 +38,13 @@ class Profile extends Component {
 
    
     this.state = {
+<<<<<<< HEAD
+      userInfo: parseUser,
+    }
+  }
+
+  
+=======
       userInfo: '',
       token: token,
       config: config, 
@@ -60,10 +71,21 @@ class Profile extends Component {
 
   }
 
+>>>>>>> 111b3c829a3429c0fdb1c8c73ee1a9bffe47df1c
 
   render() {
     
     return (
+<<<<<<< HEAD
+      <section>
+        <section className="profile_container" >
+          <ProfileInfo  userInfo = {this.state.userInfo}/>
+          <ProfileVideoPlayer userInfo = {this.state.userInfo} />
+            <UploadVideos />
+        </section>
+        <Voting />
+      </section>
+=======
       <div> 
         <ProfileInfo userInfo = {this.state.userInfo}/>
         <ProfileVideoPlayer 
@@ -72,8 +94,10 @@ class Profile extends Component {
          />
         <UploadVideos />
       </div>
+>>>>>>> 111b3c829a3429c0fdb1c8c73ee1a9bffe47df1c
     )
   }
 }
 
 export default Profile
+         
