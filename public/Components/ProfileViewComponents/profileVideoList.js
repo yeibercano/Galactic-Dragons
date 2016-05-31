@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 var secret = require("../../../private.js")
 var axios = require('axios');
 class ProfileVideoList extends Component {
+ 
   videoInfo(videoInfo) {
     return (
         <section className="list-item-container" onClick={()=> this.props.selectedMovie(videoInfo)}>

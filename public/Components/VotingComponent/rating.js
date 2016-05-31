@@ -19,7 +19,7 @@ class Rating extends React.Component {
         <ReactStars
           count={5}
           onChange={this.ratingChanged}
-          size={24}
+          size={24} 
           color2={'#ffd700'} />
       </div>
     );

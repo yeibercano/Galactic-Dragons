@@ -13,19 +13,19 @@ class VotingComponent extends React.Component {
 
   componentWillMount() {
     axios.get("/movies").then(data => {
-      console.log("This is data.data inside of VotingComponent", data.data)
       this.setState({ allMovies: data.data });
     });
   }
   onClickHandler (e, movie){
     e.preventDefault();
     localStorage.setItem('viewerMovie', JSON.stringify(movie));
-    console.log("This is movie inside of saveSelectedMovie", movie)
     hashHistory.push("vote");
   }
 
   renderImage(movie){
-    console.log("This is movie inside of renderImage",movie);
+    console.log(movie);
+    if()
+    
     return (
         <section className="voting_image_container">
           <img id="voting_image" src={movie.image} onClick={e => this.onClickHandler(e, movie)}/>

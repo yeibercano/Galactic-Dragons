@@ -10,7 +10,6 @@ class ViewingPage extends Component {
     super (props) 
 
     let movieSelected = localStorage.getItem('viewerMovie')
-    console.log('this is movieSelected:', movieSelected)
     if (movieSelected === '{}') {
       this.state = {
         videoUrl: null
@@ -42,7 +41,7 @@ class ViewingPage extends Component {
       <section>
       <h1>{this.state.videoTitle}</h1>
         <section >
-          <video className="viewing_video" controls src={this.state.videoUrl} type="video/mp4" />
+          <video className="viewing_video" autoPlay controls src={this.state.videoUrl} type="video/mp4" />
         </section>  
         <aside className="viewing_info">
             <section id="poster_info">

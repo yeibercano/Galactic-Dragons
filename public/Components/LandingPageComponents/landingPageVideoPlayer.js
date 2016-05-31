@@ -16,7 +16,6 @@ class LandingPageVideoPlayer extends React.Component {
   constructor (props) {
     
     super (props)  
-    console.log("This is props inside LandingPageVideoPlayer", props)
     localStorage.setItem('viewerMovie', JSON.stringify({}));
     this.state = {
         movieSent: null
@@ -27,7 +26,6 @@ class LandingPageVideoPlayer extends React.Component {
 
    __routeToViewing(e){
     e.preventDefault();
-    console.log("!!!!!!!!!!!!You made it into __routeToViewing!!!!!!!!!!!!");
    }
    
    onClickHandler (e, movieProps) {

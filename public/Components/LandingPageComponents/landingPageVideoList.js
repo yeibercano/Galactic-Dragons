@@ -9,7 +9,6 @@ class LandingPageVideoList extends Component {
   }
 
   movieInfo(movieInfo) {
-    console.log("This is movieInfo in landingPage", movieInfo)
     return (
         <section className="landing_page_movieInfo">
           <img id="landing_page_movieInfo_image"src={movieInfo.image} />
