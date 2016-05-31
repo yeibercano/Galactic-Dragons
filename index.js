@@ -76,16 +76,6 @@ const App = React.createClass({
         hide.display = "none"
       }
 
-    let user = JSON.parse(localStorage.getItem('user')) || undefined;
-    let style = {};
-    let hide = {}
-
-    if(user === undefined){
-      style.display = "none"
-    } else {
-      hide.display = "none"
-    }
-
    console.log('user:', user)
     return (
       <div>
