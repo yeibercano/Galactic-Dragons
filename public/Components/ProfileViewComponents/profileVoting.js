@@ -23,15 +23,20 @@ class VotingComponent extends React.Component {
   }
 
   renderImage(movie){
-    console.log(movie);
-    if()
+    let currentUser = JSON.parse(localStorage.getItem('user'));
+    currentUser = currentUser.userName;
+    console.log("This is movie", movie);
+    console.log("This is the currentUser", currentUser)
+    if(currentUser !== movie.userName){
+      return (
+          <section className="voting_image_container">
+            <img id="voting_image" src={movie.image} onClick={e => this.onClickHandler(e, movie)}/>
+            <h4>{movie.synopsis}</h4>
+          </section>
+        )
+    }
+
     
-    return (
-        <section className="voting_image_container">
-          <img id="voting_image" src={movie.image} onClick={e => this.onClickHandler(e, movie)}/>
-          <h4>{movie.synopsis}</h4>
-        </section>
-      )
   }
 
   selectedMovie (movie) {
