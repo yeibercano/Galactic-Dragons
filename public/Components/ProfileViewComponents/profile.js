@@ -26,23 +26,21 @@ class Profile extends Component {
     let parseMovie = JSON.parse(movieLS);
     // console.log('this is the new parsed movie info:', parseMovie)
     this.state = {
+
       userInfo: parseUser,
     }
   }
 
-  
-   
-
-
-  
 
   render() {
     
     return (
       <section>
         <section className="profile_container" >
-          <ProfileInfo  userInfo = {this.state.userInfo}/>
-          <ProfileVideoPlayer userInfo = {this.state.userInfo} />
+           <ProfileInfo userInfo = {this.state.userInfo}/>
+        <ProfileVideoPlayer 
+        userInfo = {this.state.userInfo}
+        allMovies = {this.state.allMovies} />
             <UploadVideos />
         </section>
         <VoteMovies />
