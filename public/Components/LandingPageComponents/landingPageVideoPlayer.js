@@ -39,8 +39,7 @@ class LandingPageVideoPlayer extends React.Component {
    }
   
    
-   renderImage(movieProps, i) {
-      console.log("This is i")
+   renderImage(movieProps) {
     return (
         <CarouselItem>
           <img id="carousel-img" onClick={e => this.onClickHandler(e, movieProps)} src={movieProps.image}/>
@@ -53,8 +52,7 @@ class LandingPageVideoPlayer extends React.Component {
    }
 
   render() {
-
-    // console.log('!!!!!!!!this is after setting state for movieSent:', this.state.movieSent);
+    
     if (this.props.allMovies === null) {
         return (
             <div>Loading...</div>
