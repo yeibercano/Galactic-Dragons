@@ -74,9 +74,9 @@ var UploadNewVideo = React.createClass({
 
   render: function() {
     return (
-      <div className="create_account_screen">
+      <section className="create_account_screen">
 
-        <div className="create_account_form">
+        <section className="create_account_form">
           <h1>Upload New Movies</h1>
           <form onSubmit={this._saveAndContinue}>
             <input
@@ -130,9 +130,9 @@ var UploadNewVideo = React.createClass({
               value="Upload Video"
               className="register-button" />
           </form>
-        </div>
+        </section>
 
-      </div>
+      </section>
     );
   }
     

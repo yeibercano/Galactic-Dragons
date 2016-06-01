@@ -7,7 +7,7 @@ class ProfileVideoList extends Component {
   videoInfo(videoInfo) {
     return (
         <Carousel.Item className="list-item-container" >
-          <img src={videoInfo.image} onClick={()=> this.props.selectedMovie(videoInfo)}/>
+          <img id="mini_carousel" src={videoInfo.image} onClick={()=> this.props.selectedMovie(videoInfo)}/>
           <Carousel.Caption>
             <h3>{videoInfo.title}</h3>
           </Carousel.Caption>
