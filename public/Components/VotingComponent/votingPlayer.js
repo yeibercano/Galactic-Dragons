@@ -18,8 +18,7 @@ class VoteVideoPlayer extends React.Component {
 
     console.log("This is what", what);
     return 
-//show rating, alert user they may vote push username to viewed array
-
+    //update tha plays on the node for this specific movie
     // axios.post()
    }
 

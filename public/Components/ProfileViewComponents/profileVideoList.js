@@ -1,14 +1,17 @@
 import React, {Component} from 'react'
+import {Carousel, CarouselItem, CarouselCaption} from 'react-bootstrap'
 var secret = require("../../../private.js")
 var axios = require('axios');
 class ProfileVideoList extends Component {
  
   videoInfo(videoInfo) {
     return (
-        <section className="list-item-container" onClick={()=> this.props.selectedMovie(videoInfo)}>
-          <img src={videoInfo.image} />
-          <h3>{videoInfo.title}</h3>
-        </section>
+        <Carousel.Item className="list-item-container" >
+          <img src={videoInfo.image} onClick={()=> this.props.selectedMovie(videoInfo)}/>
+          <Carousel.Caption>
+            <h3>{videoInfo.title}</h3>
+          </Carousel.Caption>
+        </Carousel.Item>
     )
   }
   render() {
@@ -18,9 +21,9 @@ class ProfileVideoList extends Component {
     return (
       <section>
         <h1>Your Uploaded Content</h1>
-        <section className="profile_video_list">
+        <Carousel className="profile_video_list">
             {this.props.moviesList.map(movie => this.videoInfo(movie.m.properties))}
-        </section>
+        </Carousel>
       </section>
     );
   }

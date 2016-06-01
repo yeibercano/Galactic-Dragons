@@ -28,8 +28,6 @@ class VoteContainer extends Component {
         videoActors: movieSelected.actors,
         videoDirector: movieSelected.director,
         videoYear: movieSelected.year
-
-
       }
     }
   }

@@ -43,6 +43,9 @@ class Profile extends Component {
         allMovies = {this.state.allMovies} />
             <UploadVideos />
         </section>
+        <section className="vote_title">
+          <h1>Movies to be Voted On</h1>
+        </section>
         <VoteMovies />
       </section>
     )
