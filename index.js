@@ -8,7 +8,7 @@ import CreateAccountScreen from './public/Components/register'
 import Profile from './public/Components/ProfileViewComponents/profile'
 import UploadNewVideo from './public/Components/ProfileViewComponents/uploadNewVideo'
 import Footer from './public/Components/footer'
-import {Navbar, NavbarBrand, NavbarCollapse, NavbarHeader, NavDropdown, MenuItem, NavbarToggle, Nav, NavItem ,Button, Form, FormGroup, FormControl} from 'react-bootstrap'
+import {Navbar, NavbarBrand, NavbarCollapse, NavbarHeader, NavDropdown, MenuItem, NavbarToggle, Nav, NavItem ,Button, Form, FormGroup, FormControl, DubeActionCreators} from 'react-bootstrap'
 import { Router, Route, IndexRoute, Link, hashHistory, browserHistory } from 'react-router'
 
 var axios = require('axios');
@@ -70,10 +70,31 @@ const VotingPlayer = React.createClass({
 
 const App = React.createClass({
 
+  getInitialState: function(){
+    return {
+      search : ''
+    }
+  },
+  
+
   logout: function(e){
-    e.preventDefault();
+    // e.preventDefault();
     localStorage.removeItem("user");
     hashHistory.push("/home")
+  },
+
+  _search: function(e) {
+    
+    console.log('e -->', e)
+    this.setState({search: e}, function(){
+      console.log('this.state.search',this.state.search)
+    })
+
+    // console.log('event target', e)
+    // if (e.key === 'Enter') {
+    //     console.log('enter hit');
+    // }
+ 
   },
   
   render() {
@@ -85,6 +106,8 @@ const App = React.createClass({
       } else {
         hide.display = "none"
       }
+
+
 
    console.log('user:', user)
     return (
@@ -109,11 +132,11 @@ const App = React.createClass({
           </Nav>
           <Nav pullRight>
              <Navbar.Form className="search_container" >
-                <FormGroup>
-                  <FormControl type="text" placeholder="Search " className="search_bar" />
+                <FormGroup >
+                  <FormControl  value = {this.state.search} ref="search" onKeyPress={e => this._search (e.target.value)} name="search"  type="text" placeholder="Search " className="search_bar" />
                 </FormGroup>
                 {' '}
-                <Button
+                <Button onClick= {this._search}
                   type="submit"
                   className="search_button"
                 >Search</Button>
