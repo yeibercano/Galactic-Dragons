@@ -28,8 +28,6 @@ class VoteContainer extends Component {
         videoActors: movieSelected.actors,
         videoDirector: movieSelected.director,
         videoYear: movieSelected.year
-
-
       }
     }
   }
@@ -43,9 +41,10 @@ class VoteContainer extends Component {
     return (
       <section>
         <VoteVideoPlayer movie= {this.state.videoUrl} />
-        <VoteVideoList movie={ this.state} /> 
-        <Rating />
-
+        <VoteVideoList movie={ this.state} />
+        <section id="star-rating" style={{visibility: "hidden"}}>
+          <Rating  />
+        </section>
       </section>
     );
   }

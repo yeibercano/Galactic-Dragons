@@ -30,6 +30,9 @@ var UploadNewVideo = React.createClass({
       userName : parseUser.userName,
       video: secret.endpointLocation + '/' + secret.bucketName + '/' + videoFile,
       image : secret.endpointLocation + '/' + secret.bucketName + '/' + imageFile, 
+      plays: 0,
+      rating: 0,
+      viewed: [],
       token : token
     }
     

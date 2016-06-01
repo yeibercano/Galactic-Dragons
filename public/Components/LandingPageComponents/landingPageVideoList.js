@@ -20,7 +20,6 @@ class LandingPageVideoList extends Component {
   }
 
   movieInfo(movieInfo) {
-    console.log("This is movieInfo in landingPage", movieInfo)
     return (
         <section onClick={(movieSelected) => this.movieSelected(movieInfo)} className="landing_page_movieInfo">
           <img id="landing_page_movieInfo_image"src={movieInfo.image} />
@@ -44,4 +43,7 @@ class LandingPageVideoList extends Component {
 
 }
 
+
 export default LandingPageVideoList
+
+

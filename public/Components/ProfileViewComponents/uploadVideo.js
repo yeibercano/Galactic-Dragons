@@ -14,7 +14,6 @@ const UploadVideo = React.createClass({
   render() {
     return (
       <section className="upload_video_button">
-        <h1>Click Here To Upload New Video</h1>
         <form onSubmit={this._saveUpload}>
               <input 
                 type="submit" 
