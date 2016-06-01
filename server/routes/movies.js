@@ -34,7 +34,7 @@ router.get('/', function(req, res, next) {
 router.get('/profile', function(req, res, next) {
   // console.log('req in all movies', req)
   var query = [
-   'MATCH (m:Movie) RETURN m LIMIT 5'
+   'MATCH (m:Movie) RETURN m'
   ].join('\n');
 
   db.cypher({
@@ -76,6 +76,39 @@ router.post('/movie', function(req, res, next){
   })
 });
 
+/* UPDATE RATING, VIEWING, AVERAGE, VOTERS  VIEWING */
+router.post('/movie', function(req, res, next){
+  // console.log("What is req inside users.js: ", req.body.userName);
+  var userName = req.body.userName;
+  var title = req.body.title;
+  var title = req.body.rating;
+  var title = req.body.voter;
+
+  var query = [
+    'MATCH(m:Movie {title:{title}})',
+    'SET (m.rating = SUM(m.rating + {rating})',
+    'SET (m.voters = m.voters + {rating})',
+    'RETURN m'
+  ].join('\n');
+  var params = {
+    newMovie: req.body,
+    userName: userName,
+    title: title,
+    rating: rating, 
+    voter: voter
+  };
+
+  db.cypher({
+    query: query,
+    params: params
+  }, 
+  function(err, movie){
+    if (err) throw err;
+    // console.log('movie creates new movie',movie);
+    // console.log('new');
+    res.status(200).json(movie = movie);
+  })
+});
 
 /* TODO: search through all nodes - right now it only search through categories */
 /* FOR SEACH BAR - SEARCH MOVIES IN DATABASE */
