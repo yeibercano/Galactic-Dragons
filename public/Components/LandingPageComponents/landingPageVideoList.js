@@ -34,6 +34,3 @@ class LandingPageVideoList extends Component {
 
 export default LandingPageVideoList
 
-
-          // {movieInfo.title}
-          // {movieInfo.synopsis}
