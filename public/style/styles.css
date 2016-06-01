@@ -77,6 +77,10 @@ section.carousel-div{
   border-radius: 10px;
   opacity: 0.7;
 }
+#mini_carousel{
+  height: 300px;
+  margin: 0 auto;
+}
 
 /*=========================================================================================*/
 /*FORM*/
@@ -121,7 +125,7 @@ FormGroup{
   background-color: #222222;
   color: #FFFFFF;
   position: absolute;
-  right: 780px;
+  right: 925px;
   top: 0px;
   display: inline-block;
   height: 25px;
@@ -151,7 +155,7 @@ FormGroup{
 }
 .search_button{
   position: absolute;
-  right: 700px;
+  right: 855px;
   top: 15px;
   height: 25px;
   width: 75px;
@@ -171,6 +175,14 @@ FormGroup{
   top:-30px;
   right: 50px;
 }
+
+#navbar_logout_link{
+  position: absolute;
+  top:-30px;
+  right: 50px;
+}
+
+
 
 
 /*=========================================================================================*/
@@ -249,14 +261,15 @@ section.landing_page_movieInfo{
 section.profile_container{
   position: relative;
   height: 1000px;
-  width:1200px;
+  width: 100%;
 }
 aside.account_information{
   position: absolute;
-  background-color: #222222;
-  height: 1020px;
-  width: 350px;
-  padding: 25px;
+  background: linear-gradient(to bottom, rgba(34,34,34,1) 0%,rgba(34,34,34,0.49) 51%,rgba(255,255,255,0) 100%);
+  background-color: #046380;
+  height: 150px;
+  width: 100%;
+  padding: 10px;
   top: -20px;
   box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
   color: white;
@@ -269,7 +282,8 @@ aside.account_information h4{
 section.profile_video_player{
   display: inline-block;
   position: absolute;
-  left: 42%;
+  top: 12%;
+  left: 30%;
 }
 section.profile_video_player video{
   width: 900px;
@@ -283,7 +297,7 @@ section.profile_video_player h1{
 }
 section.upload_video_button{
   position: absolute;
-  right: 100px;
+  right: 75px;
   bottom: 0px;
 
 }
@@ -353,7 +367,7 @@ section.voting_container h3{
 .vote_title {
   width: 100%;
   height: 150px;
-  border-top: 3px solid #FFFFFF;
+  border-top: 3px solid #8A0917;
   z-index: 1;
 
 }

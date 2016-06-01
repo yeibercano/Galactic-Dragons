@@ -17,10 +17,10 @@ class VotingVideoList extends Component {
       <section>
       <h1>{this.props.movie.videoTitle}</h1> 
         <aside>
-            <section>
+            <section id="voting_image">
               <img src={this.props.movie.videoImage} />
             </section>
-            <section >
+            <section id="voting_information" >
             <h2>{this.props.movie.videoTitle}</h2>
             <h4>{this.props.movie.videoSynopsis}</h4>
             <h4>{this.props.movie.videoActors}</h4>
