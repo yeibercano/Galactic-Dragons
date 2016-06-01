@@ -16,12 +16,7 @@ class LandingPageVideoList extends Component {
   movieSelected(movieSelected) {
     console.log('This movie was selected:', movieSelected);
     localStorage.setItem('viewerMovie', JSON.stringify(movieSelected));
-    // console.log('movieProps inside onClickHandler inside LandingPageVideoPlayer:', movieProps)
-    // this.setState({ movieSent: movieProps}, function() {
-    //     hashHistory.push('viewer')
-    // })
-    hashHistory.push('viewer')
-        
+    hashHistory.push('viewer')  
   }
 
   movieInfo(movieInfo) {
@@ -50,7 +45,3 @@ class LandingPageVideoList extends Component {
 }
 
 export default LandingPageVideoList
-
-
-          // {movieInfo.title}
-          // {movieInfo.synopsis}
