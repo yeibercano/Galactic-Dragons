@@ -77,25 +77,27 @@ router.post('/movie', function(req, res, next){
 });
 
 /* UPDATE RATING, VIEWING, AVERAGE, VOTERS  VIEWING */
-router.post('/movie', function(req, res, next){
-  // console.log("What is req inside users.js: ", req.body.userName);
-  var userName = req.body.userName;
+router.post('/rating', function(req, res, next){
+  console.log("What is req.body: ", req.body);
+ 
   var title = req.body.title;
-  var title = req.body.rating;
-  var title = req.body.voter;
+  var rating = req.body.rating;
+  var voters = req.body.voter;
 
   var query = [
     'MATCH(m:Movie {title:{title}})',
-    'SET (m.rating = SUM(m.rating + {rating})',
-    'SET (m.voters = m.voters + {rating})',
+    // 'SET m.rating : m.rating + {rating})',
+    'SET m.rating = m.rating + {rating}',
+    'SET m.voters = m.voters + {voters}',
+    'SET m.plays = m.plays + 1',
+    'SET m.avg = m.plays / m.rating',
     'RETURN m'
   ].join('\n');
   var params = {
-    newMovie: req.body,
-    userName: userName,
+    // userName: userName,
     title: title,
-    rating: rating, 
-    voter: voter
+    rating: rating,
+    voters: voters
   };
 
   db.cypher({
@@ -125,11 +127,11 @@ router.get('/search', function(req, res, next) {
     query: query,
     params: params
   }, 
-    function(err, movie){
+    function(err, movies){
       if (err) throw err;
-      console.log('movie',movie);
+      console.log('movie',movies);
       // console.log('new');
-      res.status(200).send(movie);
+      res.status(200).send(movies);
   });
 });
 
