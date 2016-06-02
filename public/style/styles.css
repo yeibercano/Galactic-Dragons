@@ -252,7 +252,7 @@ section.landing_page_movieInfo{
 
 #landing_page_movieInfo_image{
   height: 250px;
-  width: 225px;
+  width: 300px;
 }
 
 /*=========================================================================================*/
@@ -383,5 +383,26 @@ section.voting_container h3{
   margin-left: 80px;
 }
 
+@import url(https://fonts.googleapis.com/css?family=Architects+Daughter|Rock+Salt|Bubbler+One);
+@import url(https://fonts.googleapis.com/css?family=Oswald:400,300,700);
 
+ .navbar-brand {
+    font-size: 36px !important;
+    /*font-family: 'Architects Daughter', cursive;*/
+     /*font-family: 'Rock Salt', cursive; */
+    /*font-family: 'Bubbler One', sans-serif;*/
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
 
+}
+
+.wrapperFea {
+  width: auto;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+section.landing_page {
+  display: inline-block;
+  margin: 0px;
+}
