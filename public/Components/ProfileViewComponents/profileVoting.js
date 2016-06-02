@@ -12,7 +12,7 @@ class VotingComponent extends React.Component {
    }
 
   componentWillMount() {
-    axios.get("/movies").then(data => {
+    axios.get("/movies/profile").then(data => {
       this.setState({ allMovies: data.data });
     });
   }
