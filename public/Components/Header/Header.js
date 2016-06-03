@@ -5,6 +5,7 @@ import SearchBar  from './SearchBar'
 import UserLogin  from './UserLogin'
 import UserLogout from './userLogout'
 import UserProfile from './userProfile'
+import Register from './userRegister'
 
 //Parent component of Header
 class Header extends Component {
@@ -16,6 +17,7 @@ class Header extends Component {
           <Nav />
           <SearchBar />
           <UserProfile />
+          <Register />
           <UserLogin />
           <UserLogout />
         </header >

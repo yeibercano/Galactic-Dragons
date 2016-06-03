@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { hashHistory } from 'react-router'
 
 //this component is for the Logo/Brand
 class UserLogin extends Component {
@@ -6,7 +7,7 @@ class UserLogin extends Component {
   render() {
     return (
       <aside class="userLogin"> 
-        <h1>Login</h1>
+        <h1 onClick={ ()=> hashHistory.push('login')}>Login</h1>
       </aside>
     )
   }

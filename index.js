@@ -87,8 +87,8 @@ const App = React.createClass({
     return (
       <div>
         <Header className="MyComponent-wrapper" />
-        <Footer />
         {this.props.children}
+        <Footer />
       </div>
     )
   }
