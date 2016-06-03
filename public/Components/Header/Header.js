@@ -11,15 +11,33 @@ import Register from './userRegister'
 class Header extends Component {
  
   render() {
+
+    let user = JSON.parse(localStorage.getItem('user')) || undefined;
+    let style = {};
+    let hide = {}
+    if(user === undefined){
+      style.display = "none"
+    } else {
+      hide.display = "none"
+    }
+
     return (
         <header class="headerContainer">
           <Brand />
           <Nav />
           <SearchBar />
-          <UserProfile />
-          <Register />
+          <div style= {style} eventKey={2}>
+            <UserProfile />
+          </div>
+          <div style={hide}>
+            <Register />
+          </div>
+          <div style={hide}>
           <UserLogin />
+          </div>
+          <div style= {style}>
           <UserLogout />
+          </div>
         </header >
     )
   }
