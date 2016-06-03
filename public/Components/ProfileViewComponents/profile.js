@@ -37,11 +37,11 @@ class Profile extends Component {
     return (
       <section>
         <section className="profile_container" >
-           <ProfileInfo userInfo = {this.state.userInfo}/>
-        <ProfileVideoPlayer 
-        userInfo = {this.state.userInfo}
-        allMovies = {this.state.allMovies} />
-            <UploadVideos />
+          <ProfileInfo userInfo = {this.state.userInfo}/>
+          <ProfileVideoPlayer 
+            userInfo = {this.state.userInfo}
+            allMovies = {this.state.allMovies} />
+          <UploadVideos />
         </section>
         <section className="vote_title">
           <h1>Movies to be Voted On</h1>

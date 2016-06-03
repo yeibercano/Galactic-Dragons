@@ -161,7 +161,7 @@ const App = React.createClass({
             </Navbar.Form>
             <NavItem style={hide} id="navbar_register_link" eventKey={1} href="/#/register">Register</NavItem>
             <NavItem style={hide} id="navbar_login_link" eventKey={2} href="/#/login">Login</NavItem>
-            <NavItem  style= {style} eventKey={3} href="/#/home" onClick ={this.logout}>Logout</NavItem>
+            <NavItem  style= {style} id="navbar_logout_link" eventKey={3} href="/#/home" onClick ={this.logout}>Logout</NavItem>
           </Nav>
           </Navbar.Collapse>
         </Navbar>

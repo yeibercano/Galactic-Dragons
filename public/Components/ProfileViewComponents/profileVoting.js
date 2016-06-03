@@ -12,7 +12,7 @@ class VotingComponent extends React.Component {
    }
 
   componentWillMount() {
-    axios.get("/movies").then(data => {
+    axios.get("/movies/profile").then(data => {
       this.setState({ allMovies: data.data });
     });
   }
@@ -26,14 +26,22 @@ class VotingComponent extends React.Component {
     let currentUser = JSON.parse(localStorage.getItem('user'));
     currentUser = currentUser.userName;
     console.log("This is movie", movie);
-    console.log("This is the currentUser", currentUser)
+    // console.log("This is the currentUser", currentUser)
+    console.log()
     if(currentUser !== movie.userName){
-      return (
-          <section className="voting_image_container">
-            <img id="voting_image" src={movie.image} onClick={e => this.onClickHandler(e, movie)}/>
-            <h4>{movie.synopsis}</h4>
-          </section>
-        )
+      // console.log("This is currentUser:::::" + currentUser + "This is movie.userName:::::::::" + movie.userName )
+
+      if(!movie.voters.includes(currentUser)){
+        return (
+            <section className="voting_image_container">
+              <img id="voting_image" src={movie.image} onClick={e => this.onClickHandler(e, movie)}/>
+              <section className="voting_information">
+              <h3>{movie.title}</h3>
+              <h4>{movie.synopsis}</h4>
+              </section>
+            </section>
+          )
+      }
     }
 
     
@@ -49,6 +57,8 @@ class VotingComponent extends React.Component {
     if (this.state.allMovies === null) {
       return <div>Loading...</div>
     }
+
+
 
     return (
       <section className="voting_container">
