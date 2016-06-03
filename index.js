@@ -78,15 +78,7 @@ const SearchResults = React.createClass({
       );
   }})
 
-const App = React.createClass({
-
-  getInitialState: function(){
-    return {
-      search : '',
-      results: ''
-    }
-  },
-  
+const App = React.createClass({  
 
   logout: function(e){
     // e.preventDefault();
@@ -95,26 +87,24 @@ const App = React.createClass({
   },
 
   _search: function(e) {
-    this.setState({search: e});
- 
+    let searchedItem = e;
+    // this._submitSearch = _submitSearch.bind(this);
+    // localStorage.setItem('movieSearched', JSON.stringify(searchedItem));
+    localStorage.setItem('searchTerm', searchedItem);
+
   },
 
   _submitSearch: function() {
-    console.log('this is what is going to be submitted:', this.state.search);
-    axios.get('/movies/search', {params: {target: this.state.search}}).then(data => {
-        console.log('data', data)
-        this.setState( { results: data.data })
+    let searchedItem = localStorage.getItem('searchTerm');
+    axios.get('/movies/search', {params: {target: searchedItem}}).then(data => {
+        localStorage.setItem('searchResults', JSON.stringify(data.data));
       })
-    .then(function() {
-      console.log('this is results:', this.state.results);
-      localStorage.setItem('movieSearched', JSON.stringify());
-    })
     .then(function() {
     hashHistory.push('/search');
     })
-    // .catch(function(err) {
-    //   if (err) throw err
-    // })
+    .catch(function(err) {
+      if (err) throw err
+    })
 
   },
   
@@ -151,7 +141,7 @@ const App = React.createClass({
           <Nav pullRight>
              <Navbar.Form className="search_container" >
                 <FormGroup >
-                  <FormControl  value = {this.state.search} ref="search" onChange={e => this._search (e.target.value)} name="search"  type="text" placeholder="Search " className="search_bar" />
+                  <FormControl ref="search" onChange={e => this._search (e.target.value)} name="search"  type="text" placeholder="Search " className="search_bar" />
                 </FormGroup>
                 {' '}
                 <Button onClick= {this._submitSearch}
@@ -167,9 +157,6 @@ const App = React.createClass({
         </Navbar>
         {this.props.children}
         <Footer />
-        <section style={{visibility: "hidden"}}>
-          <Search sResults = {this.state.results}/>
-        </section>
       </div>
     )
   }
