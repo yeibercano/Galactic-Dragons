@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactStars from 'react-stars'
+import { hashHistory } from 'react-router'
 var axios = require('axios');
  
 class Rating extends React.Component {
@@ -22,6 +23,7 @@ class Rating extends React.Component {
   ratingChanged(vote) {
       this.setState({rating: vote}, function(){  
       alert("This will be your only opportunity to vote");
+      hashHistory.push("profile");
       // console.log("What is this.state.rating", this.state.rating);
       // console.log('movieSelected', this.movieSelected)
       
