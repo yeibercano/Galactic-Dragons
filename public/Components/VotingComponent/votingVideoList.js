@@ -16,7 +16,7 @@ class VotingVideoList extends Component {
     return (
       <section>
       <h1>{this.props.movie.videoTitle}</h1> 
-        <aside>
+        <section className="vote_contain">
             <section id="voting_image">
               <img src={this.props.movie.videoImage} />
             </section>
@@ -27,7 +27,7 @@ class VotingVideoList extends Component {
             <h4>{this.props.movie.videoDirector}</h4>
             <h4>{this.props.movie.videoYear}</h4>
             </section>
-        </aside>
+        </section>
       </section>
     );
   }
