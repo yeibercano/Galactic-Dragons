@@ -269,8 +269,9 @@ aside.account_information{
   background-color: #046380;
   height: 150px;
   width: 100%;
-  padding: 10px;
+  padding: 20px;
   top: -20px;
+  margin-left: 30px;
   box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
   color: white;
 }
@@ -353,9 +354,14 @@ section.voting_container{
 
 section.voting_container h4{
   color: #FFFFFF;
-  border-bottom: 1px solid #242632;
+  /*border-bottom: 1px solid #242632;*/
+  height: 275px;
+  width: 100%;
   text-align: center;
   padding: 20px; 
+}
+section.vote_contain {
+ border-bottom: 3px solid #FFFFFF
 }
 
 section.voting_container h3{
@@ -370,6 +376,12 @@ section.voting_container h3{
   border-top: 3px solid #FFFFFF;
   z-index: 1;
 
+}
+.voting_information{
+  display: inline-block;
+}
+.voting_information h3 h4{
+  text-align: center;
 }
 
 .vote_title h1 {
