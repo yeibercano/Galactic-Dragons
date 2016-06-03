@@ -7,6 +7,7 @@ import Login from './public/Components/login'
 import CreateAccountScreen from './public/Components/register'
 import Profile from './public/Components/ProfileViewComponents/profile'
 import UploadNewVideo from './public/Components/ProfileViewComponents/uploadNewVideo'
+import Search from './public/Components/search'
 import Footer from './public/Components/footer'
 import {Navbar, NavbarBrand, NavbarCollapse, NavbarHeader, NavDropdown, MenuItem, NavbarToggle, Nav, NavItem ,Button, Form, FormGroup, FormControl, DubeActionCreators} from 'react-bootstrap'
 import { Router, Route, IndexRoute, Link, hashHistory, browserHistory } from 'react-router'
@@ -68,11 +69,21 @@ const VotingPlayer = React.createClass({
       );
   }})
 
+const SearchResults = React.createClass({
+  render() {
+    return (
+      <div>
+        <Search />
+      </div>
+      );
+  }})
+
 const App = React.createClass({
 
   getInitialState: function(){
     return {
-      search : ''
+      search : '',
+      results: ''
     }
   },
   
@@ -84,17 +95,27 @@ const App = React.createClass({
   },
 
   _search: function(e) {
-    
-    console.log('e -->', e)
-    this.setState({search: e}, function(){
-      console.log('this.state.search',this.state.search)
-    })
-
-    // console.log('event target', e)
-    // if (e.key === 'Enter') {
-    //     console.log('enter hit');
-    // }
+    this.setState({search: e});
  
+  },
+
+  _submitSearch: function() {
+    console.log('this is what is going to be submitted:', this.state.search);
+    axios.get('/movies/search', {params: {target: this.state.search}}).then(data => {
+        console.log('data', data)
+        this.setState( { results: data.data })
+      })
+    .then(function() {
+      console.log('this is results:', this.state.results);
+      localStorage.setItem('movieSearched', JSON.stringify());
+    })
+    .then(function() {
+    hashHistory.push('/search');
+    })
+    // .catch(function(err) {
+    //   if (err) throw err
+    // })
+
   },
   
   render() {
@@ -107,9 +128,6 @@ const App = React.createClass({
         hide.display = "none"
       }
 
-
-
-   console.log('user:', user)
     return (
       <div>
         <Navbar inverse>
@@ -133,10 +151,10 @@ const App = React.createClass({
           <Nav pullRight>
              <Navbar.Form className="search_container" >
                 <FormGroup >
-                  <FormControl  value = {this.state.search} ref="search" onKeyPress={e => this._search (e.target.value)} name="search"  type="text" placeholder="Search " className="search_bar" />
+                  <FormControl  value = {this.state.search} ref="search" onChange={e => this._search (e.target.value)} name="search"  type="text" placeholder="Search " className="search_bar" />
                 </FormGroup>
                 {' '}
-                <Button onClick= {this._search}
+                <Button onClick= {this._submitSearch}
                   type="submit"
                   className="search_button"
                 >Search</Button>
@@ -149,6 +167,9 @@ const App = React.createClass({
         </Navbar>
         {this.props.children}
         <Footer />
+        <section style={{visibility: "hidden"}}>
+          <Search sResults = {this.state.results}/>
+        </section>
       </div>
     )
   }
@@ -166,6 +187,7 @@ render((
       <Route path="login" component={LoginPage} />
       <Route path="profile" component={ProfileUser} />
       <Route path="NewVideo" component={UploadNewVideo} />
+      <Route path="search" component={SearchResults} />
     </Route>
   </Router>
 ), document.getElementById('app'))
