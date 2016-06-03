@@ -3,6 +3,8 @@ import Brand      from './Brand'
 import Nav        from './Nav'
 import SearchBar  from './SearchBar'
 import UserLogin  from './UserLogin'
+import UserLogout from './userLogout'
+import UserProfile from './userProfile'
 
 //Parent component of Header
 class Header extends Component {
@@ -13,7 +15,9 @@ class Header extends Component {
           <Brand />
           <Nav />
           <SearchBar />
+          <UserProfile />
           <UserLogin />
+          <UserLogout />
         </header >
     )
   }
