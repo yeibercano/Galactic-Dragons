@@ -6,7 +6,7 @@ class UserLogin extends Component {
   render() {
     return (
       <aside class="userLogin"> 
-        <h1>User Login</h1>
+        <h1>Login</h1>
       </aside>
     )
   }
