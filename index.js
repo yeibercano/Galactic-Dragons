@@ -114,7 +114,7 @@ const App = React.createClass({
    console.log('user:', user)
     return (
       <div>
-        <Header className="MyComponent-wrapper"/>
+        <Header className="headerWrapper"/>
         {this.props.children}
         <Footer />
       </div>
