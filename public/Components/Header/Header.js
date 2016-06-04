@@ -22,8 +22,8 @@ class Header extends Component {
     }
 
     return (
-        <header className="headerWrapper">
-
+        <header className="headerBackground">
+          <div className="headerWrapper">
           <Brand />
           <Nav />
           <SearchBar />
@@ -39,6 +39,7 @@ class Header extends Component {
           <div style= {style}>
           <UserLogout />
           </div>
+         </div> 
         </header >
     )
   }
