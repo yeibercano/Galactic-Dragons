@@ -5,38 +5,61 @@ var axios = require('axios');
 class Search extends React.Component{
 
   constructor(props){
-    super (props)
-
-    this.state{
-      results: ""
+    super (props);
+    let searchResults = localStorage.getItem('searchResults');
+    searchResults = JSON.parse(searchResults);
+    console.log('this is searchResults:', searchResults)
+    this.state = {
+      sResults: searchResults
     }
   }
 
   displayResult(result) {
+    console.log('displayResult is called with result:', result);
     return (
         <section>
-          <section className="search-item-container" onClick={()=> this.props.selectedMovie(videoInfo)}>
-          <img src={videoInfo.image} />
-          <h3>{videoInfo.title}</h3>
+          <h1>title here</h1>
+           <section className="search-item-container" ></section>
+           <section className="search-item-container" ></section>
+           <img src={result.image} />
+           <h3>{result.title}</h3>
         </section>
       )
   }
 
-  getResults() {
-    axios.get('/search', {params: {}}).then(data => {
-        console.log('data', data)
-        this.setState( { results: data } );
-      });
-  }
 
-  render(){
+  render () {
+
+    console.log('this is this.state.sResults inside render:', this.state.sResults.length);
+    if (this.state.sResults.length === 0) {
+      console.log('this sResults statement executed')
+      return <section>Search results not found!</section>
+    }
+
     return (
         <section>
           <h1>This is Where The Search Results Will Be Populated</h1>
-          {this.state.searchResults.map(result=> this.displayResult(result))}
+            {this.state.sResults.map(result=> this.displayResult(result.m.properties))}
         </section>
       )
   }
 }
 
 export default Search
+
+    // if (!this.props.sResults) {
+    //   return <div>Loading...</div>
+    // }
+
+    //       <section className="search-item-container" ></section>
+    //       <img src={result.image} />
+    //       <h3>{result.title}</h3>
+
+    // {this.props.sResults.map(result=> this.displayResult(result))}
+// onClick={()=> this.props.selectedMovie(videoInfo)}
+
+          // <section className="search-item-container" onClick={()=> this.props.selectedMovie(videoInfo)}></section>
+          // <img src={videoInfo.image} />
+          // <h3>{videoInfo.title}</h3>
+
+          //      {this.state.searchResults.map(result=> this.displayResult(result))}
