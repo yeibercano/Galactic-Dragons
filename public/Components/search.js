@@ -24,7 +24,7 @@ class Search extends React.Component{
 
   getResults() {
     axios.get('/search', {params: {}}).then(data => {
-        console.log('data', data)
+        // console.log('data', data)
         this.setState( { results: data } );
       });
   }

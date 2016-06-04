@@ -85,7 +85,7 @@ const App = React.createClass({
 
   _search: function(e) {
     
-    console.log('e -->', e)
+    // console.log('e -->', e)
     this.setState({search: e}, function(){
       console.log('this.state.search',this.state.search)
     })
@@ -109,7 +109,7 @@ const App = React.createClass({
 
 
 
-   console.log('user:', user)
+   // console.log('user:', user)
     return (
       <div>
         <Navbar inverse>

@@ -25,9 +25,8 @@ class VotingComponent extends React.Component {
   renderImage(movie){
     let currentUser = JSON.parse(localStorage.getItem('user'));
     currentUser = currentUser.userName;
-    console.log("This is movie", movie);
+    // console.log("This is movie", movie);
     // console.log("This is the currentUser", currentUser)
-    console.log()
     if(currentUser !== movie.userName){
       // console.log("This is currentUser:::::" + currentUser + "This is movie.userName:::::::::" + movie.userName )
 
@@ -48,7 +47,7 @@ class VotingComponent extends React.Component {
   }
 
   selectedMovie (movie) {
-    console.log('A new movie was selected!', movie.video);
+    // console.log('A new movie was selected!', movie.video);
     this.setState({url: movie.video})
   }
 

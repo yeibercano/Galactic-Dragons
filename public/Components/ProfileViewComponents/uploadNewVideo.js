@@ -1,6 +1,7 @@
 var React = require('react');
 var axios = require('axios');
 var secret = require("../../../private.js")
+import Load from 'react-loading';
 import { Router, Redirect, Route, IndexRoute, Link, hashHistory, browserHistory} from 'react-router'
 
 
@@ -32,6 +33,7 @@ var UploadNewVideo = React.createClass({
       video: secret.endpointLocation + '/' + secret.bucketName + '/' + videoFile,
       image : secret.endpointLocation + '/' + secret.bucketName + '/' + imageFile, 
       plays: 0,
+      clicks: 0,
       rating: 0,
       voters: [],
       token : token
@@ -66,6 +68,7 @@ var UploadNewVideo = React.createClass({
        hashHistory.push('profile')
 
       }
+    document.getElementbyId("loading")
     console.log('File uploaded successfully')
     })  
 },
@@ -130,6 +133,7 @@ var UploadNewVideo = React.createClass({
               value="Upload Video"
               className="register-button" />
           </form>
+          <Load id="loading" style={{visibility: "hidden"}} />
         </section>
 
       </section>

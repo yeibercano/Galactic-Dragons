@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Load from 'react-loading';
 var secret = require("../../../private.js")
 var axios = require('axios');
 import { hashHistory } from 'react-router'
@@ -14,7 +15,7 @@ class LandingPageVideoList extends Component {
    }
 
   movieSelected(movieSelected) {
-    console.log('This movie was selected:', movieSelected);
+    // console.log('This movie was selected:', movieSelected);
     localStorage.setItem('viewerMovie', JSON.stringify(movieSelected));
     hashHistory.push('viewer')  
   }
@@ -30,7 +31,7 @@ class LandingPageVideoList extends Component {
   render() {
 
     if (this.props.allMovies === null) {
-      return <div>Loading...</div>
+      return <Load />
     }
 
     return (
