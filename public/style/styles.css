@@ -64,7 +64,7 @@ body{
 /*CAROUSEL*/
 /*=========================================================================================*/
 section.carousel-div{
-  margin-top: -18px;
+/*  margin-top: -18px;*/
   padding-bottom: 40px;
   border-bottom: 1px solid #FFFFFF;
 }
@@ -246,14 +246,15 @@ section.landing_page h2{
   color: #FFFFFF;
 }
 section.landing_page_movieInfo{
-  display: inline-block;
-  margin: 50px 25px;
+ /* display: inline-block;
+  margin: 50px 25px;*/
+    margin-top: 5px;
 }
 
-#landing_page_movieInfo_image{
+/*#landing_page_movieInfo_image{
   height: 250px;
   width: 300px;
-}
+}*/
 
 /*=========================================================================================*/
 /*PROFILE*/
@@ -408,16 +409,16 @@ section.voting_container h3{
 
 }
 
-.wrapperFea {
+/*.wrapperFea {
   width: auto;
   margin-left: 10%;
   margin-right: 10%;
-}
+}*/
 
-section.landing_page {
+/*section.landing_page {
   display: inline-block;
   
-}
+}*/
 
 /*header {
     height: 10%;
@@ -436,7 +437,7 @@ section.landing_page {
     display: flex; 
     flex-direction: row;
     justify-content: space-between;
- background-color: tomato;
+    background-color: tomato;
 }
 
 header h1 {
@@ -458,5 +459,22 @@ header h1 {
 }
 
 
+.videoListWrapper { 
+/*  width: auto;
+  margin-left: 10%;
+  margin-right: 10%;*/
+    width: 80%;
+    margin: 0 auto;
+}
 
+.landing_page {
+    display: flex;
+}
 
+.landing_page_movieInfo img {
+    width: 100%;
+}
+
+.headerBackground {
+    background-color: tomato;
+}
