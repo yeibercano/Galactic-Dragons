@@ -426,10 +426,37 @@ section.landing_page {
     display: flex;
 }
 */
-header .headerWrapper {
-    height: 200px;
+
+
+/* HEADER */
+.headerWrapper {
+    height: 100px;
     width: 80%;
     margin: 0 auto;
     display: flex; 
+    flex-direction: row;
+    justify-content: space-between;
+ background-color: tomato;
 }
+
+header h1 {
+    color: white;
+    font-size: 25px;
+    padding-top: 20px;
+}
+
+.brand {
+  flex-grow: 1;
+}
+
+.menu {
+  flex-grow: 12;
+}
+
+.searchBar {
+  flex-grow: 1;
+}
+
+
+
 
