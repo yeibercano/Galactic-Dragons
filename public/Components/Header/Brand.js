@@ -5,7 +5,7 @@ class Brand extends Component {
  
   render() {
     return (
-      <nav class="brand"> 
+      <nav className="brand"> 
         <h1>Sovereign</h1>
       </nav>
     )
