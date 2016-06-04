@@ -7,10 +7,11 @@ import Login from './public/Components/login'
 import CreateAccountScreen from './public/Components/register'
 import Profile from './public/Components/ProfileViewComponents/profile'
 import UploadNewVideo from './public/Components/ProfileViewComponents/uploadNewVideo'
+import Search from './public/Components/search'
 import Footer from './public/Components/footer'
 import Header from './public/Components/Header/Header'
 import { Router, Route, IndexRoute, Link, hashHistory, browserHistory } from 'react-router'
-import './public/style/styles.css'
+
 
 
 var axios = require('axios');
@@ -70,48 +71,19 @@ const VotingPlayer = React.createClass({
       );
   }})
 
-const App = React.createClass({
-
-  getInitialState: function(){
-    return {
-      search : ''
-    }
-  },
-  
-
-  logout: function(e){
-    // e.preventDefault();
-    localStorage.removeItem("user");
-    hashHistory.push("/home")
-  },
-
-  _search: function(e) {
-    
-    console.log('e -->', e)
-    this.setState({search: e}, function(){
-      console.log('this.state.search',this.state.search)
-    })
-
-    // console.log('event target', e)
-    // if (e.key === 'Enter') {
-    //     console.log('enter hit');
-    // }
- 
-  },
-  
+const SearchResults = React.createClass({
   render() {
-    let user = JSON.parse(localStorage.getItem('user')) || undefined;
-      let style = {};
-      let hide = {}
-      if(user === undefined){
-        style.display = "none"
-      } else {
-        hide.display = "none"
-      }
+    return (
+      <div>
+        <Search />
+      </div>
+      );
+  }})
 
+const App = React.createClass({  
 
+  render() {
 
-   console.log('user:', user)
     return (
       <div>
         <Header />
@@ -134,6 +106,7 @@ render((
       <Route path="login" component={LoginPage} />
       <Route path="profile" component={ProfileUser} />
       <Route path="NewVideo" component={UploadNewVideo} />
+      <Route path="search" component={SearchResults} />
     </Route>
   </Router>
 ), document.getElementById('app'))
