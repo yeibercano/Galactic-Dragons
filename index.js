@@ -114,7 +114,7 @@ const App = React.createClass({
    console.log('user:', user)
     return (
       <div>
-        <Header className="headerWrapper"/>
+        <Header />
         {this.props.children}
         <Footer />
       </div>
