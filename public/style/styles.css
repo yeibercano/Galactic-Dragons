@@ -416,5 +416,20 @@ section.voting_container h3{
 
 section.landing_page {
   display: inline-block;
-  margin: 0px;
+  
 }
+
+/*header {
+    height: 10%;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+}
+*/
+header .headerWrapper {
+    height: 200px;
+    width: 80%;
+    margin: 0 auto;
+    display: flex; 
+}
+
