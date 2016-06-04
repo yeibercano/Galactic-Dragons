@@ -5,7 +5,7 @@ class SearchBar extends Component {
  
   render() {
     return (
-      <aside class="searchBar"> 
+      <aside className="searchBar"> 
         <h1>Search Bar</h1>
       </aside>
     )
