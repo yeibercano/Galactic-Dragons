@@ -4,8 +4,6 @@ import Nav        from './Nav'
 import SearchBar  from './SearchBar'
 import UserLogin  from './UserLogin'
 
-// import Radium from 'radium'
-
 //Parent component of Header
 class Header extends Component {
  
@@ -21,6 +19,5 @@ class Header extends Component {
     )
   }
 }
-// Header= Radium(Header);
 
 export default Header
