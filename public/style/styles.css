@@ -1,4 +1,4 @@
- http://meyerweb.com/eric/tools/css/reset/ 
+ /*http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -64,7 +64,7 @@ body{
 /*CAROUSEL*/
 /*=========================================================================================*/
 section.carousel-div{
-  margin-top: -18px;
+/*  margin-top: -18px;*/
   padding-bottom: 40px;
   border-bottom: 1px solid #FFFFFF;
 }
@@ -246,14 +246,15 @@ section.landing_page h2{
   color: #FFFFFF;
 }
 section.landing_page_movieInfo{
-  display: inline-block;
-  margin: 50px 25px;
+ /* display: inline-block;
+  margin: 50px 25px;*/
+    margin-top: 5px;
 }
 
-#landing_page_movieInfo_image{
+/*#landing_page_movieInfo_image{
   height: 250px;
   width: 300px;
-}
+}*/
 
 /*=========================================================================================*/
 /*PROFILE*/
@@ -408,13 +409,72 @@ section.voting_container h3{
 
 }
 
-.wrapperFea {
+/*.wrapperFea {
   width: auto;
   margin-left: 10%;
   margin-right: 10%;
+}*/
+
+/*section.landing_page {
+  display: inline-block;
+  
+}*/
+
+/*header {
+    height: 10%;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+}
+*/
+
+
+/* HEADER */
+.headerWrapper {
+    height: 100px;
+    width: 80%;
+    margin: 0 auto;
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: tomato;
 }
 
-section.landing_page {
-  display: inline-block;
-  margin: 0px;
+header h1 {
+    color: white;
+    font-size: 25px;
+    padding-top: 20px;
+}
+
+.brand {
+  flex-grow: 1;
+}
+
+.menu {
+  flex-grow: 12;
+}
+
+.searchBar {
+  flex-grow: 1;
+}
+
+
+.videoListWrapper { 
+/*  width: auto;
+  margin-left: 10%;
+  margin-right: 10%;*/
+    width: 80%;
+    margin: 0 auto;
+}
+
+.landing_page {
+    display: flex;
+}
+
+.landing_page_movieInfo img {
+    width: 100%;
+}
+
+.headerBackground {
+    background-color: tomato;
 }

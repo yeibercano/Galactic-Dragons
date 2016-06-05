@@ -5,7 +5,7 @@ class Nav extends Component {
  
   render() {
     return (
-      <nav class="brand"> 
+      <nav className="menu"> 
         <h1>Menu - ul</h1>
       </nav>
     )

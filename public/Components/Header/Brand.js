@@ -6,7 +6,7 @@ class Brand extends Component {
  
   render() {
     return (
-      <nav class="brand"> 
+      <nav className="brand"> 
         <h1 onClick={ ()=> hashHistory.push('home')}>Sovereign</h1>
       </nav>
     )

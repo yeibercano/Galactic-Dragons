@@ -90,6 +90,7 @@ router.post('/rating', function(req, res, next){
     'SET m.rating = m.rating + {rating}',
     'SET m.voters = m.voters + {voters}',
     'SET m.plays = m.plays + 1',
+    'SET m.clicks = m.clicks + 1',
     'SET m.avg = m.plays / m.rating',
     'RETURN m'
   ].join('\n');
