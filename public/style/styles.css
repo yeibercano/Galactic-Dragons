@@ -466,7 +466,12 @@ header h1 {
     width: 80%;
     margin: 0 auto;
 }
-
+.videoListWrapper h2 { 
+    text-align: center;
+    font-size: 33px;
+    padding: 20px 0px;
+    color: white;
+}
 .landing_page {
     display: flex;
 }
