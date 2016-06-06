@@ -1,22 +1,18 @@
 var React = require('react');
 var axios = require('axios');
-var secret = require("../../private.js")
+var secret = require("../../../private.js")
 import { Router, Redirect, Route, IndexRoute, Link, hashHistory, browserHistory} from 'react-router'
-
-
-
 var UploadNewVideo = React.createClass({
-
   _handleChange: function(e) {
     // this.setState({value: e.target.value});
   },
-
     _saveAndContinue(e) {
     //to handle our submit form
     e.preventDefault();
     let userLS = localStorage.getItem('user');
     //parses the info brought down (object)
     let parseUser = JSON.parse(userLS);
+    let token = parseUser.token;
     let videoFile  = this.video.value.replace("C:\\fakepath\\", "");
     let imageFile  = this.image.value.replace("C:\\fakepath\\", "");
     
@@ -29,7 +25,11 @@ var UploadNewVideo = React.createClass({
       year : this.year.value,
       userName : parseUser.userName,
       video: secret.endpointLocation + '/' + secret.bucketName + '/' + videoFile,
-      image : secret.endpointLocation + '/' + secret.bucketName + '/' + imageFile
+      image : secret.endpointLocation + '/' + secret.bucketName + '/' + imageFile, 
+      plays: 0,
+      rating: 0,
+      voters: [],
+      token : token
     }
     
     localStorage.setItem('movieInfo', JSON.stringify(movieInfo))
@@ -59,19 +59,15 @@ var UploadNewVideo = React.createClass({
       console.log('res', res.status)
       if(res.status === 200) {
        hashHistory.push('profile')
-
       }
     console.log('File uploaded successfully')
     })  
 },
-
  
-
   render: function() {
     return (
-      <div className="create_account_screen">
-
-        <div className="create_account_form">
+      <section className="create_account_screen">
+        <section className="create_account_form">
           <h1>Upload New Movies</h1>
           <form onSubmit={this._saveAndContinue}>
             <input
@@ -125,9 +121,8 @@ var UploadNewVideo = React.createClass({
               value="Upload Video"
               className="register-button" />
           </form>
-        </div>
-
-      </div>
+        </section>
+      </section>
     );
   }
     
