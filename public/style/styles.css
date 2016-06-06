@@ -120,7 +120,7 @@ textarea{
 FormGroup{
   border-radius: none;
 }
-.search_bar{
+/*.search_bar{
   background-color: #222222;
   color: #FFFFFF;
   position: absolute;
@@ -130,7 +130,7 @@ FormGroup{
   height: 25px;
   width: 400px;
 
-}
+}*/
 
 /*=========================================================================================*/
 /*BUTTONS*/
@@ -443,10 +443,12 @@ header h1 {
     color: white;
     font-size: 25px;
     padding-top: 20px;
+    display: inline-flex; 
 }
 
 .brand {
   flex-grow: 1;
+  display: flex;
 }
 
 .menu {
@@ -454,7 +456,9 @@ header h1 {
 }
 
 .searchBar {
-  flex-grow: 1;
+  flex-grow: 0;
+text-align: center;
+
 }
 
 
@@ -548,4 +552,64 @@ header h1 {
   transform: scale(1.07);
   transition: all .2s ease-in;
 
+}
+
+/* MENU DROPDOWN */
+/* Dropdown Button */
+.dropbtn {
+    background-color: tomato;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    /*position: relative;*/
+    /*display: inline-block;*/
+    margin-top: 3px;
+    padding-left: 24px;
+    font-size: 21px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 2;
+    border-radius: 5px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #ed5c42;
+}
+
+.footerBackground {
+  height: 80px;
+  background-color: tomato;
+  padding-top: 30px;
 }
