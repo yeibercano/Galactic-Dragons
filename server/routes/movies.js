@@ -151,7 +151,7 @@ router.post('/movieS3', function(req, res){
   var file = req.files.file;
   var image = req.files.image
   // console.log("||||||||||||||||This is req.files from s3 post||||||||||||||||: ", req.files.image);
-  console.log('++++++++++++++++this is file which is file.path:', file.path);
+  console.log('++++++++++++++++this is file which is file:', req.files);
   var stream = fs.createReadStream(file.path);
   var imageStream = fs.createReadStream(image.path);
   return s3fsImplementation.writeFile(file.originalFilename, stream)

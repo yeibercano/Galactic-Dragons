@@ -2,18 +2,21 @@ var React = require('react');
 var axios = require('axios');
 var secret = require("../../../private.js")
 import { Router, Redirect, Route, IndexRoute, Link, hashHistory, browserHistory} from 'react-router'
+import Load from 'react-loading';
 
 
 
 var UploadNewVideo = React.createClass({
 
-  _handleChange: function(e) {
-    // this.setState({value: e.target.value});
+  spinSpinSpinSugar(){
+    console.log("I've been clicked")
+    console.log("This is spin in spin spin sugah!", document.getElementsByClassName("loading") );
+   document.getElementsByClassName("loading").style[0] = "visibile";
   },
-
     _saveAndContinue(e) {
     //to handle our submit form
     e.preventDefault();
+    
     let userLS = localStorage.getItem('user');
     //parses the info brought down (object)
     let parseUser = JSON.parse(userLS);
@@ -128,10 +131,13 @@ var UploadNewVideo = React.createClass({
               type="submit" 
               name="submit"
               value="Upload Video"
-              className="register-button" />
+              className="register-button"
+              onClick={this.spinSpinSpinSugar} />
           </form>
+          <section className="loading" style={{visibility: "hidden"}}>
+            <Load type="spinningBubbles" color='white' height='450' width='450' />
+          </section>
         </section>
-
       </section>
     );
   }
