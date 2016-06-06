@@ -8,10 +8,17 @@ class Search extends React.Component{
     super (props);
     let searchResults = localStorage.getItem('searchResults');
     searchResults = JSON.parse(searchResults);
-    console.log('this is searchResults:', searchResults)
+    // console.log('this is searchResults:', searchResults)
     this.state = {
-      sResults: searchResults
+      sResults: searchResults 
     }
+  }
+
+  componentWillUpdate() {
+    let searchResults = localStorage.getItem('searchResults');
+    searchResults = JSON.parse(searchResults);
+    this.setState({sResults: searchResults})
+    return true;
   }
 
   displayResult(result) {
