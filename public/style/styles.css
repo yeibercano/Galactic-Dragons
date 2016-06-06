@@ -85,18 +85,17 @@ section.carousel-div{
 /*=========================================================================================*/
 /*FORM*/
 /*=========================================================================================*/
-input{
+/*input{
   display: block;
   border-radius: 5px;
   width: 60%;
   height: 60px;
-  /*margin: 20px 50px;*/
   margin: 15px auto;
   font-size: 25px;
   border: 3px solid #222222;
   background-color: black;
   padding-left: 10px;
-}
+}*/
 textarea{
   display: block;
   border-radius: 5px;
@@ -121,7 +120,7 @@ textarea{
 FormGroup{
   border-radius: none;
 }
-.search_bar{
+/*.search_bar{
   background-color: #222222;
   color: #FFFFFF;
   position: absolute;
@@ -131,7 +130,7 @@ FormGroup{
   height: 25px;
   width: 400px;
 
-}
+}*/
 
 /*=========================================================================================*/
 /*BUTTONS*/
@@ -153,7 +152,7 @@ FormGroup{
   color: white;
   border-radius: none;
 }
-.search_button{
+/*.search_button{
   position: absolute;
   right: 855px;
   top: 15px;
@@ -163,7 +162,7 @@ FormGroup{
   background-color: #222222;
   color: white;
   border-radius: none;
-}
+}*/
 #navbar_register_link{
   position: absolute;
   top:-30px;
@@ -444,10 +443,12 @@ header h1 {
     color: white;
     font-size: 25px;
     padding-top: 20px;
+    display: inline-flex; 
 }
 
 .brand {
   flex-grow: 1;
+  display: flex;
 }
 
 .menu {
@@ -455,7 +456,9 @@ header h1 {
 }
 
 .searchBar {
-  flex-grow: 1;
+  flex-grow: 0;
+text-align: center;
+
 }
 
 
@@ -466,15 +469,147 @@ header h1 {
     width: 80%;
     margin: 0 auto;
 }
-
+.videoListWrapper h2 { 
+    text-align: center;
+    font-size: 33px;
+    padding: 20px 0px;
+    color: white;
+}
 .landing_page {
     display: flex;
 }
 
 .landing_page_movieInfo img {
     width: 100%;
+    border-radius: 5px;
 }
 
 .headerBackground {
     background-color: tomato;
+}
+
+/* SEARCH BAR */
+.search_button{
+
+  height: 25px;
+  width: 75px;
+  font-size: 16px;
+  background-color: #222222;
+  color: white;
+  border-radius: 5px;
+}
+
+.inputSearch {
+  border-radius: 5px;
+  width: 60%;
+  margin: 22px auto;
+  font-size: 19px;
+  border: 0px solid #222222;
+  background-color: black;
+  color: gray;
+  margin-right: 5px;
+}
+
+/* USER AUTHENTICATION SECTION */
+.userLogin {
+  margin-right: 25px;
+}
+
+/* SEARCH RESULTS */
+.searchResults {
+  display: flex;
+   width: 80%;
+    margin: 0 auto;
+}
+.search-item-container {
+
+}
+
+.searchResults img{
+  width:100%;
+  border-radius: 5px;
+}
+
+
+/* LANDING PAGE */
+.landing_page_movieInfo a {
+  opacity: .8;
+  transform: scale(.9);
+}
+
+.landing_page_movieInfo a:hover{
+  opacity: 1;
+ 
+}
+
+.landing_page_movieInfo {
+  transform: scale(.9);
+  transition: all .4s ease-in;
+  
+}
+
+.landing_page_movieInfo :hover {
+  transform: scale(1.07);
+  transition: all .2s ease-in;
+
+}
+
+/* MENU DROPDOWN */
+/* Dropdown Button */
+.dropbtn {
+    background-color: tomato;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    /*position: relative;*/
+    /*display: inline-block;*/
+    margin-top: 3px;
+    padding-left: 24px;
+    font-size: 21px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 2;
+    border-radius: 5px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #ed5c42;
+}
+
+.footerBackground {
+  height: 80px;
+  background-color: tomato;
+  padding-top: 30px;
 }

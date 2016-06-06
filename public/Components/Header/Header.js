@@ -25,7 +25,7 @@ class Header extends Component {
         <header className="headerBackground">
           <div className="headerWrapper">
           <Brand />
-          <Nav />
+     
           <SearchBar />
           <div style= {style} eventKey={2}>
             <UserProfile />

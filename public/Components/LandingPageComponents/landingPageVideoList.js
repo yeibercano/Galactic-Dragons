@@ -22,7 +22,9 @@ class LandingPageVideoList extends Component {
   movieInfo(movieInfo) {
     return (
         <section onClick={(movieSelected) => this.movieSelected(movieInfo)} className="landing_page_movieInfo">
-          <img id="landing_page_movieInfo_image"src={movieInfo.image} />
+          <a href={(movieSelected) => this.movieSelected(movieInfo)}>
+            <img id="landing_page_movieInfo_image"src={movieInfo.image} /> 
+          </a>
         </section>
     )
    }
