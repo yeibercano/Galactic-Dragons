@@ -30,7 +30,7 @@ class SearchBar extends Component {
 
       <aside className="searchBar"> 
         <form>
-          <input onChange={event => this.searchTerm(event.target.value)} />
+          <input className="inputSearch" onChange={event => this.searchTerm(event.target.value)} />
           <button 
             onClick= {this.submitSearch}
             type="submit"
