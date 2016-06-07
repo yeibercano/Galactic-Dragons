@@ -28,14 +28,14 @@ class SearchBar extends Component {
   render() {
     return (
       <aside class="searchBar"> 
-        <form>
+        <div>
           <input onChange={event => this.searchTerm(event.target.value)} />
           <button 
             onClick= {this.submitSearch}
             type="submit"
             className="search_button"
             >Search</button>
-        </form>
+        </div>  
       </aside>
     )
   }
