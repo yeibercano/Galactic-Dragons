@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import { hashHistory } from 'react-router';
 var axios = require('axios');
 
 
@@ -8,16 +9,29 @@ class Search extends React.Component{
     super (props);
     let searchResults = localStorage.getItem('searchResults');
     searchResults = JSON.parse(searchResults);
-    console.log('this is searchResults:', searchResults)
+    // console.log('this is searchResults:', searchResults)
     this.state = {
-      sResults: searchResults
+      sResults: searchResults 
     }
+  }
+
+  componentWillUpdate() {
+    let searchResults = localStorage.getItem('searchResults');
+    searchResults = JSON.parse(searchResults);
+    this.setState({sResults: searchResults})
+    return true;
+  }
+
+  movieSelected(movieSelected) {
+    console.log('This movie was selected:', movieSelected);
+    localStorage.setItem('viewerMovie', JSON.stringify(movieSelected));
+    hashHistory.push('viewer')  
   }
 
   displayResult(result) {
     console.log('displayResult is called with result:', result);
     return (
-        <div className="searchResults">
+        <div onClick={(movieSelected) => this.movieSelected(result)} className="searchResults">
           <h1>title here</h1>
            <section className="search-item-container" ></section>
            <section className="search-item-container" ></section>

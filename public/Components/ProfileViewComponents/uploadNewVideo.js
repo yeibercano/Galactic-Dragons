@@ -42,7 +42,6 @@ var UploadNewVideo = React.createClass({
 // Neo4J DB needs to update for the below post
     axios.post('/movies/movie', movieInfo)
     .then(function(response){
-      
       //userInfo is the response back with the very last user entered
       let movieInfo = response.config.data;
       //sets "user" in localstorage to what is contained in userInfo
@@ -61,13 +60,14 @@ var UploadNewVideo = React.createClass({
     // send fdata to our server to upload file to s3
     axios.post('/movies/movieS3', fdata)
     .then(function(res){
+      console.log('this is inside post to s3');
       console.log('res', res.status)
       if(res.status === 200) {
        hashHistory.push('profile')
 
       }
     console.log('File uploaded successfully')
-    })  
+    }) 
 },
 
  
