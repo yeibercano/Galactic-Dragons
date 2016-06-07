@@ -49,14 +49,14 @@ var UploadNewVideo = React.createClass({
      // to handle our submit form
     //the variable form below is used to grab the entire form element
     var form = document.querySelector("form");
-    // console.log('this is form:', form);
+    console.log('this is form:', form);
     //the variable fdata will be the actual form that will have the new file uploaded
     var fdata = new FormData(form);
-    // console.log('this is fdata:', fdata);
+    console.log('this is fdata:', fdata);
     // send fdata to our server to upload file to s3
     axios.post('/movies/movieS3', fdata)
     .then(function(res){
-      console.log('res', res.status)
+      console.log('res', res)
       if(res.status === 200) {
        hashHistory.push('profile')
       }
