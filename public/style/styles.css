@@ -2,6 +2,8 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+/*brand font*/
+@import url(https://fonts.googleapis.com/css?family=Raleway:900italic);
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -430,7 +432,7 @@ section.voting_container h3{
 
 /* HEADER */
 .headerWrapper {
-    height: 100px;
+    height: 85px;
     width: 80%;
     margin: 0 auto;
     display: flex; 
@@ -451,6 +453,10 @@ header h1 {
   display: flex;
 }
 
+.brand h1 {
+  font-family: 'Raleway Dots', cursive;
+  font-size: 40px;
+}
 .menu {
   flex-grow: 12;
 }
@@ -532,7 +538,7 @@ text-align: center;
 
 
 /* LANDING PAGE */
-.landing_page_movieInfo a {
+/*.landing_page_movieInfo a {
   opacity: .8;
   transform: scale(.9);
 }
@@ -552,7 +558,19 @@ text-align: center;
   transform: scale(1.07);
   transition: all .2s ease-in;
 
+}*/
+
+.landing_page_movieInfo {
+  transform: scale(.9);
+  position: relative;
+
 }
+
+.landing_page_movieInfo :hover {
+  transform: scale(1.1);
+  transition: all .2s ease-in;
+}
+
 
 /* MENU DROPDOWN */
 /* Dropdown Button */
@@ -612,4 +630,9 @@ text-align: center;
   height: 80px;
   background-color: tomato;
   padding-top: 30px;
+}
+
+.movieHover {
+  display: block;
+  position: absolute;
 }
