@@ -154,8 +154,8 @@ router.use(mulitpartyMiddleware);
 router.post('/movieS3', function(req, res){
   var file = req.files.file;
   var image = req.files.image
-  // console.log("||||||||||||||||This is req.files from s3 post||||||||||||||||: ", req.files.image);
-  console.log('++++++++++++++++this is file which is file:', req.files);
+  console.log("||||||||||||||||This is req.files from s3 post||||||||||||||||: ", req.files.image);
+  console.log('++++++++++++++++this is file which is file.path:', file.path);
   var stream = fs.createReadStream(file.path);
   var imageStream = fs.createReadStream(image.path);
   return s3fsImplementation.writeFile(file.originalFilename, stream)
@@ -178,12 +178,8 @@ router.post('/movieS3', function(req, res){
       }
       console.log('image upload success');
     })
-    res.status(200).send({name: 'File Upload Complete'});
   })
-  .catch(function(err) {
-    if (err) throw err;
-  })
-
+    res.send('File Upload Complete');
 });
 
 /* RETRIEVES ALL MOVIES FROM A USER */
