@@ -34,13 +34,11 @@ class LandingPage extends Component {
       
       <main> 
         <LandingPageVideoPlayer allMovies = {this.state.allMovies} />
-        <div style= {{width: "auto",
-                      marginLeft: "10%",
-                      marginRight: "10%"}}>
+        <section className="videoListWrapper">
           <LandingPageVideoList 
             selectedMovie = {(selectedMovie) => this.selectedMovie(selectedMovie)}
             allMovies = {this.state.allMovies} />
-        </div>
+        </section>
       </main>
       
     )

@@ -24,13 +24,13 @@ class Search extends React.Component{
   displayResult(result) {
     console.log('displayResult is called with result:', result);
     return (
-        <section>
+        <div className="searchResults">
           <h1>title here</h1>
            <section className="search-item-container" ></section>
            <section className="search-item-container" ></section>
            <img src={result.image} />
            <h3>{result.title}</h3>
-        </section>
+        </div>
       )
   }
 

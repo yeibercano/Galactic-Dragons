@@ -7,7 +7,7 @@ class UserLogin extends Component {
   render() {
     return (
       <aside class="userLogin"> 
-        <h1 onClick={ ()=> hashHistory.push('login')}>Login</h1>
+        <h1 onClick={ ()=> hashHistory.push('login')}>login</h1>
       </aside>
     )
   }
