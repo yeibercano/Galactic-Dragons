@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Brand      from './Brand'
-import Nav        from './Nav'
 import SearchBar  from './SearchBar'
 import UserLogin  from './UserLogin'
 import UserLogout from './userLogout'
