@@ -120,7 +120,7 @@ router.get('/search', function(req, res, next) {
   console.log('req.query from search:', req.query )
   console.log('req.body from search:', req.body )
   console.log('req.headers from search:', req.headers )
-  var searchTarget = req.headers.searchedItem || req.query.searchedItem || req.body.searchedItem
+  var searchTarget = req.headers.target || req.query.target|| req.body.searchTarget
   var query = [
    'MATCH (m:Movie {category: {searchTarget}}) RETURN m'
   ].join('\n');
