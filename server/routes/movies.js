@@ -120,7 +120,7 @@ router.get('/search', function(req, res, next) {
   console.log('req.query from search:', req.query )
   console.log('req.body from search:', req.body )
   console.log('req.headers from search:', req.headers )
-  var searchTarget = req.headers.searchedItem || req.query.searchedItem || req.body.searchedItem
+  var searchTarget = req.headers.target || req.query.target|| req.body.searchTarget
   var query = [
    'MATCH (m:Movie {category: {searchTarget}}) RETURN m'
   ].join('\n');
@@ -154,7 +154,7 @@ router.use(mulitpartyMiddleware);
 router.post('/movieS3', function(req, res){
   var file = req.files.file;
   var image = req.files.image
-  // console.log("||||||||||||||||This is req.files from s3 post||||||||||||||||: ", req.files.image);
+  console.log("||||||||||||||||This is req.files from s3 post||||||||||||||||: ", req.files.image);
   console.log('++++++++++++++++this is file which is file.path:', file.path);
   var stream = fs.createReadStream(file.path);
   var imageStream = fs.createReadStream(image.path);
@@ -178,12 +178,8 @@ router.post('/movieS3', function(req, res){
       }
       console.log('image upload success');
     })
-    res.status(200).send({name: 'File Upload Complete'});
+    res.status(200).send('File Upload Complete');
   })
-  .catch(function(err) {
-    if (err) throw err;
-  })
-
 });
 
 /* RETRIEVES ALL MOVIES FROM A USER */
