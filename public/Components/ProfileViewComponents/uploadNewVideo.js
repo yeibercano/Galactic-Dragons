@@ -57,7 +57,7 @@ var UploadNewVideo = React.createClass({
       console.log('this is inside post to s3');
       console.log('res', res.status)
       if(res.status === 200) {
-       hashHistory.push('profile')
+       return hashHistory.push('profile')
 
       }
     console.log('File uploaded successfully')
