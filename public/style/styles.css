@@ -454,8 +454,10 @@ header h1 {
 }
 
 .brand h1 {
-  font-family: 'Raleway Dots', cursive;
+  /*font-family: 'Raleway Dots', cursive;*/
+  font-family: bebas-neue, sans-serif;
   font-size: 40px;
+  letter-spacing: 2px;
 }
 .menu {
   flex-grow: 12;
