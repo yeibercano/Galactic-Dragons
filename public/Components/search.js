@@ -32,11 +32,10 @@ class Search extends React.Component{
     console.log('displayResult is called with result:', result);
     return (
         <div onClick={(movieSelected) => this.movieSelected(result)} className="searchResults">
-          <h1>title here</h1>
            <section className="search-item-container" ></section>
            <section className="search-item-container" ></section>
-           <img src={result.image} />
            <h3>{result.title}</h3>
+           <img src={result.image} />
         </div>
       )
   }
@@ -44,7 +43,6 @@ class Search extends React.Component{
 
   render () {
 
-    console.log('this is this.state.sResults inside render:', this.state.sResults.length);
     if (this.state.sResults.length === 0) {
       console.log('this sResults statement executed')
       return <section>Search results not found!</section>
@@ -52,7 +50,6 @@ class Search extends React.Component{
 
     return (
         <section>
-          <h1>This is Where The Search Results Will Be Populated</h1>
             {this.state.sResults.map(result=> this.displayResult(result.m.properties))}
         </section>
       )
