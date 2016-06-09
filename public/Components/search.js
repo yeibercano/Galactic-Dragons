@@ -45,7 +45,6 @@ class Search extends React.Component{
 
   render () {
 
-    console.log('this is this.state.sResults inside render:', this.state.sResults.length);
     if (this.state.sResults.length === 0) {
       console.log('this sResults statement executed')
       return <section>Search results not found!</section>
