@@ -31,7 +31,11 @@ var UploadNewVideo = React.createClass({
       year : this.year.value,
       userName : parseUser.userName,
       video: secret.endpointLocation + '/' + secret.bucketName + '/' + videoFile,
-      image : secret.endpointLocation + '/' + secret.bucketName + '/' + imageFile
+      image : secret.endpointLocation + '/' + secret.bucketName + '/' + imageFile,
+      voters: [],
+      rating: 0,
+      plays: 0,
+      clicks: 0,
     }
     // console.log('this is movie information:', movieInfo);
     localStorage.setItem('movieInfo', JSON.stringify(movieInfo))
