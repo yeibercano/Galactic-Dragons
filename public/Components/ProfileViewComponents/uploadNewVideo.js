@@ -2,19 +2,11 @@ var React = require('react');
 var axios = require('axios');
 var secret = require("../../../private.js")
 import { Router, Redirect, Route, IndexRoute, Link, hashHistory, browserHistory} from 'react-router'
-<<<<<<< HEAD:public/Components/ProfileViewComponents/uploadNewVideo.js
-var UploadNewVideo = React.createClass({
-  _handleChange: function(e) {
-    // this.setState({value: e.target.value});
-  },
-=======
 import Load from 'react-loading'
 
 
-
 var UploadNewVideo = React.createClass({
 
->>>>>>> master:public/Components/ProfileViewComponents/uploadNewVideo.js
     _saveAndContinue(e) {
     //to handle our submit form
     e.preventDefault();
@@ -22,13 +14,9 @@ var UploadNewVideo = React.createClass({
     let userLS = localStorage.getItem('user');
     //parses the info brought down (object)
     let parseUser = JSON.parse(userLS);
-<<<<<<< HEAD:public/Components/ProfileViewComponents/uploadNewVideo.js
-    let token = parseUser.token;
-=======
     // console.log('userLS PROFILE COMPO
       // console.log('parseUser', parseUser)
       console.log("What is in this.video? :", this.video)
->>>>>>> master:public/Components/ProfileViewComponents/uploadNewVideo.js
     let videoFile  = this.video.value.replace("C:\\fakepath\\", "");
     let imageFile  = this.image.value.replace("C:\\fakepath\\", "");
     console.log('This is videoFile:', videoFile);

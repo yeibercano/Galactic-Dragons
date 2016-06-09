@@ -179,11 +179,6 @@ router.post('/movieS3', function(req, res){
       }
       console.log('image upload success');
     })
-<<<<<<< HEAD
-    res.status(200).send("File upload Complete");
-  })
-    res.send('File Upload Complete');
-=======
     res.status(200).send('File Upload Complete');
   })
 });
@@ -211,7 +206,7 @@ router.get('/user', function(req, res, next) {
       // console.log('new');
       res.status(200).send(movies);
   })
->>>>>>> master
+
 });
 
 
