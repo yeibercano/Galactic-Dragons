@@ -7,7 +7,6 @@ import axios from 'axios';
 class Brand extends Component {
 
   selectedItem(item) {
-    console.log('this has been selected:', item.target.value);
     axios.get('/movies/search', {params: {target: item.target.value}})
     .then(data => {
         localStorage.setItem('searchResults', JSON.stringify(data.data));
@@ -33,6 +32,12 @@ class Brand extends Component {
             <a value="comedy" onClick={(value)=> this.selectedItem(value)}>comedy</a>
             <a value="action" onClick={(value)=> this.selectedItem(value)}>action</a>
             <a value="children" onClick={(value)=> this.selectedItem(value)}>children</a>
+            <a value="drama" onClick={(value)=> this.selectedItem(value)}>drama</a>
+            <a value="suspense" onClick={(value)=> this.selectedItem(value)}>suspense</a>
+            <a value="sports" onClick={(value)=> this.selectedItem(value)}>sports</a>
+            <a value="adventure" onClick={(value)=> this.selectedItem(value)}>adventure</a>
+            <a value="fantasy" onClick={(value)=> this.selectedItem(value)}>fantasy</a>
+            <a value="dark humor" onClick={(value)=> this.selectedItem(value)}>dark humor</a>
           </div>
        </div>
       </nav>
