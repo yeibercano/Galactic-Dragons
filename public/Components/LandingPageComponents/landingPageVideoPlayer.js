@@ -16,7 +16,6 @@ class LandingPageVideoPlayer extends React.Component {
   constructor (props) {
     
     super (props)  
-    console.log("This is props inside LandingPageVideoPlayer", props)
     localStorage.setItem('viewerMovie', JSON.stringify({}));
     this.state = {
         movieSent: null
@@ -27,7 +26,14 @@ class LandingPageVideoPlayer extends React.Component {
 
    __routeToViewing(e){
     e.preventDefault();
-    console.log("!!!!!!!!!!!!You made it into __routeToViewing!!!!!!!!!!!!");
+   }
+   onMouseOverHandler() {
+     document.getElementById("play_img").style.visibility = "visible";
+     console.log("I'm being called!");
+   }
+    onMouseLeaveHandler() {
+     document.getElementById("play_img").style.visibility = "hidden";
+     console.log("I'm leaving!");
    }
    
    onClickHandler (e, movieProps) {
@@ -41,10 +47,10 @@ class LandingPageVideoPlayer extends React.Component {
    }
   
    
-   renderImage(movieProps, i) {
-      console.log("This is i")
+   renderImage(movieProps) {
     return (
-        <CarouselItem>
+        <CarouselItem  onMouseEnter={this.onMouseOverHandler}>
+          <img id="play_img" src="../../../style/assets/play-btn.png" onMouseLeave={this.onMouseLeaveHandler} onClick={e => this.onClickHandler(e, movieProps)} />
           <img id="carousel-img" onClick={e => this.onClickHandler(e, movieProps)} src={movieProps.image}/>
             <Carousel.Caption id="carousel-caption">
                 <h2 id='title-caption'>{movieProps.title}</h2>
@@ -55,8 +61,7 @@ class LandingPageVideoPlayer extends React.Component {
    }
 
   render() {
-
-    // console.log('!!!!!!!!this is after setting state for movieSent:', this.state.movieSent);
+    
     if (this.props.allMovies === null) {
         return (
             <div>Loading...</div>

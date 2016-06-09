@@ -27,7 +27,7 @@ class VotingComponent extends React.Component {
     let currentUser = JSON.parse(localStorage.getItem('user'));
     currentUser = currentUser.userName;
     // console.log("This is the currentUser", currentUser)
-    
+
     if(currentUser !== movie.userName){
       // console.log("This is currentUser:::::" + currentUser + "This is movie.userName:::::::::" + movie.userName )
 

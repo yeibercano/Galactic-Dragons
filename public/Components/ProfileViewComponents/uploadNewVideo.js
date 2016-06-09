@@ -2,20 +2,37 @@ var React = require('react');
 var axios = require('axios');
 var secret = require("../../../private.js")
 import { Router, Redirect, Route, IndexRoute, Link, hashHistory, browserHistory} from 'react-router'
+<<<<<<< HEAD:public/Components/ProfileViewComponents/uploadNewVideo.js
 var UploadNewVideo = React.createClass({
   _handleChange: function(e) {
     // this.setState({value: e.target.value});
   },
+=======
+import Load from 'react-loading'
+
+
+
+var UploadNewVideo = React.createClass({
+
+>>>>>>> master:public/Components/ProfileViewComponents/uploadNewVideo.js
     _saveAndContinue(e) {
     //to handle our submit form
     e.preventDefault();
+    document.getElementById("loading_bubbles").style.visibility ="visible";
     let userLS = localStorage.getItem('user');
     //parses the info brought down (object)
     let parseUser = JSON.parse(userLS);
+<<<<<<< HEAD:public/Components/ProfileViewComponents/uploadNewVideo.js
     let token = parseUser.token;
+=======
+    // console.log('userLS PROFILE COMPO
+      // console.log('parseUser', parseUser)
+      console.log("What is in this.video? :", this.video)
+>>>>>>> master:public/Components/ProfileViewComponents/uploadNewVideo.js
     let videoFile  = this.video.value.replace("C:\\fakepath\\", "");
     let imageFile  = this.image.value.replace("C:\\fakepath\\", "");
-    
+    console.log('This is videoFile:', videoFile);
+    console.log('This is imageFile:', imageFile);
     let movieInfo = {
       title : this.title.value,
       director : this.director.value,
@@ -25,43 +42,39 @@ var UploadNewVideo = React.createClass({
       year : this.year.value,
       userName : parseUser.userName,
       video: secret.endpointLocation + '/' + secret.bucketName + '/' + videoFile,
-      image : secret.endpointLocation + '/' + secret.bucketName + '/' + imageFile, 
-      plays: 0,
-      rating: 0,
+      image : secret.endpointLocation + '/' + secret.bucketName + '/' + imageFile,
       voters: [],
-      token : token
+      rating: 0,
+      plays: 0,
+      clicks: 0,
+
     }
-    
+    // console.log('this is movie information:', movieInfo);
     localStorage.setItem('movieInfo', JSON.stringify(movieInfo))
 // ==================================================================
 // Neo4J DB needs to update for the below post
     axios.post('/movies/movie', movieInfo)
     .then(function(response){
-      
-      //userInfo is the response back with the very last user entered
+      //movieInfo is the response back with the very last user entered
       let movieInfo = response.config.data;
-      //sets "user" in localstorage to what is contained in userInfo
-      
-      // localStorage.setItem('user', movieInfo)
     })
   
 /*======================================================================*/
      // to handle our submit form
     //the variable form below is used to grab the entire form element
     var form = document.querySelector("form");
-    console.log('this is form:', form);
     //the variable fdata will be the actual form that will have the new file uploaded
     var fdata = new FormData(form);
-    console.log('this is fdata:', fdata);
     // send fdata to our server to upload file to s3
     axios.post('/movies/movieS3', fdata)
     .then(function(res){
-      console.log('res', res)
+      console.log('this is inside post to s3');
+      console.log('res', res.status)
       if(res.status === 200) {
-       hashHistory.push('profile')
+       return hashHistory.push('profile')
       }
     console.log('File uploaded successfully')
-    })  
+    }) 
 },
  
   render: function() {
@@ -121,6 +134,9 @@ var UploadNewVideo = React.createClass({
               value="Upload Video"
               className="register-button" />
           </form>
+          <section id="loading_bubbles">
+            <Load type='spinningBubbles' color='white'  />
+          </section>
         </section>
       </section>
     );

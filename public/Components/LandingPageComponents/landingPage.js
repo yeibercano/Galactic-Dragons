@@ -24,14 +24,23 @@ class LandingPage extends Component {
 
       })
     }
- 
+  
+ selectedMovie(movie) {
+  console.log('this is the movie selected!');
+ }
 
   render() {
     return (
-      <section> 
+      
+      <main> 
         <LandingPageVideoPlayer allMovies = {this.state.allMovies} />
-        <LandingPageVideoList allMovies = {this.state.allMovies} />
-      </section>
+        <section className="videoListWrapper">
+          <LandingPageVideoList 
+            selectedMovie = {(selectedMovie) => this.selectedMovie(selectedMovie)}
+            allMovies = {this.state.allMovies} />
+        </section>
+      </main>
+      
     )
   }
 }

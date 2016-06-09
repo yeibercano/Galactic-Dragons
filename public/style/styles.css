@@ -1,7 +1,9 @@
- http://meyerweb.com/eric/tools/css/reset/ 
+ /*http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
 */
+/*brand font*/
+@import url(https://fonts.googleapis.com/css?family=Raleway:900italic);
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -55,6 +57,8 @@ table {
 
 body{
   background: -webkit-radial-gradient(center, ellipse cover, #2c2e3d 0%,#000000 100%);
+  background-color: #000000;
+  font-family: 'Playfair Display', serif;
 }
 
 
@@ -62,9 +66,9 @@ body{
 /*CAROUSEL*/
 /*=========================================================================================*/
 section.carousel-div{
-  margin-top: -18px;
-  padding-bottom: 40px;
-  border-bottom: 1px solid #FFFFFF;
+/*  margin-top: -18px;*/
+  /*padding-bottom: 40px;*/
+  border-bottom: 5px solid #FFFFFF;
 }
 #carousel-img{
   height: 500px;
@@ -75,6 +79,18 @@ section.carousel-div{
   border-radius: 10px;
   opacity: 0.7;
 }
+#mini_carousel{
+  height: 300px;
+  margin: 0 auto;
+}
+#play_img{
+  position: absolute;
+  height: 300px;
+  width: 300px;
+  margin: 70px 570px;
+  visibility: hidden;
+}
+
 
 /*=========================================================================================*/
 /*FORM*/
@@ -84,7 +100,6 @@ input{
   border-radius: 5px;
   width: 60%;
   height: 60px;
-  /*margin: 20px 50px;*/
   margin: 15px auto;
   font-size: 25px;
   border: 3px solid #222222;
@@ -112,20 +127,41 @@ textarea{
 /*=========================================================================================*/
 /*SEARCH*/
 /*=========================================================================================*/
-FormGroup{
-  border-radius: none;
-}
-.search_bar{
-  background-color: #222222;
-  color: #FFFFFF;
-  position: absolute;
-  right: 780px;
-  top: 0px;
-  display: inline-block;
-  height: 25px;
-  width: 400px;
 
+.searchBar {
+  position: relative;
+  flex-grow: 5;
+  text-align: center;
+  right: 50px;
 }
+
+.search_button{
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.inputSearch {
+  border-radius: 5px;
+  position: absolute;
+  width: 375px;
+  height: 40px;
+  margin: 10px auto;
+  font-size: 19px;
+  border: 1px solid #FFFFFF;
+  background-color: black;
+  color: gray;
+  margin-right: 5px;
+}
+#search_button_img{
+  position: absolute;
+  top: 23px;
+  height: 25px;
+  width: 25px;
+  right: 25%;
+  /*background-color: rgba(0, 0, 0, 0.5);*/
+}
+
+
 
 /*=========================================================================================*/
 /*BUTTONS*/
@@ -147,17 +183,7 @@ FormGroup{
   color: white;
   border-radius: none;
 }
-.search_button{
-  position: absolute;
-  right: 700px;
-  top: 15px;
-  height: 25px;
-  width: 75px;
-  font-size: 10px;
-  background-color: #222222;
-  color: white;
-  border-radius: none;
-}
+
 #navbar_register_link{
   position: absolute;
   top:-30px;
@@ -170,13 +196,29 @@ FormGroup{
   right: 50px;
 }
 
+#navbar_logout_link{
+  position: absolute;
+  top:-30px;
+  right: 50px;
+}
+
+/*=========================================================================================*/
+/*LOADING*/
+/*=========================================================================================*/
+#loading_bubbles{
+  position: absolute;
+  /*visibility: hidden;*/
+  bottom: -273px;
+  right: 280px;
+  height: 250px;
+  width: 250px;
+} 
 
 /*=========================================================================================*/
 /*FOOTER*/
 /*=========================================================================================*/
 footer{
   position: relative;
-  background-color: #222222;
   bottom: -63px;
   width:100%;
   height:25px;
@@ -200,22 +242,43 @@ video {
 /*VIEWING*/
 /*=========================================================================================*/
 video.viewing_video{
-  width: 100%;  
+  width: 100%; 
+  margin: 30px 0px; 
 }
 aside.viewing_info{
-  height:350px;
+  height:450px;
   width:100%;
   background-color: #222222;
   padding: 50px 20px;
   box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
 
 }
-section#poster_info{
+#viewer_title {
+  margin-top: 10px;
+  color: #FFFFFF;
+  font-size: 80px;
+  text-align: center;
+}
+#poster_info img{
   display:inline-block;
+  height: 350px;
+  width: 275px;
   margin-right: 20px;
+  border: 10px solid #FFFFFF;
   float:left;
 }
-section#movie_info{ 
+#movie_info h2{
+  font-size: 40px;
+  color: #FFFFFF;
+}
+#sub_movie_info {
+  margin-top: 20px;
+}
+#sub_movie_info h4{
+  font-size: 20px;
+  color: #FFFFFF;
+}
+#movie_info{ 
   display: inline;
   height:350px;
   width:100%;
@@ -228,6 +291,10 @@ section#movie_info{
 /*=========================================================================================*/
 /*LANDING*/
 /*=========================================================================================*/
+section.landing_page {
+  width: 1200px;
+  overflow: scroll;
+}
 section.landing_page h2{
   text-align: center;
   color: #FFFFFF;
@@ -235,32 +302,68 @@ section.landing_page h2{
 section.landing_page_movieInfo{
   display: inline-block;
   margin: 50px 25px;
+  margin-top: 5px;
 }
 
 #landing_page_movieInfo_image{
-  height: 250px;
-  width: 225px;
+  height: 300px;
+  width: 270px;
 }
+.landing_page_movieInfo {
+  transform: scale(.9);
+  position: relative;
+
+}
+
+.landing_page_movieInfo :hover {
+  transform: scale(1.1);
+  transition: all .2s ease-in;
+}
+
 
 /*=========================================================================================*/
 /*PROFILE*/
 /*=========================================================================================*/
 section.profile_container{
   position: relative;
-  height: 1000px;
-  width:1200px;
+  height: 1600px;
+  width: 100%;
 }
 aside.account_information{
   position: absolute;
-  background-color: #222222;
+  background: linear-gradient(to bottom, rgba(34,34,34,1) 0%,rgba(34,34,34,0.49) 51%,rgba(255,255,255,0) 100%);
+  background-color: #046380;
   height: 100%;
-  width: 340px;
-  padding: 25px;
-  top: -20px;
+  width: 350px;
+  padding: 30px;
   box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
   color: white;
 }
+#account_information_gravatar_container{
+  border-bottom: 1px solid #FFFFFF;
+  padding: 30px 0px;
+  margin-bottom: 20px;
+}
+#account_information_gravatar{
+  border: 8px solid #FFFFFF;
+  border-radius: 100px;
+  margin: 10px 0px;
+  border-bottom: 2px solid #FFFFFF;
+}
+#account_information_title{
+  font-size: 30px
+}
+/*#account_information_bullet{
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  margin-right: 5px;
+}*/
+#full_name{
+  display: block;
+}
 aside.account_information h4{
+  display: inline-block;
   margin-bottom: 20px;
   border-bottom: #FFFFFF;
 }
@@ -268,7 +371,8 @@ aside.account_information h4{
 section.profile_video_player{
   display: inline-block;
   position: absolute;
-  left: 35%;
+  margin-top: 40px;
+  left: 30%;
 }
 section.profile_video_player video{
   width: 900px;
@@ -276,15 +380,34 @@ section.profile_video_player video{
   margin-left: -30px;
   margin-bottom: 5px;
 }
+
 section.profile_video_player h1{
   text-align: center;
   color: white;
 }
+.upload-button{
+  width: 500px;
+  color: white;
+  border: 1px solid #FFFFFF;
+}
 section.upload_video_button{
   position: absolute;
-  right: 70px;
-  bottom: -75px;
+  right: 22%;
+  bottom: 40%;
+}
 
+.upload_list_title {
+  margin-top: 25px;
+  color: white;
+  font-size: 30px;
+}
+
+.profile_video_list {
+  height: 300px;
+  width: 850px;
+  padding: 10px;
+  margin-top: 15px;
+  overflow: hidden;
 }
 section.profile_video_list {
   background-color: #22222;
@@ -292,7 +415,7 @@ section.profile_video_list {
   width: 850px;
   border: 1px solid #FFFFFF;
   padding: 10px;
-  overflow: scroll;
+  overflow: hidden;
 }
 section.profile_video_list h1{
   text-align: center;
@@ -310,6 +433,7 @@ section.profile_video_list img{
   height:150px;
   width:125px;
   margin: 10px 0;
+  overflow: hidden;
   cursor: pointer;
 }
 section.list-item-container{
@@ -321,22 +445,22 @@ section.list-item-container{
 /*=========================================================================================*/
 
 section.voting_container{
-  position: absolute;
-  height: 1000px;
-  width: 390px;
-  top: 55px;
-  right: 10px;
-  background-color: #222222;
-  box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
-  overflow: scroll; 
-  z-index: 1;
+  
+  height: 550px;
+  width: 200px;
+  background-color: white;
 }
 
 section.voting_container h4{
   color: #FFFFFF;
-  border-bottom: 1px solid #FFFFFF;
+  /*border-bottom: 1px solid #242632;*/
+  height: 275px;
+  width: 100%;
   text-align: center;
   padding: 20px; 
+}
+section.vote_contain {
+ border-bottom: 3px solid #FFFFFF
 }
 
 section.voting_container h3{
@@ -345,6 +469,24 @@ section.voting_container h3{
   padding: 20px; 
 }
 
+.vote_title {
+  width: 100%;
+  height: 150px;
+  border-top: 3px solid #FFFFFF;
+  z-index: 1;
+
+}
+.voting_information{
+  display: inline-block;
+}
+.voting_information h3 h4{
+  text-align: center;
+}
+
+.vote_title h1 {
+  color: white;
+  text-align: center;
+}
 
 #voting_image {
   height:250px;
@@ -353,4 +495,191 @@ section.voting_container h3{
 }
 
 
+/*=========================================================================================*/
+/*HEADER*/
+/*=========================================================================================*/
 
+@import url(https://fonts.googleapis.com/css?family=Architects+Daughter|Rock+Salt|Bubbler+One);
+@import url(https://fonts.googleapis.com/css?family=Oswald:400,300,700);
+
+ .navbar-brand {
+    font-size: 36px !important;
+    /*font-family: 'Architects Daughter', cursive;*/
+     /*font-family: 'Rock Salt', cursive; */
+    /*font-family: 'Bubbler One', sans-serif;*/
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+
+}
+
+
+.headerWrapper {
+    height: 85px;
+    width: 80%;
+    margin: 0 auto;
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+header h1 {
+    color: white;
+    font-size: 25px;
+    padding-top: 20px;
+    display: inline-flex; 
+    cursor: pointer;
+}
+
+.brand {
+  flex-grow: 1;
+  display: flex;
+}
+
+.brand h1 {
+  font-family: 'Raleway Dots', cursive;
+  font-size: 40px;
+}
+.menu {
+  flex-grow: 12;
+}
+
+.videoListWrapper { 
+/*  width: auto;
+  margin-left: 10%;
+  margin-right: 10%;*/
+    width: 80%;
+    margin: 0 auto;
+}
+.videoListWrapper h2 { 
+    text-align: center;
+    font-size: 33px;
+    padding: 20px 0px;
+    color: white;
+}
+.landing_page {
+    display: flex;
+}
+
+.landing_page_movieInfo img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.headerBackground {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+/* USER AUTHENTICATION SECTION */
+.userLogin {
+  margin-right: 25px;
+}
+
+/*=========================================================================================*/
+/* SEARCH RESULTS */
+/*=========================================================================================*/
+
+.result_header{
+  height: 90px;
+  width: 100%;
+  border-bottom: 1px solid #FFFFFF;
+  border-top: 10px solid #FFFFFF;
+}
+
+.result_header h1{
+  margin-top: 20px;
+  font-size: 40px;
+  color: #FFFFFF;
+}
+
+.searchResults {
+  display: block;
+   width: 80%;
+    margin: 0 auto;
+}
+.search-item-container {
+  border-radius: 150px;
+  /*width: 100%;*/
+}
+.search-item-title-container{
+  display: block;
+  color: #FFFFFF;
+  text-align: center;
+  text-decoration: underline;
+  font-size: 30px;
+  margin-top: 30px;
+}
+
+.searchResults img{
+  display: block;
+  margin:60px auto;
+  border-radius: 175px;
+  border: 8px solid #FFFFFF;
+  cursor: pointer;
+}
+
+
+/* MENU DROPDOWN */
+/* Dropdown Button */
+.dropbtn {
+    background-color: rgba(0, 0, 0, 0.5); 
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    /*position: relative;*/
+    /*display: inline-block;*/
+    margin-top: 3px;
+    padding-left: 24px;
+    font-size: 21px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 2;
+    border-radius: 5px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #525252;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #525252;
+}
+
+.footerBackground {
+  height: 80px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-top: 30px;
+}
+
+.movieHover {
+  display: block;
+  position: absolute;
+}

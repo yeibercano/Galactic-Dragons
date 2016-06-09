@@ -5,7 +5,8 @@ var axios = require('axios');
 import ProfileVideoPlayer from './profileVideoPlayer'
 import ProfileInfo from './profileInfo'
 import UploadVideos from './uploadVideo'
-import Voting from '../VotingComponent/voting.js'
+import VoteMovies from './profileVoting.js'
+import UploadNewVideo from './uploadNewVideo'
 
 
 // this is the parent component 
@@ -25,22 +26,24 @@ class Profile extends Component {
     let parseMovie = JSON.parse(movieLS);
     // console.log('this is the new parsed movie info:', parseMovie)
     this.state = {
+
       userInfo: parseUser,
     }
   }
 
-  
 
   render() {
     
     return (
       <section>
         <section className="profile_container" >
-          <ProfileInfo  userInfo = {this.state.userInfo}/>
-          <ProfileVideoPlayer userInfo = {this.state.userInfo} />
-            <UploadVideos />
+          <ProfileInfo userInfo = {this.state.userInfo}/>
+          <ProfileVideoPlayer 
+            userInfo = {this.state.userInfo}
+            allMovies = {this.state.allMovies} />
+          <UploadVideos />
+          <VoteMovies />
         </section>
-        <Voting />
       </section>
     )
   }
