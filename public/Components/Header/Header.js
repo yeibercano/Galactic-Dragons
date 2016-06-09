@@ -22,9 +22,10 @@ class Header extends Component {
     }
 
     return (
-        <header class="headerContainer">
+        <header className="headerBackground">
+          <div className="headerWrapper">
           <Brand />
-          <Nav />
+     
           <SearchBar />
           <div style= {style} eventKey={2}>
             <UserProfile />
@@ -38,6 +39,7 @@ class Header extends Component {
           <div style= {style}>
           <UserLogout />
           </div>
+         </div> 
         </header >
     )
   }

@@ -8,7 +8,7 @@ class Footer extends Component {
  
   render() {
     return (
-      <footer> 
+      <footer className="footerBackground"> 
         <h3>Sovereign &copy; 2016</h3>
       </footer>
     )

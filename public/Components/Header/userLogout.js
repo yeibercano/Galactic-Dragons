@@ -13,7 +13,7 @@ class UserLogout extends Component {
   render() {
     return (
       <aside class="userLogin"> 
-        <h1 onClick={this.logout}>Logout</h1>
+        <h1 onClick={this.logout}>logout</h1>
       </aside>
     )
   }

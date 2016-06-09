@@ -11,7 +11,8 @@ import Search from './public/Components/search'
 import Footer from './public/Components/footer'
 import Header from './public/Components/Header/Header'
 import { Router, Route, IndexRoute, Link, hashHistory, browserHistory } from 'react-router'
-// import './public/style/styles.css'
+
+
 var axios = require('axios');
 const Home = React.createClass({
   
@@ -74,7 +75,7 @@ const App = React.createClass({
   render() {
     return (
       <div>
-        <Header className="MyComponent-wrapper" />
+        <Header />
         {this.props.children}
         <Footer />
       </div>
