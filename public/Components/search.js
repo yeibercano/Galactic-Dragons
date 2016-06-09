@@ -31,7 +31,7 @@ class Search extends React.Component{
   displayResult(result) {
     console.log('displayResult is called with result:', result);
     return (
-        <div onClick={(movieSelected) => this.movieSelected(result)} className="searchResults">
+        <div onClick={(movieSelected) => this.movieSelected(result)} >
           <h1>title here</h1>
            <section className="search-item-container" ></section>
            <section className="search-item-container" ></section>
@@ -51,7 +51,7 @@ class Search extends React.Component{
     }
 
     return (
-        <section>
+        <section className="searchResults">
           <h1>This is Where The Search Results Will Be Populated</h1>
             {this.state.sResults.map(result=> this.displayResult(result.m.properties))}
         </section>
