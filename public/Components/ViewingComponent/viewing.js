@@ -39,20 +39,22 @@ class ViewingPage extends Component {
 
     return (
       <section>
-      <h1>{this.state.videoTitle}</h1>
+        <h1 id="viewer_title">{this.state.videoTitle}</h1>
         <section >
           <video className="viewing_video" autoPlay controls src={this.state.videoUrl} type="video/mp4" />
         </section>  
         <aside className="viewing_info">
             <section id="poster_info">
-              <img style={{height: 250, width:250}} src={this.state.videoImage} />
+              <img src={this.state.videoImage} />
             </section>
             <section id="movie_info">
             <h2>{this.state.videoTitle}</h2>
-            <h4>{this.state.videoSynopsis}</h4>
-            <h4>{this.state.videoActors}</h4>
-            <h4>{this.state.videoDirector}</h4>
-            <h4>{this.state.videoYear}</h4>
+              <section id="sub_movie_info">
+                <h4>{this.state.videoSynopsis}</h4>
+                <h4>Actors: {this.state.videoActors}</h4>
+                <h4>Director: {this.state.videoDirector}</h4>
+                <h4>Release: {this.state.videoYear}</h4>
+              </section>
             </section>
         </aside>
       </section>
