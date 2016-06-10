@@ -68,11 +68,11 @@ body{
 section.carousel-div{
 /*  margin-top: -18px;*/
   /*padding-bottom: 40px;*/
-  border-bottom: 5px solid #FFFFFF;
+      border-bottom: 5px solid #316daa;
 }
 #carousel-img{
-  height: 500px;
-  margin:0px auto; 
+    margin: 0px auto;
+    width: 75%;
 }
 #carousel-caption{
   background-color: black;
@@ -306,8 +306,9 @@ section.landing_page_movieInfo{
 }
 
 #landing_page_movieInfo_image{
-  height: 300px;
-  width: 270px;
+ /* height: 300px;
+  width: 270px;*/
+    width: 100%;
 }
 .landing_page_movieInfo {
   transform: scale(.9);
@@ -536,8 +537,10 @@ header h1 {
 }
 
 .brand h1 {
-  font-family: 'Raleway Dots', cursive;
+  /*font-family: 'Raleway Dots', cursive;*/
+  font-family: bebas-neue, sans-serif;
   font-size: 40px;
+  letter-spacing: 2px;
 }
 .menu {
   flex-grow: 12;
@@ -566,7 +569,8 @@ header h1 {
 }
 
 .headerBackground {
-    background-color: rgba(0, 0, 0, 0.5);
+    /*background-color: rgba(0, 0, 0, 0.5);*/
+    background-color: #316daa;
 }
 
 
@@ -623,7 +627,8 @@ header h1 {
 /* MENU DROPDOWN */
 /* Dropdown Button */
 .dropbtn {
-    background-color: rgba(0, 0, 0, 0.5); 
+    /*background-color: rgba(0, 0, 0, 0.5); */
+    background-color: #316daa; 
     color: white;
     padding: 16px;
     font-size: 16px;
@@ -635,7 +640,7 @@ header h1 {
 .dropdown {
     /*position: relative;*/
     /*display: inline-block;*/
-    margin-top: 3px;
+    margin-top: 8px;
     padding-left: 24px;
     font-size: 21px;
 }
@@ -661,7 +666,9 @@ header h1 {
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-  background-color: #525252;
+  /*background-color: #525252;*/
+  background-color: #71A7DD;
+
 }
 
 /* Show the dropdown menu on hover */
@@ -671,12 +678,13 @@ header h1 {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-    background-color: #525252;
+    /*background-color: #525252;*/
+    background-color: #71A7DD;
 }
 
 .footerBackground {
   height: 80px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #316daa;
   padding-top: 30px;
 }
 
