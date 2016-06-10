@@ -41,7 +41,7 @@ class VotingComponent extends React.Component {
           )
       // }
     }
-
+}
     
   }
 

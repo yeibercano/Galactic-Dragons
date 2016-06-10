@@ -20,6 +20,7 @@
     "react-dom": "latest",
     "react-gravatar": "^2.4.3",
     "react-html5video": "^1.2.8",
+    "react-loading": "0.0.9",
     "react-progress-button": "^5.0.0",
     "react-redux": "^4.4.1",
     "react-router": "^2.4.1",

@@ -207,9 +207,9 @@ textarea{
 /*=========================================================================================*/
 #loading_bubbles{
   position: absolute;
-  /*visibility: hidden;*/
-  bottom: -273px;
-  right: 280px;
+  visibility: hidden;
+  bottom: -12%;
+  right: 260px;
   height: 250px;
   width: 250px;
 } 
