@@ -14,7 +14,8 @@ var jwt    = require('jsonwebtoken')
 router.get('/', function(req, res, next) {
   // console.log('req in all movies', req)
   var query = [
-   'MATCH (m:Movie) RETURN m LIMIT 5'
+   // 'MATCH (m:Movie) RETURN m LIMIT 5'
+   'MATCH (m:Movie) RETURN m'
   ].join('\n');
 
   db.cypher({

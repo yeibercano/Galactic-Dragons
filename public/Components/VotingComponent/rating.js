@@ -20,15 +20,14 @@ class Rating extends React.Component {
   }
   ratingChanged(vote) {
       this.setState({rating: vote}, function(){   
+      axios.post('/movies/rating', { rating: this.state.rating, title: this.state.title, voter: this.state.voter });
       hashHistory.push("profile");
-      // console.log("What is this.state.rating", this.state.rating);
-      // console.log('movieSelected', this.movieSelected)
-      
+
     });
-    axios.post('/movies/rating', { rating: this.state.rating, title: this.state.title, voter: this.state.voter })
-    .then(function(res){
-      // console.log('res', res)
-    })
+    // axios.post('/movies/rating', { rating: this.state.rating, title: this.state.title, voter: this.state.voter })
+    // .then(function(res){
+    //   // console.log('res', res)
+    // })
 
   }
 

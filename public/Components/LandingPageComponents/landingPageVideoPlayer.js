@@ -46,16 +46,19 @@ class LandingPageVideoPlayer extends React.Component {
   
    
    renderImage(movieProps) {
-    return (
-        <CarouselItem  onMouseEnter={this.onMouseOverHandler}>
-          <img id="play_img" src="../../../style/assets/play-btn.png" onMouseLeave={this.onMouseLeaveHandler} onClick={e => this.onClickHandler(e, movieProps)} />
-          <img id="carousel-img" onClick={e => this.onClickHandler(e, movieProps)} src={movieProps.image}/>
-            <Carousel.Caption id="carousel-caption">
-                <h2 id='title-caption'>{movieProps.title}</h2>
-                <h4 id='synopsis-caption'>{movieProps.synopsis}</h4>
-            </Carousel.Caption>
-        </CarouselItem>
-    )
+    console.log('this is movie Props:', movieProps)
+    if (movieProps.rating > 5) {
+      return (
+          <CarouselItem  onMouseEnter={this.onMouseOverHandler}>
+            <img id="play_img" src="../../../style/assets/play-btn.png" onMouseLeave={this.onMouseLeaveHandler} onClick={e => this.onClickHandler(e, movieProps)} />
+            <img id="carousel-img" onClick={e => this.onClickHandler(e, movieProps)} src={movieProps.image}/>
+              <Carousel.Caption id="carousel-caption">
+                  <h2 id='title-caption'>{movieProps.title}</h2>
+                  <h4 id='synopsis-caption'>{movieProps.synopsis}</h4>
+              </Carousel.Caption>
+          </CarouselItem>
+      )
+    }
    }
 
   render() {
