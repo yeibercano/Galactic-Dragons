@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import VoteVideoPlayer from './votingPlayer'
 import VoteVideoList from './votingVideoList'
 import Rating from './rating'
+
 var axios = require('axios');
 
 
@@ -13,7 +14,7 @@ class VoteContainer extends Component {
     super (props) 
 
     let movieSelected = localStorage.getItem('viewerMovie')
-    console.log('this is movieSelected:', movieSelected)
+    // console.log('this is movieSelected:', movieSelected)
     if (movieSelected === '{}') {
       this.state = {
         videoUrl: null
@@ -40,7 +41,7 @@ class VoteContainer extends Component {
 
     return (
       <section>
-        <VoteVideoPlayer movie= {this.state.videoUrl} />
+        <VoteVideoPlayer movie= {this.state.videoUrl} title = {this.state.videoTitle}/>
         <VoteVideoList movie={ this.state} />
         <section id="star-rating" style={{visibility: "hidden"}}>
           <Rating  />

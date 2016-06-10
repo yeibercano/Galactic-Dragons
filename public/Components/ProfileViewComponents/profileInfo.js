@@ -13,17 +13,18 @@ class ProfileInfo extends Component {
   render() {
     return (
       <aside  className="account_information">
-        <h3>Account Information</h3>
-        <Gravatar email={this.props.userInfo.email.toLowerCase().trim()} default="monsterid" size={200} rating="pg"></Gravatar>
-        <h4>Username: {this.props.userInfo.userName}</h4>
-        <h4>First Name: {this.props.userInfo.firstName}</h4>
-        <h4>Last Name: {this.props.userInfo.lastName}</h4>
-        <h4>Email: {this.props.userInfo.email}</h4>
-        <h4>Company Name:{this.props.userInfo.companyName}</h4>
-        <h4>Website: {this.props.userInfo.website}</h4>
+        <h1 id="account_information_title" >Welcome, {this.props.userInfo.userName}!</h1>
+        <section id="account_information_gravatar_container">
+        <Gravatar id="account_information_gravatar" email={this.props.userInfo.email.toLowerCase().trim()} default="monsterid" size={200} rating="pg"></Gravatar>
+        </section>
+        <h4>{this.props.userInfo.email}</h4>
+        <h4 id="full_name">{this.props.userInfo.firstName} {this.props.userInfo.lastName}</h4>
+        <h4>{this.props.userInfo.companyName}</h4>
+        <h4>{this.props.userInfo.website}</h4>
       </aside>
     )
   }
 }
 
 export default ProfileInfo
+        // <img id="account_information_bullet" src="../style/assets/bulletpoint.png"/>

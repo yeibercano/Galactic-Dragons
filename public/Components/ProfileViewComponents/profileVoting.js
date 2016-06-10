@@ -23,15 +23,14 @@ class VotingComponent extends React.Component {
   }
 
   renderImage(movie){
+    console.log("This is movie", movie);
     let currentUser = JSON.parse(localStorage.getItem('user'));
     currentUser = currentUser.userName;
-    console.log("This is movie", movie);
-    // console.log("This is the currentUser", currentUser)
-    console.log()
+
     if(currentUser !== movie.userName){
       // console.log("This is currentUser:::::" + currentUser + "This is movie.userName:::::::::" + movie.userName )
 
-      if(!movie.voters.includes(currentUser)){
+      // if(!movie.voters.includes(currentUser)){
         return (
             <section className="voting_image_container">
               <img id="voting_image" src={movie.image} onClick={e => this.onClickHandler(e, movie)}/>
@@ -41,14 +40,14 @@ class VotingComponent extends React.Component {
               </section>
             </section>
           )
-      }
+      // }
     }
 
     
   }
 
   selectedMovie (movie) {
-    console.log('A new movie was selected!', movie.video);
+    // console.log('A new movie was selected!', movie.video);
     this.setState({url: movie.video})
   }
 
