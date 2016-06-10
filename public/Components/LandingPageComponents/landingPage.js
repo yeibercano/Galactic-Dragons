@@ -26,7 +26,7 @@ class LandingPage extends Component {
     }
   
  selectedMovie(movie) {
-  console.log('this is the movie selected!');
+  // console.log('this is the movie selected!');
  }
 
   render() {

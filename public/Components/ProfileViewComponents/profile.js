@@ -19,12 +19,9 @@ class Profile extends Component {
     let userLS = localStorage.getItem('user');
     //parses the info brought down (object)
     let parseUser = JSON.parse(userLS);
-    // console.log('userLS PROFILE COMPONENT', parseUser);
-    // this.props.user = localStorage.getItem(JSON.parse(user))
     let movieLS = localStorage.getItem('movieInfo');
     //parses the info brought down (object)
     let parseMovie = JSON.parse(movieLS);
-    // console.log('this is the new parsed movie info:', parseMovie)
     this.state = {
 
       userInfo: parseUser,
@@ -43,10 +40,7 @@ class Profile extends Component {
             allMovies = {this.state.allMovies} />
           <UploadVideos />
         </section>
-        <section className="vote_title">
-          <h1>Movies to be Voted On</h1>
-        </section>
-        <VoteMovies />
+          <VoteMovies />
       </section>
     )
   }

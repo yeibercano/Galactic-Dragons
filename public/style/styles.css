@@ -67,8 +67,8 @@ body{
 /*=========================================================================================*/
 section.carousel-div{
 /*  margin-top: -18px;*/
-  padding-bottom: 40px;
-  border-bottom: 1px solid #FFFFFF;
+  /*padding-bottom: 40px;*/
+  border-bottom: 5px solid #FFFFFF;
 }
 #carousel-img{
   height: 500px;
@@ -83,11 +83,19 @@ section.carousel-div{
   height: 300px;
   margin: 0 auto;
 }
+#play_img{
+  position: absolute;
+  height: 300px;
+  width: 300px;
+  margin: 70px 570px;
+  visibility: hidden;
+}
+
 
 /*=========================================================================================*/
 /*FORM*/
 /*=========================================================================================*/
-/*input{
+input{
   display: block;
   border-radius: 5px;
   width: 60%;
@@ -97,7 +105,7 @@ section.carousel-div{
   border: 3px solid #222222;
   background-color: black;
   padding-left: 10px;
-}*/
+}
 textarea{
   display: block;
   border-radius: 5px;
@@ -119,20 +127,41 @@ textarea{
 /*=========================================================================================*/
 /*SEARCH*/
 /*=========================================================================================*/
-FormGroup{
-  border-radius: none;
-}
-/*.search_bar{
-  background-color: #222222;
-  color: #FFFFFF;
-  position: absolute;
-  right: 925px;
-  top: 0px;
-  display: inline-block;
-  height: 25px;
-  width: 400px;
 
-}*/
+.searchBar {
+  position: relative;
+  flex-grow: 5;
+  text-align: center;
+  right: 50px;
+}
+
+.search_button{
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.inputSearch {
+  border-radius: 5px;
+  position: absolute;
+  width: 375px;
+  height: 40px;
+  margin: 10px auto;
+  font-size: 19px;
+  border: 1px solid #FFFFFF;
+  background-color: black;
+  color: gray;
+  margin-right: 5px;
+}
+#search_button_img{
+  position: absolute;
+  top: 23px;
+  height: 25px;
+  width: 25px;
+  right: 18%;
+  /*background-color: rgba(0, 0, 0, 0.5);*/
+}
+
+
 
 /*=========================================================================================*/
 /*BUTTONS*/
@@ -154,17 +183,7 @@ FormGroup{
   color: white;
   border-radius: none;
 }
-/*.search_button{
-  position: absolute;
-  right: 855px;
-  top: 15px;
-  height: 25px;
-  width: 75px;
-  font-size: 10px;
-  background-color: #222222;
-  color: white;
-  border-radius: none;
-}*/
+
 #navbar_register_link{
   position: absolute;
   top:-30px;
@@ -183,8 +202,17 @@ FormGroup{
   right: 50px;
 }
 
-
-
+/*=========================================================================================*/
+/*LOADING*/
+/*=========================================================================================*/
+#loading_bubbles{
+  position: absolute;
+  visibility: hidden;
+  bottom: -12%;
+  right: 260px;
+  height: 250px;
+  width: 250px;
+} 
 
 /*=========================================================================================*/
 /*FOOTER*/
@@ -214,22 +242,43 @@ video {
 /*VIEWING*/
 /*=========================================================================================*/
 video.viewing_video{
-  width: 100%;  
+  width: 100%; 
+  margin: 30px 0px; 
 }
 aside.viewing_info{
-  height:350px;
+  height:450px;
   width:100%;
   background-color: #222222;
   padding: 50px 20px;
   box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
 
 }
-section#poster_info{
+#viewer_title {
+  margin-top: 10px;
+  color: #FFFFFF;
+  font-size: 80px;
+  text-align: center;
+}
+#poster_info img{
   display:inline-block;
+  height: 350px;
+  width: 275px;
   margin-right: 20px;
+  border: 10px solid #FFFFFF;
   float:left;
 }
-section#movie_info{ 
+#movie_info h2{
+  font-size: 40px;
+  color: #FFFFFF;
+}
+#sub_movie_info {
+  margin-top: 20px;
+}
+#sub_movie_info h4{
+  font-size: 20px;
+  color: #FFFFFF;
+}
+#movie_info{ 
   display: inline;
   height:350px;
   width:100%;
@@ -242,42 +291,79 @@ section#movie_info{
 /*=========================================================================================*/
 /*LANDING*/
 /*=========================================================================================*/
+section.landing_page {
+  width: 1200px;
+  overflow: scroll;
+}
 section.landing_page h2{
   text-align: center;
   color: #FFFFFF;
 }
 section.landing_page_movieInfo{
- /* display: inline-block;
-  margin: 50px 25px;*/
-    margin-top: 5px;
+  display: inline-block;
+  margin: 50px 25px;
+  margin-top: 5px;
 }
 
-/*#landing_page_movieInfo_image{
-  height: 250px;
-  width: 300px;
-}*/
+#landing_page_movieInfo_image{
+  height: 300px;
+  width: 270px;
+}
+.landing_page_movieInfo {
+  transform: scale(.9);
+  position: relative;
+
+}
+
+.landing_page_movieInfo :hover {
+  transform: scale(1.1);
+  transition: all .2s ease-in;
+}
+
 
 /*=========================================================================================*/
 /*PROFILE*/
 /*=========================================================================================*/
 section.profile_container{
   position: relative;
-  height: 1000px;
+  height: 900px;
   width: 100%;
 }
 aside.account_information{
   position: absolute;
   background: linear-gradient(to bottom, rgba(34,34,34,1) 0%,rgba(34,34,34,0.49) 51%,rgba(255,255,255,0) 100%);
   background-color: #046380;
-  height: 150px;
-  width: 100%;
-  padding: 20px;
-  top: -20px;
-  margin-left: 30px;
+  height: 100%;
+  width: 350px;
+  padding: 30px;
   box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
   color: white;
 }
+#account_information_gravatar_container{
+  border-bottom: 1px solid #FFFFFF;
+  padding: 30px 0px;
+  margin-bottom: 20px;
+}
+#account_information_gravatar{
+  border: 8px solid #FFFFFF;
+  border-radius: 100px;
+  margin: 10px 0px;
+  border-bottom: 2px solid #FFFFFF;
+}
+#account_information_title{
+  font-size: 30px
+}
+/*#account_information_bullet{
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  margin-right: 5px;
+}*/
+#full_name{
+  display: block;
+}
 aside.account_information h4{
+  display: inline-block;
   margin-bottom: 20px;
   border-bottom: #FFFFFF;
 }
@@ -285,7 +371,7 @@ aside.account_information h4{
 section.profile_video_player{
   display: inline-block;
   position: absolute;
-  top: 12%;
+  margin-top: 40px;
   left: 30%;
 }
 section.profile_video_player video{
@@ -294,29 +380,42 @@ section.profile_video_player video{
   margin-left: -30px;
   margin-bottom: 5px;
 }
+
 section.profile_video_player h1{
   text-align: center;
   color: white;
 }
+.upload-button{
+  width: 500px;
+  color: white;
+  border: 1px solid #FFFFFF;
+}
 section.upload_video_button{
   position: absolute;
-  right: 75px;
-  bottom: 0px;
-
+  right: 22%;
+  bottom: 40%;
 }
+
+.upload_list_title {
+  margin-top: 25px;
+  color: white;
+  font-size: 30px;
+}
+
 .profile_video_list {
   height: 300px;
   width: 850px;
   padding: 10px;
-  overflow: scroll;
+  margin-top: 15px;
+  overflow: hidden;
 }
-/*section.profile_video_list {
+section.profile_video_list {
   background-color: #22222;
   height: 340px;
   width: 850px;
   border: 1px solid #FFFFFF;
   padding: 10px;
-  overflow: scroll;
+  overflow: hidden;
 }
 section.profile_video_list h1{
   text-align: center;
@@ -334,11 +433,12 @@ section.profile_video_list img{
   height:150px;
   width:125px;
   margin: 10px 0;
+  overflow: hidden;
   cursor: pointer;
 }
 section.list-item-container{
   border-bottom: 1px solid #FFFFFF;
-}*/
+}
 
 /*=========================================================================================*/
 /*VOTING*/
@@ -347,11 +447,8 @@ section.list-item-container{
 section.voting_container{
   
   height: 550px;
-  width: 80%;
-  box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
-  margin: 0px auto;
-  overflow: scroll; 
-
+  width: 200px;
+  background-color: white;
 }
 
 section.voting_container h4{
@@ -397,6 +494,11 @@ section.voting_container h3{
   margin-left: 80px;
 }
 
+
+/*=========================================================================================*/
+/*HEADER*/
+/*=========================================================================================*/
+
 @import url(https://fonts.googleapis.com/css?family=Architects+Daughter|Rock+Salt|Bubbler+One);
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300,700);
 
@@ -410,27 +512,7 @@ section.voting_container h3{
 
 }
 
-/*.wrapperFea {
-  width: auto;
-  margin-left: 10%;
-  margin-right: 10%;
-}*/
 
-/*section.landing_page {
-  display: inline-block;
-  
-}*/
-
-/*header {
-    height: 10%;
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-}
-*/
-
-
-/* HEADER */
 .headerWrapper {
     height: 85px;
     width: 80%;
@@ -438,7 +520,6 @@ section.voting_container h3{
     display: flex; 
     flex-direction: row;
     justify-content: space-between;
-    background-color: tomato;
 }
 
 header h1 {
@@ -446,6 +527,7 @@ header h1 {
     font-size: 25px;
     padding-top: 20px;
     display: inline-flex; 
+    cursor: pointer;
 }
 
 .brand {
@@ -462,13 +544,6 @@ header h1 {
 .menu {
   flex-grow: 12;
 }
-
-.searchBar {
-  flex-grow: 0;
-text-align: center;
-
-}
-
 
 .videoListWrapper { 
 /*  width: auto;
@@ -493,91 +568,64 @@ text-align: center;
 }
 
 .headerBackground {
-    background-color: tomato;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* SEARCH BAR */
-.search_button{
-
-  height: 25px;
-  width: 75px;
-  font-size: 16px;
-  background-color: #222222;
-  color: white;
-  border-radius: 5px;
-}
-
-.inputSearch {
-  border-radius: 5px;
-  width: 60%;
-  margin: 22px auto;
-  font-size: 19px;
-  border: 0px solid #222222;
-  background-color: black;
-  color: gray;
-  margin-right: 5px;
-}
 
 /* USER AUTHENTICATION SECTION */
 .userLogin {
   margin-right: 25px;
+  margin-left: 15px;
 }
 
+/*=========================================================================================*/
 /* SEARCH RESULTS */
+/*=========================================================================================*/
+
+.result_header{
+  height: 90px;
+  width: 100%;
+  border-bottom: 1px solid #FFFFFF;
+  border-top: 10px solid #FFFFFF;
+}
+
+.result_header h1{
+  margin-top: 20px;
+  font-size: 40px;
+  color: #FFFFFF;
+}
+
 .searchResults {
-  display: flex;
+  display: block;
    width: 80%;
     margin: 0 auto;
 }
 .search-item-container {
-
+  border-radius: 150px;
+  /*width: 100%;*/
+}
+.search-item-title-container{
+  display: block;
+  color: #FFFFFF;
+  text-align: center;
+  text-decoration: underline;
+  font-size: 30px;
+  margin-top: 30px;
 }
 
 .searchResults img{
-  width:100%;
-  border-radius: 5px;
-}
-
-
-/* LANDING PAGE */
-/*.landing_page_movieInfo a {
-  opacity: .8;
-  transform: scale(.9);
-}
-
-.landing_page_movieInfo a:hover{
-  opacity: 1;
- 
-}
-
-.landing_page_movieInfo {
-  transform: scale(.9);
-  transition: all .4s ease-in;
-  
-}
-
-.landing_page_movieInfo :hover {
-  transform: scale(1.07);
-  transition: all .2s ease-in;
-
-}*/
-
-.landing_page_movieInfo {
-  transform: scale(.9);
-  position: relative;
-
-}
-
-.landing_page_movieInfo :hover {
-  transform: scale(1.1);
-  transition: all .2s ease-in;
+  display: block;
+  margin:60px auto;
+  border-radius: 175px;
+  border: 8px solid #FFFFFF;
+  cursor: pointer;
 }
 
 
 /* MENU DROPDOWN */
 /* Dropdown Button */
 .dropbtn {
-    background-color: tomato;
+    background-color: rgba(0, 0, 0, 0.5); 
     color: white;
     padding: 16px;
     font-size: 16px;
@@ -615,7 +663,7 @@ text-align: center;
 
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+  background-color: #525252;
 }
 
 /* Show the dropdown menu on hover */
@@ -625,12 +673,12 @@ text-align: center;
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
-    background-color: #ed5c42;
+    background-color: #525252;
 }
 
 .footerBackground {
   height: 80px;
-  background-color: tomato;
+  background-color: rgba(0, 0, 0, 0.5);
   padding-top: 30px;
 }
 
