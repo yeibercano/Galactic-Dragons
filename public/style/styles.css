@@ -71,8 +71,8 @@ section.carousel-div{
   border-bottom: 5px solid #FFFFFF;
 }
 #carousel-img{
-  height: 500px;
-  margin:0px auto; 
+    margin: 0px auto;
+    width: 75%;
 }
 #carousel-caption{
   background-color: black;
@@ -306,8 +306,9 @@ section.landing_page_movieInfo{
 }
 
 #landing_page_movieInfo_image{
-  height: 300px;
-  width: 270px;
+ /* height: 300px;
+  width: 270px;*/
+    width: 100%;
 }
 .landing_page_movieInfo {
   transform: scale(.9);
