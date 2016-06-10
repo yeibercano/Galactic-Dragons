@@ -36,7 +36,6 @@ class Rating extends React.Component {
     const { rating } = this.state;
     return (                
       <div>
-        <h2>Rating from state: {rating}</h2>
         <ReactStars
           count={5}
           onChange={vote=>this.ratingChanged(vote)}
