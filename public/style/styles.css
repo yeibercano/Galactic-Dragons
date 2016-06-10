@@ -145,10 +145,15 @@ textarea{
 /*=========================================================================================*/
 
 .searchBar {
-  position: relative;
+/*  position: relative;
   flex-grow: 5;
   text-align: center;
-  right: 50px;
+  right: 50px;*/
+
+      position: relative;
+    flex-grow: 1;
+    text-align: center;
+    right: 50px;
 }
 
 .search_button{
@@ -160,6 +165,7 @@ textarea{
   border-radius: 5px;
   position: absolute;
   width: 375px;
+  width: 100%;
   height: 40px;
   margin: 10px auto;
   font-size: 19px;
@@ -330,18 +336,20 @@ section.landing_page_movieInfo{
 #landing_page_movieInfo_image{
  /* height: 300px;
   width: 270px;*/
-  width: 100%;
-  height: 125px;
+/*  width: 100%;
+  height: 125px;*/
+  /*opacity:.8;*/
 }
 .landing_page_movieInfo {
   transform: scale(.9);
   position: relative;
-
+  opacity: .85;
 }
 
 .landing_page_movieInfo :hover {
   transform: scale(1.1);
   transition: all .2s ease-in;
+  opacity: 1;
 }
 
 
@@ -595,12 +603,20 @@ section.voting_player_container {
 
 
 .headerWrapper {
-    height: 85px;
+/*    height: 85px;
     width: 80%;
     margin: 0 auto;
     display: flex; 
     flex-direction: row;
+    justify-content: space-between;*/
+
+    height: 72px;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    padding-top: 5px;
 }
 
 header h1 {
@@ -626,9 +642,13 @@ header h1 {
 
 .brand h1 {
   /*font-family: 'Raleway Dots', cursive;*/
-  font-family: bebas-neue, sans-serif;
+/*  font-family: bebas-neue, sans-serif;
   font-size: 40px;
-  letter-spacing: 2px;
+  letter-spacing: 2px;*/
+    font-family: bebas-neue, sans-serif;
+    font-size: 40px;
+    letter-spacing: 2px;
+    padding-top: 8px;
 }
 .menu {
   flex-grow: 12;
@@ -662,6 +682,7 @@ header h1 {
 .landing_page_movieInfo img {
     width: 100%;
     border-radius: 5px;
+    opacity:.7;
 }
 
 .headerBackground {
@@ -744,12 +765,18 @@ header h1 {
    /* margin-top: 8px;
     padding-left: 24px;
     font-size: 21px;*/
-    margin-top: 8px;
+/*    margin-top: 8px;
     padding-left: 20px;
-    font-size: 15px;
+    font-size: 16px;
     font-family: raleway, sans-serif;
     text-transform: uppercase !important;
-    font-weight: 600;
+    font-weight: 600;*/
+    padding-left: 20px;
+    /* font-size: 16px; */
+    /* font-family: raleway, sans-serif; */
+    text-transform: uppercase !important;
+    /* font-weight: 600; */
+    line-height: 1.6;
 
 }
 
