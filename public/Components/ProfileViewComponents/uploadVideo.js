@@ -18,7 +18,7 @@ const UploadVideo = React.createClass({
                 type="submit" 
                 name="submit"
                 value="Upload Video"
-                className="register-button" />
+                className="upload-button" />
         </form>
       </section>
     );

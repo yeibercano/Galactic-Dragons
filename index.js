@@ -13,9 +13,7 @@ import Header from './public/Components/Header/Header'
 import { Router, Route, IndexRoute, Link, hashHistory, browserHistory } from 'react-router'
 
 
-
 var axios = require('axios');
-
 const Home = React.createClass({
   
   render() {
@@ -25,7 +23,6 @@ const Home = React.createClass({
       </div>
       );
   }})
-
 const Register = React.createClass({
   render() {
     return (
@@ -34,7 +31,6 @@ const Register = React.createClass({
       </div>
       );
   }})
-
 const LoginPage = React.createClass({
   render() {
     return (
@@ -43,7 +39,6 @@ const LoginPage = React.createClass({
       </div>
       );
   }})
-
 const ProfileUser = React.createClass({
   render() {
     return (
@@ -52,7 +47,6 @@ const ProfileUser = React.createClass({
       </div>
       );
   }})
-
 const ViewerPlayer = React.createClass({
   render() {
     return (
@@ -61,7 +55,6 @@ const ViewerPlayer = React.createClass({
       </div>
       );
   }})
-
 const VotingPlayer = React.createClass({
   render() {
     return (
@@ -70,7 +63,6 @@ const VotingPlayer = React.createClass({
       </div>
       );
   }})
-
 const SearchResults = React.createClass({
   render() {
     return (
@@ -79,11 +71,8 @@ const SearchResults = React.createClass({
       </div>
       );
   }})
-
 const App = React.createClass({  
-
   render() {
-
     return (
       <div>
         <Header />
@@ -93,8 +82,6 @@ const App = React.createClass({
     )
   }
 })
-
-
 render((
   <Router history={hashHistory}>
     <Route path="/" component={App}>

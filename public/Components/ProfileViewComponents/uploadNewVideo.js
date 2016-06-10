@@ -1,14 +1,17 @@
 var React = require('react');
 var axios = require('axios');
 var secret = require("../../../private.js")
+import Load from 'react-loading';
 import { Router, Redirect, Route, IndexRoute, Link, hashHistory, browserHistory} from 'react-router'
+
+
+
 var UploadNewVideo = React.createClass({
-  _handleChange: function(e) {
-    // this.setState({value: e.target.value});
-  },
+
     _saveAndContinue(e) {
     //to handle our submit form
     e.preventDefault();
+    document.getElementById("loading_bubbles").style.visibility ="visible";
     let userLS = localStorage.getItem('user');
     //parses the info brought down (object)
     let parseUser = JSON.parse(userLS);
@@ -24,19 +27,18 @@ var UploadNewVideo = React.createClass({
       userName : parseUser.userName,
       video: secret.endpointLocation + '/' + secret.bucketName + '/' + videoFile,
       image : secret.endpointLocation + '/' + secret.bucketName + '/' + imageFile,
-      plays: 0,
+      voters: [],
       rating: 0,
-      voters: []
+      plays: 0,
+      clicks: 0,
     }
     localStorage.setItem('movieInfo', JSON.stringify(movieInfo))
 // ==================================================================
 // Neo4J DB needs to update for the below post
     axios.post('/movies/movie', movieInfo)
     .then(function(response){
-      //userInfo is the response back with the very last user entered
+      //movieInfo is the response back with the very last user entered
       let movieInfo = response.config.data;
-      //sets "user" in localstorage to what is contained in userInfo
-      // localStorage.setItem('user', movieInfo)
     })
   
 /*======================================================================*/
@@ -51,14 +53,15 @@ var UploadNewVideo = React.createClass({
       if(res.status === 200) {
        return hashHistory.push('profile')
       }
+    document.getElementbyId("loading")
     console.log('File uploaded successfully')
     }) 
 },
  
   render: function() {
     return (
-      <div className="create_account_screen">
-        <div className="create_account_form">
+      <section className="create_account_screen">
+        <section className="create_account_form">
           <h1>Upload New Movies</h1>
           <form onSubmit={this._saveAndContinue}>
             <input
@@ -112,8 +115,11 @@ var UploadNewVideo = React.createClass({
               value="Upload Video"
               className="register-button" />
           </form>
-        </div>
-      </div>
+          <section id="loading_bubbles">
+            <Load type='spinningBubbles' color='white'  />
+          </section>
+        </section>
+      </section>
     );
   }
     

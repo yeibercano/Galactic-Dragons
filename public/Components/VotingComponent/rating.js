@@ -21,6 +21,7 @@ class Rating extends React.Component {
   ratingChanged(vote) {
       this.setState({rating: vote}, function(){  
       alert("This will be your only opportunity to vote");
+      
       hashHistory.push("profile");
       // console.log("What is this.state.rating", this.state.rating);
       // console.log('movieSelected', this.movieSelected)
@@ -28,10 +29,12 @@ class Rating extends React.Component {
     });
     axios.post('/movies/rating', { rating: this.state.rating, title: this.state.title, voter: this.state.voter })
     .then(function(res){
-      console.log('res', res)
+      // console.log('res', res)
     })
 
   }
+
+
   render() {
     const { rating } = this.state;
     return (                

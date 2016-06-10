@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Load from 'react-loading';
 var secret = require("../../../private.js")
 var axios = require('axios');
 import { hashHistory } from 'react-router'
@@ -31,7 +32,7 @@ class LandingPageVideoList extends Component {
   render() {
 
     if (this.props.allMovies === null) {
-      return <div>Loading...</div>
+      return <Load />
     }
 
     return (

@@ -206,6 +206,7 @@ router.get('/user', function(req, res, next) {
       // console.log('new');
       res.status(200).send(movies);
   })
+
 });
 
 
