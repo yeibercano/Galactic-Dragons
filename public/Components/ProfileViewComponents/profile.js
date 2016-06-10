@@ -39,8 +39,8 @@ class Profile extends Component {
             userInfo = {this.state.userInfo}
             allMovies = {this.state.allMovies} />
           <UploadVideos />
-          <VoteMovies />
         </section>
+          <VoteMovies />
       </section>
     )
   }
