@@ -444,6 +444,10 @@ section.list-item-container{
 /*VOTING*/
 /*=========================================================================================*/
 
+section.voting_page_container {
+  height: 780px;
+}
+
 section.voting_container{
   
   height: 550px;
@@ -487,12 +491,16 @@ section.voting_container h3{
   text-align: center;
 }
 
-#voting_image {
-  height:250px;
-  width: 225px;
-  margin-left: 80px;
+#voting_image img{
+    height: 250px;
+    margin: 40px 0px 0px 15px;
+    border: 5px solid #FFFFFF;
+    float: left;
 }
 
+section.voting_player_container {
+  text-align: center;
+}
 
 /*=========================================================================================*/
 /*HEADER*/

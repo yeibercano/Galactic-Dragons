@@ -37,7 +37,7 @@ class VoteVideoPlayer extends React.Component {
 
   render() {
     return (
-      <section >
+      <section className="voting_player_container">
         <video autoPlay controls src={this.props.movie} id="myVideo" type="video/mp4" onEnded={e=> this.movieEnded(e, this.props.title)} />
       </section>
     );
