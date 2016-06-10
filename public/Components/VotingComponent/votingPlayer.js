@@ -21,7 +21,7 @@ class VoteVideoPlayer extends React.Component {
     alert("You may now vote on this movie");
     let what = document.getElementById("star-rating")
     what.style.visibility= "visible"
-    console.log("This is movie: ",movie);
+    // console.log("This is movie: ",movie);
 
     //Alert user that voting will be closing for a particular movie
     // window.setTimeout(function(){

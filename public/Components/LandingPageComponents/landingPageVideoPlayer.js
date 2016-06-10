@@ -29,11 +29,9 @@ class LandingPageVideoPlayer extends React.Component {
    }
    onMouseOverHandler() {
      document.getElementById("play_img").style.visibility = "visible";
-     console.log("I'm being called!");
    }
     onMouseLeaveHandler() {
      document.getElementById("play_img").style.visibility = "hidden";
-     console.log("I'm leaving!");
    }
    
    onClickHandler (e, movieProps) {

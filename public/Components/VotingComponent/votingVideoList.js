@@ -12,7 +12,6 @@ class VotingVideoList extends Component {
     // if (this.props.movie === null) {
     //   return <div>Loading...</div>
     // }
-    console.log('this is this.props.videoSynopsis:', this.props.videoSynopsis)
 
     return (
     
