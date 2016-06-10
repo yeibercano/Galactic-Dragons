@@ -336,18 +336,20 @@ section.landing_page_movieInfo{
 #landing_page_movieInfo_image{
  /* height: 300px;
   width: 270px;*/
-  width: 100%;
-  height: 125px;
+/*  width: 100%;
+  height: 125px;*/
+  /*opacity:.8;*/
 }
 .landing_page_movieInfo {
   transform: scale(.9);
   position: relative;
-
+  opacity: .85;
 }
 
 .landing_page_movieInfo :hover {
   transform: scale(1.1);
   transition: all .2s ease-in;
+  opacity: 1;
 }
 
 
@@ -671,6 +673,7 @@ header h1 {
 .landing_page_movieInfo img {
     width: 100%;
     border-radius: 5px;
+    opacity:.7;
 }
 
 .headerBackground {
