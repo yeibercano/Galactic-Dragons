@@ -14,7 +14,6 @@ class LandingPageVideoList extends Component {
    }
 
   movieSelected(movieSelected) {
-    console.log('This movie was selected:', movieSelected);
     localStorage.setItem('viewerMovie', JSON.stringify(movieSelected));
     hashHistory.push('viewer')  
   }

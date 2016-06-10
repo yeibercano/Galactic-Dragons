@@ -13,10 +13,12 @@ class VotingComponent extends React.Component {
 
   componentWillMount() {
     axios.get("/movies/profile").then(data => {
+      console.log('this is data:', data);
       this.setState({ allMovies: data.data });
     });
   }
   onClickHandler (e, movie){
+    console.log('this is movie.voters in onClickHandler:', movie.voters)
     e.preventDefault();
     localStorage.setItem('viewerMovie', JSON.stringify(movie));
     hashHistory.push("vote");
@@ -25,12 +27,7 @@ class VotingComponent extends React.Component {
   renderImage(movie){
     let currentUser = JSON.parse(localStorage.getItem('user'));
     currentUser = currentUser.userName;
-    console.log("This is movie", movie);
-    // console.log("This is the currentUser", currentUser)
-    console.log()
     if(currentUser !== movie.userName){
-      // console.log("This is currentUser:::::" + currentUser + "This is movie.userName:::::::::" + movie.userName )
-
       if(!movie.voters.includes(currentUser)){
         return (
             <section className="voting_image_container">
@@ -48,7 +45,6 @@ class VotingComponent extends React.Component {
   }
 
   selectedMovie (movie) {
-    console.log('A new movie was selected!', movie.video);
     this.setState({url: movie.video})
   }
 

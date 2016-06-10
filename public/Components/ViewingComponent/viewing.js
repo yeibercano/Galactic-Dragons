@@ -27,7 +27,6 @@ class ViewingPage extends Component {
 
 
       }
-      console.log('this is now the new state:', this.state.videoUrl);
     }
   }
  

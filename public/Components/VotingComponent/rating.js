@@ -7,7 +7,6 @@ class Rating extends React.Component {
   constructor() {
       super();
       let movieSelected = localStorage.getItem('viewerMovie')
-      console.log('this is movieSelected:', movieSelected)
       movieSelected = JSON.parse(movieSelected);
       let user = localStorage.getItem('user')
       user = JSON.parse(user);
@@ -17,7 +16,6 @@ class Rating extends React.Component {
           title: movieSelected.title, 
           voter: user.userName
       };
-      // console.log('movieSelected', movieSelected)
       this.ratingChanged = this.ratingChanged.bind(this);
   }
   ratingChanged(vote) {

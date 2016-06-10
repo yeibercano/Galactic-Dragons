@@ -12,13 +12,8 @@ var UploadNewVideo = React.createClass({
     let userLS = localStorage.getItem('user');
     //parses the info brought down (object)
     let parseUser = JSON.parse(userLS);
-    // console.log('userLS PROFILE COMPO
-      // console.log('parseUser', parseUser)
-      console.log("What is in this.video? :", this.video)
     let videoFile  = this.video.value.replace("C:\\fakepath\\", "");
     let imageFile  = this.image.value.replace("C:\\fakepath\\", "");
-    console.log('This is videoFile:', videoFile);
-    console.log('This is imageFile:', imageFile);
     let movieInfo = {
       title : this.title.value,
       director : this.director.value,
@@ -28,9 +23,11 @@ var UploadNewVideo = React.createClass({
       year : this.year.value,
       userName : parseUser.userName,
       video: secret.endpointLocation + '/' + secret.bucketName + '/' + videoFile,
-      image : secret.endpointLocation + '/' + secret.bucketName + '/' + imageFile
+      image : secret.endpointLocation + '/' + secret.bucketName + '/' + imageFile,
+      plays: 0,
+      rating: 0,
+      voters: []
     }
-    // console.log('this is movie information:', movieInfo);
     localStorage.setItem('movieInfo', JSON.stringify(movieInfo))
 // ==================================================================
 // Neo4J DB needs to update for the below post
@@ -39,7 +36,6 @@ var UploadNewVideo = React.createClass({
       //userInfo is the response back with the very last user entered
       let movieInfo = response.config.data;
       //sets "user" in localstorage to what is contained in userInfo
-      // console.log('this is movieInfo:', movieInfo);
       // localStorage.setItem('user', movieInfo)
     })
   
@@ -47,18 +43,13 @@ var UploadNewVideo = React.createClass({
      // to handle our submit form
     //the variable form below is used to grab the entire form element
     var form = document.querySelector("form");
-    // console.log('this is form:', form);
     //the variable fdata will be the actual form that will have the new file uploaded
     var fdata = new FormData(form);
-    // console.log('this is fdata:', fdata);
     // send fdata to our server to upload file to s3
     axios.post('/movies/movieS3', fdata)
     .then(function(res){
-      console.log('this is inside post to s3');
-      console.log('res', res.status)
       if(res.status === 200) {
        return hashHistory.push('profile')
-
       }
     console.log('File uploaded successfully')
     }) 
@@ -69,7 +60,6 @@ var UploadNewVideo = React.createClass({
       <div className="create_account_screen">
         <div className="create_account_form">
           <h1>Upload New Movies</h1>
-          <p>Example of form validation built with React.</p>
           <form onSubmit={this._saveAndContinue}>
             <input
               type="text"

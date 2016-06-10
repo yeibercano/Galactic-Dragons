@@ -7,8 +7,7 @@ import { Router, Redirect, Route, IndexRoute, Link, hashHistory, browserHistory}
 const UploadVideo = React.createClass({
   _saveUpload(e) {
     e.preventDefault();
-    hashHistory.push('NewVideo')
-    // let filename  = this.video.value.replace("C:\\fakepath\\", "");    
+    hashHistory.push('NewVideo')   
   },
   
   render() {

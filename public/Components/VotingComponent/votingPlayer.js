@@ -15,8 +15,6 @@ class VoteVideoPlayer extends React.Component {
     alert("You may now vote on this movie");
     let what = document.getElementById("star-rating")
     what.style.visibility= "visible"
-
-    console.log("This is what", what);
     return 
     //update tha plays on the node for this specific movie
     // axios.post()
