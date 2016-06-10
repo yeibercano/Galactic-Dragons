@@ -46,8 +46,7 @@ class LandingPageVideoPlayer extends React.Component {
   
    
    renderImage(movieProps) {
-    console.log('this is movie Props:', movieProps)
-    if (movieProps.rating > 5) {
+    if (movieProps.rating > 15) {
       return (
           <CarouselItem  onMouseEnter={this.onMouseOverHandler}>
             <img id="play_img" src="../../../style/assets/play-btn.png" onMouseLeave={this.onMouseLeaveHandler} onClick={e => this.onClickHandler(e, movieProps)} />
