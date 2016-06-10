@@ -409,6 +409,14 @@ section.profile_video_player h1{
   text-align: center;
   color: white;
 }
+
+#not_upload{
+  margin-top: 70px;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 30px;
+}
+
 .upload-button{
   width: 500px;
   color: white;
@@ -475,6 +483,7 @@ section.profile_tobevoted {
 .profile_voting_information{
   display: inline-block;
   position: absolute;
+  color: #FFFFFF;
   height: 200px;
   width: 400px;
   margin-left: 50px;
