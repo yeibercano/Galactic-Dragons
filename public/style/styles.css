@@ -3,7 +3,7 @@
    License: none (public domain)
 */
 /*brand font*/
-@import url(https://fonts.googleapis.com/css?family=Raleway:900italic);
+@import url(https://fonts.googleapis.com/css?family=Raleway:600,900italic);
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -22,7 +22,7 @@ time, mark, audio, video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
+  font-family: raleway, sans-serif;
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -101,7 +101,8 @@ input{
   width: 60%;
   height: 60px;
   margin: 15px auto;
-  font-size: 25px;
+  /*font-size: 25px;*/
+  font-size: 20px;
   border: 3px solid #222222;
   background-color: black;
   padding-left: 10px;
@@ -118,11 +119,25 @@ textarea{
   border: 3px solid #222222;
   background-color: black;
   padding-left: 10px;
+  color: white;
 }
 .create_account_screen {
 }
 .create_account_form h1{
-  text-align: center;
+ /* text-align: center;
+  color: white;
+  font-size: 27px;
+  padding-top: 20px;
+  font-family: bebas-neue, sans-serif;
+  letter-spacing: 2px;*/
+
+      text-align: center;
+    color: white;
+    font-size: 25px;
+    padding-top: 20px;
+    font-family: raleway, sans-serif;
+    /* letter-spacing: 2px; */
+    text-transform: uppercase;
 }
 
 /*=========================================================================================*/
@@ -580,11 +595,19 @@ section.voting_player_container {
 }
 
 header h1 {
-    color: white;
+  /*  color: white;
     font-size: 25px;
     padding-top: 20px;
     display: inline-flex; 
+    cursor: pointer;*/
+        color: white;
+    font-size: 16px;
+    padding-top: 20px;
+    display: inline-flex;
     cursor: pointer;
+    font-family: Raleway;
+    text-transform: uppercase;
+    font-weight: 600;
 }
 
 .brand {
@@ -610,10 +633,18 @@ header h1 {
     margin: 0 auto;
 }
 .videoListWrapper h2 { 
-    text-align: center;
+ /*   text-align: center;
     font-size: 33px;
     padding: 20px 0px;
+    color: white;*/
+
+    text-align: center;
+    font-size: 25px;
+    padding: 20px 0px;
     color: white;
+    font-family: raleway, sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 .landing_page {
     display: flex;
@@ -701,9 +732,16 @@ header h1 {
 .dropdown {
     /*position: relative;*/
     /*display: inline-block;*/
-    margin-top: 8px;
+   /* margin-top: 8px;
     padding-left: 24px;
-    font-size: 21px;
+    font-size: 21px;*/
+    margin-top: 8px;
+    padding-left: 20px;
+    font-size: 15px;
+    font-family: raleway, sans-serif;
+    text-transform: uppercase !important;
+    font-weight: 600;
+
 }
 
 /* Dropdown Content (Hidden by Default) */
