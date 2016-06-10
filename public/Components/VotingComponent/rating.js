@@ -19,18 +19,15 @@ class Rating extends React.Component {
       this.ratingChanged = this.ratingChanged.bind(this);
   }
   ratingChanged(vote) {
-      this.setState({rating: vote}, function(){  
-      alert("This will be your only opportunity to vote");
-      
+      this.setState({rating: vote}, function(){   
+      axios.post('/movies/rating', { rating: this.state.rating, title: this.state.title, voter: this.state.voter });
       hashHistory.push("profile");
-      // console.log("What is this.state.rating", this.state.rating);
-      // console.log('movieSelected', this.movieSelected)
-      
+
     });
-    axios.post('/movies/rating', { rating: this.state.rating, title: this.state.title, voter: this.state.voter })
-    .then(function(res){
-      // console.log('res', res)
-    })
+    // axios.post('/movies/rating', { rating: this.state.rating, title: this.state.title, voter: this.state.voter })
+    // .then(function(res){
+    //   // console.log('res', res)
+    // })
 
   }
 
@@ -39,7 +36,6 @@ class Rating extends React.Component {
     const { rating } = this.state;
     return (                
       <div>
-        <h2>Rating from state: {rating}</h2>
         <ReactStars
           count={5}
           onChange={vote=>this.ratingChanged(vote)}

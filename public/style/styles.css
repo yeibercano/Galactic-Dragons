@@ -105,6 +105,7 @@ input{
   border: 3px solid #222222;
   background-color: black;
   padding-left: 10px;
+  color: white;
 }
 textarea{
   display: block;
@@ -149,7 +150,7 @@ textarea{
   font-size: 19px;
   border: 1px solid #FFFFFF;
   background-color: black;
-  color: gray;
+  color: white;
   margin-right: 5px;
 }
 #search_button_img{
@@ -161,6 +162,12 @@ textarea{
   /*background-color: rgba(0, 0, 0, 0.5);*/
 }
 
+.search_not_found {
+  color: white;
+  text-align: center;
+  margin: 50px;
+  font-size: 30px;
+}
 
 
 /*=========================================================================================*/
@@ -308,7 +315,8 @@ section.landing_page_movieInfo{
 #landing_page_movieInfo_image{
  /* height: 300px;
   width: 270px;*/
-    width: 100%;
+  width: 100%;
+  height: 125px;
 }
 .landing_page_movieInfo {
   transform: scale(.9);
@@ -327,15 +335,15 @@ section.landing_page_movieInfo{
 /*=========================================================================================*/
 section.profile_container{
   position: relative;
-  height: 900px;
+  height: 1100px;
   width: 100%;
 }
 aside.account_information{
   position: absolute;
-  background: linear-gradient(to bottom, rgba(34,34,34,1) 0%,rgba(34,34,34,0.49) 51%,rgba(255,255,255,0) 100%);
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #316daa), color-stop(35%, #316DAA), color-stop(77%, #316daa), color-stop(86%, #316DAA), color-stop(100%, #316daa));
   background-color: #046380;
   height: 100%;
-  width: 350px;
+  width: 250px;
   padding: 30px;
   box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
   color: white;
@@ -390,11 +398,12 @@ section.profile_video_player h1{
   width: 500px;
   color: white;
   border: 1px solid #FFFFFF;
+  margin-bottom: 100px;
 }
 section.upload_video_button{
   position: absolute;
   right: 22%;
-  bottom: 40%;
+  bottom: 0%;
 }
 
 .upload_list_title {
@@ -441,15 +450,40 @@ section.list-item-container{
   border-bottom: 1px solid #FFFFFF;
 }
 
+section.profile_tobevoted {
+  border-bottom: 1px solid #7C7C7C;
+  margin-bottom: 50px;
+  height: 275px;
+  padding-left: 150px;
+}
+
+.profile_voting_information{
+  display: inline-block;
+  position: absolute;
+  height: 200px;
+  width: 400px;
+  margin-left: 50px;
+
+}
+
 /*=========================================================================================*/
 /*VOTING*/
 /*=========================================================================================*/
 
+section.voting_page_container {
+  height: 780px;
+}
+
+section.parent_voting_container {
+  border-top: 1px solid #316DAA;
+}
+
 section.voting_container{
-  
   height: 550px;
-  width: 200px;
-  background-color: white;
+  width: 1160px;
+  overflow: scroll;
+  position: relative;
+  margin: 50px auto;
 }
 
 section.voting_container h4{
@@ -468,6 +502,15 @@ section.voting_container h3{
   color: #FFFFFF;
   text-align: center;
   padding: 20px; 
+  font-size: 35px;
+}
+
+#profile_voting_list_title {
+  color: #FFFFFF;
+  padding: 20px;
+  font-size: 35px;
+  margin-top: 50px;
+  text-align: center;
 }
 
 .vote_title {
@@ -475,11 +518,8 @@ section.voting_container h3{
   height: 150px;
   border-top: 3px solid #FFFFFF;
   z-index: 1;
+}
 
-}
-.voting_information{
-  display: inline-block;
-}
 .voting_information h3 h4{
   text-align: center;
 }
@@ -489,12 +529,28 @@ section.voting_container h3{
   text-align: center;
 }
 
-#voting_image {
-  height:250px;
-  width: 225px;
-  margin-left: 80px;
+#voting_image img{
+    height: 250px;
+    margin: 40px 0px 0px 15px;
+    border: 5px solid #FFFFFF;
+    float: left;
+    margin-right: 25px;
 }
 
+#voting_image {
+    height: 200px;
+}
+
+section.voting_player_container {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+#voting_information {
+  display: block;
+  font-size: 25px;
+  color: white;
+}
 
 /*=========================================================================================*/
 /*HEADER*/
@@ -580,6 +636,10 @@ header h1 {
   margin-left: 15px;
 }
 
+.wrapper {
+  height: 100%;
+}
+
 /*=========================================================================================*/
 /* SEARCH RESULTS */
 /*=========================================================================================*/
@@ -621,6 +681,7 @@ header h1 {
   border-radius: 175px;
   border: 8px solid #FFFFFF;
   cursor: pointer;
+  height: 350px;
 }
 
 
@@ -684,7 +745,6 @@ header h1 {
 
 .footerBackground {
   height: 80px;
-  background-color: #316daa;
   padding-top: 30px;
 }
 

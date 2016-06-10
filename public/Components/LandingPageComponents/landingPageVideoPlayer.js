@@ -29,11 +29,9 @@ class LandingPageVideoPlayer extends React.Component {
    }
    onMouseOverHandler() {
      document.getElementById("play_img").style.visibility = "visible";
-     console.log("I'm being called!");
    }
     onMouseLeaveHandler() {
      document.getElementById("play_img").style.visibility = "hidden";
-     console.log("I'm leaving!");
    }
    
    onClickHandler (e, movieProps) {
@@ -48,16 +46,18 @@ class LandingPageVideoPlayer extends React.Component {
   
    
    renderImage(movieProps) {
-    return (
-        <CarouselItem  onMouseEnter={this.onMouseOverHandler}>
-          <img id="play_img" src="../../../style/assets/play-btn.png" onMouseLeave={this.onMouseLeaveHandler} onClick={e => this.onClickHandler(e, movieProps)} />
-          <img id="carousel-img" onClick={e => this.onClickHandler(e, movieProps)} src={movieProps.image}/>
-            <Carousel.Caption id="carousel-caption">
-                <h2 id='title-caption'>{movieProps.title}</h2>
-                <h4 id='synopsis-caption'>{movieProps.synopsis}</h4>
-            </Carousel.Caption>
-        </CarouselItem>
-    )
+    if (movieProps.rating > 15) {
+      return (
+          <CarouselItem  onMouseEnter={this.onMouseOverHandler}>
+            <img id="play_img" src="../../../style/assets/play-btn.png" onMouseLeave={this.onMouseLeaveHandler} onClick={e => this.onClickHandler(e, movieProps)} />
+            <img id="carousel-img" onClick={e => this.onClickHandler(e, movieProps)} src={movieProps.image}/>
+              <Carousel.Caption id="carousel-caption">
+                  <h2 id='title-caption'>{movieProps.title}</h2>
+                  <h4 id='synopsis-caption'>{movieProps.synopsis}</h4>
+              </Carousel.Caption>
+          </CarouselItem>
+      )
+    }
    }
 
   render() {

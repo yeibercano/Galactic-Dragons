@@ -23,13 +23,11 @@ class Search extends React.Component{
   }
 
   movieSelected(movieSelected) {
-    console.log('This movie was selected:', movieSelected);
     localStorage.setItem('viewerMovie', JSON.stringify(movieSelected));
     hashHistory.push('viewer')  
   }
 
   displayResult(result) {
-    console.log('displayResult is called with result:', result);
     return (
 
         <section onClick={(movieSelected) => this.movieSelected(result)} className="searchResults">
@@ -48,8 +46,7 @@ class Search extends React.Component{
   render () {
 
     if (this.state.sResults.length === 0) {
-      console.log('this sResults statement executed')
-      return <section>Search results not found!</section>
+      return <section className="search_not_found">Search results not found!</section>
     }
 
     return (

@@ -25,7 +25,7 @@ class VoteContainer extends Component {
         videoUrl: movieSelected.video,
         videoImage: movieSelected.image,
         videoTitle: movieSelected.title,
-        videoSynopsis: movieSelected.synopsos,
+        videoSynopsis: movieSelected.synopsis,
         videoActors: movieSelected.actors,
         videoDirector: movieSelected.director,
         videoYear: movieSelected.year
@@ -40,7 +40,7 @@ class VoteContainer extends Component {
     }
 
     return (
-      <section>
+      <section className="voting_page_container">
         <VoteVideoPlayer movie= {this.state.videoUrl} title = {this.state.videoTitle}/>
         <VoteVideoList movie={ this.state} />
         <section id="star-rating" style={{visibility: "hidden"}}>
