@@ -74,11 +74,13 @@ const SearchResults = React.createClass({
 const App = React.createClass({  
   render() {
     return (
-      <div>
+      <section>
         <Header />
-        {this.props.children}
+          <section className="wrapper">
+            {this.props.children}
+          </section>
         <Footer />
-      </div>
+      </section>
     )
   }
 })

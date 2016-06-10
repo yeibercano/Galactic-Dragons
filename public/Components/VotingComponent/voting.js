@@ -39,9 +39,9 @@ class VotingComponent extends React.Component {
     }
 
     return (
-      <section className="voting_container">
+      <section>
         <h3>Movies To Be Voted On</h3>
-        <section>
+        <section className="voting_container">
           {this.state.allMovies.map(movie => this.renderImage(movie.m.properties))}
         </section>
       </section>

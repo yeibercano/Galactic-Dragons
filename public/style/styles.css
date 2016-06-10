@@ -327,15 +327,15 @@ section.landing_page_movieInfo{
 /*=========================================================================================*/
 section.profile_container{
   position: relative;
-  height: 900px;
+  height: 1100px;
   width: 100%;
 }
 aside.account_information{
   position: absolute;
-  background: linear-gradient(to bottom, rgba(34,34,34,1) 0%,rgba(34,34,34,0.49) 51%,rgba(255,255,255,0) 100%);
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #316daa), color-stop(35%, #316DAA), color-stop(77%, #316daa), color-stop(86%, #316DAA), color-stop(100%, #316daa));
   background-color: #046380;
   height: 100%;
-  width: 350px;
+  width: 250px;
   padding: 30px;
   box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
   color: white;
@@ -390,6 +390,7 @@ section.profile_video_player h1{
   width: 500px;
   color: white;
   border: 1px solid #FFFFFF;
+  margin-bottom: 100px;
 }
 section.upload_video_button{
   position: absolute;
@@ -441,6 +442,22 @@ section.list-item-container{
   border-bottom: 1px solid #FFFFFF;
 }
 
+section.profile_tobevoted {
+  border-bottom: 1px solid #7C7C7C;
+  margin-bottom: 50px;
+  height: 275px;
+  padding-left: 150px;
+}
+
+.profile_voting_information{
+  display: inline-block;
+  position: absolute;
+  height: 200px;
+  width: 400px;
+  margin-left: 50px;
+
+}
+
 /*=========================================================================================*/
 /*VOTING*/
 /*=========================================================================================*/
@@ -449,10 +466,16 @@ section.voting_page_container {
   height: 780px;
 }
 
+section.parent_voting_container {
+  border-top: 1px solid #316DAA;
+}
+
 section.voting_container{
-  
   height: 550px;
-  width: 200px;
+  width: 1160px;
+  overflow: scroll;
+  position: relative;
+  margin: 50px auto;
 }
 
 section.voting_container h4{
@@ -471,6 +494,15 @@ section.voting_container h3{
   color: #FFFFFF;
   text-align: center;
   padding: 20px; 
+  font-size: 35px;
+}
+
+#profile_voting_list_title {
+  color: #FFFFFF;
+  padding: 20px;
+  font-size: 35px;
+  margin-top: 50px;
+  text-align: center;
 }
 
 .vote_title {
@@ -478,11 +510,8 @@ section.voting_container h3{
   height: 150px;
   border-top: 3px solid #FFFFFF;
   z-index: 1;
+}
 
-}
-.voting_information{
-  display: inline-block;
-}
 .voting_information h3 h4{
   text-align: center;
 }
@@ -497,6 +526,10 @@ section.voting_container h3{
     margin: 40px 0px 0px 15px;
     border: 5px solid #FFFFFF;
     float: left;
+}
+
+#voting_image {
+    height: 200px;
 }
 
 section.voting_player_container {
@@ -585,6 +618,10 @@ header h1 {
 .userLogin {
   margin-right: 25px;
   margin-left: 15px;
+}
+
+.wrapper {
+  height: 1200px;
 }
 
 /*=========================================================================================*/
