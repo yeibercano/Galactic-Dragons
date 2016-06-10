@@ -31,6 +31,7 @@ class Search extends React.Component{
   displayResult(result) {
     console.log('displayResult is called with result:', result);
     return (
+
         <section onClick={(movieSelected) => this.movieSelected(result)} className="searchResults">
           <section className="search-item-title-container" >
             <h3 id="search_title">{result.title}</h3>
@@ -39,6 +40,7 @@ class Search extends React.Component{
             <img id="search_image_result" src={result.image} />
           </section>
         </section>
+
       )
   }
 
@@ -51,6 +53,7 @@ class Search extends React.Component{
     }
 
     return (
+
         <section>
           <section className="result_header">
             <h1>Results For Your Search: </h1>
