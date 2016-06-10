@@ -26,7 +26,7 @@ class Login extends React.Component {
       let userLS = localStorage.getItem('user');
       //parses the info brought down (object)
       let parseUser = JSON.parse(userLS);
-      console.log('userLS PROFILE COMPONENT', parseUser);
+      // console.log('userLS PROFILE COMPONENT', parseUser);
       // this.props.user = localStorage.getItem(JSON.parse(user))
       // let movieLS = localStorage.getItem('movieInfo');
       //parses the info brought down (object)
@@ -53,8 +53,8 @@ class Login extends React.Component {
     // console.log('userLogin',userLogin)
     axios.post('/users/login',userLogin )
       .then(function(response){
-        console.log('response from server',response);
-        console.log('response after login:', response.data.status)
+        // console.log('response from server',response);
+        // console.log('response after login:', response.data.status)
         if(response.data.status === 401) {
           alert('wrong password')
         }

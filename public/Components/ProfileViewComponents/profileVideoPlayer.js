@@ -16,7 +16,6 @@ class ProfileVideoPlayer extends React.Component {
     });
   }
   selectedMovie (movie) {
-    console.log('A new movie was selected!', movie.video);
     this.setState({url: movie.video})
   }
   render() {

@@ -15,13 +15,8 @@ var UploadNewVideo = React.createClass({
     let userLS = localStorage.getItem('user');
     //parses the info brought down (object)
     let parseUser = JSON.parse(userLS);
-    // console.log('userLS PROFILE COMPO
-      // console.log('parseUser', parseUser)
-      console.log("What is in this.video? :", this.video)
     let videoFile  = this.video.value.replace("C:\\fakepath\\", "");
     let imageFile  = this.image.value.replace("C:\\fakepath\\", "");
-    console.log('This is videoFile:', videoFile);
-    console.log('This is imageFile:', imageFile);
     let movieInfo = {
       title : this.title.value,
       director : this.director.value,
@@ -36,9 +31,7 @@ var UploadNewVideo = React.createClass({
       rating: 0,
       plays: 0,
       clicks: 0,
-
     }
-    // console.log('this is movie information:', movieInfo);
     localStorage.setItem('movieInfo', JSON.stringify(movieInfo))
 // ==================================================================
 // Neo4J DB needs to update for the below post
@@ -57,8 +50,6 @@ var UploadNewVideo = React.createClass({
     // send fdata to our server to upload file to s3
     axios.post('/movies/movieS3', fdata)
     .then(function(res){
-      console.log('this is inside post to s3');
-      console.log('res', res.status)
       if(res.status === 200) {
        return hashHistory.push('profile')
       }

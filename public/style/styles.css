@@ -157,7 +157,7 @@ textarea{
   top: 23px;
   height: 25px;
   width: 25px;
-  right: 25%;
+  right: 18%;
   /*background-color: rgba(0, 0, 0, 0.5);*/
 }
 
@@ -207,9 +207,9 @@ textarea{
 /*=========================================================================================*/
 #loading_bubbles{
   position: absolute;
-  /*visibility: hidden;*/
-  bottom: -273px;
-  right: 280px;
+  visibility: hidden;
+  bottom: -12%;
+  right: 260px;
   height: 250px;
   width: 250px;
 } 
@@ -326,7 +326,7 @@ section.landing_page_movieInfo{
 /*=========================================================================================*/
 section.profile_container{
   position: relative;
-  height: 1600px;
+  height: 900px;
   width: 100%;
 }
 aside.account_information{
@@ -573,6 +573,7 @@ header h1 {
 /* USER AUTHENTICATION SECTION */
 .userLogin {
   margin-right: 25px;
+  margin-left: 15px;
 }
 
 /*=========================================================================================*/
