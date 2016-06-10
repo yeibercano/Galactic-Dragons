@@ -393,7 +393,7 @@ section.profile_video_player h1{
 section.upload_video_button{
   position: absolute;
   right: 22%;
-  bottom: 40%;
+  bottom: 0%;
 }
 
 .upload_list_title {
@@ -448,7 +448,6 @@ section.voting_container{
   
   height: 550px;
   width: 200px;
-  background-color: white;
 }
 
 section.voting_container h4{

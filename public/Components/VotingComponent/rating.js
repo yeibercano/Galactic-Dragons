@@ -19,9 +19,7 @@ class Rating extends React.Component {
       this.ratingChanged = this.ratingChanged.bind(this);
   }
   ratingChanged(vote) {
-      this.setState({rating: vote}, function(){  
-      alert("This will be your only opportunity to vote");
-      
+      this.setState({rating: vote}, function(){   
       hashHistory.push("profile");
       // console.log("What is this.state.rating", this.state.rating);
       // console.log('movieSelected', this.movieSelected)
