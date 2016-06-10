@@ -25,7 +25,7 @@ class VoteContainer extends Component {
         videoUrl: movieSelected.video,
         videoImage: movieSelected.image,
         videoTitle: movieSelected.title,
-        videoSynopsis: movieSelected.synopsos,
+        videoSynopsis: movieSelected.synopsis,
         videoActors: movieSelected.actors,
         videoDirector: movieSelected.director,
         videoYear: movieSelected.year

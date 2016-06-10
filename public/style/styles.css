@@ -105,6 +105,7 @@ input{
   border: 3px solid #222222;
   background-color: black;
   padding-left: 10px;
+  color: white;
 }
 textarea{
   display: block;
@@ -149,7 +150,7 @@ textarea{
   font-size: 19px;
   border: 1px solid #FFFFFF;
   background-color: black;
-  color: gray;
+  color: white;
   margin-right: 5px;
 }
 #search_button_img{
@@ -161,6 +162,12 @@ textarea{
   /*background-color: rgba(0, 0, 0, 0.5);*/
 }
 
+.search_not_found {
+  color: white;
+  text-align: center;
+  margin: 50px;
+  font-size: 30px;
+}
 
 
 /*=========================================================================================*/
@@ -308,7 +315,8 @@ section.landing_page_movieInfo{
 #landing_page_movieInfo_image{
  /* height: 300px;
   width: 270px;*/
-    width: 100%;
+  width: 100%;
+  height: 125px;
 }
 .landing_page_movieInfo {
   transform: scale(.9);
@@ -526,14 +534,22 @@ section.voting_container h3{
     margin: 40px 0px 0px 15px;
     border: 5px solid #FFFFFF;
     float: left;
+    margin-right: 25px;
 }
 
 #voting_image {
-    height: 200px;
+    height: 80px;
 }
 
 section.voting_player_container {
   text-align: center;
+  margin-bottom: 50px;
+}
+
+#voting_information {
+  display: block;
+  font-size: 25px;
+  color: white;
 }
 
 /*=========================================================================================*/
@@ -621,7 +637,7 @@ header h1 {
 }
 
 .wrapper {
-  height: 1200px;
+  height: 100%;
 }
 
 /*=========================================================================================*/
@@ -665,6 +681,7 @@ header h1 {
   border-radius: 175px;
   border: 8px solid #FFFFFF;
   cursor: pointer;
+  height: 350px;
 }
 
 
@@ -728,7 +745,6 @@ header h1 {
 
 .footerBackground {
   height: 80px;
-  background-color: #316daa;
   padding-top: 30px;
 }
 

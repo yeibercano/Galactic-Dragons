@@ -12,9 +12,10 @@ class VotingVideoList extends Component {
     // if (this.props.movie === null) {
     //   return <div>Loading...</div>
     // }
+    console.log('this is this.props.videoSynopsis:', this.props.videoSynopsis)
 
     return (
-      <section>
+    
         <section className="vote_contain">
             <section id="voting_image">
               <img src={this.props.movie.videoImage} />
@@ -27,7 +28,7 @@ class VotingVideoList extends Component {
             <h4>{this.props.movie.videoYear}</h4>
             </section>
         </section>
-      </section>
+    
     );
   }
 }

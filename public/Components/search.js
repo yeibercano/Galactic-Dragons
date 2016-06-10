@@ -49,7 +49,7 @@ class Search extends React.Component{
 
     if (this.state.sResults.length === 0) {
       console.log('this sResults statement executed')
-      return <section>Search results not found!</section>
+      return <section className="search_not_found">Search results not found!</section>
     }
 
     return (
