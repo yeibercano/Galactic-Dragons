@@ -156,9 +156,11 @@ textarea{
     right: 50px;
 }
 
-.search_button{
-  background-color: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(0, 0, 0, 0.5);
+.search_button {
+ /* background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.5);*/
+      background-color: #316daa;
+    border: #316daa;
 }
 
 .inputSearch {
@@ -175,12 +177,23 @@ textarea{
   margin-right: 5px;
 }
 #search_button_img{
-  position: absolute;
+ /* position: absolute;
   top: 23px;
   height: 25px;
   width: 25px;
-  right: 18%;
+  right: 18%;*/
   /*background-color: rgba(0, 0, 0, 0.5);*/
+
+ /*   position: absolute;
+    top: 23px;
+    height: 25px;
+    width: 25px;
+    right: 10px;*/
+    position: absolute;
+    top: 20px;
+    height: 20px;
+    width: 20px;
+    right: 10px;
 }
 
 .search_not_found {
