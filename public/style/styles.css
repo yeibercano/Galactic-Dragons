@@ -577,6 +577,18 @@ section.voting_container h3{
     height: 200px;
 }
 
+#voting_image {
+    height: 200px;
+    border-radius: 10px;
+    opacity: .8;
+}
+
+#voting_image img :hover {
+    height: 200px;
+    border-radius: 10px;
+    opacity: 1;
+}
+
 section.voting_player_container {
   text-align: center;
   margin-bottom: 50px;
