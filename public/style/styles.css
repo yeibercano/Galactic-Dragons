@@ -235,9 +235,10 @@ textarea{
 /*=========================================================================================*/
 #loading_bubbles{
   position: absolute;
-  visibility: hidden;
-  bottom: -12%;
-  right: 260px;
+  display: inline-block;
+  /*visibility: hidden;*/
+  top: 118%;
+  left: 65%;
   height: 250px;
   width: 250px;
 } 
@@ -320,7 +321,7 @@ aside.viewing_info{
 /*LANDING*/
 /*=========================================================================================*/
 section.landing_page {
-  width: 1200px;
+  /*width: 1200px;*/
   overflow: scroll;
 }
 section.landing_page h2{
@@ -329,8 +330,9 @@ section.landing_page h2{
 }
 section.landing_page_movieInfo{
   display: inline-block;
-  margin: 50px 25px;
+  /*margin: 50px 25px;*/
   margin-top: 5px;
+  overflow: scroll;
 }
 
 #landing_page_movieInfo_image{
@@ -366,7 +368,7 @@ aside.account_information{
   background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #316daa), color-stop(35%, #316DAA), color-stop(77%, #316daa), color-stop(86%, #316DAA), color-stop(100%, #316daa));
   background-color: #046380;
   height: 100%;
-  width: 250px;
+  width: 325px;
   padding: 30px;
   box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
   color: white;
@@ -527,7 +529,11 @@ section.voting_container h4{
   padding: 20px; 
 }
 section.vote_contain {
- border-bottom: 3px solid #FFFFFF
+  margin-top: 20px;
+  margin-left: 10px;
+  border-top: 3px solid #FFFFFF;
+  padding: 40px 30px 10px 10px; 
+  height: 200px;
 }
 
 section.voting_container h3{
@@ -555,7 +561,16 @@ section.voting_container h3{
 .voting_information h3 h4{
   text-align: center;
 }
-
+#voting_information_viewer h2{
+  color: #FFFFFF;
+  font-size: 30px;
+  margin-bottom: 10px;
+  text-decoration: underline;
+}
+#voting_information_viewer h5{
+  color: #FFFFFF;
+  font-size: 20px;
+}
 .vote_title h1 {
   color: white;
   text-align: center;
@@ -571,6 +586,18 @@ section.voting_container h3{
 
 #voting_image {
     height: 200px;
+}
+#voting_image_viewer img{
+  height: 250px;
+  /*margin: 20px 0px 0px 15px;*/
+  border: 5px solid #FFFFFF;
+  float: left;
+  margin-right: 25px;
+}
+
+section.stars{
+  display: block;
+  margin-top: 40px;
 }
 
 section.voting_player_container {
