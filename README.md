@@ -21,8 +21,11 @@
 ## Usage
 
 > Non register users can watch featured films
+
 > Register users can:
+
 > submit their videos for peer review
+
 > vote on films that will be featured
 
 ## Requirements
