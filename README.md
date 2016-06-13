@@ -20,15 +20,19 @@
 
 ## Usage
 
-> Some usage instructions
+> Non register users can watch featured films
+> Register users can:
+> submit their videos for peer review
+> vote on films that will be featured
 
 ## Requirements
 
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Node/Express
+- Bcrypt
+- Json Web Tokens
+- Neo4j
+- GrapheneDB
+- AWS S3 
 
 ## Development
 
@@ -37,9 +41,7 @@
 From within the root directory:
 
 ```sh
-sudo npm install -g bower
 npm install
-bower install
 ```
 
 ### Roadmap
