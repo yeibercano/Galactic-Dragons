@@ -1,6 +1,6 @@
 # Sovereign
 
-> Pithy project description
+>  A curated site focused on the artists' specific medium. A film maker can upload a completed original project for the review of other users as a way to be featured on the site. Serves as an engine for collaboration among the users.Films have the potential to be featured in film festivals.
 
 ## Team
 
