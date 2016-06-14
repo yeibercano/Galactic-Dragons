@@ -1,8 +1,8 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
 import Load from 'react-loading';
-var secret = require("../../../private.js")
+var secret = require("../../../private.js");
 var axios = require('axios');
-import { hashHistory } from 'react-router'
+import { hashHistory } from 'react-router';
 
 class LandingPageVideoList extends Component {
   constructor(props){
@@ -46,9 +46,7 @@ class LandingPageVideoList extends Component {
       </div>
     );
   }
-
 }
-
 
 export default LandingPageVideoList
 
