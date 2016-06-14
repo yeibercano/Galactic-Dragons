@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Carousel, CarouselItem, CarouselCaption} from 'react-bootstrap'
 var secret = require("../../../private.js")
 var axios = require('axios');
+
 class ProfileVideoList extends Component {
  
   videoInfo(videoInfo) {
