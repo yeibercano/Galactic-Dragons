@@ -333,17 +333,19 @@ aside.viewing_info{
 /*LANDING*/
 /*=========================================================================================*/
 section.landing_page {
-  width: 1200px;
-  overflow: scroll;
+ /* width: 1200px;
+  overflow: scroll;*/
 }
 section.landing_page h2{
   text-align: center;
   color: #FFFFFF;
 }
 section.landing_page_movieInfo{
-  display: inline-block;
+/*  display: inline-block;
   margin: 50px 25px;
+  margin-top: 5px;*/
   margin-top: 5px;
+  width: 33%;
 }
 
 #landing_page_movieInfo_image{
@@ -693,6 +695,8 @@ header h1 {
 }
 .landing_page {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .landing_page_movieInfo img {
