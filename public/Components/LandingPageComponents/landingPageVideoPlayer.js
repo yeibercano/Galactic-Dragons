@@ -10,7 +10,6 @@ var axios = require('axios');
 
 //retrieve the videos from the user and display them 
 // when clicked, they play in the ProfilePlayer
-
 class LandingPageVideoPlayer extends React.Component {
 
   constructor (props) {
@@ -21,63 +20,57 @@ class LandingPageVideoPlayer extends React.Component {
         movieSent: null
     }
     this.onClickHandler = this.onClickHandler.bind(this);
-   }
+  }
 
-
-   __routeToViewing(e){
+  __routeToViewing(e){
     e.preventDefault();
-   }
-   onMouseOverHandler() {
-     document.getElementById("play_img").style.visibility = "visible";
-   }
-    onMouseLeaveHandler() {
-     document.getElementById("play_img").style.visibility = "hidden";
-   }
-   
-   onClickHandler (e, movieProps) {
+  }
+  onMouseOverHandler() {
+    document.getElementById("play_img").style.visibility = "visible";
+  }
+  onMouseLeaveHandler() {
+    document.getElementById("play_img").style.visibility = "hidden";
+  }
+  onClickHandler (e, movieProps) {
     e.preventDefault();
     localStorage.setItem('viewerMovie', JSON.stringify(movieProps));
-    // console.log('movieProps inside onClickHandler inside LandingPageVideoPlayer:', movieProps)
     this.setState({ movieSent: movieProps}, function() {
-        hashHistory.push('viewer')
-        
+        hashHistory.push('viewer')     
     })
-   }
-  
-   
-   renderImage(movieProps) {
+  }
+
+  renderImage(movieProps) {
     if (movieProps.rating > 15) {
       return (
-          <CarouselItem  onMouseEnter={this.onMouseOverHandler}>
-            <img id="play_img" src="../../../style/assets/play-btn.png" onMouseLeave={this.onMouseLeaveHandler} onClick={e => this.onClickHandler(e, movieProps)} />
-            <img id="carousel-img" onClick={e => this.onClickHandler(e, movieProps)} src={movieProps.image}/>
-              <Carousel.Caption id="carousel-caption">
-                  <h2 id='title-caption'>{movieProps.title}</h2>
-                  <h4 id='synopsis-caption'>{movieProps.synopsis}</h4>
-              </Carousel.Caption>
-          </CarouselItem>
+        <CarouselItem  onMouseEnter={this.onMouseOverHandler}>
+          <img id="play_img" src="../../../style/assets/play-btn.png" onMouseLeave={this.onMouseLeaveHandler} onClick={e => this.onClickHandler(e, movieProps)} />
+          <img id="carousel-img" onClick={e => this.onClickHandler(e, movieProps)} src={movieProps.image}/>
+            <Carousel.Caption id="carousel-caption">
+              <h2 id='title-caption'>{movieProps.title}</h2>
+              <h4 id='synopsis-caption'>{movieProps.synopsis}</h4>
+            </Carousel.Caption>
+        </CarouselItem>
       )
     }
-   }
+  }
 
   render() {
-    
     if (this.props.allMovies === null) {
-        return (
-            <div>Loading...</div>
-        );
+      return (
+        <div>Loading...</div>
+      );
     }
 
     return (
-    <section className="carousel-div">
-      <Carousel >
-        {this.props.allMovies.map( movie => this.renderImage(movie.m.properties))}
-      </Carousel>
-      <section style={{display: "none"}}>
-      <ViewingPage movieSent={this.state.movieSent} />
+      <section className="carousel-div">
+        <Carousel >
+          {this.props.allMovies.map( movie => this.renderImage(movie.m.properties))}
+        </Carousel>
+        <section style={{display: "none"}}>
+        <ViewingPage movieSent={this.state.movieSent} />
+        </section>
       </section>
-    </section>
-    )
+    );
   }
 }
 
