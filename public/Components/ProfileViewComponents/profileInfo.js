@@ -7,7 +7,6 @@ class ProfileInfo extends Component {
   
   constructor(props){
     super(props)
-    
   }
 
   render() {
@@ -27,4 +26,3 @@ class ProfileInfo extends Component {
 }
 
 export default ProfileInfo
-        // <img id="account_information_bullet" src="../style/assets/bulletpoint.png"/>
