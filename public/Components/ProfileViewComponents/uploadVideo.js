@@ -14,15 +14,15 @@ const UploadVideo = React.createClass({
     return (
       <section className="upload_video_button">
         <form onSubmit={this._saveUpload}>
-              <input 
-                type="submit" 
-                name="submit"
-                value="Upload Video"
-                className="upload-button" />
+          <input 
+            type="submit" 
+            name="submit"
+            value="Upload Video"
+            className="upload-button" />
         </form>
       </section>
     );
-}
+  }
 })
 
 export default UploadVideo
