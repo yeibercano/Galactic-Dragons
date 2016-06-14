@@ -5,14 +5,12 @@ var secret = require('../../private.js');
 var db = new neo4j.GraphDatabase(secret.grapheneDB_URI);
 var fs = require('fs');
 var multiparty = require('connect-multiparty'),
-  mulitpartyMiddleware = multiparty();
+    mulitpartyMiddleware = multiparty();
 var jwt    = require('jsonwebtoken')
 
-/* FREE ACCESS ROUTES */
 
 /* LOADS 5 movies */
 router.get('/', function(req, res, next) {
-  // console.log('req in all movies', req)
   var query = [
    // 'MATCH (m:Movie) RETURN m LIMIT 5'
    'MATCH (m:Movie) RETURN m'
@@ -23,17 +21,12 @@ router.get('/', function(req, res, next) {
   },
     function(err, movies){
       if (err) throw err;
-      // console.log('movie from all movies',movies);
-      //console.log('movies properties access:', movies[0].m.properties.video)
-      //console.log('movies _id access of 1st element in array:', movies[0].m._id)
-      // res.status(200).json(movies = movies); //another way to send 
       res.status(200).send(movies);
   });
 });
 
 /* LOADS ALL MOVIES */
 router.get('/profile', function(req, res, next) {
-  // console.log('req in all movies', req)
   var query = [
    'MATCH (m:Movie) RETURN m'
   ].join('\n');
@@ -43,10 +36,6 @@ router.get('/profile', function(req, res, next) {
   },
     function(err, movies){
       if (err) throw err;
-      // console.log('movie from all movies',movies);
-      //console.log('movies properties access:', movies[0].m.properties.video)
-      //console.log('movies _id access of 1st element in array:', movies[0].m._id)
-      // res.status(200).json(movies = movies); //another way to send 
       res.status(200).send(movies);
   });
 });
@@ -108,8 +97,6 @@ router.post('/rating', function(req, res, next){
   }, 
   function(err, movie){
     if (err) throw err;
-    // console.log('movie creates new movie',movie);
-    // console.log('new');
     res.status(200).json(movie = movie);
   })
 });
@@ -117,12 +104,6 @@ router.post('/rating', function(req, res, next){
 /* TODO: search through all nodes - right now it only search through categories */
 /* FOR SEACH BAR - SEARCH MOVIES IN DATABASE */
 router.get('/search', function(req, res, next) {
-  console.log('search call')
-  console.log('req.query from search:', req.query )
-  console.log('req.body from search:', req.body )
-  console.log('req.headers from search:', req.headers )
-  var searchTarget = req.headers.target || req.query.target|| req.body.searchTarget
-  // var searchTarget = req.query.target;
   var query = [
    'MATCH (m:Movie {category: {searchTarget}}) RETURN m'
   ].join('\n');
@@ -135,8 +116,6 @@ router.get('/search', function(req, res, next) {
   }, 
     function(err, movies){
       if (err) throw err;
-      console.log('movie',movies);
-      // console.log('new');
       res.status(200).send(movies);
   });
 });
@@ -166,7 +145,6 @@ router.post('/movieS3', function(req, res){
       if(err){
         console.error("This is the error", err);
       }
-      console.log('file upload success');
     })
   })
   .then(function(){
@@ -176,9 +154,8 @@ router.post('/movieS3', function(req, res){
   .then(function(err){
     fs.unlink(image.path, function(err){
       if(err){
-        console.error("This is the error", err);
+        console.log(err)
       }
-      console.log('image upload success');
     })
     res.status(200).send('File Upload Complete');
   })
@@ -186,8 +163,6 @@ router.post('/movieS3', function(req, res){
 
 /* RETRIEVES ALL MOVIES FROM A USER */
 router.get('/user', function(req, res, next) {
-  console.log('req.body.userName :', req.body.userName)
-  console.log('movies user:', req.decoded)
   var userName = req.query['userName'] || req.headers['userName'] || req.body['userName'] || req.decoded['userName'];
 
   var query = [
@@ -203,13 +178,10 @@ router.get('/user', function(req, res, next) {
   }, 
     function(err, movies){
       if (err) throw err;
-      // console.log('movie',movies);
-      // console.log('new');
       res.status(200).send(movies);
   })
 
 });
-
 
 // /* ANY ROUTE BELOW THIS FUNCTION WILL BE AUTHENTICATED */
 // router.use(function(req, res, next) {
@@ -238,47 +210,8 @@ router.get('/user', function(req, res, next) {
 //   }
 // });
 
-
-
-
-//===============================================================================
-// router.post('/movieS3', function(req, res){
-//   var file = req.files.file;
-//   var image = req.files.image
-
-//   console.log("||||||||||||||||This is req.files from s3 post||||||||||||||||: ", req.files.image);
-//   console.log('++++++++++++++++this is file which is file.path:', file.path);
-//   var stream = fs.createReadStream(file.path);
-//   var imageStream = fs.createReadStream(image.path);
-//   return s3fsImplementation.writeFile(file.originalFilename, stream)
-//   .then(function(err){
-//    return fs.unlink(file.path, function(err){
-//       if(err){
-//         console.error("This is the error", err);
-//       }
-//       console.log('file upload success');
-//     })
-//   })
-//   .then(function(){
-//     console.log("~~~~~!!!!!!!!!Made it into promise to writeFile image!!!!!!!~~~~~~")
-//     return s3fsImplementation.writeFile(image.originalFilename, imageStream)
-//   })
-//   .then(function(err){
-//     console.log("made it into after image upload")
-//     fs.unlink(image.path, function(err){
-//       if(err){
-//         console.error("This is the error", err);
-//       }
-//       console.log('image upload success');
-//     })
-//   })
-//     res.send('File Upload Complete');
-
-// });
-
 /* CREATES NEW MOVIE NODE IN NEO4J */
 router.post('/movie', function(req, res, next){
-  // console.log("What is req inside users.js: ", req.body.userName);
   var userName = req.body.userName
   var query = [
     'MATCH(user:User {userName:{userName}})',
@@ -296,13 +229,9 @@ router.post('/movie', function(req, res, next){
   }, 
   function(err, movie){
     if (err) throw err;
-    // console.log('movie creates new movie',movie);
-    // console.log('new');
     res.status(200).json(movie = movie);
   })
 });
-
-
 
 /* RETRIEVES A SINGLE MOVIE */
 router.get('/single', function(req, res, next) {
@@ -325,8 +254,6 @@ router.get('/single', function(req, res, next) {
     res.status(200).send(movie);
   });
 });
-
-
 
 // makes the file available to the app
 module.exports = router;
