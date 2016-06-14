@@ -21,10 +21,9 @@ class Header extends Component {
     }
 
     return (
-        <header className="headerBackground">
-          <div className="headerWrapper">
+      <header className="headerBackground">
+        <div className="headerWrapper">
           <Brand />
-     
           <SearchBar />
           <div style= {style} eventKey={2}>
             <UserProfile />
@@ -33,13 +32,13 @@ class Header extends Component {
             <Register />
           </div>
           <div style={hide}>
-          <UserLogin />
+            <UserLogin />
           </div>
           <div style= {style}>
-          <UserLogout />
+            <UserLogout />
           </div>
-         </div> 
-        </header >
+        </div> 
+      </header >
     )
   }
 }
