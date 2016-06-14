@@ -8,16 +8,13 @@ var bcrypt = require('bcryptjs')
 var jwt    = require('jsonwebtoken')
 var crypto = require('crypto');
 
-// FREE ACCESS ROUTES
 // CREATES NEW USERS
 router.post('/register', function(req, res, next){
-  // console.log("What is req inside users.js: ", req);
   console.log("What is req.body inside users.js: ", req.body);
   var submittedPassword = req.body.password;
   
   //hashes and salts the password
   var hashedPassword = bcrypt.hashSync(submittedPassword, 10);
-  console.log('hashed password', hashedPassword)
 
   var query = [
     'CREATE (user:User {newUser})',
@@ -46,41 +43,36 @@ router.post('/register', function(req, res, next){
   }, 
     function(err, user){
       if (err) throw err;
-    
-      console.log('user.data',user[0].user);
-      // console.log('register calling home');
       res.status(200).send({ 
         firstName : user[0].user.properties.firstName,
-          lastName: user[0].user.properties.lastName,
-          email: user[0].user.properties.email,
-          company: user[0].user.properties.companyName,
-          website: user[0].user.properties.website,
-          video: user[0].user.properties.video,
-          image: user[0].user.properties.image,
-          password: user[0].user.properties.password,
-          userName: user[0].user.properties.userName
-      });
-      
+        lastName: user[0].user.properties.lastName,
+        email: user[0].user.properties.email,
+        company: user[0].user.properties.companyName,
+        website: user[0].user.properties.website,
+        video: user[0].user.properties.video,
+        image: user[0].user.properties.image,
+        password: user[0].user.properties.password,
+        userName: user[0].user.properties.userName
+    });
 
-      // var token = jwt.sign({
-      //   // firstName : user[0].user.properties.firstName,
-      //   // lastName: user[0].user.properties.lastName,
-      //   // email: user[0].user.properties.email,
-      //   // video: user[0].user.properties.video,
-      //   // image: user[0].user.properties.image,
-      //   // password: user[0].user.properties.password,
-      //   id: user[0].user._id,
-      //   userName: user[0].user.properties.userName
-      // }, secret.jwtSecret, {
-      //   expiresIn: 15000
-      // });
-      // res.status(200).json({
-      //   success: true,
-      //   userName : user[0].user.properties.userName,
-      //   message: 'Enjoy your token!',
-      //   token: token
-      // });
-  
+    // var token = jwt.sign({
+    //   // firstName : user[0].user.properties.firstName,
+    //   // lastName: user[0].user.properties.lastName,
+    //   // email: user[0].user.properties.email,
+    //   // video: user[0].user.properties.video,
+    //   // image: user[0].user.properties.image,
+    //   // password: user[0].user.properties.password,
+    //   id: user[0].user._id,
+    //   userName: user[0].user.properties.userName
+    // }, secret.jwtSecret, {
+    //   expiresIn: 15000
+    // });
+    // res.status(200).json({
+    //   success: true,
+    //   userName : user[0].user.properties.userName,
+    //   message: 'Enjoy your token!',
+    //   token: token
+    // });
   })
   // res.status(200);
 });
@@ -135,8 +127,6 @@ router.post('/login', function(req, res, next){
       // if(user[0].user.properties.password === encryptedPassword){
       //   console.log('pass matches')
       // }
-      console.log('user', user[0].user.properties);
-      console.log('user login:', user)
       var databasePass = user[0].user.properties.password;
 
       // var validPass = bcrypt.compareSync(submittedPassword, databasePass)
@@ -175,10 +165,7 @@ router.post('/login', function(req, res, next){
         console.log('pass does not work')
         res.status(401).send('wrong password')
       }
-      
-
-        // return the information including token as JSON
-      
+      // return the information including token as JSON
   });
 });
 
@@ -230,12 +217,6 @@ router.get('/all', function(req, res, next) {
 
 /* QUERY SINGLE USER */
 router.get('/single', function(req, res, next) {
-  console.log('req.body in single user request:', req.body)
-  console.log('this is req.query.userName:', req.query.userName);
-  console.log('this is req.decoded:', req.decoded);
-  console.log('this is req.headers.authorization', req.headers.authorization);
-
-
   var userName = req.query['userName'] || req.headers['userName'] || req.body['userName'] || req.decoded['userName'];
   console.log('This is userName', userName);
   var query = [
@@ -256,7 +237,5 @@ router.get('/single', function(req, res, next) {
     res.send(user);  
   });
 });
-
-
 
 module.exports = router;
