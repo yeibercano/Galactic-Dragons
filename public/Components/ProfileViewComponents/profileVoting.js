@@ -29,17 +29,16 @@ class VotingComponent extends React.Component {
       if(!movie.voters.includes(currentUser)){
         return (
           <section className="profile_tobevoted">
-              <img id="voting_image" src={movie.image} onClick={e => this.onClickHandler(e, movie)}/>
-              <section className="profile_voting_information">
-              <h3>{movie.title}</h3>
-              <h4>{movie.synopsis}</h4>
-              </section>
+            <img id="voting_image" src={movie.image} onClick={e => this.onClickHandler(e, movie)}/>
+            <section className="profile_voting_information">
+            <h3>{movie.title}</h3>
+            <h4>{movie.synopsis}</h4>
             </section>
-          )
+          </section>
+        )
       }
     }
 // }
-    
   }
 
   selectedMovie (movie) {
@@ -52,9 +51,7 @@ class VotingComponent extends React.Component {
     if (this.state.allMovies === null) {
       return <div>Loading...</div>
     }
-
-
-
+    
     return (
       <section className="parent_voting_container">
       <h3 id="profile_voting_list_title">Movies to be voted on</h3>
