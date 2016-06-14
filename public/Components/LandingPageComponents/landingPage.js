@@ -19,19 +19,17 @@ class LandingPage extends Component {
   }
 
   componentWillMount() {
-      axios.get("/movies").then(data => {
-        this.setState( { allMovies: data.data } );
-
-      })
-    }
+    axios.get("/movies").then(data => {
+      this.setState( { allMovies: data.data } );
+    });
+  }
   
- selectedMovie(movie) {
-  // console.log('this is the movie selected!');
- }
+  selectedMovie(movie) {
+   // console.log('this is the movie selected!');
+  }
 
   render() {
     return (
-      
       <main> 
         <LandingPageVideoPlayer allMovies = {this.state.allMovies} />
         <section className="videoListWrapper">
@@ -40,7 +38,6 @@ class LandingPage extends Component {
             allMovies = {this.state.allMovies} />
         </section>
       </main>
-      
     )
   }
 }
