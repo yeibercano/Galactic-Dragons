@@ -87,7 +87,7 @@ section.carousel-div{
   position: absolute;
   height: 300px;
   width: 300px;
-  margin: 70px 570px;
+  margin: 70px 750px;
   visibility: hidden;
 }
 
@@ -249,8 +249,8 @@ textarea{
 #loading_bubbles{
   position: absolute;
   display: inline-block;
-  /*visibility: hidden;*/
-  top: 118%;
+  visibility: hidden;
+  top: 75%;
   left: 65%;
   height: 250px;
   width: 250px;
@@ -304,7 +304,7 @@ aside.viewing_info{
 #poster_info img{
   display:inline-block;
   height: 350px;
-  width: 275px;
+  width: 50%;
   margin-right: 20px;
   border: 10px solid #FFFFFF;
   float:left;
@@ -312,6 +312,7 @@ aside.viewing_info{
 #movie_info h2{
   font-size: 40px;
   color: #FFFFFF;
+  text-decoration: underline;
 }
 #sub_movie_info {
   margin-top: 20px;
@@ -319,6 +320,9 @@ aside.viewing_info{
 #sub_movie_info h4{
   font-size: 20px;
   color: #FFFFFF;
+}
+#synopsis {
+  margin-bottom: 15px;
 }
 #movie_info{ 
   display: inline;
@@ -448,7 +452,7 @@ section.profile_video_player h1{
 }
 section.upload_video_button{
   position: absolute;
-  right: 22%;
+  right: 36%;
   bottom: 0%;
 }
 
@@ -599,6 +603,8 @@ section.voting_container h3{
 
 #voting_image {
     height: 200px;
+    border-radius: 10px;
+    cursor: pointer; 
 }
 #voting_image_viewer img{
   height: 250px;

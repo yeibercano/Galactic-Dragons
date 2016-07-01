@@ -124,6 +124,35 @@ router.get('/search', function(req, res, next) {
   var searchTarget = req.headers.target || req.query.target|| req.body.searchTarget
   // var searchTarget = req.query.target;
   var query = [
+   'MATCH (m:Movie {title: {searchTarget}}) RETURN m'
+  ].join('\n');
+  var params = {
+    searchTarget: searchTarget
+  };
+  db.cypher({
+    query: query,
+    params: params
+  }, 
+    function(err, movies){
+      if (err) throw err;
+      console.log('movie',movies);
+      // console.log('new');
+      res.status(200).send(movies);
+  });
+});
+
+
+
+// ==============================================================================
+
+router.get('/categories', function(req, res, next) {
+  console.log('search call')
+  console.log('req.query from search:', req.query )
+  console.log('req.body from search:', req.body )
+  console.log('req.headers from search:', req.headers )
+  var searchTarget = req.headers.target || req.query.target|| req.body.searchTarget
+  // var searchTarget = req.query.target;
+  var query = [
    'MATCH (m:Movie {category: {searchTarget}}) RETURN m'
   ].join('\n');
   var params = {
@@ -140,6 +169,7 @@ router.get('/search', function(req, res, next) {
       res.status(200).send(movies);
   });
 });
+
 
 // s3 connection
 var S3FS = require('s3fs');
