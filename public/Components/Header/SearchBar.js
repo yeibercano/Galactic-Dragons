@@ -11,6 +11,9 @@ class SearchBar extends Component {
   }
 
   submitSearch (e) {
+     if (e.charCode == 13) {
+        alert('Enter... (KeyPress, use charCode)');
+    }
     e.preventDefault();
     let searchedItem = localStorage.getItem('searchTerm');
     axios.get('/movies/search', {params: {target: searchedItem}})
@@ -30,7 +33,7 @@ class SearchBar extends Component {
 
       <aside className="searchBar"> 
         <div>
-          <input className="inputSearch" onChange={event => this.searchTerm(event.target.value)} />
+          <input className="inputSearch" onKeyDown={event => this.searchTerm(event.target.value)} onChange={event => this.searchTerm(event.target.value)} />
           <button 
             onClick= {this.submitSearch}
             type="submit"
