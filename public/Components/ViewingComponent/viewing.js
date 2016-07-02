@@ -18,7 +18,7 @@ class ViewingPage extends Component {
         videoUrl: movieSelected.video,
         videoImage: movieSelected.image,
         videoTitle: movieSelected.title,
-        videoSynopsis: movieSelected.synopsos,
+        videoSynopsis: movieSelected.synopsis,
         videoActors: movieSelected.actors,
         videoDirector: movieSelected.director,
         videoYear: movieSelected.year
@@ -48,7 +48,9 @@ class ViewingPage extends Component {
             <section id="movie_info">
             <h2>{this.state.videoTitle}</h2>
               <section id="sub_movie_info">
+                <section id="synopsis">
                 <h4>{this.state.videoSynopsis}</h4>
+                </section>
                 <h4>Actors: {this.state.videoActors}</h4>
                 <h4>Director: {this.state.videoDirector}</h4>
                 <h4>Release: {this.state.videoYear}</h4>

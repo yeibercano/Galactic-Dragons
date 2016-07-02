@@ -31,8 +31,8 @@ class VotingComponent extends React.Component {
           <section className="profile_tobevoted">
             <img id="voting_image" src={movie.image} onClick={e => this.onClickHandler(e, movie)}/>
             <section className="profile_voting_information">
-            <h3>{movie.title}</h3>
-            <h4>{movie.synopsis}</h4>
+              <h3>{movie.title}</h3>
+              <h5>{movie.synopsis}</h5>
             </section>
           </section>
         )

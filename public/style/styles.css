@@ -87,7 +87,7 @@ section.carousel-div{
   position: absolute;
   height: 300px;
   width: 300px;
-  margin: 70px 570px;
+  margin: 70px 750px;
   visibility: hidden;
 }
 
@@ -248,9 +248,10 @@ textarea{
 /*=========================================================================================*/
 #loading_bubbles{
   position: absolute;
+  display: inline-block;
   visibility: hidden;
-  bottom: -12%;
-  right: 260px;
+  top: 75%;
+  left: 65%;
   height: 250px;
   width: 250px;
 } 
@@ -303,7 +304,7 @@ aside.viewing_info{
 #poster_info img{
   display:inline-block;
   height: 350px;
-  width: 275px;
+  width: 50%;
   margin-right: 20px;
   border: 10px solid #FFFFFF;
   float:left;
@@ -311,6 +312,7 @@ aside.viewing_info{
 #movie_info h2{
   font-size: 40px;
   color: #FFFFFF;
+  text-decoration: underline;
 }
 #sub_movie_info {
   margin-top: 20px;
@@ -318,6 +320,9 @@ aside.viewing_info{
 #sub_movie_info h4{
   font-size: 20px;
   color: #FFFFFF;
+}
+#synopsis {
+  margin-bottom: 15px;
 }
 #movie_info{ 
   display: inline;
@@ -335,6 +340,8 @@ aside.viewing_info{
 section.landing_page {
  /* width: 1200px;
   overflow: scroll;*/
+  /*width: 1200px;*/
+  overflow: scroll;
 }
 section.landing_page h2{
   text-align: center;
@@ -344,8 +351,12 @@ section.landing_page_movieInfo{
 /*  display: inline-block;
   margin: 50px 25px;
   margin-top: 5px;*/
+ /* margin-top: 5px;
+  width: 33%;*/
+  display: inline-block;
+  /*margin: 50px 25px;*/
   margin-top: 5px;
-  width: 33%;
+  overflow: scroll;
 }
 
 #landing_page_movieInfo_image{
@@ -381,7 +392,7 @@ aside.account_information{
   background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #316daa), color-stop(35%, #316DAA), color-stop(77%, #316daa), color-stop(86%, #316DAA), color-stop(100%, #316daa));
   background-color: #046380;
   height: 100%;
-  width: 250px;
+  width: 325px;
   padding: 30px;
   box-shadow: inset 0px 0px 10px rgba(0,0,0,0.9);
   color: white;
@@ -432,6 +443,14 @@ section.profile_video_player h1{
   text-align: center;
   color: white;
 }
+
+#not_upload{
+  margin-top: 70px;
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 30px;
+}
+
 .upload-button{
   width: 500px;
   color: white;
@@ -440,7 +459,7 @@ section.profile_video_player h1{
 }
 section.upload_video_button{
   position: absolute;
-  right: 22%;
+  right: 36%;
   bottom: 0%;
 }
 
@@ -498,6 +517,7 @@ section.profile_tobevoted {
 .profile_voting_information{
   display: inline-block;
   position: absolute;
+  color: #FFFFFF;
   height: 200px;
   width: 400px;
   margin-left: 50px;
@@ -533,7 +553,11 @@ section.voting_container h4{
   padding: 20px; 
 }
 section.vote_contain {
- border-bottom: 3px solid #FFFFFF
+  margin-top: 20px;
+  margin-left: 10px;
+  border-top: 3px solid #FFFFFF;
+  padding: 40px 30px 10px 10px; 
+  height: 200px;
 }
 
 section.voting_container h3{
@@ -561,7 +585,16 @@ section.voting_container h3{
 .voting_information h3 h4{
   text-align: center;
 }
-
+#voting_information_viewer h2{
+  color: #FFFFFF;
+  font-size: 30px;
+  margin-bottom: 10px;
+  text-decoration: underline;
+}
+#voting_information_viewer h5{
+  color: #FFFFFF;
+  font-size: 20px;
+}
 .vote_title h1 {
   color: white;
   text-align: center;
@@ -577,6 +610,20 @@ section.voting_container h3{
 
 #voting_image {
     height: 200px;
+    border-radius: 10px;
+    cursor: pointer; 
+}
+#voting_image_viewer img{
+  height: 250px;
+  /*margin: 20px 0px 0px 15px;*/
+  border: 5px solid #FFFFFF;
+  float: left;
+  margin-right: 25px;
+}
+
+section.stars{
+  display: block;
+  margin-top: 40px;
 }
 
 #voting_image {

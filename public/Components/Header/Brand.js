@@ -7,7 +7,7 @@ import axios from 'axios';
 class Brand extends Component {
 
   selectedItem(item) {
-    axios.get('/movies/search', {params: {target: item.target.value}})
+    axios.get('/movies/categories', {params: {target: item.target.value}})
     .then(data => {
         localStorage.setItem('searchResults', JSON.stringify(data.data));
       })

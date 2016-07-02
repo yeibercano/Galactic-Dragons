@@ -35,13 +35,13 @@ class Rating extends React.Component {
   render() {
     const { rating } = this.state;
     return (                
-      <div>
+      <section className="stars">
         <ReactStars
           count={5}
           onChange={vote=>this.ratingChanged(vote)}
           size={24} 
           color2={'#ffd700'} />
-      </div>
+      </section>
     );
   }
 }
