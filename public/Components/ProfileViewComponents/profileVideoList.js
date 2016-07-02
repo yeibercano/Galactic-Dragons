@@ -16,7 +16,7 @@ class ProfileVideoList extends Component {
   }
   render() {
     if (this.props.moviesList === '') {
-      return <div>You have not Uploaded Any Movies</div>
+      return <section id="not_upload">You have not Uploaded Any Movies...</section>
     }
     return (
       <section>
